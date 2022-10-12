@@ -21,7 +21,7 @@
                 . mysqli_connect_error());
         }
          
-        // Taking all 5 values from the form data(input)
+        // Grabbing values from previous page
         $email = $_REQUEST['email'];
         $password = $_REQUEST['password'];
 	  $confirmPassword = $_REQUEST['confirmPassword'];
@@ -37,7 +37,6 @@
         $phone = $_REQUEST['phone'];
          
         // Performing insert query execution
-        // here our table name is college
 	  $sql = "INSERT INTO usertab (userID, fname, lname, MI, DOB, gender, address, city, state, zipcode, email, phone) 
 		VALUES ('two','$fname','$lname','$mname','$bday','$gender','$address','$city','$state','$zip','email','phone');";
 
