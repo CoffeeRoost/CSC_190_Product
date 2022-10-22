@@ -158,14 +158,14 @@ nav ul li a{
 }
 
 .account a{
-    font-size: 24px;
     color: #00ACC8;
     text-decoration: none;
 }
 
 .forgotPass{
-    margin-top: 200px;
-    margin-left: 100px;
+	display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
 }
 
 .forgotPass label{
