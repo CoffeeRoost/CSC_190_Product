@@ -21,16 +21,23 @@
     </nav>
 
     <div class="boxContent">
-        <div class="question">
-			<h1><strong>Reset Password</strong></h1>
-		</div>
-		<div class="login">
-			<form action="#">
-				<label for="email">Email</label><br>
-				<input type="email" id="email"><br><br>
-				<button type="submit" class="btn btn-primary">Enter</button><br>
-			</form>
-        </div> 
+        <div class="forgotPass">
+            <h1> Forgot Your Password? </h1>
+            <p> Please Enter your email below to recieve a reset link</p><br>
+            <form action="includes/forgotPass.inc.php" method="post">
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email"><br>
+                <a href="login.html" class="btn btn-primary">Back</a>
+                <input type="submit" name="forgotPass-submit" value="Enter" class="btn btn-primary">
+            </form>
+            <?php
+                if(isset($_GET["reset"])){
+                    if($_GET["reset"] == "success"){
+                        echo '<p class="resetsuccess">Check Your e-mail</p>';
+                    }
+                }
+            ?>
+        </div>  
     </div>
 </body>
 </html>
