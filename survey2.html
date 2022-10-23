@@ -20,31 +20,136 @@
         </label>
     </nav>
 
-    <div class="boxContent">
-        <div class="question">
-            <h1>Question 2</h1>
-            <h2>Your household Income</h2>
+<form id="msform">
+    <fieldset>
+        <h2 class="fs-title">Question 12</h2>
+        <h3 class="fs-subtitle">US Citizenship Status</h3>
+        <input type="radio" name="q12answer" value="Citizen of US or US Territory"/>
+        <label>Citizen of US or US Territory</label>
+        <input type="radio" name="q12answer" value="US Permanent Resident"/>
+        <label>US Permanent Resident</label>
+        <input type="radio" name="q12answer" value="Alien/Refugee Lawfully Admitted to the US"/>
+        <label>Alien/Refugee Lawfully Admitted to the US</label>
+        <input type="radio" name="q12answer" value="None of the above"/>
+        <label>None of the above</label><br><br>
+        <h2 class="fs-title">Question 13</h2>
+        <h3 class="fs-subtitle">If a U.S. Permanent Resident or an Alien/Refugee lawfully admitted to the U.S., please
+            provide your:</h3>
+        <input type="text" name="q13answer1" placeholder="USCIS (Alien Registration) Number"/>
+        <input type="text" name="q13answer2" placeholder="USCIS (Alien Registration) Expiration Date"/>
+        <h2 class="fs-title">Question 14</h2>
+        <h3 class="fs-subtitle">Have you registered with the Selective Service? Only applicable for men ages 18 to 25</h3>
+        <input type="radio" name="q14answer" value="Yes"/>
+        <label>Yes</label>
+        <input type="radio" name="q14answer" value="No"/>
+        <label>No</label>
+        <input type="radio" name="q14answer" value="Documented exemption from registration"/>
+        <label>Documented exemption from registration</label>
+        <input type="radio" name="q14answer" value="Not applicable"/>
+        <label>Not applicable</label><br><br>
+        <h2 class="fs-title">Question 15</h2>
+        <h3 class="fs-subtitle">Hispanic/Latino Heritage</h3>
+        <input type="radio" name="q15answer" value="Yes"/>
+        <label>Yes</label>
+        <input type="radio" name="q15answer" value="No"/>
+        <label>No</label><br><br>
+        <h2 class="fs-title">Question 16</h2>
+        <h3 class="fs-subtitle">Race (Ethnicity) check all that apply</h3>
+        <input type="radio" name="q16answer" value="African American/Black"/>
+        <label>African American/Black</label>
+        <input type="radio" name="q16answer" value="American Indian/Alaskan Native"/>
+        <label>American Indian/Alaskan Native</label><br>
+        <input type="radio" name="q16answer" value="Asian"/>
+        <label>Asian</label>
+        <input type="radio" name="q16answer" value="Hawaiian/Other Pacific Islander"/>
+        <label>Hawaiian/Other Pacific Islander</label>
+        <input type="radio" name="q16answer" value="White"/>
+        <label>White</label>
+        <input type="radio" name="q16answer" value="I do not wish to answer"/>
+        <label>I do not wish to answer</label><br><br>
+        <h2 class="fs-title">Question 17</h2>
+        <h3 class="fs-subtitle">What is your primary language?</h3>
+        <input type="radio" name="q17answer" value="English"/>
+        <label>English</label>
+        <input type="radio" name="q17answer" value="Spanish"/>
+        <label>Spanish</label>
+        <input type="radio" name="q17answer" value="Dari"/>
+        <label>Dari</label>
+        <input type="radio" name="q17answer" value="Pashto"/>
+        <label>Pashto</label>
+        <input type="radio" name="q17answer" value="Russian"/>
+        <label>Russian</label>
+        <input type="radio" name="q17answer" value="Vietamese"/>
+        <label>Vietamese</label>
+        <input type="radio" name="q17answer" value="Mandarin"/>
+        <label>Mandarin</label>
+        <input type="radio" name="q17answer" value="Arabic"/>
+        <label>Arabic</label>
+        <input type="radio" name="q17answer" value="Farsi"/>
+        <label>Farsi</label><br><br>
+        <h2 class="fs-title">Question 18</h2>
+        <h3 class="fs-subtitle">Do you have limited proficiency or difficulty in speaking, writing, reading, or understanding English?</h3>
+        <input type="radio" name="q18answer" value="Yes"/>
+        <label>Yes</label>
+        <input type="radio" name="q18answer" value="No"/>
+        <label>No</label><br><br>
+        <h2 class="fs-title">Question 19</h2>
+        <h3 class="fs-subtitle">Do you have a disability?</h3>
+        <input type="radio" name="q19answer" value="Yes"/>
+        <label>Yes</label>
+        <input type="radio" name="q19answer" value="No"/>
+        <label>No</label><br><br>
+        <h2 class="fs-title">Question 20</h2>
+        <h3 class="fs-subtitle">Please use the following space to indicate your disability</h3>
+        <input type="text" name="q20answer" placeholder="Skip if inapplicable"/>
+        <h2 class="fs-title">Question 21</h2>
+        <h3 class="fs-subtitle">Highest school grade completed</h3>
+        <input type="radio" name="q21answer" value="9th grade"/>
+        <label>9th grade</label>
+        <input type="radio" name="q21answer" value="10th grade"/>
+        <label>10th grade</label>
+        <input type="radio" name="q21answer" value="11th grade"/>
+        <label>11th grade</label>
+        <input type="radio" name="q21answer" value="12th grade"/>
+        <label>12th grade</label><br><br>
+        <h2 class="fs-title">Question 22</h2>
+        <h3 class="fs-subtitle">High school diploma or equivalent received</h3>
+        <input type="radio" name="q22answer" value="Yes"/>
+        <label>Yes</label>
+        <input type="radio" name="q22answer" value="No"/>
+        <label>No</label><br><br>
+        <h2 class="fs-title">Question 23</h2>
+        <h3 class="fs-subtitle">Highest education level completed</h3>
+        <input type="radio" name="q23answer" value="High School Diploma"/>
+        <label>High School Diploma</label>
+        <input type="radio" name="q23answer" value="High School Equivalency Diploma (GED)"/>
+        <label>High School Equivalency Diploma (GED)</label><br>
+        <input type="radio" name="q23answer" value="Certificate of Attendance/Completion (Disabled Individuals)"/>
+        <label>Certificate of Attendance/Completion (Disabled Individuals)</label>
+        <input type="radio" name="q23answer" value="Vocational School Certificate"/>
+        <label>Vocational School Certificate</label><br>
+        <input type="radio" name="q23answer" value="College or Technical or Vocational School"/>
+        <label>College or Technical or Vocational School</label>
+        <input type="radio" name="q23answer" value="AA"/>
+        <label>AA</label>
+        <input type="radio" name="q23answer" value="BA/BS"/>
+        <label>BA/BS</label>
+        <input type="radio" name="q23answer" value="Master's Degree"/>
+        <label>Master's Degree</label>
+        <input type="radio" name="q23answer" value="Doctorate Degree"/>
+        <label>Doctorate Degree</label><br><br>
+        <h2 class="fs-title">Question 24</h2>
+        <h3 class="fs-subtitle">School Status</h3>
+        <input type="radio" name="q24answer" value="In School"/>
+        <label>In School</label>
+        <input type="radio" name="q24answer" value="Not In School"/>
+        <label>Not In School</label><br><br>
+        <div>
+        <a href="survey.html" input type="button" name="back" class="back action-button">Back</a>
+        <a href="survey3.html" input type="button" name="next" class="back action-button">Next</a>
         </div>
-        <div class="answer1">
-            <form action="" class="multiple">
-                <input type="radio" name="choice" id="ans1">
-                <label>Under $18000</label>
-                <br><br>
-                <input type="radio" name="choice" id="ans2">
-                <label>$18001 - $75000</label>
-                <br><br>
-                <input type="radio" name="choice" id="ans3">
-                <label>$75001 - $150000</label>
-                <br><br>
-                <input type="radio" name="choice" id="ans4">
-                <label> Over $150000</label></form>
-        </div>
-        <div class="surveyBtn1">
-            <a href="survey.html" class="btn btn-primary">Back</a>
+    </fieldset>
+  </form>
 
-            <!-- Using JavaScript later -->
-            <a href="newAccount.html" class="btn btn-primary">Next</a>
-        </div>
-    </div>
 </body>
 </html>
