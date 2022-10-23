@@ -1,5 +1,6 @@
 <?php
-
+// part 1 of the password reset system. This script file will check if the email exists create the tokens used to ensure the correct user,
+// generate the url for a reset password link, insert the data into a new password reset table, and send an email to the user. 
 if(isset($_POST["forgotPass-submit"])){
 
     //create a secure login token
@@ -32,7 +33,7 @@ if(isset($_POST["forgotPass-submit"])){
         exit();
     }
     else{
-        myslqi_stmt_bind_param($stmt, "s", $userEmail);
+        mysqli_stmt_bind_param($stmt, "s", $userEmail);
         mysqli_stmt_execute($stmt);
     }
 
