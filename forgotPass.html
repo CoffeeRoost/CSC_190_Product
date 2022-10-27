@@ -22,13 +22,13 @@
 
     <div class="boxContent">
         <div class="forgotPass">
-            <h1> Forgot Your Password? </h1>
-            <p> Please Enter your email below to recieve a reset link</p><br>
+            <h1>Forgot Your Password?</h1>
+            <p>Please Enter your email below to recieve a reset link</p><br>
             <form action="includes/forgotPass.inc.php" method="post">
                 <label for="email">Email: </label>
                 <input type="text" name="email" id="email"><br>
                 <a href="login.html" class="btn btn-primary">Back</a>
-                <input type="submit" name="forgotPass-submit" value="Enter" class="btn btn-primary">
+                <button type="submit" name="forgotPassSubmit" value="Enter" class="btn btn-primary"></button>
             </form>
             <?php
                 if(isset($_GET["reset"])){

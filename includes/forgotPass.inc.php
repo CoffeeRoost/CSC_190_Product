@@ -1,32 +1,35 @@
 <?php
 // part 1 of the password reset system. This script file will check if the email exists create the tokens used to ensure the correct user,
 // generate the url for a reset password link, insert the data into a new password reset table, and send an email to the user. 
-if(isset($_POST["forgotPass-submit"])){
 
-    //create a secure login token
+// checks that the user accessed the page correctly
+if(isset($_POST["forgotPassSubmit"])){
+
+    //variable with login token
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
 
-    //create a clickable url to be sent to the email
-    //add website url in here ~www.something.com/.../create-new-password.php
-    $url = " .../create-new-password.php?Selector=" . $selector . "&validator=" . bin2hex($token);
+    //create a clickable url to be sent to the email   ~~NEEDS CHANGING~~
+    //add website url in here ~www.californiamobilitycenter.org/.../resetPass.php
+    $url = " www.californiamobilitycenter.org/.../resetPass.php?Selector=" . $selector . "&validator=" . bin2hex($token);
 
-    //makes the token fail after 1800 seconds
+    //sets expires to 1 hr
     $expires = date("U") + 1800;
 
     //create a new sql table passwordreset
-    //CREATE TABLE pwdReset
-    //  pwdresetId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    //  pwsResetEmail TEXT NOT NULL,
-    //  pwdResetToken LONGTEXT NOT NULL,
-    //  pwdResetExpires TEXT NOT NULL
+    //  CREATE TABLE passReset
+    //  passResetId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    //  passResetEmail TEXT NOT NULL,
+    //  passResetSelector TEXT NOT NULL,
+    //  passResetToken LONGTEXT NOT NULL,
+    //  passResetExpires TEXT NOT NULL
 
     require 'dbh.inc.php';
 
     $userEmail = $_POST["email"];
 
-    // delete any possible previous enteries in the database from the user
-    $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
+    // delete any possible previous reset requests from the user in the database
+    $sql = "DELETE FROM passReset WHERE passResetEmail=?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         echo "There was an error!";
@@ -38,8 +41,8 @@ if(isset($_POST["forgotPass-submit"])){
     }
 
 
-    // insert everything from the script to the sql database
-    $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?, ?, ?, ?);";
+    // insert new data into the database
+    $sql = "INSERT INTO passReset (passResetEmail, passResetSelector, passResetToken, passResetExpires) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         echo "There was an error!";
@@ -47,7 +50,7 @@ if(isset($_POST["forgotPass-submit"])){
     }
     else{
         $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        myslqi_stmt_bind_param($stmt, "ssss", $userEmail, $selector, $hashedToken, $expires);
+        mysqli_stmt_bind_param($stmt, "ssss", $userEmail, $selector, $hashedToken, $expires);
         mysqli_stmt_execute($stmt);
     }
 
@@ -57,7 +60,7 @@ if(isset($_POST["forgotPass-submit"])){
     //creating email to send to user
     $to = $userEmail;
 
-    $subject =  'PASSWORD RESET';
+    $subject =  'PASSWORD RESET REQUEST';
     $message =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
     $message .= '<p>Here is your password reset link: </br>';
     $message .= '<a href="' . $url . '">' . $url . '</a></p>';
@@ -68,10 +71,11 @@ if(isset($_POST["forgotPass-submit"])){
 
     mail($to, $subject, $message, $headers);
 
-    header("Location: ../reset-password.php?reset=success");
+    header("Location: ../forgotPass.php?reset=success");
 
 
 
 } else{
-    header("Location:.../index.php");
+    //kick back to login if accesssed incorrectly
+    header("Location:.../login.php");
 }
