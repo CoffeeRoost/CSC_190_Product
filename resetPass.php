@@ -27,7 +27,7 @@
                 $validator = $_GET["validator"];
 
                 if (empty($selector) || empty($validator)){
-                    echo "Could not validate request!";
+                    echo "selector or validator empty!";
                 }
                 else{
                     if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){

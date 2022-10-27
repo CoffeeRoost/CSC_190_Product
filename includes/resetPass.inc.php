@@ -10,12 +10,12 @@
 
         //checking if the fields are empty, if not kick back to location
         if(empty($password) || empty($passwordRepeat)){
-                header("Location:../login.php?newpassword=empty");
+                header("Location:../login.html?newpassword=empty");
                 exit();
         }
         // make sure passwords are the same, if not kick back to location
         else if( $password != $passwordRepeat) {
-            header("Location:../login.php?newpassword=passnotsame");
+            header("Location:../login.html?newpassword=passnotsame");
             exit();
         }
 
@@ -30,12 +30,12 @@
             exit();
         }
         else{
-            mysqli_stmt_bind_param($stmt, "s", $selector);
+            mysqli_stmt_bind_param($stmt, "ss", $selector, $currentDate);
             mysqli_stmt_execute($stmt);
 
             $result = mysqli_stmt_get_result($stmt);
             if(!$row = mysqli_fetch_assoc($result)){
-                echo "You need to re-submit your reset request.";
+                echo "Token Expired: You need to re-submit your reset request.";
                 exit();
             }
             //checking the tokens
@@ -49,7 +49,7 @@
                     exit();
                 }
                 // when tokens check out, change the database information
-                elseif($tokencheck === true){
+                elseif($tokenCheck === true){
 
                     $tokenEmail = $row['passResetEmail'];
 
@@ -91,7 +91,7 @@
                                 else{
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
-                                    header("Location: ../login.php?newpass=passwordupdated");
+                                    header("Location: ../login.html?newpass=passwordupdated");
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }
@@ -104,6 +104,6 @@
 
     }
     else{
-        header("Location:.../login.php");
+        header("Location:.../login.html");
     }
 ?>

@@ -11,9 +11,9 @@ if(isset($_POST["forgotPassSubmit"])){
 
     //create a clickable url to be sent to the email   ~~NEEDS CHANGING~~
     //add website url in here ~www.californiamobilitycenter.org/.../resetPass.php
-    $url = " www.californiamobilitycenter.org/.../resetPass.php?Selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = " www.californiamobilitycenter.org/.../resetPass.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
-    //sets expires to 1 hr
+    //sets expires to current time + 1hr
     $expires = date("U") + 1800;
 
     //create a new sql table passwordreset
