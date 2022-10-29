@@ -1,0 +1,139 @@
+/************Reset***************/
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+/***************************************/
+
+/***************Input type**************/
+.input-underline{
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid grey;
+    width: 35%;
+}
+
+.input-createAcc{
+    width: 400px;
+    height: 40px;
+}
+/***************************************/
+
+
+/*****************NavBar******************/
+.navbar-toggler:hover{
+    background-color: #c8ebf0;
+}
+
+.logo{
+    margin-left: 15px;
+    height: 75px;
+}
+/***************************************/
+
+.container-fluid{
+    padding: 10% 10%;
+}
+
+/* Stying for side Bar in Account Page*/
+#sideBar{
+    width: 300px;
+    height: 100vh;
+}
+
+#sideBar a{
+    width: 300px;
+}
+
+#start-btn{
+    margin: 5% 37%;
+}
+/***************************************/
+
+
+/******Background and text color********/ 
+.bg-Blue{
+    background-color: #00ACC8;
+}
+
+.bg-lightBlue{
+    background-color: #c8ebf0 !important;
+}
+
+.text-Blue{
+    color: #00ACC8;
+}
+/***************************************/
+
+
+/**********Button styling***************/
+.logout{
+    position:absolute;
+    bottom: 30px;
+}
+
+
+.btn {
+    font-size: 20px;
+    background-color:#00ACC8 ;
+    width: 150px;
+    height: 50px;
+    margin-bottom: 0px 100px ;
+}
+.btn-action{
+    color: #fff;
+    width: 200px;
+    padding-top: 12px;
+    margin: 0px 10px 0px 10px;
+}
+/***************************************/
+
+/*********Box Contain for Login*********/
+.boxContent {
+    width: 500px;
+    background-color: #c8ebf0;
+    border-radius: 10px;
+
+}
+.boxContent button{
+    margin: 10px 0px 10px 125px;
+}
+
+.boxSurvey{
+    width: 670px;
+    background-color: #c8ebf0;
+    border-radius: 10px;
+}
+/***************************************/
+
+
+.account{
+    margin: 50px 0px 0px 235px;
+}
+
+.account a{
+    font-size: 24px;
+    color: #00ACC8;
+    text-decoration: none;
+}
+
+
+#main{
+    display: inline-block;
+    
+}
+
+#answer{
+    width: 500px;
+    height: 60px;
+    margin-top: 120px;
+    margin-left: 100px;
+}
+
+
+
+
+
