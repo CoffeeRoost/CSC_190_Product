@@ -333,7 +333,15 @@ nav ul li a{
     margin-bottom: 20px;
   }
 
-  
+  .results {
+  background: #00ACC8;
+  color: white;
+}
+
+  .authenticate{
+	text-align: center;
+	margin-top: 60px;
+  }
 
 
 
