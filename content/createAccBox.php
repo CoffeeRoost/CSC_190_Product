@@ -10,7 +10,7 @@
                 <label class="form-label" for="ConfirmPassword">Confirm Password</label><span class="text-danger">*</span><br>
                 <input type="password" id="ConfirmPassword" class="form-control" required><br>
                 <button type="submit" class="btn btn-primary">Submit</button><br>
-                </form>  
+                </form>
             </div>
         </div>
-    </div>
+</div>
