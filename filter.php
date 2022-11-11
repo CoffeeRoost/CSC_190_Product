@@ -1,7 +1,7 @@
 <?php
 
-require 'C:\xampp\htdocs\dashboard\csc190DBdemo\validate.php';
-require 'C:\xampp\htdocs\dashboard\csc190DBdemo\sanitize.php';
+require 'validate.php';
+require 'sanitize.php';
 
 function filter(array $data, array $fields, array $messages = []): array
 {
