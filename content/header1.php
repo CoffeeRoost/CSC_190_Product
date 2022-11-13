@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4" href="./survey1.php">Let Start</a>
+                        <a class="nav-link text-white fs-4" href="./servey.php">Let Start</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white fs-4 mx-3" href="./login.php">Login</a>
