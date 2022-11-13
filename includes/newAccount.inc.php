@@ -273,7 +273,7 @@ if(isset($_POST['signup-submit'])){
 								$activation_link";
 						$headers = "From: emailchickennode@gmail.com\r\n";
 						if(mail($to,$subject,$message,$headers)){
-							header('Location: ../login.php');
+							header('Location: ../checkEmail.php');
 							exit;
 						}
 						else{
