@@ -236,7 +236,7 @@
                     <div class="form-check m-2">
                         <input class="form-check-input" type="radio" name="gender" id="notSay" value="notSay">
                         <label class="form-check-label" for="notSay">
-                          Frefer not to say
+                          Prefer not to say
                         </label>
                     </div>
                     <div class="form-check m-2">
@@ -677,7 +677,7 @@
                     <div class="form-check m-2">
                         <input class="form-check-input" type="radio" name="adultEdu" id="nonAdultEdu" value="No">
                         <label class="form-check-label" for="nonAdultEdu">
-                            Yes
+                          No
                         </label>
                     </div>
                 </div>
