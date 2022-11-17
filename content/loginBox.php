@@ -12,7 +12,7 @@
                 <button type="submit" class="btn btn-primary">Login</button><br>
                 <a class="text-decoration-none text-Blue" style="margin-left: 135px ;" href="./forgotPass.php">Forgot Password</a>
                 </form>
-                <p class="text-center">Don't have an account?<span><a class="text-decoration-none text-Blue fs-4" href="survey.html"> Start Here </a></span></p>
+                <p class="text-center">Don't have an account?<span><a class="text-decoration-none text-Blue fs-4" href="./servey.php"> Start Here </a></span></p>
             </div>
         </div>
 </div>
