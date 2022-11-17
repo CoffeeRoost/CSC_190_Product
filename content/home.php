@@ -7,10 +7,10 @@
             <h2>
                 The CMC works together with start-ups and industry leaders to drive the pace of discovery and support innovation in future mobility.
             </h2>
-                <a href="./servey.php" id = "start-btn" class="btn btn-primary btn-lg">Let Start</a>
+                <a href="./survey.php" id = "start-btn" class="btn btn-primary btn-lg">Let Start</a>
         </div>
         <div class="col-lg-6">
                     <img src="image/Working Together on Project(1).png" class="img-fluid" alt="work together" height="500" width="500">
-        </div>     
+        </div>
     </div>
 </div>
