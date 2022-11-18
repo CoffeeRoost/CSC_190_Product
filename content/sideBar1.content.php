@@ -1,4 +1,4 @@
-<div class=" container d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue " id="sideBar">
+<div class=" container d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
 
         <div>
             <ul class="nav nav-tabs flex-column align-items-center text-center">

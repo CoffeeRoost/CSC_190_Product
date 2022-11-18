@@ -1,4 +1,4 @@
-<div class="container-fluid ">
+<div class="container-fluid">
     <h5 class="d-flex justify-content-center text-info mb-5">REPORT ACTIVITY FORM</h5>
 
     <h6>Coach ID <span class="text-danger">*</span></h6>
