@@ -1,4 +1,4 @@
-<div class="container mx-5 my-5">
+<div class="container-fluid ">
     <h5 class="d-flex justify-content-center text-info mb-5">REPORT ACTIVITY FORM</h5>
 
     <h6>Coach ID <span class="text-danger">*</span></h6>
@@ -8,13 +8,13 @@
     <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Client ID <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
+    <input type="text" name="clientID" id="clientID" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Client Last Name <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
+    <input type="text" name="clientLName" id="clientLName" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Client First Name <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
+    <input type="text" name="clientFName" id="clientFName" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Please choose from the list code list and select best code that fits for activity. <span class="text-danger">*</span></h6>
     <select class="form-select-SM border rounded-2" name="trainingCode" id="" required>
