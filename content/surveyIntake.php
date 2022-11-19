@@ -1101,7 +1101,7 @@
 
                 <div class="d-flex justify-content-between m-1">
                     <button type="button" data-bs-toggle="collapse" data-bs-target="#survey5,#survey4" class="btn btn-primary">Back</button>
-                    <button name="signup-submit" class="btn btn-primary">Submit</button>
+                    <button name="signup-submit" type = "submit"class="btn btn-primary"><a class="text-decoration-none text-white" href="./checkEmail.php">Submit </a></button>
 		    </div>
 		  </div>
             </form>
