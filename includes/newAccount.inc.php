@@ -28,7 +28,7 @@ if(isset($_POST['signup-submit'])){
 
   if($_POST['sameAdd'] === 'No'){
 	if(empty($mailStreet)||empty($mailCity)||empty($mailCity)||empty($mailState)||empty($mailZip)||empty($mailCounty)){
-		header ("Location: ../servey.php?error=mandatoryMailing");
+		header ("Location: ../survey.php?error=mandatoryMailing");
     		//stop the code to run
      		exit();
 	}
@@ -44,7 +44,7 @@ if(isset($_POST['signup-submit'])){
 
   if($gender === 'other'){
 	if(empty($otherAns)){
-		header("Location: ../servey.php?error=mandatoryGenderDescription");
+		header("Location: ../survey.php?error=mandatoryGenderDescription");
 	}
   }
 
@@ -114,18 +114,18 @@ if(isset($_POST['signup-submit'])){
   {
     //check empty fields
     // redirect to surveyTest page
-    header ("Location: ../servey.php?error=emptyfields");
+    header ("Location: ../survey.php?error=emptyfields");
     // //stop the code to run
      exit();
   }
   else if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
     // check email validation
-    header ("Location: ../servey.php?error=invaidmail&email=".$email);
+    header ("Location: ../survey.php?error=invaidmail&email=".$email);
      exit();
   }
   else if ($password !== $confirmPassword){
     // check password match with confirm password
-    header ("Location: ../servey.php?error=passwordcheck&email=".$email);
+    header ("Location: ../survey.php?error=passwordcheck&email=".$email);
     exit();
   }
   else
@@ -135,7 +135,7 @@ if(isset($_POST['signup-submit'])){
     $sql="SELECT userID, email FROM PARTICIPATION WHERE email=?";
     $stmt= mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
-      header ("Location: ../servey.php?error=sqlerror");
+      header ("Location: ../survey.php?error=sqlerror");
       exit();
     }
     else{
@@ -145,7 +145,7 @@ if(isset($_POST['signup-submit'])){
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck>0){
-        header ("Location: ../servey.php?error=emailtaken&email=".$email);
+        header ("Location: ../survey.php?error=emailtaken&email=".$email);
         exit();
       }
       else{
@@ -153,7 +153,7 @@ if(isset($_POST['signup-submit'])){
 	  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt=mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql)){
-          header ("Location: ../servey.php?error=sqlerror");
+          header ("Location: ../survey.php?error=sqlerror");
           exit();
         }
         else
@@ -169,7 +169,7 @@ if(isset($_POST['signup-submit'])){
 	    $sql="SELECT * FROM PARTICIPATION WHERE email=?";
     	    $stmt= mysqli_stmt_init($conn);
     	    if(!mysqli_stmt_prepare($stmt,$sql)){
-      		header ("Location: ../servey.php?error=sqlerror");
+      		header ("Location: ../survey.php?error=sqlerror");
       		exit();
      	    }
           else{
@@ -205,37 +205,37 @@ if(isset($_POST['signup-submit'])){
         			$stmt7=mysqli_stmt_init($conn);
 				$stmt8=mysqli_stmt_init($conn);
         			if(!mysqli_stmt_prepare($stmt,$sql)){
-          				header ("Location: ../servey.php?error=sqlerror");
+          				header ("Location: ../survey.php?error=sqlerror");
           				exit();
         			}
         			else
         			{	
 					if(!mysqli_stmt_prepare($stmt2,$sql2)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt3,$sql3)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt4,$sql4)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt5,$sql5)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt6,$sql6)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt7,$sql7)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					if(!mysqli_stmt_prepare($stmt8,$sql8)){
-          					header ("Location: ../servey.php?error=sqlerror");
+          					header ("Location: ../survey.php?error=sqlerror");
           					exit();
         				}
 					
@@ -261,7 +261,7 @@ if(isset($_POST['signup-submit'])){
     	    				$stmt= mysqli_stmt_init($conn);
 					$stmt= mysqli_stmt_init($conn);
     	    				if(!mysqli_stmt_prepare($stmt,$sql)){
-      					header ("Location: ../servey.php?error=sqlerror");
+      					header ("Location: ../survey.php?error=sqlerror");
       					exit();
      	    				}
 					else{
@@ -277,7 +277,7 @@ if(isset($_POST['signup-submit'])){
 							exit;
 						}
 						else{
-							header("Location: ../servey.php?error=emailfail");
+							header("Location: ../survey.php?error=emailfail");
 							exit();
 						}
 
@@ -285,7 +285,7 @@ if(isset($_POST['signup-submit'])){
 				}
       		}
       		else{
-				header ("Location: ../servey.php?error=nouseremail");
+				header ("Location: ../survey.php?error=nouseremail");
         			exit();
 			}
 		}
@@ -300,6 +300,6 @@ if(isset($_POST['signup-submit'])){
 }
 else{
   //send back to surveyTest page
-  header ("Location: ../servey.php");
+  header ("Location: ../survey.php");
   exit();
 }
