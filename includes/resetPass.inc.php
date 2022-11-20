@@ -1,7 +1,7 @@
 <?php
 // part 2 of the password reset system. this script file will check the tokens and if confirmed, change the password to the new password entered by the user.
 
-    if (isset($_POST["resetPassSubmit"])){
+    if (isset($_POST["resetPassBoxSubmit"])){
         
         $selector = $_POST["selector"];
         $validator = $_POST["validator"];
@@ -26,7 +26,7 @@
         $sql = "SELECT * FROM passReset WHERE passResetSelector=? AND passResetExpires >=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
-            echo "There was an error!";
+            echo "There was an error in the reset table!";
             exit();
         }
         else{
@@ -53,10 +53,10 @@
 
                     $tokenEmail = $row['passResetEmail'];
 
-                    $sql = "SELECT * FROM USERTAB WHERE email=?;";
+                    $sql = "SELECT * FROM PARTICIPATION WHERE email=?;";
                     $stmt = mysqli_stmt_init($conn);
                     if(!mysqli_stmt_prepare($stmt, $sql)){
-                        echo "There was an error!";
+                        echo "There was an error in the user table!";
                         exit();
                     }
                     else{
@@ -64,16 +64,16 @@
                         mysqli_stmt_execute($stmt);
                         $result = mysqli_stmt_get_result($stmt);
                         if(!$row = mysqli_fetch_assoc($result)) {
-                            echo "There was an error!";
+                            echo "There was an error in the user table!";
                             exit();
                         }
                         //update the password to the new password in the usertab
                         else{
 
-                            $sql = "UPDATE USERTAB SET newUserPassword=? WHERE email=?";
+                            $sql = "UPDATE PARTICIPATION SET newUserPassword=? WHERE email=?";
                             $stmt = mysqli_stmt_init($conn);
                              if(!mysqli_stmt_prepare($stmt, $sql)){
-                                echo "There was an error!";
+                                echo "There was an error changing passwords!";
                                 exit();
                             }
                             else{
@@ -85,13 +85,13 @@
                                 $sql = "DELETE FROM passReset WHERE passResetEmail=?;";
                                 $stmt = mysqli_stmt_init($conn);
                                 if(!mysqli_stmt_prepare($stmt, $sql)){
-                                    echo "There was an error!";
+                                    echo "There was an error in deletion!";
                                     exit();
                                 }
                                 else{
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
-                                    header("Location: ../login.html?newpass=passwordupdated");
+                                    header("Location: ../login.php?newpass=passwordupdated");
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }

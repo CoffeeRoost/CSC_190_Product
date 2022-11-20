@@ -3,7 +3,7 @@
 // generate the url for a reset password link, insert the data into a new password reset table, and send an email to the user. 
 
 // checks that the user accessed the page correctly
-if(isset($_POST["forgotPassSubmit"])){
+if(isset($_POST["passBoxSubmit"])){
 
     //variable with login token
     $selector = bin2hex(random_bytes(8));
@@ -11,7 +11,7 @@ if(isset($_POST["forgotPassSubmit"])){
 
     //create a clickable url to be sent to the email   ~~NEEDS CHANGING~~
     //add website url in here ~www.californiamobilitycenter.org/.../resetPass.php
-    $url = " www.californiamobilitycenter.org/.../resetPass.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "../resetPage.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     //sets expires to current time + 1hr
     $expires = date("U") + 1800;
@@ -71,11 +71,12 @@ if(isset($_POST["forgotPassSubmit"])){
 
     mail($to, $subject, $message, $headers);
 
-    header("Location: ../forgotPass.php?reset=success");
-
+    // header("Location: ../forgotPass.php?reset=success");
+    // for testing -- skip email verification
+    header("Location: $url");
 
 
 } else{
     //kick back to login if accesssed incorrectly
-    header("Location:.../login.php");
+    header("Location:../login.php");
 }
