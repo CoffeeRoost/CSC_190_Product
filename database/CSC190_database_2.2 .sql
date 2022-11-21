@@ -218,6 +218,8 @@ tries INT(1) NOT NULL
 
 CREATE TABLE passReset(
 passResetId INT (11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+passResetEmail TEXT NOT NULL,
+passResetSelector TEXT NOT NULL,
 passResetToken LONGTEXT NOT NULL,
 passResetExpires TEXT NOT NULL
 
