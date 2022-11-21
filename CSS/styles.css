@@ -33,17 +33,20 @@
     height: 75px;
 }
 /***************************************/
+
+
+
 /* Change the padding from 10% to 5%-ThuyDuong*/
 .container-fluid{
     padding: 5% 10%;
 }
 
+/*****************Side-Bar******************/
 /* Stying for side Bar in Account Page*/
 /* Change the height to 100 vmax to background color cover all page and add mt-1 to bring to specific container- Thuy Duong */
-.mt-1 #sideBar{
+#sideBar{
     width: 300px;
-    height:100vmax;
-
+    height: 100vmax;
 }
 
 #sideBar a{
@@ -60,6 +63,23 @@
 }
 /***************************************/
 
+/*****************Search-Bar******************/
+.w-search-cover{
+    width: 750px; 
+    border: 1px solid #00ACC8;
+}
+
+.w-search-bar{
+    border: 0;
+    outline: none;
+    width: 690px;
+}
+
+.search-icon{
+    width: 25px;
+    height: 25px;
+}
+/***************************************/
 
 /******Background and text color********/
 .bg-Blue{
@@ -73,6 +93,7 @@
 .text-Blue{
     color: #00ACC8;
 }
+
 /***************************************/
 
 
@@ -96,9 +117,14 @@
     padding-top: 12px;
     margin: 0px 10px 0px 10px;
 }
+
+.btn-newClient{
+    background-color: #83E5F5;
+    font-size: 18px;
+}
 /***************************************/
 
-/*********Box Contain for Login*********/
+/*********Box Contain*********/
 .boxContent {
     width: 500px;
     background-color: #c8ebf0;
@@ -114,6 +140,47 @@
     background-color: #c8ebf0;
     border-radius: 10px;
 }
+
+.header-client{
+    width: 300px;
+    height: 50px;
+    background-color: #E4F5F8;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid rgb(173, 163, 163);
+}
+
+.header-client-list{
+    width: 400px;
+    height: 50px;
+    background-color: #E4F5F8;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid rgb(173, 163, 163);
+}
+
+.box-client{
+    width: 300px;
+    height: 500px;
+    background-color: #E4F5F8;
+    border-top: none;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.box-client-list{
+    width: 400px;
+    height: 500px;
+    background-color: #E4F5F8;
+    border-top: none;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
 /***************************************/
 
 
