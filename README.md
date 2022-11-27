@@ -27,13 +27,19 @@ MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
 
 Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
 
-Installation:
+Deployment:
 
-Configuration:
-
-Usage:
+Developer Instructions:
 
 Testing:
+
+Timeline:
+
+Sprint 0/1 (9/27—10/9): 
+
+Total Stories Completed: 5
+
+Major Milestones: CN-9 Wireframes: Finished (9/29), CN-22 Simple Login: Finished (10/7)
 
 Database EER Diagrams:
 
