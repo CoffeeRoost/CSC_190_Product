@@ -41,6 +41,12 @@ Total Stories Completed: 5
 
 Major Milestones: CN-9 Wireframes: Finished (9/29), CN-22 Simple Login: Finished (10/7)
 
+Sprint 2 (10/11—10/24):
+
+Total Stories Completed: 6
+
+Major Milestones: CN-10 Client Login: Finished (10/20), CN-31 Survey: Finished (10/23), 
+
 Database EER Diagrams:
 
 ![image](https://user-images.githubusercontent.com/79181285/204156237-7c3ce659-c1f9-4ae2-8808-3e39e2052a8b.png)
