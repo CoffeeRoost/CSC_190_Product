@@ -14,9 +14,13 @@ IDE: This program was coded in Visual Studios with Xampp serving as the localhos
 ![image](https://user-images.githubusercontent.com/79181285/204054772-0e3ea5e5-16d0-488b-a6b8-fe15314f3604.png)
 
 Dependencies:
+
 Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
+
 Languages: The primarily language of this application is PHP.
+
 MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+
 Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
 
 Installation:
