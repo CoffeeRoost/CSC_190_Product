@@ -17,6 +17,8 @@ IDE: This program was coded in Visual Studios with Xampp serving as the localhos
 
 ![image](https://user-images.githubusercontent.com/79181285/204054772-0e3ea5e5-16d0-488b-a6b8-fe15314f3604.png)
 
+Figure: Initial Webpage
+
 Dependencies:
 
 Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
