@@ -33,6 +33,12 @@ Deployment:
 
 Developer Instructions:
 
+As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation. 
+
+Particularly, regarding the database, the current SQL for table creation is found in the database folder and is labeled CSC190_database_2.2. Use this file to base your database on. Several php pages require this exact format. To edit the database's name go into the includes folder and edit the dbh.inc file database settings appropriately.
+
+All files located in the oldFiles folder may be removed and are recommended to be removed for security reasons (before deployment this folder will be removed along with all of its contents). This also applies to all old database files not pertaining to the current database version.
+
 Testing:
 
 Timeline:
