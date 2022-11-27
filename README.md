@@ -31,6 +31,8 @@ Email functionality: For authentication purposes for login requirements and clie
 
 Deployment:
 
+As seen in story CN-118 File Organization, the github was reorganized to format the pages in an accessible way from the Xampp application. Header, form, href lines were rewritten accordingly. As such, if these folders are inserted into a given hosting site in any other format/organization, these line of code will break to 404 pages. It is required that the file organization remains as it is presented in the github.
+
 Developer Instructions:
 
 As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation. 
