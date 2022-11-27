@@ -23,7 +23,7 @@ Dependencies:
 
 Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
 
-Languages: The primarily language of this application is PHP.
+Languages: The primary language of this application is PHP.
 
 MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
 
