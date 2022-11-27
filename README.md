@@ -59,7 +59,21 @@ Total Stories Completed: 6
 
 Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
 
-Sprints 5,6,7,8,9: 
+Sprint 5: Planned
+
+Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report
+
+Sprint 6: Planned
+
+Stories: CN-177 Grant Page
+
+Sprint 7: Planned
+
+Sprint 8: Planned
+
+Stories: CN-36 Reports and Guidelines System
+
+Sprint 9: Planned
 
 Database EER Diagrams:
 
