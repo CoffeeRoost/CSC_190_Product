@@ -53,6 +53,14 @@ Total Stories Completed: 3
 
 Major Milestones: CN-17 Account Recovery: Finished (11/7), CN-119 Revamp newAccount (Survey, Login Auth: Finished (11/6)
 
+Sprint 4 (11/7—11/25):
+
+Total Stories Completed: 6
+
+Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
+
+Sprints 5,6,7,8,9: 
+
 Database EER Diagrams:
 
 ![image](https://user-images.githubusercontent.com/79181285/204156237-7c3ce659-c1f9-4ae2-8808-3e39e2052a8b.png)
