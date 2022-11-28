@@ -48,43 +48,43 @@ Figure: Initial Webpage
 
 ## Timeline
 
-1. Sprint 0/1 (9/27—10/9):
+  1. Sprint 0/1 (9/27—10/9):
 
-* Total Stories Completed: 5
+      * Total Stories Completed: 5
 
-* Major Milestones: CN-9 Wireframes: Finished (9/29), CN-22 Simple Login: Finished (10/7)
+      * Major Milestones: CN-9 Wireframes: Finished (9/29), CN-22 Simple Login: Finished (10/7)
 
-2. Sprint 2 (10/11—10/24):
+  2. Sprint 2 (10/11—10/24):
 
-* Total Stories Completed: 6
+      * Total Stories Completed: 6
 
-* Major Milestones: CN-10 Client Login: Finished (10/20), CN-31 Survey: Finished (10/23),
+      * Major Milestones: CN-10 Client Login: Finished (10/20), CN-31 Survey: Finished (10/23),
 
-3. Sprint 3 (10/24—11/6):
+  3. Sprint 3 (10/24—11/6):
 
-* Total Stories Completed: 3
+      * Total Stories Completed: 3
 
-* Major Milestones: CN-17 Account Recovery: Finished (11/7), CN-119 Revamp newAccount (Survey, Login Auth: Finished (11/6)
+      * Major Milestones: CN-17 Account Recovery: Finished (11/7), CN-119 Revamp newAccount (Survey, Login Auth: Finished (11/6)
 
-4. Sprint 4 (11/7—11/25):
+  4. Sprint 4 (11/7—11/25):
 
-* Total Stories Completed: 6
+      * Total Stories Completed: 6
 
-* Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
+      * Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
 
-5. Sprint 5: Planned
+  5. Sprint 5: Planned
 
-* Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report
+      * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report
 
 6. Sprint 6: Planned
 
-* Stories: CN-177 Grant Page
+      * Stories: CN-177 Grant Page
 
 7. Sprint 7: Planned
 
 8. Sprint 8: Planned
 
-* Stories: CN-36 Reports and Guidelines System
+      * Stories: CN-36 Reports and Guidelines System
 
 9. Sprint 9: Planned
 
