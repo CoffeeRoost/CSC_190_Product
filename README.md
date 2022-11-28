@@ -1,5 +1,5 @@
 # CMC Workforce Development 360 Management Software Draft
-![Logo](./image/CMC-logo-horizontal(1).png)
+![Logo](https://www.greatersacramento.com/wp-content/uploads/2020/12/CMC-logo-horizontal.png)
 
 ### Table Contents
 
