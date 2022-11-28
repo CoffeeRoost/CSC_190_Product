@@ -1,5 +1,8 @@
 # CMC Workforce Development 360 Management Software Draft
-![Logo](./image/CMC%20logo.png)
+![Logo](./image/CMClogo.png)
+
+### Table Contents
+
 Summary:
 The client needs a case management system that can keep and track client records and progress in the Career Pathways Program. The system would track individual clients and accept information based on an existing intake form. After clients input their basic information, employees report a client’s progress in the program to the system following an existing activity report form. Alongside this basic info compilation, backhouse accounting is expected for individual client’s profit gain/loss and grant connections.
 
