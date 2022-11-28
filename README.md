@@ -90,20 +90,20 @@ Figure: Initial Webpage
 
 ## Database EER Diagrams
 
-* ![image](https://user-images.githubusercontent.com/79181285/204156237-7c3ce659-c1f9-4ae2-8808-3e39e2052a8b.png)
+![image](https://user-images.githubusercontent.com/79181285/204156237-7c3ce659-c1f9-4ae2-8808-3e39e2052a8b.png)
 
 Figure: Participation Attributes
 
-* ![image](https://user-images.githubusercontent.com/79181285/204156249-5c39c4ad-2c21-4495-a14c-6576727a7a65.png)
+![image](https://user-images.githubusercontent.com/79181285/204156249-5c39c4ad-2c21-4495-a14c-6576727a7a65.png)
 
 Figure: Related Participation Tables
 
-* ![image](https://user-images.githubusercontent.com/79181285/204156277-5a3e5156-40d6-42a1-8072-f01af81c3377.png)
+ ![image](https://user-images.githubusercontent.com/79181285/204156277-5a3e5156-40d6-42a1-8072-f01af81c3377.png)
 
 Figure: Participation, Employee, Admin Relationships
 
-* ![image](https://user-images.githubusercontent.com/79181285/204156295-9b722444-8c76-4b79-8d8d-5dda6fa596ef.png)
-* ![image](https://user-images.githubusercontent.com/79181285/204156305-3051a576-ded5-4338-b37c-a2e61e8f3688.png)
+![image](https://user-images.githubusercontent.com/79181285/204156295-9b722444-8c76-4b79-8d8d-5dda6fa596ef.png)
+ ![image](https://user-images.githubusercontent.com/79181285/204156305-3051a576-ded5-4338-b37c-a2e61e8f3688.png)
 
 Figure: Tables Expanded
 
