@@ -2,13 +2,13 @@
 ![Logo](https://www.greatersacramento.com/wp-content/uploads/2020/12/CMC-logo-horizontal.png)
 
 
-### About This Project
+## About This Project
 * This is a project about a case management system that can keep and track client records and progress in the Career Pathways Program. The system would track individual clients and accept information based on an existing intake form. After clients input their basic information, employees report a client’s progress in the program to the system following an existing activity report form. Alongside this basic info compilation, backhouse accounting is expected for individual client’s profit gain/loss and grant connections.
 
 * The current system used to track this information employs excel sheets and a google survey. The former requires manual updating which is prone to human error and the latter does not completely fulfil the client’s expectations concerning certain information recording.
 This program will provide a set system that stores information in SQL databases that can be accessed using specific pages or by the database admin. This controls the information insertion which is otherwise compromised by an inconsistent system.
 
-### Technologies
+## Technologies
 
 * Frontend: Primarily written in html, the frontend is primarily stylized with bootstrap v5 with support by a CSS style page. For consistency with the backend, though, all frontend files are converted to php.
 
@@ -22,17 +22,17 @@ This program will provide a set system that stores information in SQL databases 
 
 Figure: Initial Webpage
 
-Dependencies:
+## Dependencies:
 
-Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
+* Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
 
-Languages: The primary language of this application is PHP.
+* Languages: The primary language of this application is PHP.
 
-MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+* MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
 
-Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
+* Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
 
-Deployment:
+## Deployment
 
 As seen in story CN-118 File Organization, the github was reorganized to format the pages in an accessible way from the Xampp application. Header, form, href lines were rewritten accordingly. As such, if these folders are inserted into a given hosting site in any other format/organization, these line of code will break to 404 pages. It is required that the file organization remains as it is presented in the github.
 
