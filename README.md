@@ -1,5 +1,5 @@
 # CMC Workforce Development 360 Management Software Draft
-![Logo](/image/CMC-logo-horizontal.png)
+![Logo](./image/CMC-logo-horizontal(1).png)
 
 ### Table Contents
 
