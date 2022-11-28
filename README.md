@@ -1,11 +1,12 @@
 # CMC Workforce Development 360 Management Software Draft
+![Logo](./image/CMC%20logo.png)
 Summary:
 The client needs a case management system that can keep and track client records and progress in the Career Pathways Program. The system would track individual clients and accept information based on an existing intake form. After clients input their basic information, employees report a client’s progress in the program to the system following an existing activity report form. Alongside this basic info compilation, backhouse accounting is expected for individual client’s profit gain/loss and grant connections.
 
 The current system used to track this information employs excel sheets and a google survey. The former requires manual updating which is prone to human error and the latter does not completely fulfil the client’s expectations concerning certain information recording.
 This program will provide a set system that stores information in SQL databases that can be accessed using specific pages or by the database admin. This controls the information insertion which is otherwise compromised by an inconsistent system.
 
-Technologies:	
+Technologies:
 
 Frontend: Primarily written in html, the frontend is primarily stylized with bootstrap v5 with support by a CSS style page. For consistency with the backend, though, all frontend files are converted to php.
 
@@ -35,7 +36,7 @@ As seen in story CN-118 File Organization, the github was reorganized to format 
 
 Developer Instructions:
 
-As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation. 
+As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation.
 
 Particularly, regarding the database, the current SQL for table creation is found in the database folder and is labeled CSC190_database_2.2. Use this file to base your database on. Several php pages require this exact format. To edit the database's name go into the includes folder and edit the dbh.inc file database settings appropriately.
 
@@ -45,7 +46,7 @@ Testing:
 
 Timeline:
 
-Sprint 0/1 (9/27—10/9): 
+Sprint 0/1 (9/27—10/9):
 
 Total Stories Completed: 5
 
@@ -55,7 +56,7 @@ Sprint 2 (10/11—10/24):
 
 Total Stories Completed: 6
 
-Major Milestones: CN-10 Client Login: Finished (10/20), CN-31 Survey: Finished (10/23), 
+Major Milestones: CN-10 Client Login: Finished (10/20), CN-31 Survey: Finished (10/23),
 
 Sprint 3 (10/24—11/6):
 
