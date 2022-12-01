@@ -44,7 +44,17 @@ This program will provide a set system that stores information in SQL databases 
 
 * All files located in the oldFiles folder may be removed and are recommended to be removed for security reasons (before deployment this folder will be removed along with all of its contents). This also applies to all old database files not pertaining to the current database version.
 
-## Testing
+## Testing: Important Features to Consider
+
+* Survey and Email Authentication: Once the website is running, the user is recommended to make sure the client survey form is accepting information into the database. To test this feature, simply fill out the intake survey with all required information and then provide the account's password. Following this, if email functionality is working, the user should receive an email with their authentication link. Clicking it leads into the next test function.
+
+* Client Login: After clicking the authentication link, the client account should be activated. This enables login for the provided client account. To test if restricted client access is working, simply try to login without clicking the email link. If the restricted access is working, the user will not be able to access the account. 
+
+* Account Recovery: Available for all types of account, the user simply should click the provided account recovery links, enter their email connected to their account, and wait for the email that will take them to their password input page.
+
+* The above tests prove connection to the database is working given each involve altering the database in some way. 
+
+*  Other tests to be added with more page functionality...
 
 ## Timeline
 
