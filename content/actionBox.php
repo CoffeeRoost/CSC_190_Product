@@ -4,9 +4,9 @@
                     <p>Take Action</p>
                 </div>
                 <div class="mb-5 mx-5">
-                    <a href="#" class="btn btn-action btn-lg fs-6">New Participant</a>
-                    <a href="#" class="btn btn-action btn-lg fs-6">Participant Search</a>
-                    <a href="#" class="btn btn-action btn-lg fs-6">Program</a>
+                    <a href="#" class="btn btn-action btn-lg fs-6">Search</a>
+                    <a href="#" class="btn btn-action btn-lg fs-6">Employee</a>
+                    <a href="#" class="btn btn-action btn-lg fs-6">Client</a>
                     <a href="#" class="btn btn-action btn-lg fs-6">Schedule</a>
                 </div>
         </div>

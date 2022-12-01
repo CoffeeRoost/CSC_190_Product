@@ -25,10 +25,10 @@
 		?>
 
 	<div class="d-flex flex-column">
-	<div class="container ms-3">
-	<div class="row mt-3">
-		<div class="col-lg-8">
-			<form class="form-control bg-lightBlue">
+		<div class="container ms-3">
+			<div class="row mt-3">
+				<div class="col-lg-8">
+					<form class="form-control bg-lightBlue">
 				<!-- Contact Info. ID is read only, users are able to edit all other fields. -->
 					<div class="container">
 						<div class="row">
