@@ -46,15 +46,21 @@ This program will provide a set system that stores information in SQL databases 
 
 ## Testing: Important Features to Consider
 
-* Survey and Email Authentication: Once the website is running, the user is recommended to make sure the client survey form is accepting information into the database. To test this feature, simply fill out the intake survey with all required information and then provide the account's password. Following this, if email functionality is working, the user should receive an email with their authentication link. Clicking it leads into the next test function.
+  1. Survey and Email Authentication: Once the website is running, the user is recommended to make sure the client survey form is accepting information into the database. To test this feature, simply fill out the intake survey with all required information and then provide the account's password. Following this, if email functionality is working, the user should receive an email with their authentication link. Clicking it leads into the next test function.
+  
+      * Tests Database Select, Insert, and Update statements
+      * Email functionality is also tested
 
-* Client Login: After clicking the authentication link, the client account should be activated. This enables login for the provided client account. To test if restricted client access is working, simply try to login without clicking the email link. If the restricted access is working, the user will not be able to access the account. 
+  2. Client Login: After clicking the authentication link, the client account should be activated. This enables login for the provided client account. To test if restricted client access is working, simply try to login without clicking the email link. If the restricted access is working, the user will not be able to access the account. 
+  
+      * Tests Select statement primarily
 
-* Account Recovery: Available for all types of account, the user simply should click the provided account recovery links, enter their email connected to their account, and wait for the email that will take them to their password input page.
+  3. Account Recovery: Available for all types of account, the user simply should click the provided account recovery links, enter their email connected to their account, and wait for the email that will take them to their password input page.
+  
+      * Tests Delete, Select, and Update statements
+      * Email functionality is also tested
 
-* The above tests prove connection to the database is working given each involve altering the database in some way. 
-
-*  Other tests to be added with more page functionality...
+  4.  Other tests to be added with more page functionality...
 
 ## Timeline
 
