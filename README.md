@@ -90,7 +90,7 @@ This program will provide a set system that stores information in SQL databases 
 
   5. Sprint 5: Planned
 
-      * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report
+      * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report, CN-178 Connecting Prior Pages with Session Data
 
 6. Sprint 6: Planned
 
