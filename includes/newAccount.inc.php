@@ -161,18 +161,18 @@ if(isset($_POST['signup-submit'])){
           //hash the password to make secure password
           $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
 	    $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
-          mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$otherAns,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
-          mysqli_stmt_execute($stmt);
+         mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$otherAns,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
+         mysqli_stmt_execute($stmt);
 	    
-	    //Grab the userID associated with the information and insert into other tables
+	     //Grab the userID associated with the information and insert into other tables
 
-	    $sql="SELECT * FROM PARTICIPATION WHERE email=?";
-    	    $stmt= mysqli_stmt_init($conn);
-    	    if(!mysqli_stmt_prepare($stmt,$sql)){
+	     $sql="SELECT * FROM PARTICIPATION WHERE email=?";
+    	 $stmt= mysqli_stmt_init($conn);
+    	 if(!mysqli_stmt_prepare($stmt,$sql)){
       		header ("Location: ../survey.php?error=sqlerror");
       		exit();
-     	    }
-          else{
+     	 }
+         else{
      			//bind info
 			//looks into db and sees if email is present
       		mysqli_stmt_bind_param($stmt,'s',$email);
@@ -180,7 +180,7 @@ if(isset($_POST['signup-submit'])){
 			$result = mysqli_stmt_get_result($stmt);
 			//check if we exactly get result from database
       		if($row = mysqli_fetch_assoc($result)){
-        			$sql="INSERT INTO LOGIN (userID,loginEmail,loginPassword)
+        		$sql="INSERT INTO LOGIN (userID,loginEmail,loginPassword)
 	  				VALUES(?,?,?);";
 				$sql2="INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet,mailingCity,mailingState,mailingZipcode,mailingCounty) 
 					VALUES(?,?,?,?,?,?,?,?,?,?,?);";
@@ -196,13 +196,13 @@ if(isset($_POST['signup-submit'])){
 					VALUES(?,?,?,?,?,?,?,?,?);";
 				$sql8="INSERT INTO SERVICES (userID,fosterCare,adultEducationWIOATittleII,youthBuild,youthBuildGrant,jobCorps,vocationalEducationCarlPerkins,tanfRecipient,ssiRecipient,gaRecipient,snapRecipientCalFresh,rcaRecipient,ssdiRecipient,snapEmploymentAndTrainingProgram,pellGrant)
 					VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-        			$stmt=mysqli_stmt_init($conn);
+        		$stmt=mysqli_stmt_init($conn);
 				$stmt2=mysqli_stmt_init($conn);
-        			$stmt3=mysqli_stmt_init($conn);
+        		$stmt3=mysqli_stmt_init($conn);
 				$stmt4=mysqli_stmt_init($conn);
-        			$stmt5=mysqli_stmt_init($conn);
+        		$stmt5=mysqli_stmt_init($conn);
 				$stmt6=mysqli_stmt_init($conn);
-        			$stmt7=mysqli_stmt_init($conn);
+        		$stmt7=mysqli_stmt_init($conn);
 				$stmt8=mysqli_stmt_init($conn);
         			if(!mysqli_stmt_prepare($stmt,$sql)){
           				header ("Location: ../survey.php?error=sqlerror");
