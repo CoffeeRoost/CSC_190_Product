@@ -88,21 +88,21 @@ This program will provide a set system that stores information in SQL databases 
 
       * Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
 
-  5. Sprint 5: (1/30--2/12)
+  5. Sprint 5: (2/6--2/19)
 
       * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report, CN-178 Connecting Prior Pages with Session Data
 
-  6. Sprint 6: (2/13--2/26)
+  6. Sprint 6: (2/20--3/5)
 
       * Stories: CN-177 Grant Page
 
-  7. Sprint 7: (2/27--4/9)
+  7. Sprint 7: (3/6--3/19)
 
-  8. Sprint 8: (4/10--4/23)
+  8. Sprint 8: (3/20--4/2)
 
       * Stories: CN-36 Reports and Guidelines System
 
-  9. Sprint 9: (4/24--5/8)
+  9. Sprint 9: (4/3--4/17)
 
 ## Database EER Diagrams
 
