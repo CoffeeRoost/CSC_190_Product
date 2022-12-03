@@ -36,6 +36,82 @@ This program will provide a set system that stores information in SQL databases 
 
 * As seen in story CN-118 File Organization, the github was reorganized to format the pages in an accessible way from the Xampp application. Header, form, href lines were rewritten accordingly. As such, if these folders are inserted into a given hosting site in any other format/organization, these line of code will break to 404 pages. It is required that the file organization remains as it is presented in the github.
 
+Deployment on AWS
+(AWS Account is Required)
+  1.  Go to AWS Management Console
+  
+    a.Find services: route53 (Domain Services)
+      i.Register or Transfer already existing domain (Google, GoDaddy, etc)
+      ii.Assuming Registration:  type in your wanted name and choose suffix (.com, .org, yearly price)
+        1.Note: Your choice might already be taken
+      iii.Add to Cart 
+      iv.Fill out necessary Information
+        1.Privacy Protection: check Enable
+        2.Go to Domains that you can register with Amazon Route 53 - Amazon Route 53 for more information
+      v.Look over post-information (orders are suggested to be taken in advanced)
+      vi.Return to AWS Management Console
+    b.Find services: Lightsail
+      i.Create Instance
+        1.Select Region (recommend: closest to you or majority of traffic)
+        2.Pick platform Linux/Unix
+        3.Recommended blueprint: WordPress
+        4.Instance Plan (Related to Computer hosting)
+          a.Price (USD) Monthly
+          b.Memory
+          c.Processing (vCPU)
+          d.Storage (SSD)
+          e.Transfer
+        5.Identify your Instance (varies on account uses)
+        6.Create Instance
+          a.May take a few moments to start it up
+          b.Note this will not appear in EC2 instances (What is in Lightsail stays in Lightsail)
+      ii.Click on Orange Button on Instance Tab 
+        1.Will be brought to a terminal
+          a.Command: cat $HOME/bitnami_application_password
+          b.Returns password for wordpress instance
+          c.Close
+        2.Return to Instance Tab and copy paste given IP address
+          a.Paste in tab
+            i.IP_ADDRESS/wp-admin
+            ii.Username: user
+            iii.Password: previously gotten password from terminal
+          b.While in account, go to users
+            i.Change Password
+      iii.Return to Lightsail page
+        1.Go to Networking
+          a.Create Static IP
+          b.Choose Location
+          c.Choose Instance (should match above)
+          d.Create Static IP (this IP is always the IP associated now)
+    c.Return to AWS Management Console (copy IP address)
+      i.Find services: route53
+        1.Click on Hosted Zone
+        2.Click on previously made domain name
+          a.On Hosted zone details: Make sure Name servers match registered domains (under tab Domains)
+          b.Create record
+            i.Simple Routing -> Next
+            ii.Define simple record:
+              1.Leave Record name blank
+              2.Choose endpoint: IP address
+                a.Paste the IP address in
+              3.Leave as A
+              4.Choose TTL 
+              5.Define simple Record
+            iii.Create Record
+          c.Connection Established time varies
+          d.Create another record on same Hosted Zone
+            i.Simple Routing
+            ii.Define simple record:
+              1.Insert www into Record name
+              2.Choose endpoint: IP address
+                a.Paste the IP address in
+              3.Leave as A
+              4.Choose TTL
+              5.Define simple Record
+            iii.Create Record
+          e.Connection Established time varies
+
+
 ## Developer Instructions
 
 * As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation.
