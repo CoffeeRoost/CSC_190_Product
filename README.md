@@ -40,7 +40,7 @@ Deployment on AWS
 (AWS Account is Required)
   1.  Go to AWS Management Console
   
-    a.Find services: route53 (Domain Services)
+    a.Find services: route53 (Establish Domain Service)
       i.Register or Transfer already existing domain (Google, GoDaddy, etc)
       ii.Assuming Registration:  type in your wanted name and choose suffix (.com, .org, yearly price)
         1.Note: Your choice might already be taken
@@ -50,7 +50,7 @@ Deployment on AWS
         2.Go to Domains that you can register with Amazon Route 53 - Amazon Route 53 for more information
       v.Look over post-information (orders are suggested to be taken in advanced)
       vi.Return to AWS Management Console
-    b.Find services: Lightsail
+    b.Find services: Lightsail (Creating a Lightsail Instance to host your website)
       i.Create Instance
         1.Select Region (recommend: closest to you or majority of traffic)
         2.Pick platform Linux/Unix
@@ -65,7 +65,7 @@ Deployment on AWS
         6.Create Instance
           a.May take a few moments to start it up
           b.Note this will not appear in EC2 instances (What is in Lightsail stays in Lightsail)
-      ii.Click on Orange Button on Instance Tab 
+      ii.Click on Orange Button on Instance Tab (Logging into your instance wordpress credentials)
         1.Will be brought to a terminal
           a.Command: cat $HOME/bitnami_application_password
           b.Returns password for wordpress instance
@@ -77,13 +77,13 @@ Deployment on AWS
             iii.Password: previously gotten password from terminal
           b.While in account, go to users
             i.Change Password
-      iii.Return to Lightsail page
+      iii.Return to Lightsail page (Creating a static IP address)
         1.Go to Networking
           a.Create Static IP
           b.Choose Location
           c.Choose Instance (should match above)
           d.Create Static IP (this IP is always the IP associated now)
-    c.Return to AWS Management Console (copy IP address)
+    c.Return to AWS Management Console (copy IP address) (Connecting static IP address to domain)
       i.Find services: route53
         1.Click on Hosted Zone
         2.Click on previously made domain name
@@ -110,6 +110,20 @@ Deployment on AWS
               5.Define simple Record
             iii.Create Record
           e.Connection Established time varies
+    d.Return to Lightsail page (establishing a DNS zone)
+      i.Go to Networking
+        1.Create DNS zone
+          a.Enter your domain name into the section
+          b.Create DNS zone
+        2.Receive server names and return to route53 to enter into settings (unclear: will need to go through demo)
+    e.Go to wordpress login and login (establishing WP Mail SMTP)
+      i.Click Pluggins and go to Installed pluggins
+      ii.Click update now on WP Mail SMTP for latest version
+      iii.Launch Setup Wizard (on pluggins settings page)
+        1.Pick appropriate mailer for the website (AWS SES is an option
+        2.Depending on mailer choice configurations will vary
+        3.Closing the Wizard will automatically send a test email
+      iv.Make sure to add DNS records from mailer to route53 records
 
 
 ## Developer Instructions
