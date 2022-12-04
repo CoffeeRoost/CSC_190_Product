@@ -216,3 +216,16 @@ Deployment on AWS
 ![image](https://user-images.githubusercontent.com/79181285/204156295-9b722444-8c76-4b79-8d8d-5dda6fa596ef.png)
  ![image](https://user-images.githubusercontent.com/79181285/204156305-3051a576-ded5-4338-b37c-a2e61e8f3688.png)
 
+#### Figure: Relational Diagram
+
+![image](https://user-images.githubusercontent.com/79181285/205512266-680d8587-7772-475f-accb-f0ad4c28fc2e.png)
+![image](https://user-images.githubusercontent.com/79181285/205512286-24c876e1-3dfe-488d-ab02-f4c3b3258a87.png)
+![image](https://user-images.githubusercontent.com/79181285/205512303-8beb0583-b135-44b4-bbd4-289c69c15152.png)
+![image](https://user-images.githubusercontent.com/79181285/205512320-b62c21ef-4c86-491d-b398-1793141737c0.png)
+![image](https://user-images.githubusercontent.com/79181285/205512369-4b828833-d09f-4014-b5e4-555e55a8c314.png)
+
+![image](https://user-images.githubusercontent.com/79181285/205512399-7a44c74d-56f6-468a-bbf4-2630fac13d8f.png)
+![image](https://user-images.githubusercontent.com/79181285/205512418-7d8199ad-69c2-4de6-8351-85a7ecb7dc47.png)
+![image](https://user-images.githubusercontent.com/79181285/205512436-48978239-a770-48d5-aed4-da57c10e7c60.png)
+![image](https://user-images.githubusercontent.com/79181285/205512455-e91f9973-b1d7-4e92-8a23-83a5d7fb3f74.png)
+![image](https://user-images.githubusercontent.com/79181285/205512459-0f0e5d46-e649-4fde-a8f8-d245f4651ce1.png)
