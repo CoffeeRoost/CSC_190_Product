@@ -36,6 +36,96 @@ This program will provide a set system that stores information in SQL databases 
 
 * As seen in story CN-118 File Organization, the github was reorganized to format the pages in an accessible way from the Xampp application. Header, form, href lines were rewritten accordingly. As such, if these folders are inserted into a given hosting site in any other format/organization, these line of code will break to 404 pages. It is required that the file organization remains as it is presented in the github.
 
+Deployment on AWS
+(AWS Account is Required)
+  1.  Go to AWS Management Console
+  
+    a.Find services: route53 (Establish Domain Service)
+      i.Register or Transfer already existing domain (Google, GoDaddy, etc)
+      ii.Assuming Registration:  type in your wanted name and choose suffix (.com, .org, yearly price)
+        1.Note: Your choice might already be taken
+      iii.Add to Cart 
+      iv.Fill out necessary Information
+        1.Privacy Protection: check Enable
+        2.Go to Domains that you can register with Amazon Route 53 - Amazon Route 53 for more information
+      v.Look over post-information (orders are suggested to be taken in advanced)
+      vi.Return to AWS Management Console
+    b.Find services: Lightsail (Creating a Lightsail Instance to host your website)
+      i.Create Instance
+        1.Select Region (recommend: closest to you or majority of traffic)
+        2.Pick platform Linux/Unix
+        3.Recommended blueprint: WordPress
+        4.Instance Plan (Related to Computer hosting)
+          a.Price (USD) Monthly
+          b.Memory
+          c.Processing (vCPU)
+          d.Storage (SSD)
+          e.Transfer
+        5.Identify your Instance (varies on account uses)
+        6.Create Instance
+          a.May take a few moments to start it up
+          b.Note this will not appear in EC2 instances (What is in Lightsail stays in Lightsail)
+      ii.Click on Orange Button on Instance Tab (Logging into your instance wordpress credentials)
+        1.Will be brought to a terminal
+          a.Command: cat $HOME/bitnami_application_password
+          b.Returns password for wordpress instance
+          c.Close
+        2.Return to Instance Tab and copy paste given IP address
+          a.Paste in tab
+            i.IP_ADDRESS/wp-admin
+            ii.Username: user
+            iii.Password: previously gotten password from terminal
+          b.While in account, go to users
+            i.Change Password
+      iii.Return to Lightsail page (Creating a static IP address)
+        1.Go to Networking
+          a.Create Static IP
+          b.Choose Location
+          c.Choose Instance (should match above)
+          d.Create Static IP (this IP is always the IP associated now)
+    c.Return to AWS Management Console (copy IP address) (Connecting static IP address to domain)
+      i.Find services: route53
+        1.Click on Hosted Zone
+        2.Click on previously made domain name
+          a.On Hosted zone details: Make sure Name servers match registered domains (under tab Domains)
+          b.Create record
+            i.Simple Routing -> Next
+            ii.Define simple record:
+              1.Leave Record name blank
+              2.Choose endpoint: IP address
+                a.Paste the IP address in
+              3.Leave as A
+              4.Choose TTL 
+              5.Define simple Record
+            iii.Create Record
+          c.Connection Established time varies
+          d.Create another record on same Hosted Zone
+            i.Simple Routing
+            ii.Define simple record:
+              1.Insert www into Record name
+              2.Choose endpoint: IP address
+                a.Paste the IP address in
+              3.Leave as A
+              4.Choose TTL
+              5.Define simple Record
+            iii.Create Record
+          e.Connection Established time varies
+    d.Return to Lightsail page (establishing a DNS zone)
+      i.Go to Networking
+        1.Create DNS zone
+          a.Enter your domain name into the section
+          b.Create DNS zone
+        2.Receive server names and return to route53 to enter into settings (unclear: will need to go through demo)
+    e.Go to wordpress login and login (establishing WP Mail SMTP)
+      i.Click Pluggins and go to Installed pluggins
+      ii.Click update now on WP Mail SMTP for latest version
+      iii.Launch Setup Wizard (on pluggins settings page)
+        1.Pick appropriate mailer for the website (AWS SES is an option
+        2.Depending on mailer choice configurations will vary
+        3.Closing the Wizard will automatically send a test email
+      iv.Make sure to add DNS records from mailer to route53 records
+
+
 ## Developer Instructions
 
 * As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation.
@@ -126,3 +216,16 @@ This program will provide a set system that stores information in SQL databases 
 ![image](https://user-images.githubusercontent.com/79181285/204156295-9b722444-8c76-4b79-8d8d-5dda6fa596ef.png)
  ![image](https://user-images.githubusercontent.com/79181285/204156305-3051a576-ded5-4338-b37c-a2e61e8f3688.png)
 
+#### Figure: Relational Diagram
+
+![image](https://user-images.githubusercontent.com/79181285/205512266-680d8587-7772-475f-accb-f0ad4c28fc2e.png)
+![image](https://user-images.githubusercontent.com/79181285/205512286-24c876e1-3dfe-488d-ab02-f4c3b3258a87.png)
+![image](https://user-images.githubusercontent.com/79181285/205512303-8beb0583-b135-44b4-bbd4-289c69c15152.png)
+![image](https://user-images.githubusercontent.com/79181285/205512320-b62c21ef-4c86-491d-b398-1793141737c0.png)
+![image](https://user-images.githubusercontent.com/79181285/205512369-4b828833-d09f-4014-b5e4-555e55a8c314.png)
+
+![image](https://user-images.githubusercontent.com/79181285/205512399-7a44c74d-56f6-468a-bbf4-2630fac13d8f.png)
+![image](https://user-images.githubusercontent.com/79181285/205512418-7d8199ad-69c2-4de6-8351-85a7ecb7dc47.png)
+![image](https://user-images.githubusercontent.com/79181285/205512436-48978239-a770-48d5-aed4-da57c10e7c60.png)
+![image](https://user-images.githubusercontent.com/79181285/205512455-e91f9973-b1d7-4e92-8a23-83a5d7fb3f74.png)
+![image](https://user-images.githubusercontent.com/79181285/205512459-0f0e5d46-e649-4fde-a8f8-d245f4651ce1.png)
