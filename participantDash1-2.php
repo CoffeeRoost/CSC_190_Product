@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
     <title>California Mobility Center</title>
@@ -49,7 +49,7 @@
                             </a>
                           </li>
                       </ul>
-                </div> 
+                </div>
             </div>
 
             <div class="d-flex flex-column align-items-center mx-5">
@@ -84,7 +84,7 @@
                             <div class="col-7">95112</div>
                         </div>
                     </div>
-                    
+
                     <!--Participant information Edit-->
                         <div  id="participant_edit" style="width:400px; height:230px; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse">
                             <div  class="row mx-3 my-2">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                         </div>
-            
+
                     <!-- Participant File Submit -->
                     <div style="width:300px;" class="bg-lightBlue my-5 mx-3 d-flex justify-content-center">
                         <div class="file-upload my-4 p-4">
@@ -153,28 +153,65 @@
                         </li>
                     </ul>
                       <div class="tab-content border border-info bg-lightBlue">
+
+                        <!-- Contact/Demographics Tab  -->
                         <div class="tab-pane fade show active" id="contact-tab" aria-labelledby="contact-tab" tabindex="0">
+
+                         <!-- Display some personal information from the database tables using php -->
+                          <?php
+                          require_once ('includes/dbh.inc.php');
+                        //   write a query to retrieve data
+                          $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode
+                           FROM participation part, address a where part.userID=a.userID";
+                        //    execute the query
+                          $select_user_information_query= mysqli_query($conn,$query);
+
+                        // Fetch the data
+                          while($row=mysqli_fetch_assoc($select_user_information_query)){
+                            $fname= $row['fname'];
+                            $lname=$row['lname'];
+                            $email= $row['email'];
+                            $street= $row['street'];
+                            $city= $row['city'];
+                            $state= $row['state'];
+                            $zipcode=$row['zipcode'];
+                            ?>
+                           <!-- Display the data -->
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">First Name</div>
-                                <div class="col-7">Patrick</div>
+                                <div class="col-7"><?php echo $fname?></div>
                             </div>
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">Last Name</div>
-                                <div class="col-7">Star</div>
+                                <div class="col-7"><?php echo $lname?></div>
                             </div>
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">Email</div>
-                                <div class="col-7">PatrickS@cmc.com</div>
+                                <div class="col-7"><?php echo $email?></div>
                             </div>
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">Address</div>
-                                <div class="col-7">1234 Main street, San Francisco, CA</div>
+                                <div class="col-7"><?php echo $street?>,<?php echo $city?>,<?php echo $state?></div>
                             </div>
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">Zip Code</div>
-                                <div class="col-7">95112</div>
+                                <div class="col-7"><?php echo $zipcode?></div>
                             </div>
+                            <br>
+                            <br>
+
+
+                         <?php }
+
+
+
+                          ?>
+
+
                         </div>
+
+                        <!-- Training Tab  -->
+
                         <div class="tab-pane fade" id="training-tab" tabindex="0">
                             <p class="mx-5 my-1">Training 1</p>
                             <p class="mx-5 my-1">Training 2</p>
@@ -200,4 +237,4 @@
                 </div>
             </div>
 </body>
-</html> 
+</html>
