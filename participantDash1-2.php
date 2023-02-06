@@ -1,3 +1,19 @@
+<?php
+ require_once ('includes/dbh.inc.php');
+ //   write a query to retrieve data
+ $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
+                 t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes
+           FROM participation part
+           JOIN address a
+           ON part.userID=a.userID
+           JOIN task t
+           On part.userID=t.userID";
+//    execute the query
+$select_user_information_query= mysqli_query($conn,$query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +154,7 @@
 
                 <!--Information Tab-->
                 <div style="width:95%;">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs nav-justified">
                         <li class="nav-item rounded-top border border-info">
                           <button class="nav-link active text-Blue" id="" data-bs-toggle="tab" data-bs-target="#contact-tab" type="button">Contact/Demographics</button>
                         </li>
@@ -152,19 +168,14 @@
                             <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#supportService-tab" type="button">Support Services</button>
                         </li>
                     </ul>
-                      <div class="tab-content border border-info bg-lightBlue">
+                    <div class="tab-content border border-info bg-lightBlue">
 
-                        <!-- Contact/Demographics Tab  -->
-                        <div class="tab-pane fade show active" id="contact-tab" aria-labelledby="contact-tab" tabindex="0">
 
                          <!-- Display some personal information from the database tables using php -->
+
+
                           <?php
-                          require_once ('includes/dbh.inc.php');
-                        //   write a query to retrieve data
-                          $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode
-                           FROM participation part, address a where part.userID=a.userID";
-                        //    execute the query
-                          $select_user_information_query= mysqli_query($conn,$query);
+
 
                         // Fetch the data
                           while($row=mysqli_fetch_assoc($select_user_information_query)){
@@ -175,8 +186,19 @@
                             $city= $row['city'];
                             $state= $row['state'];
                             $zipcode=$row['zipcode'];
+                            $coachName= $row ['coach'];
+                            $codeActivity= $row ['activityCode'];
+                            $trainingProgram= $row ['trainingProgram'];
+                            $startDate= $row ['startDate'];
+                            $endDate=$row['endDate'];
+                            $reportNote= $row['notes'];
+
+
                             ?>
-                           <!-- Display the data -->
+                            <!-- Contact/Demographics Tab  -->
+                        <div class="tab-pane fade show active" id="contact-tab" aria-labelledby="contact-tab" tabindex="0">
+
+                           <!-- Display the data from participation survey ("participation table in database")-->
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">First Name</div>
                                 <div class="col-7"><?php echo $fname?></div>
@@ -198,7 +220,45 @@
                                 <div class="col-7"><?php echo $zipcode?></div>
                             </div>
                             <br>
+
+                            <div class="border bg-white border-info" style="width:100%;">
+                                <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
+                            </div>
+                        </div>
+
+                         <!-- Training Tab  -->
+
+                        <div class="tab-pane fade" id="training-tab" tabindex="0">
+                            <!-- Display the data from Participant Activity Reporting Form "Task table in database" -->
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Coach Name</div>
+                                    <div class="col-7"><?php echo $coachName?></div>
+                            </div>
+
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Activity Code</div>
+                                    <div class="col-7"><?php echo $codeActivity?></div>
+                            </div>
+
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Training Code</div>
+                                    <div class="col-7"><?php echo $trainingProgram?></div>
+                            </div>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Start Date</div>
+                                    <div class="col-7"><?php echo $startDate?></div>
+                            </div>
+
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">End Date</div>
+                                    <div class="col-7"><?php echo $endDate?></div>
+                            </div>
                             <br>
+
+                            <div class="border bg-white border-info" style="width:100%;">
+                               <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ><?php echo $reportNote?></textarea>
+                            </div>
+                        </div>
 
 
                          <?php }
@@ -208,33 +268,31 @@
                           ?>
 
 
-                        </div>
 
-                        <!-- Training Tab  -->
 
-                        <div class="tab-pane fade" id="training-tab" tabindex="0">
-                            <p class="mx-5 my-1">Training 1</p>
-                            <p class="mx-5 my-1">Training 2</p>
-                            <p class="mx-5 my-1">Training 3</p>
-                        </div>
                         <div class="tab-pane fade" id="career-tab"   tabindex="0">
                             <p class="mx-5 my-1">Engineering</p>
                             <p class="mx-5 my-1">Developer</p>
                             <p class="mx-5 my-1">Data Scientist</p>
+                            <br>
+                            <div class="border bg-white  border-info" style="width:100%;">
+                              <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
+                           </div>
                         </div>
 
                         <div class="tab-pane fade" id="supportService-tab"   tabindex="0">
                             <p class="mx-5 my-1">STEM</p>
                             <p class="mx-5 my-1">Cal Fresh</p>
                             <p class="mx-5 my-1">Medi-Cal</p>
-                        </div>
-                      </div>
+                            <br>
+                            <div class="border bg-white border-info" style="width:100%;">
+                               <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
+                               </div>
+                            </div>
+                    </div>
                 </div>
 
-                <div class="border border-top-0 border-info" style="width:95%;">
-                    <p class="m-1">Notes</p>
-                    <textarea style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
-                </div>
+
             </div>
 </body>
 </html>
