@@ -5,7 +5,7 @@ if(isset($_POST['login-submit'])){
 
   $email      =$_POST['email'];
   $password   =$_POST['password'];
-
+  
   if(empty($email)||empty($password)){
     header ("Location: ../login.php?error=emptyfields");
     exit();
@@ -15,7 +15,7 @@ if(isset($_POST['login-submit'])){
     //inner join select statement
     //$sql="SELECT * FROM USERTAB u,ACCOUNT a, LOGIN l WHERE u.userID=l.userID AND l.loginRoleID =a.loginRoleID"
     //$sql= "SELECT * FROM USERTAB u INNER JOIN LOGIN l ON u.userID=l.user ID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE a.email=?";
-    $sql= "SELECT * FROM USERTAB u INNER JOIN LOGIN l ON u.userID=l.userID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE u.email=?";
+    $sql= "SELECT * FROM USER u INNER JOIN LOGIN l ON u.userID=l.userID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE u.email=?";
     $stmt= mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
       header ("Location: ../login.php?error=sqlerror");
@@ -58,10 +58,4 @@ if(isset($_POST['login-submit'])){
     }
   }
 
-}
-else
-{
-  //send back to login page
-  header ("Location: ../login.php");
-  exit();
 }
