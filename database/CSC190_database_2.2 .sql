@@ -207,6 +207,37 @@ adminID INT(11) NOT NULL,
 FOREIGN KEY (adminID) REFERENCES ADMIN(adminID) ON DELETE CASCADE
 );
 
+-- Grant Information Storage
+
+CREATE TABLE GRANT_MAIN(
+	adminID INT(11) NOT NULL,
+	grant_name CHAR(255) NOT NULL,
+	grantID INT(11) NOT NULL,
+	startDate DATE NOT NULL,
+	endDate DATE NOT NULL,
+	personal_contact INT(11) NOT NULL,
+	supporting_organization CHAR(255) NOT NULL,
+	shared_grant_ID INT(11) AUTO_INCREMENT NOT NULL,
+	PRIMARY KEY (shared_grant_ID),
+	FOREIGN KEY (adminID) REFERENCES ADMIN(adminID) ON DELETE CASCADE
+);
+
+CREATE TABLE GRANT_PARTICIPATION(
+	shared_grant_ID INT(11) NOT NULL,
+	userID INT(11) NOT NULL,
+	characteristic_grant_ID INT(11) AUTO_INCREMENT NOT NULL,
+	PRIMARY KEY (characteristic_grant_ID),
+	FOREIGN KEY (shared_grant_ID) REFERENCES GRANT_MAIN(shared_grant_ID) ON DELETE CASCADE,
+	FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
+);
+
+CREATE TABLE GRANT_CHARACTERISTICS(
+	characteristic_grant_ID INT(11) NOT NULL,
+	char_title CHAR(255) NOT NULL,
+	char_status CHAR(255) NOT NULL,
+	FOREIGN KEY (characteristic_grant_ID) REFERENCES GRANT_PARTICIPATION(characteristic_grant_ID) ON DELETE CASCADE
+);
+
 -- login participation forget password
 
 CREATE TABLE PASSCODE(
