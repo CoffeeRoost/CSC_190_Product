@@ -14,7 +14,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 		$sql= "SELECT * FROM PARTICIPATION p INNER JOIN LOGIN l ON p.userID=l.userID WHERE p.email=?";
     	$stmt= mysqli_stmt_init($conn);
 		if(!mysqli_stmt_prepare($stmt,$sql)){
-      		header ("Location: login.php?error=sqlerror");
+      		header ("Location: ../login.php?error=sqlerror");
       		exit();
     		}
 		else{
@@ -26,21 +26,21 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 			if($row = mysqli_fetch_assoc($result)){
 				$actCheck=password_verify($inputs['activation_code'],$row['activation_code']);
 				if($actCheck==false){
-					header("Location: index.php?error=wrongActivationCode");
+					header("Location: ../index.php?error=wrongActivationCode");
 					exit();
 				}
 				else{
 					$sql= 'UPDATE PARTICIPATION SET status = 1, activated_at = CURRENT_TIMESTAMP WHERE email=?';
 					$stmt= mysqli_stmt_init($conn);
 					if(!mysqli_stmt_prepare($stmt,$sql)){
-						header("Location: index.php?error=sqlerror");
+						header("Location: ../index.php?error=sqlerror");
 						exit();
 					}
 					else{
 						$sql2= "SELECT * FROM EMPLOYEE e WHERE e.programMember=? ORDER BY RAND() LIMIT 1";
 						$stmt2= mysqli_stmt_init($conn);
 						if(!mysqli_stmt_prepare($stmt2,$sql2)){
-							header ("Location: login.php?error=sqlerror");
+							header ("Location: ../login.php?error=sqlerror");
       						exit();
 						}
 						else{
@@ -53,7 +53,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 								$stmt3=mysqli_stmt_init($conn);
 
 								if(!mysqli_stmt_prepare($stmt3,$sql3)){
-          							header ("Location: ../servey.php?error=sqlerror");
+          							header ("Location: ../survey.php?error=sqlerror");
           							exit();
         						}
 
@@ -62,12 +62,12 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 								mysqli_stmt_bind_param($stmt,'s',$row['email']);
 								mysqli_stmt_execute($stmt);
 
-								header("Location: login.php");
+								header("Location: ../login.php");
 								exit;
 
 							}
 							else{
-								header("Location: login.php?error=noAvailableCoaches");
+								header("Location: ../login.php?error=noAvailableCoaches");
 								exit();
 							}
 
@@ -77,7 +77,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 				}
 			}
 			else{
-				header ("Location: login.php?error=nouseremail");
+				header ("Location: ../login.php?error=nouseremail");
         			exit();
 			}
 		}
@@ -89,7 +89,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 }
 else{
 	//send back to newAccount page
-	header ("Location: servey.php?error=invalidActivationLink");
+	header ("Location: ../survey.php?error=invalidActivationLink");
  	exit();
 }
 
