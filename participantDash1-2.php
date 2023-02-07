@@ -1,13 +1,28 @@
 <?php
  require_once ('includes/dbh.inc.php');
  //   write a query to retrieve data
- $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
-                 t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes
+$query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
+                 t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
+                 
+                 e.currentMilitaryOrVet,e.militarySpouse,e.selectiveService,e.employmentStatus,
+                 e.payRate,e.unemployemntInsurance,e.unemploymentWeeks,e.farmworker12Months,
+                 e.desiredJobTitle,e.techExperience,
+
+                 s.fosterCare,s.adultEducationWIOATittleII,s.youthBuild,s.youthBuildGrant,
+                 s.jobCorps,s.vocationalEducationCarlPerkins,s.tanfRecipient,s.ssiRecipient,
+                 s.gaRecipient,s.snapRecipientCalFresh,s.rcaRecipient,s.ssdiRecipient,
+                 s.snapEmploymentAndTrainingProgram,
+                 s.pellGrant
+
            FROM participation part
            JOIN address a
            ON part.userID=a.userID
            JOIN task t
-           On part.userID=t.userID";
+           On part.userID=t.userID
+           JOIN employment e
+           ON part.userID=e.userID
+           JOIN services s
+           ON part.userID=s.userID";
 //    execute the query
 $select_user_information_query= mysqli_query($conn,$query);
 
@@ -193,6 +208,33 @@ $select_user_information_query= mysqli_query($conn,$query);
                             $endDate=$row['endDate'];
                             $reportNote= $row['notes'];
 
+                            // Fetch data from Employment table for Employment/Career tab
+                            $currentMilitaryOrVet= $row['currentMilitaryOrVet'];
+                            $militarySpouse= $row['militarySpouse'];
+                            $selectiveService= $row['selectiveService'];
+                            $employmentStatus= $row['employmentStatus'];
+                            $payRate= $row['payRate'];
+                            $unemployemntInsurance= $row['unemployemntInsurance'];
+                            $unemploymentWeeks= $row['unemploymentWeeks'];
+                            $farmworker12Months= $row['farmworker12Months'];
+                            $desiredJobTitle= $row['desiredJobTitle'];
+                            $techExperience= $row['techExperience'];
+
+                            // Fetch data from Services table for Services tab
+                            $fosterCare= $row['fosterCare'];
+                            $adultEducationWIOATittleII= $row['adultEducationWIOATittleII'];
+                            $youthBuild= $row['youthBuild'];
+                            $youthBuildGrant= $row['youthBuildGrant'];
+                            $jobCorps= $row['jobCorps'];
+                            $vocationalEducationCarlPerkins= $row['vocationalEducationCarlPerkins'];
+                            $tanfRecipient= $row['tanfRecipient'];
+                            $ssiRecipient= $row['ssiRecipient'];
+                            $gaRecipient= $row['gaRecipient'];
+                            $snapRecipientCalFresh= $row['snapRecipientCalFresh'];
+                            $rcaRecipient= $row['rcaRecipient'];
+                            $ssdiRecipient= $row['ssdiRecipient'];
+                            $snapEmploymentAndTrainingProgram= $row['snapEmploymentAndTrainingProgram'];
+                            $pellGrant= $row['pellGrant'];
 
                             ?>
                             <!-- Contact/Demographics Tab  -->
@@ -260,36 +302,165 @@ $select_user_information_query= mysqli_query($conn,$query);
                             </div>
                         </div>
 
+                        <!-- Employment/Career Tab  -->
+                        <div class="tab-pane fade" id="career-tab" tabindex="0">
+                            <!-- Display the data from Intake Form from "Employment table in database" -->
+                            <?php if ($currentMilitaryOrVet =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Currently in the U.S. Military or a Veteran</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($militarySpouse == 'Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Spouse of a member of the armed forces who is on active duty</div>
+                            </div>
+                            <?php } ?>
+                            
+                            <?php if ($selectiveService != 'No') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Registered with the Selective Service</div>
+                                    <div class="col-7"><?php echo $selectiveService?></div>
+                            </div>
+                            <?php } ?>
+                            
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Employment status</div>
+                                    <div class="col-7"><?php echo $employmentStatus?></div>
+                            </div>
+
+                            <?php if ($employmentStatus != 'Not Employed') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Current rate of pay</div>
+                                    <div class="col-7"><?php echo $payRate?></div>
+                            </div>
+                            <?php } ?>
+                            
+                            <?php if ($unemployemntInsurance != 'Neither') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving Unemployment Insurance</div>
+                                    <div class="col-7"><?php echo $unemployemntInsurance?></div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($employmentStatus == 'Not Employed') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Weeks have been unemployed</div>
+                                    <div class="col-7"><?php echo $unemploymentWeeks?></div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($farmworker12Months == 'Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Worked as farmworker in the last 12 months</div>
+                            </div>
+                            <?php } ?>
+
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Desired job title</div>
+                                    <div class="col-7"><?php echo $desiredJobTitle?></div>
+                            </div>
+
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Tech Experience</div>
+                                    <div class="col-7"><?php echo $techExperience?></div>
+                            </div>
+                            <br>
+
+                        </div>
+
+                        <!-- Services Tab  -->
+                        <div class="tab-pane fade" id="supportService-tab" tabindex="0">
+                            <!-- Display the data from Intake Form from "Employment table in database" -->
+                            <?php if ($fosterCare =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Supported through the State's Foster Care System</div>
+                            </div>
+                            <?php } ?>
+                            
+                            <?php if ($adultEducationWIOATittleII =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving services from Adult Education (WIOA Title II)</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($youthBuild =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Youth Build Grant Number:</div>
+                                    <div class="col-7"><?php echo $youthBuildGrant?></div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($jobCorps =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving services from Job Corps</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($vocationalEducationCarlPerkins =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving services from Vocational Education (Carl Perkins)</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($tanfRecipient =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Temporary Assistance for Needy Families (TANF) recipient</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($ssiRecipient =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Supplemental Security Income (SSI) recipient</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($gaRecipient =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">General Assistance (GA) recipient</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($snapRecipientCalFresh =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Supplemental Nutrition Assistance Program (SNAP) recipient (Cal Fresh)</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($rcaRecipient =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Refugee Cash Assistance (RCA) recipient</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($ssdiRecipient =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Social Security Disability Insurance (SSDI) recipient</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($snapEmploymentAndTrainingProgram =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving Services under SNAP Employment and Training Program</div>
+                            </div>
+                            <?php } ?>
+
+                            <?php if ($pellGrant =='Yes') { ?>
+                            <div  class="row mx-3 my-2">
+                                    <div class="col fw-bold">Receiving, or has been notified will receive, Pell Grant</div>
+                            </div>
+                            <?php } ?>
+                            <br>
+
+                        </div>
+
+
 
                          <?php }
 
 
 
                           ?>
-
-
-
-
-                        <div class="tab-pane fade" id="career-tab"   tabindex="0">
-                            <p class="mx-5 my-1">Engineering</p>
-                            <p class="mx-5 my-1">Developer</p>
-                            <p class="mx-5 my-1">Data Scientist</p>
-                            <br>
-                            <div class="border bg-white  border-info" style="width:100%;">
-                              <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
-                           </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="supportService-tab"   tabindex="0">
-                            <p class="mx-5 my-1">STEM</p>
-                            <p class="mx-5 my-1">Cal Fresh</p>
-                            <p class="mx-5 my-1">Medi-Cal</p>
-                            <br>
-                            <div class="border bg-white border-info" style="width:100%;">
-                               <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
-                               </div>
-                            </div>
-                    </div>
                 </div>
 
 
