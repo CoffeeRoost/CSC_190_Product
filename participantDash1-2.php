@@ -3,7 +3,7 @@
  //   write a query to retrieve data
 $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
                  t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
-                 
+
                  e.currentMilitaryOrVet,e.militarySpouse,e.selectiveService,e.employmentStatus,
                  e.payRate,e.unemployemntInsurance,e.unemploymentWeeks,e.farmworker12Months,
                  e.desiredJobTitle,e.techExperience,
@@ -17,7 +17,7 @@ $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipc
            FROM participation part
            JOIN address a
            ON part.userID=a.userID
-           JOIN task t
+           JOIN participationReportActivity t
            On part.userID=t.userID
            JOIN employment e
            ON part.userID=e.userID
@@ -194,6 +194,7 @@ $select_user_information_query= mysqli_query($conn,$query);
 
                         // Fetch the data
                           while($row=mysqli_fetch_assoc($select_user_information_query)){
+                            //data from participation survey
                             $fname= $row['fname'];
                             $lname=$row['lname'];
                             $email= $row['email'];
@@ -201,6 +202,7 @@ $select_user_information_query= mysqli_query($conn,$query);
                             $city= $row['city'];
                             $state= $row['state'];
                             $zipcode=$row['zipcode'];
+                            // data from participation report activity form
                             $coachName= $row ['coach'];
                             $codeActivity= $row ['activityCode'];
                             $trainingProgram= $row ['trainingProgram'];
@@ -316,14 +318,14 @@ $select_user_information_query= mysqli_query($conn,$query);
                                     <div class="col fw-bold">Spouse of a member of the armed forces who is on active duty</div>
                             </div>
                             <?php } ?>
-                            
+
                             <?php if ($selectiveService != 'No') { ?>
                             <div  class="row mx-3 my-2">
                                     <div class="col fw-bold">Registered with the Selective Service</div>
                                     <div class="col-7"><?php echo $selectiveService?></div>
                             </div>
                             <?php } ?>
-                            
+
                             <div  class="row mx-3 my-2">
                                     <div class="col fw-bold">Employment status</div>
                                     <div class="col-7"><?php echo $employmentStatus?></div>
@@ -335,7 +337,7 @@ $select_user_information_query= mysqli_query($conn,$query);
                                     <div class="col-7"><?php echo $payRate?></div>
                             </div>
                             <?php } ?>
-                            
+
                             <?php if ($unemployemntInsurance != 'Neither') { ?>
                             <div  class="row mx-3 my-2">
                                     <div class="col fw-bold">Receiving Unemployment Insurance</div>
@@ -377,7 +379,7 @@ $select_user_information_query= mysqli_query($conn,$query);
                                     <div class="col fw-bold">Supported through the State's Foster Care System</div>
                             </div>
                             <?php } ?>
-                            
+
                             <?php if ($adultEducationWIOATittleII =='Yes') { ?>
                             <div  class="row mx-3 my-2">
                                     <div class="col fw-bold">Receiving services from Adult Education (WIOA Title II)</div>
