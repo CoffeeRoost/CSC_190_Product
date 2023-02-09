@@ -25,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-3" href="./login.php">Login</a>
+                        <a class="nav-link text-white fs-4 mx-3" href="./Login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-3" href="./loginAd.php">Admin Login</a>
+                        <a class="nav-link text-white fs-4 mx-3" href="./LoginAd.php">Admin Login</a>
                     </li>
                 </ul>
             </div>

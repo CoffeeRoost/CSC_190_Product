@@ -31,7 +31,7 @@
                         <a class="nav-link text-white fs-4 mx-3" href="./LoginAd.php">Login (Admin)</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-3" href="./login.php">Login</a>
+                        <a class="nav-link text-white fs-4 mx-3" href="./Login.php">Login</a>
                     </li>
                 </ul>
             </div>
