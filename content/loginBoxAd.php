@@ -9,9 +9,9 @@
                 <input class="form-control" name="password" type="password" id="password"><br>
                 <label  class="form-label" for="select user type">Select User Type</label><br>
                 <select class="form-select mb-5"
-                aria-label="Default select example">
+                aria-label="Default select example" name="role">
                 <option selected value="Employee">Employee</option>
-                <option selected value="Participant">Admin</option>
+                <option selected value="Admin">Admin</option>
                 </select>
                 <input type="checkbox" name="rememberMe" id="rememberMe">
                 <label class="form-label" for="rememberMe">Remember me</label><br><br>

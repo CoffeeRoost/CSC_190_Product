@@ -5,6 +5,7 @@ if(isset($_POST['login-submit'])){
 
   $email      =$_POST['email'];
   $password   =$_POST['password'];
+  $role		  =$_POST['role'];
 
   if(empty($email)||empty($password)){
     header ("Location: ../loginAd.php?error=emptyfields");
@@ -15,8 +16,15 @@ if(isset($_POST['login-submit'])){
     //inner join select statement
     //$sql="SELECT * FROM USERTAB u,ACCOUNT a, LOGIN l WHERE u.userID=l.userID AND l.loginRoleID =a.loginRoleID"
     //$sql= "SELECT * FROM USERTAB u INNER JOIN LOGIN l ON u.userID=l.user ID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE a.email=?";
-    $sql= "SELECT userPassword FROM EMPLOYEE WHERE email=?";
-    $stmt= mysqli_stmt_init($conn);
+    
+	//select query based on the role
+	if (strcasecmp($role, "Admin") == 0)
+		$sql= "SELECT userPassword FROM EMPLOYEE INNER JOIN ADMIN ON EMPLOYEE.employeeID = ADMIN.employeeID WHERE email=?";
+	else
+		$sql= "SELECT userPassword FROM EMPLOYEE WHERE email=?";
+    
+	
+	$stmt= mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
       header ("Location: ../loginAd.php?error=sqlerror");
       exit();
@@ -29,7 +37,7 @@ if(isset($_POST['login-submit'])){
       //check if we exactly get result from databse
       if($row = mysqli_fetch_assoc($result)){
         //take password from databse  to login in the login page
-	    $pwdCheck= password_verify($password,$row['newUserPassword']);
+	    $pwdCheck= password_verify($password,$row['userPassword']);
 	
 	    if($pwdCheck==false){
       	    header ("Location: ../loginAd.php?error=wrongPassword");
@@ -39,7 +47,7 @@ if(isset($_POST['login-submit'])){
           	session_start();
           	$_SESSION['userID']=$row['userID'];
 	
-      	    header ("Location: ../loginAd.php?login=success");
+      	    header ("Location: ../employeeDash.php?login=success");
           	exit();
         }
 		
@@ -52,10 +60,4 @@ if(isset($_POST['login-submit'])){
     }
   }
 
-}
-else
-{
-  //send back to login page
-  header ("Location: ../loginAd.php");
-  exit();
 }

@@ -2,7 +2,7 @@
 $servername="localhost";
 $dBUsername="root";
 $dBPassword="";
-$dBName="csc190";
+$dBName="csc_190";
 
 //connection to database
 
