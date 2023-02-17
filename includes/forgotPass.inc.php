@@ -2,6 +2,11 @@
 // part 1 of the password reset system. This script file will check if the email exists create the tokens used to ensure the correct user,
 // generate the url for a reset password link, insert the data into a new password reset table, and send an email to the user. 
 
+// Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+
 // checks that the user accessed the page correctly
 if(isset($_POST["passBoxSubmit"])){
 
@@ -56,24 +61,69 @@ if(isset($_POST["passBoxSubmit"])){
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
+    
+    $sender = 'emailchickennode@gmail.com';
+    $senderName = 'CMC';
+    $recipient = $userEmail;
+
+    // Replace smtp_username with your Amazon SES SMTP user name.
+    $usernameSmtp = 'REPLACE';
+    // Replace smtp_password with your Amazon SES SMTP password.
+    $passwordSmtp = 'REPLACE';
+
+    // replace email-smtp.us-west-2.amazonaws.com with the Amazon SES SMTP endpoint in the appropriate region.
+    $host = 'email-smtp.us-west-1.amazonaws.com';
+    $port = 587;
+
+    $bodyHtml =  'PASSWORD RESET REQUEST';
+    $bodyHtml =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
+    $bodyHtml .= '<p>Here is your password reset link: </br>';
+    $bodyHtml .= '<a href="' . $url . '">' . $url . '</a></p>';
+
+
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->setFrom($sender, $senderName);
+        $mail->Username = $usernameSmtp;
+        $mail->Password = $passwordSmtp;
+        $mail->Host = $host;
+        $mail->Port = $port;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->addCustomHeader('X-SES-CONFIGURATION-SET', $configurationSet);
+        $mail->addAddress($recipient);
+
+        $mail->isHTML(true);
+        $mail->Subject    = $subject;
+        $mail->Body       = $bodyHtml;
+        $mail->AltBody    = $bodyText;
+        $mail->Send();
+        echo "Email sent!" , PHP_EOL;
+    } catch (phpmailerException $e) {
+        echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
+    } catch (Exception $e) {
+        echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
+    }
 
     //creating email to send to user
-    $to = $userEmail;
+    //$to = $userEmail;
 
-    $subject =  'PASSWORD RESET REQUEST';
-    $message =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
-    $message .= '<p>Here is your password reset link: </br>';
-    $message .= '<a href="' . $url . '">' . $url . '</a></p>';
+    //$subject =  'PASSWORD RESET REQUEST';
+    //$message =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
+    //$message .= '<p>Here is your password reset link: </br>';
+    //$message .= '<a href="' . $url . '">' . $url . '</a></p>';
 
-    $headers =  "From: CMC <test@test.com>\r\n";
-    $headers .= "Reply-To: test@test.com\r\n";
-    $headers .= "Content-type: text/html\r\n";
+    //$headers =  "From: CMC <test@test.com>\r\n";
+    //$headers .= "Reply-To: test@test.com\r\n";
+    //$headers .= "Content-type: text/html\r\n";
 
-    mail($to, $subject, $message, $headers);
+    //mail($to, $subject, $message, $headers);
 
     // header("Location: ../forgotPass.php?reset=success");
     // for testing -- skip email verification
-    header("Location: $url");
+    // header("Location: $url");
 
 
 } else{
