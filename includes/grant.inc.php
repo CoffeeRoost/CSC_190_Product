@@ -47,7 +47,7 @@ if(isset($_POST['grant-initial-submit'])){
                   if(!empty($_POST['shared_grant_ID'])){
                       //If it is, go to the next page for grant characteristics
                       $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
-                      header("Location: ../checkEmail.php?error=success")
+                      header("Location: ../checkEmail.php?error=success");
                       exit();
                   }
               }
@@ -56,7 +56,7 @@ if(isset($_POST['grant-initial-submit'])){
               //if error, force a logout
                 session_unset();
                 session_destroy();
-                header ("Location: ../loginAd.php?error=nouseremail");
+                header ("Location: ../loginAd.php?error=".$email);
                 exit();
           }
 
@@ -82,7 +82,7 @@ if(isset($_POST['grant-initial-submit'])){
 
   //TODO: change redirection
   //Make sure they're not empty
-  if(empty(grant_name)||empty(supporting_organization)||empty(personal_contact)||empty(grantID)||empty(startDate)||empty(endDate)){
+  if(empty($grant_name)||empty($supporting_organization)||empty($personal_contact)||empty($grantID)||empty($startDate)||empty($endDate)){
     header ("Location: ../loginAd.php?error=emptyfields");
     exit();
   }
@@ -146,7 +146,7 @@ if(isset($_POST['grant-initial-submit'])){
                     //Once the generated shared_grant_ID is found, we store it as a Session variable and go to next frontend page
                     $_SESSION['shared_grant_ID'] = $row['shared_grant_ID'];
                     //TODO: create another frontend page
-                    header ("Location: ../checkEmail.php?error=success")
+                    header ("Location: ../checkEmail.php?error=success");
                     exit();
                 }
             }
