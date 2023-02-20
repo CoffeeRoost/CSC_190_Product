@@ -27,7 +27,7 @@ if(isset($_POST['signup-submit'])){
   $mailCounty  	  =$_POST['mailCounty'];
 
   if($_POST['sameAdd'] === 'No'){
-	if(empty($mailStreet)||empty($mailCity)||empty($mailCity)||empty($mailState)||empty($mailZip)||empty($mailCounty)){
+	if(empty($mailStreet)||empty($mailCity)||empty($mailCity)||empty($mailState)||e
 		header ("Location: ../survey.php?error=mandatoryMailing");
     		//stop the code to run
      		exit();
@@ -106,11 +106,11 @@ if(isset($_POST['signup-submit'])){
   $expiry = 1*24*60*60;
 
 
- if(empty($partner)||empty($fname)||empty($lname)||empty($SSN)||empty($street)||empty($city)||empty($state)||empty($zip)||empty($county)||empty($phone)||empty($phoneType)||empty($email)||empty($bthday)||empty($gender)
- ||empty($citizenship)||empty($selective)||empty($hispanic)||empty($race)||empty($language)||empty($proficiency)||empty($disability)||empty($schoolLevel)||empty($diploma)||empty($highestSchool)||empty($schoolStatus)
- ||empty($military)||empty($militarySpouse)||empty($employment)||empty($ui)||empty($farmworker)||empty($jobTitle)
- ||empty($foster)||empty($adultEdu)||empty($youthBuild)||empty($jobCorp)||empty($carlPerkins)||empty($tanf)||empty($ssi)||empty($generalAssist)||empty($calFresh)||empty($refugeeAssist)||empty($ssdi)||empty($snapTraining)
- ||empty($pellGrant)||empty($workTicket)||empty($homeless)||empty($exOffer)||empty($displace)||empty($singleParent)||empty($culBarrier)||empty($familySize)||empty($annualIncome)||empty($techExp)||empty($password)||empty($confirmPassword))
+ if(empty($partner)||empty($fname)||empty($lname)||empty($SSN)||empty($street)||
+ ||empty($citizenship)||empty($selective)||empty($hispanic)||empty($race)||empty
+ ||empty($military)||empty($militarySpouse)||empty($employment)||empty($ui)||emp
+ ||empty($foster)||empty($adultEdu)||empty($youthBuild)||empty($jobCorp)||empty(
+ ||empty($pellGrant)||empty($workTicket)||empty($homeless)||empty($exOffer)||emp
   {
     //check empty fields
     // redirect to surveyTest page
@@ -149,7 +149,7 @@ if(isset($_POST['signup-submit'])){
         exit();
       }
       else{
-        $sql="INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,programPartnerReference,last4SSN,DOB,gender,genderDesc,primaryPhone,phoneNumType,altPhone,activation_code,activation_expiry)
+        $sql="INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,pr
 	  VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt=mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -158,13 +158,13 @@ if(isset($_POST['signup-submit'])){
         }
         else
         {
-          //hash the password to make secure password
-          $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
-	    $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
-         mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$otherAns,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
+         //hash the password to make secure password
+         $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
+	       $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
+         mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$em
          mysqli_stmt_execute($stmt);
 	    
-	     //Grab the userID associated with the information and insert into other tables
+	     //Grab the userID associated with the information and insert into other ta
 
 	     $sql="SELECT * FROM PARTICIPATION WHERE email=?";
     	 $stmt= mysqli_stmt_init($conn);
@@ -173,7 +173,7 @@ if(isset($_POST['signup-submit'])){
       		exit();
      	 }
          else{
-     			//bind info
+     	//bind info
 			//looks into db and sees if email is present
       		mysqli_stmt_bind_param($stmt,'s',$email);
       		mysqli_stmt_execute($stmt);
@@ -182,19 +182,19 @@ if(isset($_POST['signup-submit'])){
       		if($row = mysqli_fetch_assoc($result)){
         		$sql="INSERT INTO LOGIN (userID,loginEmail,loginPassword)
 	  				VALUES(?,?,?);";
-				$sql2="INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet,mailingCity,mailingState,mailingZipcode,mailingCounty) 
+				$sql2="INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingS
 					VALUES(?,?,?,?,?,?,?,?,?,?,?);";
-				$sql3="INSERT INTO CITIZEN (userID,usCitizenshipStatus,alienRegistrationCode,alienRegistrationCodeEXP)
+				$sql3="INSERT INTO CITIZEN (userID,usCitizenshipStatus,alienRegistrationCode
 					VALUES(?,?,?,?);";
-				$sql4="INSERT INTO EDUCATION (userID,highSchoolStatus,highSchooolDiplomaOrEquil,highestGradeComplete,inSchool)
+				$sql4="INSERT INTO EDUCATION (userID,highSchoolStatus,highSchooolDiplomaOrEq
 					VALUES(?,?,?,?,?);";
-				$sql5="INSERT INTO EMPLOYMENT (userID,currentMilitaryOrVet,militarySpouse,selectiveService,employmentStatus,payRate,unemployemntInsurance,unemploymentWeeks,farmworker12Months,desiredJobTitle,techExperience)
+				$sql5="INSERT INTO EMPLOYMENT (userID,currentMilitaryOrVet,militarySpouse,se
 					VALUES(?,?,?,?,?,?,?,?,?,?,?);";
-				$sql6="INSERT INTO ETHNICITY (userID,hispanicHeritage,race,primaryLanguage,englishProficiency)
+				$sql6="INSERT INTO ETHNICITY (userID,hispanicHeritage,race,primaryLanguage,e
 					VALUES(?,?,?,?,?);";
-				$sql7="INSERT INTO HARDSHIP (userID,ticketToWork,homelessStatus,exOffender,displacedHomemaker,singleParent,culturalBarriers,familySize,annualizedFamilyIncome)
+				$sql7="INSERT INTO HARDSHIP (userID,ticketToWork,homelessStatus,exOffender,d
 					VALUES(?,?,?,?,?,?,?,?,?);";
-				$sql8="INSERT INTO SERVICES (userID,fosterCare,adultEducationWIOATittleII,youthBuild,youthBuildGrant,jobCorps,vocationalEducationCarlPerkins,tanfRecipient,ssiRecipient,gaRecipient,snapRecipientCalFresh,rcaRecipient,ssdiRecipient,snapEmploymentAndTrainingProgram,pellGrant)
+				$sql8="INSERT INTO SERVICES (userID,fosterCare,adultEducationWIOATittleII,yo
 					VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         		$stmt=mysqli_stmt_init($conn);
 				$stmt2=mysqli_stmt_init($conn);
@@ -239,14 +239,14 @@ if(isset($_POST['signup-submit'])){
           					exit();
         				}
 					
-					mysqli_stmt_bind_param($stmt,"iss",$row['userID'],$email,$row['newUserPassword']);
-					mysqli_stmt_bind_param($stmt2,"isssissssis",$row['userID'],$steet,$city,$state,$zip,$county,$mailStreet,$mailCity,$mailState,$mailZip,$mailCounty);
-					mysqli_stmt_bind_param($stmt3,"isss",$row['userID'],$citizenship,$uscisNumber,$uscisExpired);
-					mysqli_stmt_bind_param($stmt4,"issss",$row['userID'],$schoolLevel,$diploma,$highestSchool,$schoolStatus);
-					mysqli_stmt_bind_param($stmt5,"issssisisss",$row['userID'],$military,$militarySpouse,$selective,$employment,$payRate,$ui,$uiWeek,$farmworker,$jobTitle,$techExp);
-					mysqli_stmt_bind_param($stmt6,"issss",$row['userID'],$hispanic,$race,$language,$proficiency);
-					mysqli_stmt_bind_param($stmt7,"issssssii",$row['userID'],$workTicket,$homeless,$exOffer,$displace,$singleParent,$culBarrier,$familySize,$annualIncome);
-					mysqli_stmt_bind_param($stmt8,"issssssssssssss",$row['userID'],$foster,$adultEdu,$youthBuild,$youthGrantNum,$jobCorp,$carlPerkins,$tanf,$ssi,$generalAssist,$calFresh,$refugeeAssist,$ssdi,$snapTraining,$pellGrant);
+					mysqli_stmt_bind_param($stmt,"iss",$row['userID'],$email,$row['newUserPassw
+					mysqli_stmt_bind_param($stmt2,"isssissssis",$row['userID'],$steet,$city,$st
+					mysqli_stmt_bind_param($stmt3,"isss",$row['userID'],$citizenship,$uscisNumb
+					mysqli_stmt_bind_param($stmt4,"issss",$row['userID'],$schoolLevel,$diploma,
+					mysqli_stmt_bind_param($stmt5,"issssisisss",$row['userID'],$military,$milit
+					mysqli_stmt_bind_param($stmt6,"issss",$row['userID'],$hispanic,$race,$langu
+					mysqli_stmt_bind_param($stmt7,"issssssii",$row['userID'],$workTicket,$homel
+					mysqli_stmt_bind_param($stmt8,"issssssssssssss",$row['userID'],$foster,$adu
 					mysqli_stmt_execute($stmt);
 					mysqli_stmt_execute($stmt2);
 					mysqli_stmt_execute($stmt3);
@@ -266,7 +266,7 @@ if(isset($_POST['signup-submit'])){
      	    				}
 					else{
 						
-						$activation_link = "http://localhost/dashboard/CSC_190_Product_Official/includes/activate.php?email=$email&activation_code=$activationCode";
+						$activation_link = "/includes/activate.php?email=$email&activation_code=$a
 						$to = $email;
 						$subject = "Please activate your account";
 						$message = "Hi, Please click the following link to activate your account: 
