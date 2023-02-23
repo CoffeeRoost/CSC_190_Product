@@ -1,24 +1,68 @@
+<?php
+    session_start();
+    require 'includes/dbh.inc.php';
+
+    if(isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+
+      //Compare the employeeID and the email to make sure they match
+      $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
+      $stmt= mysqli_stmt_init($conn);
+      if(!mysqli_stmt_prepare($stmt,$sql)){
+          //if error, force a logout
+          session_unset();
+          session_destroy();
+          header ("Location: ./loginAd.php?error=sqlerror");
+          exit();
+      }
+      else{
+          //execute sql
+          mysqli_stmt_bind_param($stmt,'s',$email);
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+
+          if($row = mysqli_fetch_assoc($result)){
+
+              //checks if the provided employeeID matches with the email checked employeeID
+              if($id !== $row['employeeID']){
+                  //if not matching, force a logout
+                  session_unset();
+                  session_destroy();
+                  header ("Location: ./loginAd.php?error=Not_Logged_In");
+                  exit();
+              }//TODO: create another frontend page
+          }
+          else{
+              //if error, force a logout
+                session_unset();
+                session_destroy();
+                header ("Location: ./loginAd.php?error=nouseremail");
+                exit();
+          }
+
+      }
+  }
+  else{
+      //if error, force a logout
+      session_unset();
+      session_destroy();
+      header ("Location: ./loginAd.php?error=Not_Logged_In");
+      exit();
+  }
+?>
+
 <div class="container-fluid">
-    <h5 class="d-flex justify-content-center text-info mb-5">REPORT ACTIVITY FORM</h5>
+    <form action="includes/grant.inc.php" method="post">
 
-    <h6>Coach ID <span class="text-danger">*</span></h6>
-    <input type="text" name="coachID" id="coachID" class="input-underline" placeholder="Your answer" required>
+    <h5 class="d-flex justify-content-center text-info mb-5">Grant Characteristic Page</h5>
 
-    <h6 class="mt-5">Coach Name <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
+    <h6 class="mt-5">Characteristic Title <span class="text-danger">*</span></h6>
+    <input type="text" name="char_title" id="char_title" class="input-underline" placeholder="Your answer" >
 
-    <h6 class="mt-5">Client ID <span class="text-danger">*</span></h6>
-    <input type="text" name="clientID" id="clientID" class="input-underline" placeholder="Your answer" required>
+    <h6 class="mt-5">Choose Between Established Status or New Data</h6>
 
-    <h6 class="mt-5">Client Last Name <span class="text-danger">*</span></h6>
-    <input type="text" name="clientLName" id="clientLName" class="input-underline" placeholder="Your answer" required>
-
-    <h6 class="mt-5">Client First Name <span class="text-danger">*</span></h6>
-    <input type="text" name="clientFName" id="clientFName" class="input-underline" placeholder="Your answer" required>
-
-    <h6 class="mt-5">Please choose from the list code list and select best code that fits for activity. <span class="text-danger">*</span></h6>
-    <select class="form-select-SM border rounded-2" name="trainingCode" id="" required>
-				                <option value="" disabled selected hidden>Choose</option>
+    <h6 class="mt-5">Please choose from the characteristic list and select best characteristic that that fits the title you provided. <span class="text-danger">*</span></h6>
+    <select class="form-select-SM border rounded-2" name="char_status_established" id="char_status_established" >
+				        <option value="" disabled selected hidden>Choose</option>
                         <option value="101">101 Orientation</option>
                         <option value="102">102 Initial Assessment</option>
                         <option value="103">103 Provision of Information on Training Providers/Performance Outcomes</option>
@@ -146,39 +190,21 @@
                         <option value="F22">F22 Supportive Service: Post-Secondary Educational Materials</option>
     </select>
 
+    <h6 class="mt-5">End Date <span class="text-danger">*</span></h6>
+    <input type="date" name="endDate" id="endDate" class="input-underline" placeholder="" >
 
-    <h6 class="mt-5">If Training Code was selected, specify the training program below</h6>
-    <select class="form-select-SM border rounded-2" name="trainingProgram" id="" required>
-				                <option value="Training Program">Choose</option>
-                        <option value="essential skills">CMC - Essential Skills (5 hours)</option>
-                        <option value="Intro Assembler">CMC - Intro to Assembler (5 hours)</option>
-                        <option value="Assembler">CMC - Assembler (30 hours)</option>
-                        <option value=" Intro Sewn Products">CMC - Intro to Sewn Products (5 hours)</option>
-                        <option value="Sewn Product">CMC - Sewn Products (30 hours)</option>
-                        <option value="Math Tutoring">Math Tutoring</option>
-                        <option value="Forklift">CAJ - Forklift (6 hours)</option>
-                        <option value="Intro Welding">CAJ - Intro to Welding (90 hours)</option>
-                        <option value="Intro Manufacturing">CAJ - Intro to Manufacturing (90 hours)</option>
-                        <option value="Manufacturing Technician">CAJ - Manufacturing Technician(900 hours)</option>
+    <h6 class="mt-5">Grant Name <span class="text-danger">*</span></h6>
+    <input type="text" name="grant_name" id="grant_name" class="input-underline" placeholder="Your answer" >
 
-      </select>
+    <h6 class="mt-5">Support Organization <span class="text-danger">*</span></h6>
+    <input type="text" name="supporting_organization" id="supporting_organization" class="input-underline" placeholder="Your answer" >
 
-    <h6 class="mt-5">Start Date of Activity <span class="text-danger">*</span></h6>
-    <input type="date" name="startDate" id="" class="input-underline" placeholder="" required>
+    <h6 class="mt-5">Personal Contact <span class="text-danger">*</span></h6>
+    <input type="text" name="personal_contact" id="personal_contact" class="input-underline" placeholder="Your answer" >
 
-    <h6 class="mt-5">End Date of Activity <span class="text-danger">*</span></h6>
-    <input type="date" name="endDate" id="" class="input-underline" placeholder="" required>
+    <div class="col-6 my-3">
+      <button type="submit" name="grant-characteristic-submit" class="btn btn-info btn-shadow my-3">Next</button>
+    </div>
 
-
-    <h6 class="mt-5">How much time was spent with pariticipant? <span class="text-danger">*</span>Specify in minutes</h6>
-    <input type="number" name="timeSpent" id="timeSpent" class="input-underline" placeholder="Your answer" required>
-
-    <h6 class="mt-5">Notes</h6>
-      <div class="col-6 my-3">
-        <textarea class="form-control border border-info" rows="4" placeholder="" required=""></textarea>
-        <button class="btn btn-info btn-shadow my-3 " type="submit">Submit</button>
-
-      </div>
-
-
-</div>
+    </form>
+  </div>
