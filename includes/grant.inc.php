@@ -46,9 +46,25 @@ if(isset($_POST['grant-initial-submit'])){
                   //Now it sees if the shared_grant_ID is already given
                   if(!empty($_POST['shared_grant_ID'])){
                       //If it is, go to the next page for grant characteristics
-                      $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
-                      header("Location: ../checkEmail.php?error=success");
-                      exit();
+
+                      $sql = "INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID)
+                                VALUES(?,?)";
+                      $stmt= mysqli_stmt_init($conn);
+                      if(!mysqli_stmt_prepare($stmt,$sql)){
+                          session_unset();
+                          session_destroy();
+                          header("Location: ../loginAd.php?error=sqlerror");
+                          exit();
+                      }
+                      else{
+                          mysqli_stmt_bind_param($stmt,"ii",$_POST['shared_grant_ID'],$_SESSION['userID']);
+                          mysqli_stmt_execute($stmt);
+
+                          $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
+                          header("Location: ../checkEmail.php?error=success");
+                          exit();
+                      }
+
                   }
               }
           }
@@ -83,7 +99,7 @@ if(isset($_POST['grant-initial-submit'])){
   //TODO: change redirection
   //Make sure they're not empty
   if(empty($grant_name)||empty($supporting_organization)||empty($personal_contact)||empty($grantID)||empty($startDate)||empty($endDate)){
-    header ("Location: ../loginAd.php?error=emptyfields");
+    header ("Location: ../grantReport.php?error=emptyfields");
     exit();
   }
   else
@@ -142,12 +158,35 @@ if(isset($_POST['grant-initial-submit'])){
 			    $result = mysqli_stmt_get_result($stmt);
 			    //check if we exactly get result from database
       		    if($row = mysqli_fetch_assoc($result)){
+
+                    $shared = $row['shared_grant_ID'];
                     
-                    //Once the generated shared_grant_ID is found, we store it as a Session variable and go to next frontend page
-                    $_SESSION['shared_grant_ID'] = $row['shared_grant_ID'];
-                    //TODO: create another frontend page
-                    header ("Location: ../checkEmail.php?error=success");
-                    exit();
+                    $sql = "INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID)
+                            VALUES(?,?)";
+                    $stmt= mysqli_stmt_init($conn);
+                    
+                    if(!mysqli_stmt_prepare($stmt,$sql)){
+                        session_unset();
+                        session_destroy();
+                        header("Location: ../loginAd.php?error=sqlerror");
+                        exit();
+                    }
+                    else{
+                        mysqli_stmt_bind_param($stmt2,"ii",$shared,$_SESSION['userID']);
+                        mysqli_stmt_execute($stmt2);
+
+                        //Once the generated shared_grant_ID is found, we store it as a Session variable and go to next frontend page
+                        $_SESSION['shared_grant_ID'] = $row['shared_grant_ID'];
+                        //TODO: create another frontend page
+                        header ("Location: ../checkEmail.php?error=success");
+                        exit();
+                    }
+                }
+                else{
+                    session_unset();
+                    session_destroy();
+                    header ("Location: ../loginAd.php?error=nograntLookUp");
+        			exit();
                 }
             }
 
