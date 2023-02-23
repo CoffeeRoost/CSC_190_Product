@@ -107,10 +107,10 @@ if(isset($_POST['signup-submit'])){
 
 
  if(empty($partner)||empty($fname)||empty($lname)||empty($SSN)||empty($street)||empty($city)||empty($state)||empty($zip)||empty($county)||empty($phone)||empty($phoneType)||empty($email)||empty($bthday)||empty($gender)
- ||empty($citizenship)||empty($selective)||empty($hispanic)||empty($race)||empty($language)||empty($proficiency)||empty($disability)||empty($schoolLevel)||empty($diploma)||empty($highestSchool)||empty($schoolStatus)
- ||empty($military)||empty($militarySpouse)||empty($employment)||empty($ui)||empty($farmworker)||empty($jobTitle)
- ||empty($foster)||empty($adultEdu)||empty($youthBuild)||empty($jobCorp)||empty($carlPerkins)||empty($tanf)||empty($ssi)||empty($generalAssist)||empty($calFresh)||empty($refugeeAssist)||empty($ssdi)||empty($snapTraining)
- ||empty($pellGrant)||empty($workTicket)||empty($homeless)||empty($exOffer)||empty($displace)||empty($singleParent)||empty($culBarrier)||empty($familySize)||empty($annualIncome)||empty($techExp)||empty($password)||empty($confirmPassword))
+  ||empty($citizenship)||empty($selective)||empty($hispanic)||empty($race)||empty($language)||empty($proficiency)||empty($disability)||empty($schoolLevel)||empty($diploma)||empty($highestSchool)||empty($schoolStatus)
+  ||empty($military)||empty($militarySpouse)||empty($employment)||empty($ui)||empty($farmworker)||empty($jobTitle)
+  ||empty($foster)||empty($adultEdu)||empty($youthBuild)||empty($jobCorp)||empty($carlPerkins)||empty($tanf)||empty($ssi)||empty($generalAssist)||empty($calFresh)||empty($refugeeAssist)||empty($ssdi)||empty($snapTraining)
+  ||empty($pellGrant)||empty($workTicket)||empty($homeless)||empty($exOffer)||empty($displace)||empty($singleParent)||empty($culBarrier)||empty($familySize)||empty($annualIncome)||empty($techExp)||empty($password)||empty($confirmPassword))
   {
     //check empty fields
     // redirect to surveyTest page
@@ -158,9 +158,9 @@ if(isset($_POST['signup-submit'])){
         }
         else
         {
-          //hash the password to make secure password
-          $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
-	    $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
+         //hash the password to make secure password
+         $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
+	       $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
          mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$otherAns,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
          mysqli_stmt_execute($stmt);
 	    
@@ -173,7 +173,7 @@ if(isset($_POST['signup-submit'])){
       		exit();
      	 }
          else{
-     			//bind info
+     	//bind info
 			//looks into db and sees if email is present
       		mysqli_stmt_bind_param($stmt,'s',$email);
       		mysqli_stmt_execute($stmt);
@@ -182,7 +182,7 @@ if(isset($_POST['signup-submit'])){
       		if($row = mysqli_fetch_assoc($result)){
         		$sql="INSERT INTO LOGIN (userID,loginEmail,loginPassword)
 	  				VALUES(?,?,?);";
-				$sql2="INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet,mailingCity,mailingState,mailingZipcode,mailingCounty) 
+				$sql2="INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet,mailingCity,mailingState,mailingZipcode,mailingCounty)
 					VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 				$sql3="INSERT INTO CITIZEN (userID,usCitizenshipStatus,alienRegistrationCode,alienRegistrationCodeEXP)
 					VALUES(?,?,?,?);";
@@ -266,7 +266,7 @@ if(isset($_POST['signup-submit'])){
      	    				}
 					else{
 						
-						$activation_link = "http://localhost/dashboard/CSC_190_Product_Official/includes/activate.php?email=$email&activation_code=$activationCode";
+						$activation_link = "/includes/activate.php?email=$email&activation_code=$a
 						$to = $email;
 						$subject = "Please activate your account";
 						$message = "Hi, Please click the following link to activate your account: 
