@@ -158,13 +158,26 @@ $select_user_information_query= mysqli_query($conn,$query);
                         </div>
 
                     <!-- Participant File Submit -->
-                    <div style="width:300px;" class="bg-lightBlue my-5 mx-3 d-flex justify-content-center">
-                        <div class="file-upload my-4 p-4">
-                            <label for="file-submit"><img src="./image/file.png" alt="file upload" style="width:75px; height:75px;"></label>
-                            <input type="file" id="file-submit"/>
-                            <p>Submit File</p>
-                        </div>
+                    <div class="bg-lightBlue my-5 mx-3 d-flex justify-content-center">
+                        <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data" class="w-100">
+
+                            <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-6 ">
+
+                                <label for="fileToUpload" class="form-label my-2"><img src="./image/file.png" alt="file upload" style="width:75px; height:75px;"></label>
+                                <input type="file" class="form-control-file mt-2" name="fileToUpload" id="fileToUpload">
+                            </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-6 my-4">
+                                <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
+                            </div>
+                            </div>
+
+                        </form>
                     </div>
+
                 </div>
 
                 <!--Information Tab-->
