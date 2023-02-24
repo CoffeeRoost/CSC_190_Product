@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_POST['grant-initial-submit'])){
+if(isset($_POST['grant-characteristic-submit'])){
 
   //connection to database
   require 'dbh.inc.php';
@@ -14,7 +14,7 @@ if(isset($_POST['grant-initial-submit'])){
   $shared_grant = $_SESSION['shared_grant_ID'];
 
   //make sure session varialbes exist
-  if(isset($_SESSION['shared_grant_ID']) || $_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+  if(isset($_SESSION['shared_grant_ID']) || isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
@@ -63,9 +63,9 @@ if(isset($_POST['grant-initial-submit'])){
 
   //If everything works out, grab the grant general variables
 
-  $char_status  =$_POST['char_status'];
+  
   $char_title   =$_POST['char_title'];
-
+  $char_status  =$_POST['char_status'];
 
   //TODO: change redirection
   //Make sure they're not empty
@@ -121,7 +121,7 @@ if(isset($_POST['grant-initial-submit'])){
         //if error, force a logout
         session_unset();
         session_destroy();
-        header ("Location: ../loginAd.php?error=nouseremail");
+        header ("Location: ../loginAd.php?error=noAssociatedEntry");
         exit();
       }
 
