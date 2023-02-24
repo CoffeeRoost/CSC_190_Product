@@ -1,7 +1,7 @@
 <?php
  require_once ('includes/dbh.inc.php');
  //   write a query to retrieve data
-$query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
+$query = "SELECT part.userID,part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
                  t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
 
                  e.currentMilitaryOrVet,e.militarySpouse,e.selectiveService,e.employmentStatus,
@@ -26,7 +26,9 @@ $query = "SELECT part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipc
 //    execute the query
 $select_user_information_query= mysqli_query($conn,$query);
 
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -61,145 +63,28 @@ $select_user_information_query= mysqli_query($conn,$query);
         </nav>
 </section>
 	<div class="d-flex">
-        <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
-            <div>
-                <ul class="nav nav-tabs flex-column align-items-center text-center">
-                    <li class="nav-item bg-Blue mt-1 mb-md-1">
-                        <a href="#" class="nav-link text-white">
-                            Dashboard
-                        </a>
-                    </li>
-                          <li class="nav-item bg-Blue mb-md-1">
+            <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
+               <div>
+                    <ul class="nav nav-tabs flex-column align-items-center text-center">
+                        <li class="nav-item bg-Blue mt-1 mb-md-1">
                             <a href="#" class="nav-link text-white">
-                              Personal Information
+                                Dashboard
                             </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
+                        </li>
+                        <li class="nav-item bg-Blue mb-md-1">
                             <a href="#" class="nav-link text-white">
-                              Feature 3
-                            </a>
-                          </li>
-                      </ul>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column align-items-center mx-5">
-                <div class="d-flex justify-center">
-                    <!--Participant information-->
-                    <div id="participant_Info" style="width:400px; height:230px; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse show">
-                        <div  class="row mx-3 my-2">
-                            <div class="col-3 fw-bold">ID</div>
-                            <div class="col-6 text-center">1234</div>
-                            <div class="col-1 ms-5">
-                                <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#participant_edit,#participant_Info">Edit</a>
-                            </div>
-                        </div>
-                        <div  class="row mx-3 my-2">
-                            <div class="col fw-bold">First Name</div>
-                            <div class="col-7">Patrick</div>
-                        </div>
-                        <div  class="row mx-3 my-2">
-                            <div class="col fw-bold">Last Name</div>
-                            <div class="col-7">Star</div>
-                        </div>
-                        <div  class="row mx-3 my-2">
-                            <div class="col fw-bold">Email</div>
-                            <div class="col-7">PatrickS@cmc.com</div>
-                        </div>
-                        <div  class="row mx-3 my-2">
-                            <div class="col fw-bold">Address</div>
-                            <div class="col-7">1234 Main street, San Francisco, CA</div>
-                        </div>
-                        <div  class="row mx-3 my-2">
-                            <div class="col fw-bold">Zip Code</div>
-                            <div class="col-7">95112</div>
-                        </div>
-                    </div>
-
-                    <!--Participant information Edit-->
-                        <div  id="participant_edit" style="width:400px; height:230px; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse">
-                            <div  class="row mx-3 my-2">
-                                <div class="col-3 fw-bold">ID</div>
-                                <div class="col-6 text-center">1234</div>
-                                <div class="col-1 ms-5">
-                                    <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#participant_Info,#participant_edit">Save</a>
-                                </div>
-                            </div>
-                            <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">First Name</div>
-                                <div class="col-7">
-                                    <input type="text" name="firstName" id="" class="input-underline bg-lightBlue" style="width:75%;" placeholder="Patrick">
-                                </div>
-                            </div>
-                            <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">Last Name</div>
-                                <div class="col-7">
-                                    <input type="text" name="lastName" id="" class="input-underline bg-lightBlue" style="width:75%;" placeholder="Star">
-                                </div>
-                            </div>
-                            <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">Email</div>
-                                <div class="col-7">
-                                    <input type="text" name="email" id="" class="input-underline bg-lightBlue" style="width:75%;" placeholder="PatrickS@cmc.com">
-                                </div>
-                            </div>
-                            <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">Address</div>
-                                <div class="col-7">
-                                    <input type="text" name="address" id="" class="input-underline bg-lightBlue" style="width:75%;" placeholder="1234 Main street, San Francisco, CA">
-                                </div>
-                            </div>
-                            <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">Zip Code</div>
-                                <div class="col-7">
-                                    <input type="text" name="zipcode" id="" class="input-underline bg-lightBlue" style="width:75%;" placeholder="95112">
-                                </div>
-                            </div>
-                        </div>
-
-                    <!-- Participant File Submit -->
-                    <div class="bg-lightBlue my-5 mx-3 d-flex justify-content-center">
-                        <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data" class="w-100">
-
-                            <div class="form-group row justify-content-center">
-                            <div class="col-12 col-md-6 ">
-
-                                <label for="fileToUpload" class="form-label my-2"><img src="./image/file.png" alt="file upload" style="width:75px; height:75px;"></label>
-                                <input type="file" class="form-control-file mt-2" name="fileToUpload" id="fileToUpload">
-                            </div>
-                            </div>
-
-                            <div class="form-group row justify-content-center">
-                            <div class="col-12 col-md-6 my-4">
-                                <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
-                            </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
-
-                <!--Information Tab-->
-                <div style="width:95%;">
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class="nav-item rounded-top border border-info">
-                          <button class="nav-link active text-Blue" id="" data-bs-toggle="tab" data-bs-target="#contact-tab" type="button">Contact/Demographics</button>
+                                Personal Information
+                             </a>
                         </li>
-                        <li class="nav-item rounded-top border border-info">
-                            <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#training-tab" type="button">Training</button>
-                        </li>
-                        <li class="nav-item rounded-top border border-info">
-                            <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#career-tab" type="button">Employee/Career</button>
-                        </li>
-                        <li class="nav-item rounded-top border border-info">
-                            <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#supportService-tab" type="button">Support Services</button>
+                        <li class="nav-item bg-Blue mb-md-1">
+                            <a href="#" class="nav-link text-white">
+                                Feature 3
+                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content border border-info bg-lightBlue">
-
-
-                         <!-- Display some personal information from the database tables using php -->
+                </div>
+            </div>
+                    <!-- Display some personal information from the database tables using php -->
 
 
                           <?php
@@ -208,6 +93,7 @@ $select_user_information_query= mysqli_query($conn,$query);
                         // Fetch the data
                           while($row=mysqli_fetch_assoc($select_user_information_query)){
                             //data from participation survey
+                            $userID=$row['userID'];
                             $fname= $row['fname'];
                             $lname=$row['lname'];
                             $email= $row['email'];
@@ -251,7 +137,151 @@ $select_user_information_query= mysqli_query($conn,$query);
                             $snapEmploymentAndTrainingProgram= $row['snapEmploymentAndTrainingProgram'];
                             $pellGrant= $row['pellGrant'];
 
-                            ?>
+             ?>
+            <div class="d-flex flex-column align-items-center mx-5">
+                
+                <div class="d-flex justify-center">
+
+                
+                    <!--Participant information-->
+                    <div id="participant_Info" style="width: 500px; height:auto; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse show">
+                        <div  class="row mx-3 my-2">
+                            <div class="col-3 fw-bold">ID</div>
+                            <div class="col-6 text-center"><?php echo $userID?></div>
+                            <div class="col-1 ms-5">
+                                <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#participant_edit,#participant_Info">Edit</a>
+                            </div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">First Name</div>
+                            <div class="col-7"><?php echo $fname?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">Last Name</div>
+                            <div class="col-7"><?php echo $lname?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">Email</div>
+                            <div class="col-7"><?php echo $email?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">Street</div>
+                            <div class="col-7"><?php echo $street?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">City</div>
+                            <div class="col-7"><?php echo $city?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">State</div>
+                            <div class="col-7"><?php echo $state?></div>
+                        </div>
+                        <div  class="row mx-3 my-2">
+                            <div class="col fw-bold">Zip Code</div>
+                            <div class="col-7"><?php echo $zipcode?></div>
+                        </div>
+                    </div>  
+                   
+
+                      <!--Participant information Edit-->
+                      <div id="participant_edit" style="width: 500px; height:auto; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse">
+                            <form method="POST" action="includes/saveProfileParticipation.inc.php">
+                                <div class="row mx-3 my-2">
+                                    <div class="col-3 fw-bold">ID</div>
+                                    <div class="col-6 text-center"><?php echo $userID?></div>
+                                    <div class="col-1 ms-5">
+                                        <button type="submit" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#participant_Info,#participant_edit">Save</button>
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">First Name</div>
+                                    <div class="col-7">
+                                        <input type="text" name="fname" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $fname?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">Last Name</div>
+                                    <div class="col-7">
+                                        <input type="text" name="lname" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $lname?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">Email</div>
+                                    <div class="col-7">
+                                        <input type="email" name="email" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $email?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">Street</div>
+                                    <div class="col-7">
+                                        <input type="text" name="street" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $street?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">City</div>
+                                    <div class="col-7">
+                                        <input type="text" name="city" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $city?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">State</div>
+                                    <div class="col-7">
+                                        <input type="text" name="state" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $state?>">
+                                    </div>
+                                </div>
+                                <div class="row mx-3 my-2">
+                                    <div class="col fw-bold">Zip Code</div>
+                                    <div class="col-7">
+                                        <input type="text" name="zipcode" id="" class="input-underline bg-lightBlue" style="width:75%;" value="<?php echo $zipcode?>">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <!-- Participant File Submit -->
+                        <div class="bg-lightBlue my-5 mx-3 d-flex justify-content-center">
+                            <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data" class="w-100">
+
+                                <div class="form-group row justify-content-center">
+                                <div class="col-12 col-md-6 ">
+
+                                    <label for="fileToUpload" class="form-label my-2"><img src="./image/file.png" alt="file upload" style="width:75px; height:75px;"></label>
+                                    <input type="file" class="form-control-file mt-2" name="fileToUpload" id="fileToUpload">
+                                </div>
+                                </div>
+
+                                <div class="form-group row justify-content-center">
+                                <div class="col-12 col-md-6 my-4">
+                                    <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
+                                </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                </div>
+
+                        <!--Information Tab-->
+                        <div style="width:95%;">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item rounded-top border border-info">
+                                <button class="nav-link active text-Blue" id="" data-bs-toggle="tab" data-bs-target="#contact-tab" type="button">Contact/Demographics</button>
+                                </li>
+                                <li class="nav-item rounded-top border border-info">
+                                    <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#training-tab" type="button">Training</button>
+                                </li>
+                                <li class="nav-item rounded-top border border-info">
+                                    <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#career-tab" type="button">Employee/Career</button>
+                                </li>
+                                <li class="nav-item rounded-top border border-info">
+                                    <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#supportService-tab" type="button">Support Services</button>
+                                </li>
+                            </ul>
+                        <div class="tab-content border border-info bg-lightBlue">
+
+
+                       
                             <!-- Contact/Demographics Tab  -->
                         <div class="tab-pane fade show active" id="contact-tab" aria-labelledby="contact-tab" tabindex="0">
 
@@ -269,8 +299,16 @@ $select_user_information_query= mysqli_query($conn,$query);
                                 <div class="col-7"><?php echo $email?></div>
                             </div>
                             <div  class="row mx-3 my-2">
-                                <div class="col fw-bold">Address</div>
-                                <div class="col-7"><?php echo $street?>,<?php echo $city?>,<?php echo $state?></div>
+                                <div class="col fw-bold">Street</div>
+                                <div class="col-7"><?php echo $street?></div>
+                            </div>
+                            <div  class="row mx-3 my-2">
+                                <div class="col fw-bold">City</div>
+                                <div class="col-7"><?php echo $city?></div>
+                            </div>
+                            <div  class="row mx-3 my-2">
+                                <div class="col fw-bold">State</div>
+                                <div class="col-7"><?php echo $state?></div>
                             </div>
                             <div  class="row mx-3 my-2">
                                 <div class="col fw-bold">Zip Code</div>
@@ -381,6 +419,11 @@ $select_user_information_query= mysqli_query($conn,$query);
                                     <div class="col-7"><?php echo $techExperience?></div>
                             </div>
                             <br>
+                            
+
+                            <div class="border bg-white border-info" style="width:100%;">
+                                <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
+                            </div>
 
                         </div>
 
@@ -466,19 +509,23 @@ $select_user_information_query= mysqli_query($conn,$query);
                             </div>
                             <?php } ?>
                             <br>
-
+                           
+                            <div class="border bg-white border-info" style="width:100%;">
+                                <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
+                            </div>
                         </div>
 
 
 
-                         <?php }
+                        </div>
 
+
+                      <?php }
 
 
                           ?>
-                </div>
-
-
             </div>
+    </div>
+     
 </body>
 </html>
