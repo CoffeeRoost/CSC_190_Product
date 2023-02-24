@@ -266,7 +266,7 @@ if(isset($_POST['signup-submit'])){
      	    				}
 					else{
 						
-						$activation_link = "/includes/activate.php?email=$email&activation_code=$a
+						$activation_link = "http://localhost/dashboard/CSC_190_Product_Official/includes/activate.php?email=$email&activation_code=$activationCode";
 						$to = $email;
 						$subject = "Please activate your account";
 						$message = "Hi, Please click the following link to activate your account: 
