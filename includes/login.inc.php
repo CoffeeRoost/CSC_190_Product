@@ -15,7 +15,7 @@ if(isset($_POST['login-submit'])){
     //inner join select statement
     //$sql="SELECT * FROM USERTAB u,ACCOUNT a, LOGIN l WHERE u.userID=l.userID AND l.loginRoleID =a.loginRoleID"
     //$sql= "SELECT * FROM USERTAB u INNER JOIN LOGIN l ON u.userID=l.user ID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE a.email=?";
-    $sql= "SELECT loginPassword FROM login WHERE loginEmail=?";
+    $sql= "SELECT loginPassword, status FROM login l INNER JOIN participation p ON l.userID=p.userID WHERE l.loginEmail=?";
     $stmt= mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
       header ("Location: ../login.php?error=sqlerror");
@@ -31,7 +31,7 @@ if(isset($_POST['login-submit'])){
         //take password from databse  to login in the login page
 
 	  	if($row['status']){
-	      		$pwdCheck= password_verify($password,$row['newUserPassword']);
+	      		$pwdCheck= password_verify($password,$row['loginPassword']);
 	
 	        	if($pwdCheck==false){
       	    		header ("Location: ../login.php?error=wrongPassword");
