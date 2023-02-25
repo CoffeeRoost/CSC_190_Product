@@ -1,6 +1,18 @@
 <?php
+session_start();
+ // Start session and check if user is logged in
+if (!isset($_SESSION['userID'])) {
+    // Redirect user to login page if not logged in
+    header("Location:Login.php");
+    exit();
+}
+ //connect to database
  require_once ('includes/dbh.inc.php');
- //   write a query to retrieve data
+
+ // Get the user ID from the session variable
+$userID = $_SESSION['userID'];
+
+ //  Prepare the query
 $query = "SELECT part.userID,part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
                  t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
 
@@ -22,76 +34,28 @@ $query = "SELECT part.userID,part.fname,part.lname,part.email,a.street,a.city,a.
            JOIN employment e
            ON part.userID=e.userID
            JOIN services s
-           ON part.userID=s.userID";
+           ON part.userID=s.userID
+           WHERE part.userID = ?";
 //    execute the query
 $select_user_information_query= mysqli_query($conn,$query);
 
+// Create a prepared statement
+$stmt = mysqli_prepare($conn, $query);
 
-?>
+// Bind the parameter to the statement
+mysqli_stmt_bind_param($stmt, "i", $userID);
 
+// Execute the statement
+mysqli_stmt_execute($stmt);
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="CSS/styles.css">
-    <title>California Mobility Center</title>
-</head>
-<body>
-    <section id = "title">
-        <nav class = "navbar navbar-expand-lg bg-Blue">
-            <a href="index.php" class = "navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-4" href="./login.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-</section>
-	<div class="d-flex">
-            <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
-               <div>
-                    <ul class="nav nav-tabs flex-column align-items-center text-center">
-                        <li class="nav-item bg-Blue mt-1 mb-md-1">
-                            <a href="#" class="nav-link text-white">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
-                                Personal Information
-                             </a>
-                        </li>
-                        <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
-                                Feature 3
-                             </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-                    <!-- Display some personal information from the database tables using php -->
+// Get the results
+$result = mysqli_stmt_get_result($stmt);
 
 
-                          <?php
 
-
-                        // Fetch the data
-                          while($row=mysqli_fetch_assoc($select_user_information_query)){
+//  Display some personal information from the database tables using php 
+                      // Fetch the data
+                          while($row=mysqli_fetch_assoc($result)){
                             //data from participation survey
                             $userID=$row['userID'];
                             $fname= $row['fname'];
@@ -137,7 +101,65 @@ $select_user_information_query= mysqli_query($conn,$query);
                             $snapEmploymentAndTrainingProgram= $row['snapEmploymentAndTrainingProgram'];
                             $pellGrant= $row['pellGrant'];
 
-             ?>
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+    <title>California Mobility Center</title>
+</head>
+<body>
+    <section id = "title">
+        <nav class = "navbar navbar-expand-lg bg-Blue">
+            <a href="index.php" class = "navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fs-4 mx-4" href="./login.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+</section>
+	<div class="d-flex">
+            <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
+               <div>
+                    <ul class="nav nav-tabs flex-column align-items-center text-center">
+                        <li class="nav-item bg-Blue mt-1 mb-md-1">
+                            <a href="#" class="nav-link text-white">
+                            <?php
+               
+                              echo "<h4>Welcome, $fname $lname !</h4>";
+                              ?>
+                            </a>
+                        </li>
+                        <li class="nav-item bg-Blue mb-md-1">
+                            <a href="#" class="nav-link text-white">
+                                Personal Information
+                             </a>
+                        </li>
+                        <li class="nav-item bg-Blue mb-md-1">
+                            <a href="#" class="nav-link text-white">
+                                Feature 3
+                             </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                    
             <div class="d-flex flex-column align-items-center mx-5">
                 
                 <div class="d-flex justify-center">
