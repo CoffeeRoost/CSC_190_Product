@@ -1,14 +1,15 @@
 <?php
-$servername="localhost";
-$dBUsername="root";
-$dBPassword="";
-$dBName="csc190";
+    $servername="localhost";
+    $dBUsername="root";
+    $dBPassword="";
+    $dBName="csc190";
 
-//connection to database
+    // Create connection
+    $conn = new mysqli($servername, $dBUsername, $dBPassword, $dBName);
 
-$conn= mysqli_connect($servername,$dBUsername,$dBPassword,$dBName);
-
-
-if(!$conn){
-  die("Connection failed: ".mysqli_connect_error());
-}
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    
+?>
