@@ -24,10 +24,11 @@ DROP TABLE IF EXISTS passReset;
 
 CREATE TABLE EMPLOYEE(
 employeeID INT(11) AUTO_INCREMENT NOT NULL,
-fname  CHAR(20) NOT NULL,
-lname  CHAR(20) NOT NULL,
+empfname  CHAR(20) NOT NULL,
+emplname  CHAR(20) NOT NULL,
 MI     CHAR(2),
 email CHAR(255) NOT NULL,
+employeeRole CHAR(255) NOT NULL,
 userPassword CHAR(255) NOT NULL,
 programMember CHAR(255) NOT NULL,
 PRIMARY KEY (employeeID)
