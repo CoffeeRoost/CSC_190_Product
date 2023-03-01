@@ -1,11 +1,6 @@
 <?php 
-    // Start session and check if user is logged in
     
-    session_start();
-    if (!isset($_SESSION['userID'])) {
-      header("Location: login.php");
-      exit();
-    }
+    
     // Include database connection
     require_once 'dbh.inc.php';
 
@@ -20,21 +15,23 @@
 
     // Update the database with the new personal information
     $sql = "UPDATE participation p
-            INNER JOIN address a ON p.userID = a.userID
-            SET p.fname = '$fname',
-                p.lname = '$lname',
-                p.email = '$email',
-                a.street = '$street',
-                a.city = '$city',
-                a.state = '$state'
-            WHERE p.userID ='$userID'";
-
-    if (mysqli_query($conn, $sql)) {
+        INNER JOIN address a ON p.userID = a.userID
+        SET p.fname = ?,
+            p.lname = ?,
+            p.email = ?,
+            a.street = ?,
+            a.city = ?,
+            a.state = ?
+        WHERE p.userID = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("ssssssi", $fname, $lname, $email, $street, $city, $state, $userID);
+        $stmt->execute();
         echo "Participation information saved successfully.";
     } else {
-        echo "Error updating record: " . mysqli_error($conn);
+        echo "Error updating record: " . $conn->error;
     }
 
-    mysqli_close($conn);
+  $conn->close();
 ?>
 
