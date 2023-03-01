@@ -12,6 +12,7 @@ if (!isset($_SESSION['userID'])) {
  // Get the user ID from the session variable
 $userID = $_SESSION['userID'];
 
+
  //  Prepare the query
 $query = "SELECT part.userID,part.fname,part.lname,part.email,a.street,a.city,a.state,a.zipcode,
                  t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,

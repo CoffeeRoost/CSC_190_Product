@@ -1,67 +1,45 @@
 <?php
-if(isset($_POST['login-submit'])){
-  //connection to database
+session_start();
+if (isset($_POST['login-submit'])) {
   require 'dbh.inc.php';
-
-  $email      =$_POST['email'];
-  $password   =$_POST['password'];
-
-  if(empty($email)||empty($password)){
-    header ("Location: ../login.php?error=emptyfields");
+  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+  $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+  if (empty($email) || empty($password)) {
+    header("Location: ../login.php?error=emptyfields");
     exit();
-  }
-  else
-  {
-    //inner join select statement
-    //$sql="SELECT * FROM USERTAB u,ACCOUNT a, LOGIN l WHERE u.userID=l.userID AND l.loginRoleID =a.loginRoleID"
-    //$sql= "SELECT * FROM USERTAB u INNER JOIN LOGIN l ON u.userID=l.user ID INNER JOIN ACCOUNT a ON a.loginRoleID=l.loginRoleID WHERE a.email=?";
-    $sql= "SELECT loginPassword, status FROM login l INNER JOIN participation p ON l.userID=p.userID WHERE l.loginEmail=?";
-    $stmt= mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-      header ("Location: ../login.php?error=sqlerror");
+  } else {
+    $sql = "SELECT userID, newUserPassword, email, status FROM PARTICIPATION  WHERE email=?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+      header("Location: ../login.php?error=sqlerror");
       exit();
-    }
-    else{
-      mysqli_stmt_bind_param($stmt,'s',$email);
-      //get result from database
+    } else {
+      mysqli_stmt_bind_param($stmt, 's', $email);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      //check if we exactly get result from databse
-      if($row = mysqli_fetch_assoc($result)){
-        //take password from databse  to login in the login page
-
-	  	if($row['status']){
-	      		$pwdCheck= password_verify($password,$row['loginPassword']);
-	
-	        	if($pwdCheck==false){
-      	    		header ("Location: ../login.php?error=wrongPassword");
-          			exit();
-    		    	}
-        		else{
-          			session_start();
-          			$_SESSION['userID']=$row['userID'];
-	
-      	    			header ("Location: ../login.php?login=success");
-          			exit();
-        		}
-		}
-		else{
-			header("Location: ../login.php?error=inactiveAccount");
-			exit();
-		}
-      }
-      else{
-        header ("Location: ../login.php?error=nouseremail");
+      if ($row = mysqli_fetch_assoc($result)) {
+        if (password_verify($password, $row['newUserPassword'])) {
+          if ($row['status'] == 0) {
+            header("Location: ../login.php?error=inactiveAccount");
+            exit();
+          } else {
+            $_SESSION['userID'] = $row['userID'];
+            header("Location: ../participantDash1-2.php?login=success");
+            exit();
+          }
+        } else {
+          header("Location: ../login.php?error=wrongPassword&email=" . urlencode($email));
+          exit();
+        }
+      } else {
+        header("Location: ../login.php?error=nouseremail");
         exit();
       }
-
     }
+    mysqli_stmt_close($stmt); // close the prepared statement
   }
-
-}
-else
-{
-  //send back to login page
-  header ("Location: ../login.php");
+  mysqli_close($conn); // close the database connection
+} else {
+  header("Location: ../login.php");
   exit();
 }
