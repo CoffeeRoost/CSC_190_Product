@@ -3,15 +3,24 @@ session_start();
 if (isset($_POST['login-submit'])) {
   require 'dbh.inc.php';
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-  $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-  if (empty($email) || empty($password)) {
-    header("Location: ../login.php?error=emptyfields");
+  $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+
+  if (empty($email)) {
+    $_SESSION['error'] = 'Please enter your email.';
+    header("Location: ../login.php");
     exit();
+  }else if(empty($password)){
+    $_SESSION['error'] = 'Please enter your password.';
+    header("Location: ../login.php");
+    exit();
+
+  
   } else {
     $sql = "SELECT userID, newUserPassword, email, status FROM PARTICIPATION  WHERE email=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../login.php?error=sqlerror");
+      $_SESSION['error'] = 'Internal server error. Please try again later.';
+      header("Location: ../login.php");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, 's', $email);
@@ -20,7 +29,8 @@ if (isset($_POST['login-submit'])) {
       if ($row = mysqli_fetch_assoc($result)) {
         if (password_verify($password, $row['newUserPassword'])) {
           if ($row['status'] == 0) {
-            header("Location: ../login.php?error=inactiveAccount");
+            $_SESSION['error'] = 'Your account is inactive. Please contact support.';
+            header("Location: ../login.php");
             exit();
           } else {
             $_SESSION['userID'] = $row['userID'];
@@ -28,11 +38,13 @@ if (isset($_POST['login-submit'])) {
             exit();
           }
         } else {
-          header("Location: ../login.php?error=wrongPassword&email=" . urlencode($email));
+          $_SESSION['error'] = 'Incorrect password. Please try again.';
+          header("Location: ../login.php");
           exit();
         }
       } else {
-        header("Location: ../login.php?error=nouseremail");
+        $_SESSION['error'] = 'Email address not found. Please try again.';
+        header("Location: ../login.php");
         exit();
       }
     }
