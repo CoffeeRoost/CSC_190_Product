@@ -55,26 +55,24 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.last4
            ON part.userID=s.userID
 
            WHERE part.userID = ?";
-//    execute the query
-$select_user_information_query= mysqli_query($conn,$query);
+
 
 // Create a prepared statement
-$stmt = mysqli_prepare($conn, $query);
+$stmt = $conn->prepare($query);
 
 // Bind the parameter to the statement
-mysqli_stmt_bind_param($stmt, "i", $userID);
+$stmt->bind_param("i", $userID);
 
 // Execute the statement
-mysqli_stmt_execute($stmt);
-
+$stmt->execute();
 // Get the results
-$result = mysqli_stmt_get_result($stmt);
+$result = $stmt->get_result();
 
 
 
 //  Display some personal information from the database tables using php 
                       // Fetch the data
-                          while($row=mysqli_fetch_assoc($result)){
+                          while($row=$result->fetch_assoc()){
                             //data from participation survey
                             $userID=$row['userID'];
                             $last4SSN= $row['last4SSN'];
@@ -213,7 +211,7 @@ $result = mysqli_stmt_get_result($stmt);
                 </div>
             </div>
 
-            <!-- Edit Tab -->
+            <!-- Edit Tab -->c
         <div id="editTab" style="display:none;">
             <div class="d-flex flex-column align-items-center mx-5">
             <div class="d-flex justify-center">
@@ -1117,6 +1115,16 @@ $result = mysqli_stmt_get_result($stmt);
                                     <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
                                 </div>
                                 </div>
+                                <!-- Display the error message -->
+                                <?php if (isset($_SESSION['error'])): ?>
+                                    <div class="alert alert-danger"><?php echo $_SESSION['error']; ?></div>
+                                    <?php unset($_SESSION['error']); ?>
+                                <?php endif; ?>
+
+                                <?php if (isset($_SESSION['success'])): ?>
+                                    <div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
+                                    <?php unset($_SESSION['success']); ?>
+                                <?php endif; ?>
 
                             </form>
                         </div>
