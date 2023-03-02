@@ -24,7 +24,7 @@
         $mailZip  	      =$_POST['mailZip'];
         $mailCounty  	  =$_POST['mailCounty'];
         $phone            =$_POST['phone'];
-        $phoneType	  =$_POST['phoneType'];
+        $phoneType	      =$_POST['phoneType'];
         $alPhone          =$_POST['alPhone'];
         $email            =$_POST['email'];
         $bthday           =$_POST['bthday'];
@@ -152,8 +152,8 @@
                     exit();
                 }
                 else {
-                    $sql="INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,programPartnerReference,last4SSN,DOB,gender,genderDesc,primaryPhone,phoneNumType,altPhone,activation_code,activation_expiry)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    $sql="INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,programPartnerReference,last4SSN,DOB,gender,primaryPhone,phoneNumType,altPhone,activation_code,activation_expiry)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $stmt=mysqli_stmt_init($conn);
                     if(!mysqli_stmt_prepare($stmt,$sql)){
                     header ("Location: ../survey.php?error=sqlerror");
@@ -164,7 +164,7 @@
                     //hash the password to make secure password
                     $hashedPwd=password_hash($password,PASSWORD_DEFAULT);
                     $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt,'ssssssisssssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$otherAns,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
+                    mysqli_stmt_bind_param($stmt,'ssssssissssssi',$fname,$lname,$mname,$email,$hashedPwd,$partner,$SSN,$bthday,$gender,$phone,$phoneType,$alPhone,$hashedCode,$expiry);
                     mysqli_stmt_execute($stmt);
             
                         //Grab the userID associated with the information and insert into other tables

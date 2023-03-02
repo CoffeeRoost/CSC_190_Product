@@ -5,13 +5,8 @@ class Upload
 {
     public function uploadFile()
     {
-        // Start session and check if user is logged in
+        //Start session
         session_start();
-        if (!isset($_SESSION['userID'])) {
-            // Redirect user to login page if not logged in
-            header("Location: ../Login.php");
-            exit();
-        }
 
         // Include database connection
         require_once 'dbh.inc.php';
@@ -38,6 +33,7 @@ class Upload
                     UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload'
                 ];
                 $errorMessage = $errorMessages[$fileError] ?? 'Unknown error uploading file';
+                $_SESSION['upload_error']=$errorMessage;
                 header("Location: ../participantDash1-2.php?error=uploadfileerror&message=$errorMessage");
                 exit();
             }
@@ -47,10 +43,13 @@ class Upload
             $maxFileSize = 5000000; // 5MB
             $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
             if (!in_array($fileExt, $allowedExtensions)) {
-                header("Location: ../participantDash1-2.php?error=invalidfiletype");
+                $_SESSION['upload_error'] = 'Invalid file type. Only JPG, JPEG, PNG, GIF, and IPYNB files are allowed.';
+                 header("Location: ../participantDash1-2.php?error=invalidfiletype");
                 exit();
             }
             if ($fileSize > $maxFileSize) {
+                $_SESSION['upload_error'] = 'File size exceeds limit of 5MB.';
+
                 header("Location: ../participantDash1-2.php?error=filetoolarge");
                 exit();
             }
@@ -60,22 +59,26 @@ class Upload
             $fileDestination = 'uploads/' . $newFileName;
             if (move_uploaded_file($fileTmpName, $fileDestination)) {
                 // Insert file details into database
-                $userId = $_SESSION['userId'];
+                $userId = $_SESSION['userID'];
                 $sql = "INSERT INTO files (userID, file_name, file_size, file_type, file_path)
                         VALUES (?, ?, ?, ?, ?)";
-                $stmt = mysqli_stmt_init($conn);
-                if (mysqli_stmt_prepare($stmt, $sql)) {
-                    mysqli_stmt_bind_param($stmt, "issss", $userId, $fileName, $fileSize, $fileType, $fileDestination);
-                    mysqli_stmt_execute($stmt);
+                $stmt = $conn->prepare($sql);
+                if ($stmt) {
+                    $stmt->bind_param("issss", $userId, $fileName, $fileSize, $fileType, $fileDestination);
+                    $stmt->execute();
+                    $_SESSION['upload_success'] = 'File uploaded successfully.';
+
                     header("Location: ../participantDash1-2.php?upload=success");
                     exit();
                 } else {
+                    $_SESSION['upload_error']='SQL Error, please try again!';
                     header("Location: ../participantDash1-2.php?error=sqlerror");
                     exit();
                 }
             }
       } else {
           // Handle case where form was not submitted or file was not uploaded
+          $_SESSION['upload_error']='No file uploaded, please upload the file!';
           header("Location: ../participantDash1-2.php?error=nofileuploaded");
           exit();
       }
