@@ -5,12 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+	
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css"/>
+	<!-- Latest compiled JavaScript -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+	
+	<!-- Use the JavaScript DataTable library to easily sort query results -->
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function ()
+		{ 
+			$('#search_results').DataTable({paging: false, searching: false, ordering: true}); 
+		});
+	</script>
+	
+    
     <title>California Mobility Center</title>
 </head>
 <body>
@@ -60,22 +75,22 @@ function filterTable($query) {
 
         <div class="d-flex justify-content-center align-items-center container">
             <div class="row">
-        <form> 
+				<form> 
 
-            <div class="form-group">
-                <input class="form-control mt-3" type="text" name="valueToSearch" placeholder="Type a value to search"><br><br>
-            </div>
-            <div class="form-actions">
-                
-            </div>
-            <button type="submit" class="btn btn-primary mx-auto">Submit</button>
-        </form>
-</div>
-</div>
+					<div class="form-group">
+						<input class="form-control mt-3" type="text" name="valueToSearch" placeholder="Type a value to search"><br><br>
+					</div>
+					<div class="form-actions">
+						
+					</div>
+					<button type="submit" class="btn btn-primary mx-auto">Submit</button>
+				</form>
+			</div>
+		</div>
         <?php
 
         
-        echo '<table class= "table table-hover">';
+        echo '<table id="search_results" class= "table table-hover">';
             echo '<thead class="results"><tr>';
                 echo '<th>  First   </th>';
                 echo '<th>  Last    </th>';
@@ -85,6 +100,8 @@ function filterTable($query) {
                 echo '<th>  City    </th>';
                 echo '<th>  Gender   </th>';
             echo '</tr></thead>';
+			echo '<tbody>';
+			
             if (mysqli_num_rows($search_result) >0)
             {
                 while($row = mysqli_fetch_assoc($search_result))
@@ -99,10 +116,10 @@ function filterTable($query) {
                     
                 }
             }
-            
+        echo '</tbody>';    
         echo '</table>';
         ?>
         </div>
-        </div>
+    </div>
     </body>
 </html>
