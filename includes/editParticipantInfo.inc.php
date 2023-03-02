@@ -178,7 +178,7 @@
                 h.familySize = '$familySize',
                 h.annualizedFamilyIncome = '$annualIncome'
 
-            WHERE p.userID = 1";
+            WHERE p.userID = '$userID'";
 
     if (mysqli_query($conn, $sql)) {
         echo "Participation information saved successfully.";
