@@ -24,7 +24,7 @@
         $mailZip  	      =$_POST['mailZip'];
         $mailCounty  	  =$_POST['mailCounty'];
         $phone            =$_POST['phone'];
-        $phoneType	  =$_POST['phoneType'];
+        $phoneType	      =$_POST['phoneType'];
         $alPhone          =$_POST['alPhone'];
         $email            =$_POST['email'];
         $bthday           =$_POST['bthday'];
