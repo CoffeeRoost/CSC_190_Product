@@ -4,6 +4,7 @@ session_start();
 
 if(isset($_POST['grant-characteristic-submit'])){
 
+
   //connection to database
   require 'dbh.inc.php';
 

@@ -50,6 +50,7 @@
   }
 ?>
 
+
 <div class="container-fluid">
     <form action="includes/char_grant.inc.php" method="post">
 
