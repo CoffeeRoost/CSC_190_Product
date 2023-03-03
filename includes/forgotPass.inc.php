@@ -5,7 +5,7 @@
 // Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 // checks that the user accessed the page correctly
 if(isset($_POST["passBoxSubmit"])){
@@ -20,14 +20,6 @@ if(isset($_POST["passBoxSubmit"])){
 
     //sets expires to current time + 1hr
     $expires = date("U") + 1800;
-
-    //create a new sql table passwordreset
-    //  CREATE TABLE passReset
-    //  passResetId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    //  passResetEmail TEXT NOT NULL,
-    //  passResetSelector TEXT NOT NULL,
-    //  passResetToken LONGTEXT NOT NULL,
-    //  passResetExpires TEXT NOT NULL
 
     require 'dbh.inc.php';
 
@@ -130,3 +122,4 @@ if(isset($_POST["passBoxSubmit"])){
     //kick back to login if accesssed incorrectly
     header("Location:../login.php");
 }
+?>
