@@ -16,7 +16,7 @@ if(isset($_POST["passBoxSubmit"])){
 
     //create a clickable url to be sent to the email   ~~NEEDS CHANGING~~
     //add website url in here ~www.californiamobilitycenter.org/.../resetPass.php
-    $url = "../resetPage.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "http://54.67.115.77/resetPage.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     //sets expires to current time + 1hr
     $expires = date("U") + 1800;
@@ -62,7 +62,7 @@ if(isset($_POST["passBoxSubmit"])){
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
     
-    $sender = 'emailchickennode@gmail.com';
+    $sender = 'tylerito@csus.edu';
     $senderName = 'CMC';
     $recipient = $userEmail;
 
