@@ -1762,17 +1762,8 @@ $result = $stmt->get_result();
                         </div>
 
                         <div class="bg-white my-3 border rounded-3">
-                              <label for="password" class="form-label fs-5 m-2">
-                                  Account Password
-                                  <span class="text-danger">*</span>
-                              </label>
-                              <br>
-                              <input type="password" name="password" id="password" class="m-2 input-underline" placeholder="Your answer">
-                          </div>
-
-                          <div class="bg-white my-3 border rounded-3">
                               <label for="confirmPassword" class="form-label fs-5 m-2">
-                                  Confirm Password
+                                  Change Password
                                   <span class="text-danger">*</span>
                               </label>
                               <br>
