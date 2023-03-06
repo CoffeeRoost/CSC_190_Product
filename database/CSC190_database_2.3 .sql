@@ -26,7 +26,14 @@ CREATE TABLE EMPLOYEE(
 employeeID INT(11) AUTO_INCREMENT NOT NULL,
 empfname  CHAR(20) NOT NULL,
 emplname  CHAR(20) NOT NULL,
-MI     CHAR(2),
+empMI     CHAR(20),
+empDOB	DATE NOT NULL,
+empStreet CHAR(255) NOT NULL,
+empCity CHAR(255) NOT NULL,
+empState CHAR(10) NOT NULL,
+empZipcode CHAR(11) NOT NULL,
+empPhone	CHAR(20) NOT NULL,
+empGender CHAR(50) NOT NULL,
 email CHAR(255) NOT NULL,
 employeeRole CHAR(255) NOT NULL,
 userPassword CHAR(255) NOT NULL,
@@ -255,5 +262,15 @@ passResetEmail TEXT NOT NULL,
 passResetSelector TEXT NOT NULL,
 passResetToken LONGTEXT NOT NULL,
 passResetExpires TEXT NOT NULL
+
+);
+CREATE TABLE FILES(
+fileID INT(11) AUTO_INCREMENT PRIMARY KEY,
+userID INT(11) NOT NULL,
+file_name VARCHAR(255) NOT NULL,
+file_path VARCHAR(255) NOT NULL,
+file_type VARCHAR(255) NOT NULL,
+uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (userID) REFERENCES participation(userID)
 
 );

@@ -3,8 +3,8 @@
     session_start();
     if (!isset($_SESSION['userID'])) {
         // Redirect user to login page if not logged in
-        header("Location: ../Login.php");
-        exit();
+       header("Location: ../Login.php");
+       exit();
     }
 
     // Include database connection
@@ -17,6 +17,8 @@
     $fname	          =$_POST['fname'];
     $mname		      =$_POST['mname'];
     $lname            =$_POST['lname'];
+    $password         =$_POST['password'];
+    $confirmPassword  =$_POST['confirmPassword'];
     $SSN          	  =$_POST['SSN'];
     $street           =$_POST['street'];
     $city             =$_POST['city'];
@@ -54,8 +56,43 @@
     $schoolStatus     =$_POST['schoolStatus'];
 
     /* survey 3 */
-    $currentMilitaryOrVet     =$_POST['military'];
-    $militarySpouse           =$_POST['militarySpouse'];
+    $currentMilitaryOrVet    =$_POST['military'];
+    $militarySpouse          =$_POST['militarySpouse'];
+    $employment              =$_POST['employment'];
+    $payRate                 =$_POST['payRate'];
+    $ui                      =$_POST['ui'];
+    $uiWeek                  =$_POST['uiWeek'];
+    $farmworker              =$_POST['farmworker'];
+    $jobTitle                =$_POST['jobTitle'];
+    $techExp                 =$_POST['techExp'];
+
+    /* survey 4 */
+    $foster                  =$_POST['foster'];
+    $adultEdu                =$_POST['adultEdu'];
+    $youthBuild              =$_POST['youthBuild'];
+    $youthGrantNum           =$_POST['youthGrantNum'];
+    $jobCorp                 =$_POST['jobCorp'];
+    $carlPerkins             =$_POST['carlPerkins'];
+    $tanf                    =$_POST['tanf'];
+    $ssi                     =$_POST['ssi'];
+    $generalAssist           =$_POST['generalAssist'];
+    $calFresh                =$_POST['calFresh'];
+    $refugeeAssist           =$_POST['refugeeAssist'];
+    $ssdi                    =$_POST['ssdi'];
+    $snapTraining            =$_POST['snapTraining'];
+    $pellGrant               =$_POST['pellGrant'];
+
+    /* survey 5 */
+    $workTicket              =$_POST['workTicket'];
+    $homeless                =$_POST['homeless'];
+    $exOffer                 =$_POST['exOffer'];
+    $displace                =$_POST['displace'];
+    $singleParent            =$_POST['singleParent'];
+    $culBarrier              =$_POST['culBarrier'];
+    $familySize              =$_POST['familySize'];
+    $annualIncome            =$_POST['annualIncome'];
+
+
 
     // Update the database with the new personal information  
     $sql = "UPDATE participation p
@@ -64,11 +101,15 @@
             INNER JOIN ethnicity eth ON p.userID = eth.userID
             INNER JOIN education edu ON p.userID = edu.userID
             INNER JOIN employment e ON p.userID = e.userID
+            INNER JOIN services s ON p.userID = s.userID
+            INNER JOIN hardship h ON p.userID = h.userID
             
             SET p.fname = '$fname',
                 p.lname = '$lname',
                 p.MI = '$mname',
                 p.email = '$email',
+                p.newUserPassword = '$password',
+                p.newUserPassword = '$confirmPassword',
                 p.programPartnerReference = '$partner',
                 p.last4SSN = '$SSN',
                 p.DOB = '$bthday',
@@ -104,7 +145,38 @@
                 edu.inSchool = '$schoolStatus',
 
                 e.currentMilitaryOrVet = '$currentMilitaryOrVet',
-                e.militarySpouse = '$militarySpouse'
+                e.militarySpouse = '$militarySpouse',
+                e.employmentStatus = '$employment',
+                e.payRate = '$payRate',
+                e.unemployemntInsurance = '$ui',
+                e.unemploymentWeeks = '$uiWeek',
+                e.farmworker12Months = '$farmworker',
+                e.desiredJobTitle = '$jobTitle',
+                e.techExperience ='$techExp',
+
+                s.fosterCare = '$foster',
+                s.adultEducationWIOATittleII = '$adultEdu',
+                s.youthBuild = '$youthBuild',
+                s.youthBuildGrant = '$youthGrantNum',
+                s.jobCorps = '$jobCorp',
+                s.vocationalEducationCarlPerkins = '$carlPerkins',
+                s.tanfRecipient = '$tanf',
+                s.ssiRecipient = '$ssi',
+                s.gaRecipient = '$generalAssist',
+                s.snapRecipientCalFresh = '$calFresh',
+                s.rcaRecipient = '$refugeeAssist',
+                s.ssdiRecipient = '$ssdi',
+                s.snapEmploymentAndTrainingProgram = '$snapTraining',
+                s.pellGrant = '$pellGrant',
+
+                h.ticketToWork = '$workTicket',
+                h.homelessStatus = '$homeless',
+                h.exOffender = '$exOffer',
+                h.displacedHomemaker = '$displace',
+                h.singleParent = '$singleParent',
+                h.culturalBarriers = '$culBarrier',
+                h.familySize = '$familySize',
+                h.annualizedFamilyIncome = '$annualIncome'
 
             WHERE p.userID = '$userID'";
 
