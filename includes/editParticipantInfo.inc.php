@@ -17,7 +17,6 @@
     $fname	          =$_POST['fname'];
     $mname		      =$_POST['mname'];
     $lname            =$_POST['lname'];
-    $password         =$_POST['password'];
     $confirmPassword  =$_POST['confirmPassword'];
     $SSN          	  =$_POST['SSN'];
     $street           =$_POST['street'];
@@ -108,7 +107,6 @@
                 p.lname = '$lname',
                 p.MI = '$mname',
                 p.email = '$email',
-                p.newUserPassword = '$password',
                 p.newUserPassword = '$confirmPassword',
                 p.programPartnerReference = '$partner',
                 p.last4SSN = '$SSN',
