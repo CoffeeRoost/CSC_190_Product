@@ -12,6 +12,11 @@ DROP TABLE IF EXISTS TASK;
 DROP TABLE IF EXISTS COACH;
 DROP TABLE IF EXISTS ADDRESS;
 DROP TABLE IF EXISTS LOGIN;
+DROP TABLE IF EXISTS FILES;
+DROP TABLE IF EXISTS participationReportActivity;
+DROP TABLE IF EXISTS grant_characteristics;
+DROP TABLE IF EXISTS grant_participation;
+DROP TABLE IF EXISTS grant_main;
 DROP TABLE IF EXISTS PARTICIPATION;
 DROP TABLE IF EXISTS ADMIN;
 DROP TABLE IF EXISTS EMPLOYEE;
@@ -34,6 +39,7 @@ empState CHAR(10) NOT NULL,
 empZipcode CHAR(11) NOT NULL,
 empPhone	CHAR(20) NOT NULL,
 empGender CHAR(50) NOT NULL,
+empRaces CHAR(50) NOT NULL,
 email CHAR(255) NOT NULL,
 employeeRole CHAR(255) NOT NULL,
 userPassword CHAR(255) NOT NULL,
@@ -132,12 +138,12 @@ FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
 
 CREATE TABLE ETHNICITY(
 userID INT(11) NOT NULL,
-hispanicHeritage CHAR(3) NOT NULL,
-africanAmercian/black CHAR(3) NOT NULL,
-americanIndian/alaskanNative CHAR(3) NOT NULL,
-asian CHAR(3) NOT NULL,
-hawaiian/other CHAR(3) NOT NULL,
-noAnswer CHAR(3) NOT NULL,
+hispanicHeritage CHAR(3),
+africanAmercian_black CHAR(3),
+americanIndian_alaskanNative CHAR(3),
+asian CHAR(3),
+hawaiian_other CHAR(3),
+noAnswer CHAR(3),
 primaryLanguage CHAR(20) NOT NULL,
 englishProficiency CHAR(3) NOT NULL,
 FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
