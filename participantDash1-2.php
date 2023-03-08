@@ -2,7 +2,7 @@
 session_start();
  // Start session and check if user is logged in
 if (!isset($_SESSION['userID'])) {
-    // Redirect user to login page if not logged in
+     //Redirect user to login page if not logged in
     header("Location:Login.php");
     exit();
 }
@@ -12,9 +12,8 @@ if (!isset($_SESSION['userID'])) {
  // Get the user ID from the session variable
 $userID = $_SESSION['userID'];
 
-
  //  Prepare the query
-$query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.last4SSN,part.programPartnerReference,
+$query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUserPassword,part.last4SSN,part.programPartnerReference,
                  part.primaryPhone,part.phoneNumType,part.altPhone,part.DOB,part.gender,
                  
                  a.street,a.city,a.state,a.zipcode,a.country,
@@ -35,8 +34,10 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.last4
                  s.fosterCare,s.adultEducationWIOATittleII,s.youthBuild,s.youthBuildGrant,
                  s.jobCorps,s.vocationalEducationCarlPerkins,s.tanfRecipient,s.ssiRecipient,
                  s.gaRecipient,s.snapRecipientCalFresh,s.rcaRecipient,s.ssdiRecipient,
-                 s.snapEmploymentAndTrainingProgram,
-                 s.pellGrant
+                 s.snapEmploymentAndTrainingProgram,s.pellGrant,
+
+                 h.ticketToWork,h.homelessStatus,h.exOffender,h.displacedHomemaker,h.singleParent,
+                 h.culturalBarriers,h.familySize,h.annualizedFamilyIncome
 
            FROM participation part
            JOIN address a
@@ -53,9 +54,10 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.last4
            ON part.userID=e.userID
            JOIN services s
            ON part.userID=s.userID
+           JOIN hardship h
+           ON part.userID=h.userID
 
            WHERE part.userID = ?";
-
 
 // Create a prepared statement
 $stmt = $conn->prepare($query);
@@ -72,7 +74,7 @@ $result = $stmt->get_result();
 
 //  Display some personal information from the database tables using php 
                       // Fetch the data
-                          while($row=$result->fetch_assoc()){
+                          while($row=mysqli_fetch_assoc($select_user_information_query)){
                             //data from participation survey
                             $userID=$row['userID'];
                             $last4SSN= $row['last4SSN'];
@@ -152,6 +154,17 @@ $result = $stmt->get_result();
                             $snapEmploymentAndTrainingProgram= $row['snapEmploymentAndTrainingProgram'];
                             $pellGrant= $row['pellGrant'];
 
+                            //data from 'Hardship' table
+                            $ticketToWork  =$row['ticketToWork'];
+                            $homelessStatus =$row['homelessStatus'];
+                            $exOffender =$row['exOffender'];
+                            $displacedHomemaker =$row['displacedHomemaker'];
+                            $singleParent =$row['singleParent'];
+                            $culturalBarriers =$row['culturalBarriers'];
+                            $familySize =$row['familySize'];
+                            $annualizedFamilyIncome =$row['annualizedFamilyIncome'];
+                            $newUserPassword =$row['newUserPassword'];
+
 ?>
 
 <!DOCTYPE html>
@@ -214,7 +227,7 @@ $result = $stmt->get_result();
                 </div>
             </div>
 
-            <!-- Edit Tab -->c
+            <!-- Edit Tab -->
         <div id="editTab" style="display:none;">
             <div class="d-flex flex-column align-items-center mx-5">
             <div class="d-flex justify-center">
@@ -987,7 +1000,780 @@ $result = $stmt->get_result();
                             </div>
                         </div>
 
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="employment" class="form-label fs-5 m-2">
+                            Employment Status
+                        </label>
+                        <span class="text-danger">*</span>
+                        <br>
+                        <div class="form-check m-2">
+                            <?php if ($employmentStatus=='Employed') { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="yemployment" value="Employed" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="yemployment" value="Employed">
+                            <?php } ?>
+                                <label class="form-check-label" for="yemployment">
+                                Employed
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($employmentStatus=='Not Employed') { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="nonEmployment" value="Not Employed" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="nonEmployment" value="Not Employed">
+                            <?php } ?>
+                            <label class="form-check-label" for="nonEmployment">
+                              Not Employed
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($employmentStatus=='Employed but received notice of termination or separation from military service') { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="termination" value="Employed but received notice of termination or separation from military service" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="employment" id="termination" value="Employed but received notice of termination or separation from military service">
+                            <?php } ?>
+                                <label class="form-check-label" for="termination">
+                                Employed but received notice of termination or separation from military service
+                            </label>
+                        </div>
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="payRate" class="form-label fs-5 m-2">
+                            If you are employed, what is your current rate of pay?
+                        </label>
+                        <br>
+                        <input type="number" name="payRate" id="payRate" class="m-2 input-underline" placeholder="Your answer" value="<?php echo $payRate?>">
+                        </div>
+
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="ui" class="form-label fs-5 m-2">
+                            Are you receiving Unemployment Insurance?
+                        </label>
+                        <span class="text-danger">*</span>
+                        <br>
+                        <div class="form-check m-2">
+                            <?php if ($unemployemntInsurance=='Claimant') { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="claimant" value="Claimant" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="claimant" value="Claimant">
+                            <?php } ?>
+                                <label class="form-check-label" for="claimant">
+                                Claimant
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($unemployemntInsurance=='Exhaustee') { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="exhaustee" value="Exhaustee" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="exhaustee" value="Exhaustee">
+                            <?php } ?>
+                            <label class="form-check-label" for="exhaustee">
+                                Exhaustee
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($unemployemntInsurance=='Neither') { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="neither" value="Neither" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="ui" id="neither" value="Neither">
+                            <?php } ?>
+                                <label class="form-check-label" for="neither">
+                                Neither
+                            </label>
+                        </div>
+                        </div>
+
+                    <div class="bg-white my-3 border rounded-3">
+                        <label for="uiWeek" class="form-label fs-5 m-2">
+                            If you are unemployed, how many weeks have you been unemployed?
+                        </label>
+                        <br>
+                        <input type="number" name="uiWeek" id="uiWeek" class="m-2 input-underline" placeholder="Your answer" value="<?php echo $unemploymentWeeks?>">
+                    </div>
+
+
+                    <div class="bg-white my-3 border rounded-3">
+                            <label for="farmworker" class="form-label fs-5 m-2">
+                                Have you worked as farmworker in the last 12 months?
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($farmworker12Months=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="farmworker" id="yfarmworker" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="farmworker" id="yfarmworker" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yfarmworker">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($farmworker12Months=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="farmworker" id="nonFarmworker" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="farmworker" id="nonFarmworker" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonFarmworker">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="jobTitle" class="form-label fs-5 m-2">
+                            What is your desired job title?
+                        </label>
+                        <span class="text-danger">*</span>
+                        <br>
+                        <input type="text" name="jobTitle" id="jobTitle" class="m-2 input-underline" placeholder="Your answer">
+                    </div>
+
+                    <div class="d-flex justify-content-between m-1">
+                            <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey1" class="btn btn-primary">Back</button>
+                            <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey3" class="btn btn-primary">Next</button>
+                        </div>
+                    </div>
+
+                    <!--*************************************************************************************-->
+
+                    <div id="survey3" style="transition: 1ms" class="collapse">
+                        <p class="text-center fs-2">Career Pathways Program</p>
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="foster" class="form-label fs-5 m-2">
+                                Have you been supported through the State's Foster Care System?
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($fosterCare=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="foster" id="yfoster" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="foster" id="yfoster" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yfoster">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($fosterCare=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="foster" id="nonFoster" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="foster" id="nonFoster" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonFoster">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="adultEdu" class="form-label fs-5 m-2">
+                                Receiving services from Adult Education (WIOA Title II)
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($adultEducationWIOATittleII=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="adultEdu" id="yadultEdu" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="adultEdu" id="yadultEdu" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yadultEdu">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($adultEducationWIOATittleII=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="adultEdu" id="nonAdultEdu" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="adultEdu" id="nonAdultEdu" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonAdultEdu">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="youthBuild" class="form-label fs-5 m-2">
+                                Receiving services from Youth Build
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($youthBuild=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="youthBuild" id="yyouthBuild" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="youthBuild" id="yyouthBuild" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yyouthBuild">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($youthBuild=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="youthBuild" id="nonYouthBuild" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="youthBuild" id="nonYouthBuild" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonYouthBuild">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        
+
+                    <div class="bg-white my-3 border rounded-3">
+                        <label for="youthGrantNum" class="form-label fs-5 m-2">
+                            Youth Build Grant Number
+                        </label>
+                        <br>
+                        <input type="text" name="youthGrantNum" id="youthGrantNum" class="m-2 input-underline" placeholder="AA-99999-99-99-A-99" maxlength="19" value="<?php echo $youthBuildGrant?>">
+                    </div>
+
+
+                    <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="jobCorp" class="form-label fs-5 m-2">
+                                Receiving services from Job Corps
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($jobCorps=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="jobCorp" id="yjobCorp" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="jobCorp" id="yjobCorp" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yjobCorp">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($jobCorps=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="jobCorp" id="nonJobCorp" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="jobCorp" id="nonJobCorp" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonJobCorp">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="carlPerkins" class="form-label fs-5 m-2">
+                                Receiving services from Vocational Education (Carl Perkins)
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($vocationalEducationCarlPerkins=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="carlPerkins" id="ycarlPerkins" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="carlPerkins" id="ycarlPerkins" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ycarlPerkins">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($vocationalEducationCarlPerkins=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="carlPerkins" id="nonCarl" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="carlPerkins" id="nonCarl" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonCarl">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="tanf" class="form-label fs-5 m-2">
+                                Temporary Assistance for Needy Families (TANF) recipient
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($tanfRecipient=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="tanf" id="ytanf" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="tanf" id="ytanf" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ytanf">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($tanfRecipient=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="tanf" id="nonTANF" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="tanf" id="nonTANF" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonTANF">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="ssi" class="form-label fs-5 m-2">
+                                Supplemental Security Income (SSI) recipient
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($ssiRecipient=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="ssi" id="yssi" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="ssi" id="yssi" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yssi">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($ssiRecipient=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="ssi" id="nonSSI" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="ssi" id="nonSSI" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonSSI">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="generalAssist" class="form-label fs-5 m-2">
+                                General Assistance (GA) recipient
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($gaRecipient=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="generalAssist" id="ygeneralAssist" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="generalAssist" id="ygeneralAssist" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ygeneralAssist">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($gaRecipient=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="generalAssist" id="nonGA" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="generalAssist" id="nonGA" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonGA">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="calFresh" class="form-label fs-5 m-2">
+                                Supplemental Nutrition Assistance Program (SNAP) recipient (Cal Fresh)
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($snapRecipientCalFresh=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="calFresh" id="ycalFresh" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="calFresh" id="ycalFresh" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ycalFresh">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($snapRecipientCalFresh=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="calFresh" id="nonCalFresh" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="calFresh" id="nonCalFresh" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonCalFresh">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="refugeeAssist" class="form-label fs-5 m-2">
+                                Refugee Cash Assistance (RCA) recipient
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($rcaRecipient=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="refugeeAssist" id="yrefugeeAssist" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="refugeeAssist" id="yrefugeeAssist" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yrefugeeAssist">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($rcaRecipient=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="refugeeAssist" id="nonRCA" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="refugeeAssist" id="nonRCA" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonRCA">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="ssdi" class="form-label fs-5 m-2">
+                                Social Security Disability Insurance (SSDI) recipient
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($ssdiRecipient=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="ssdi" id="yssdi" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="ssdi" id="yssdi" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yssdi">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($ssdiRecipient=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="ssdi" id="nonSSDI" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="ssdi" id="nonSSDI" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonSSDI">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="snapTraining" class="form-label fs-5 m-2">
+                                Receiving Services under SNAP Employment and Training Program
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($snapEmploymentAndTrainingProgram=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="snapTraining" id="ysnapTraining" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="snapTraining" id="ysnapTraining" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ysnapTraining">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($snapEmploymentAndTrainingProgram=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="snapTraining" id="nonSnapTraining" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="snapTraining" id="nonSnapTraining" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonSnapTraining">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="pellGrant" class="form-label fs-5 m-2">
+                                Receiving, or has been notified will receive, Pell Grant
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($pellGrant=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="pellGrant" id="ypellGrant" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="pellGrant" id="ypellGrant" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ypellGrant">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($pellGrant=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="pellGrant" id="nonPellGrant" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="pellGrant" id="nonPellGrant" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonPellGrant">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="d-flex justify-content-between m-1">
+                            <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey1" class="btn btn-primary">Back</button>
+                            <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey3" class="btn btn-primary">Next</button>
+                        </div>
+                    </div>
+        
+                    <!--*************************************************************************************-->
+
+                    <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="workTicket" class="form-label fs-5 m-2">
+                                Ticket-to-Work Holder issued by Social Security Administration
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($ticketToWork=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="workTicket" id="yworkTicket" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="workTicket" id="yworkTicket" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yworkTicket">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($ticketToWork=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="workTicket" id="nonwWorkTicket" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="workTicket" id="nonwWorkTicket" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonwWorkTicket">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="homeless" class="form-label fs-5 m-2"> 
+                                Homeless
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($homelessStatus=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="homeless" id="yhomeless" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="homeless" id="yhomeless" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yhomeless">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($homelessStatus=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="homeless" id="unhomeless" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="homeless" id="unhomeless" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="unhomeless">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="exOffer" class="form-label fs-5 m-2"> 
+                                Ex-Offender
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($exOffender=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="exOffer" id="yExOffer" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="exOffer" id="yExOffer" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yExOffer">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($exOffender=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="exOffer" id="nonExOffer" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="exOffer" id="nonExOffer" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonExOffer">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="displace" class="form-label fs-5 m-2"> 
+                                Displaced Homemaker
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($displacedHomemaker=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="displace" id="ydisplace" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="displace" id="ydisplace" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ydisplace">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($displacedHomemaker=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="displace" id="nonDisplace" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="displace" id="nonDisplace" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonDisplace">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="singleParent" class="form-label fs-5 m-2"> 
+                                Single Parent (including single pregnant women)
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($singleParent=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="singleParent" id="ysingleParent" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="singleParent" id="ysingleParent" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="ysingleParent">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($singleParent=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="singleParent" id="nonSingle" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="singleParent" id="nonSingle" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="nonSingle">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="survey3" style="transition: 1ms" class="collapse">
+                        <div class="bg-white my-3 border rounded-3">
+                            <label for="culBarrier" class="form-label fs-5 m-2"> 
+                                Cultural Barriers
+                            </label>
+                            <span class="text-danger">*</span>
+                            <br>
+                            <div class="form-check m-2">
+                                <?php if ($culturalBarriers=='Yes') { ?>
+                                    <input class="form-check-input" type="radio" name="culBarrier" id="yculBarrier" value="Yes" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="culBarrier" id="yculBarrier" value="Yes">
+                                <?php } ?>
+                                <label class="form-check-label" for="yculBarrier">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check m-2">
+                                <?php if ($culturalBarriers=='No') { ?>
+                                    <input class="form-check-input" type="radio" name="culBarrier" id="noBarrier" value="No" checked="checked">
+                                <?php } else { ?>
+                                    <input class="form-check-input" type="radio" name="culBarrier" id="noBarrier" value="No">
+                                <?php } ?>
+                                <label class="form-check-label" for="noBarrier">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="familySize" class="form-label fs-5 m-2">
+                            Family Size
+                        </label>
+                        <br>
+                        <input type="number" name="familySize" id="familySize" class="m-2 input-underline" placeholder="Your answer" value="<?php echo $familySize?>">
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="annualIncome" class="form-label fs-5 m-2">
+                            Annualized Family Income (last 6 months X2):
+                        </label>
+                        <br>
+                        <input type="number" name="annualIncome" id="annualIncome" class="m-2 input-underline" placeholder="Your answer" value="<?php echo $annualizedFamilyIncome?>">
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                        <label for="techExp" class="form-label fs-5 m-2">
+                            Do you have previous technical experience (hobbies, employment, volunteer, personal projects, home improvement, working on vehicle, taking things apart)? Examples of technical experience include knowing how to read blueprints, using hand tools, using power tools, organizing (logistics), and safety
+                        </label>
+                        <span class="text-danger">*</span>
+                        <br>
+                        <div class="form-check m-2">
+                            <?php if ($techExperience=='Yes') { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="ytechExp" value="Yes" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="ytechExp" value="Yes">
+                            <?php } ?>
+                                <label class="form-check-label" for="ytechExp">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($techExperience=='No') { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="nonTechExp" value="No" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="nonTechExp" value="No">
+                            <?php } ?>
+                            <label class="form-check-label" for="nonTechExp">
+                              No
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <?php if ($techExperience=='Not Sure') { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="notSureTechExp" value="Not Sure" checked="checked">
+                            <?php } else { ?>
+                                <input class="form-check-input" type="radio" name="techExp" id="notSureTechExp" value="Not Sure">
+                            <?php } ?>
+                            <label class="form-check-label" for="notSureTechExp">
+                                Not Sure
+                            </label>
+                        </div>
+                        </div>
+
+                        <div class="bg-white my-3 border rounded-3">
+                              <label for="confirmPassword" class="form-label fs-5 m-2">
+                                  Change Password
+                                  <span class="text-danger">*</span>
+                              </label>
+                              <br>
+                              <input type="password" name="confirmPassword" id="confirmPassword" class="m-2 input-underline" placeholder="Your answer" value="<?php echo$newUserPassword?>">
+                          </div>
+
+                          <div class="d-flex justify-content-between m-1">
                             <button type="button" data-bs-toggle="collapse" data-bs-target="#survey3,#survey2" class="btn btn-primary">Back</button>
                             <button name="signup-submit" type = "submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -997,7 +1783,7 @@ $result = $stmt->get_result();
             </div>
             </div>
         </div>
-            
+        
         <!-- Personal Information Tab -->
         <div id="personalInfoTab">
             <div class="d-flex flex-column align-items-center mx-5">
@@ -1118,16 +1904,6 @@ $result = $stmt->get_result();
                                     <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
                                 </div>
                                 </div>
-                                <!-- Display the error message -->
-                                <?php if (isset($_SESSION['error'])): ?>
-                                    <div class="alert alert-danger"><?php echo $_SESSION['error']; ?></div>
-                                    <?php unset($_SESSION['error']); ?>
-                                <?php endif; ?>
-
-                                <?php if (isset($_SESSION['success'])): ?>
-                                    <div class="alert alert-success"><?php echo $_SESSION['success']; ?></div>
-                                    <?php unset($_SESSION['success']); ?>
-                                <?php endif; ?>
 
                             </form>
                         </div>

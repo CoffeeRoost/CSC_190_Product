@@ -1,5 +1,6 @@
 <?php
     session_start();
+if (isset($_SESSION['employeeID'])){
     require_once ('includes/dbh.inc.php');
     
     /*echo <<<EOT EOT; use to echo multiple line*/
@@ -32,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white fs-4 mx-4" href="./login.php">Logout</a>
+                            <a class="nav-link text-white fs-4 mx-4" href="./loginAd.php">Logout</a>
                         </li>
     
                     </ul>
@@ -59,8 +60,8 @@
                             </a>
                           </li>
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
-                                Report Chart
+                            <a href="./grantReport.php" class="nav-link text-white">
+                                Grant Report
                             </a>
                           </li>
                       </ul>
@@ -166,7 +167,7 @@ echo <<<EOT
                                 <th scope="col">Role</th>
                             </thead> 
 EOT;
-                            $employeeQuerry = "SELECT employeeID,empfname, emplname, MI, employeeRole FROM EMPLOYEE ;" ;
+                            $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
                             if($employeeResult > 0){
@@ -175,7 +176,7 @@ EOT;
                             echo "<tbody>";
                                 echo "<tr scope= \" row \">";
                                 echo "<th>".$row['employeeID']."</th>";
-                                echo "<th>".$row['empfname']. " " . $row['MI'] . " " . $row['emplname']."</th>";
+                                echo "<th>".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</th>";
                                 echo "<th>".$row['employeeRole']."</th>\n";
                                 echo "</tr>\n";
                                 echo " </tbody>";
@@ -186,5 +187,13 @@ EOT;
 echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";    
                 /********************************END EMPLOYEE BLOCK*********************************/
 
-mysqli_close($conn);             
+mysqli_close($conn);
+}             
+else {
+     //if error, force a logout
+     session_unset();
+     session_destroy();
+     header ("Location: ./loginAd.php?error=LoginRequirement");
+     exit();
+}
 ?>

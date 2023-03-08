@@ -8,7 +8,7 @@
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled JavaScript -->
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="CSS/styles.css">
     <title>California Mobility Center</title>
@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-4" href="./Login.php">Logout</a>
+                        <a class="nav-link text-white fs-4 mx-4" href="./LoginAd.php">Logout</a>
                     </li>
 
                 </ul>

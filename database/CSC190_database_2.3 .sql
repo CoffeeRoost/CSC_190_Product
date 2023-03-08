@@ -12,6 +12,11 @@ DROP TABLE IF EXISTS TASK;
 DROP TABLE IF EXISTS COACH;
 DROP TABLE IF EXISTS ADDRESS;
 DROP TABLE IF EXISTS LOGIN;
+DROP TABLE IF EXISTS FILES;
+DROP TABLE IF EXISTS participationReportActivity;
+DROP TABLE IF EXISTS grant_characteristics;
+DROP TABLE IF EXISTS grant_participation;
+DROP TABLE IF EXISTS grant_main;
 DROP TABLE IF EXISTS PARTICIPATION;
 DROP TABLE IF EXISTS ADMIN;
 DROP TABLE IF EXISTS EMPLOYEE;
@@ -26,7 +31,15 @@ CREATE TABLE EMPLOYEE(
 employeeID INT(11) AUTO_INCREMENT NOT NULL,
 empfname  CHAR(20) NOT NULL,
 emplname  CHAR(20) NOT NULL,
-MI     CHAR(2),
+empMI     CHAR(20),
+empDOB	DATE NOT NULL,
+empStreet CHAR(255) NOT NULL,
+empCity CHAR(255) NOT NULL,
+empState CHAR(10) NOT NULL,
+empZipcode CHAR(11) NOT NULL,
+empPhone	CHAR(20) NOT NULL,
+empGender CHAR(50) NOT NULL,
+empRaces CHAR(50) NOT NULL,
 email CHAR(255) NOT NULL,
 employeeRole CHAR(255) NOT NULL,
 userPassword CHAR(255) NOT NULL,
@@ -53,7 +66,7 @@ last4SSN INT(5),
 DOB    DATE NOT NULL,
 gender CHAR(50) NOT NULL,
 primaryPhone CHAR(20),
-phoneNumType CHAR(10),
+phoneNumType CHAR(15),
 altPhone CHAR(20),
 status INT(1) DEFAULT 0,
 activation_code VARCHAR(255) NOT NULL,
@@ -125,8 +138,12 @@ FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
 
 CREATE TABLE ETHNICITY(
 userID INT(11) NOT NULL,
-hispanicHeritage CHAR(3) NOT NULL,
-race CHAR(50) NOT NULL,
+hispanicHeritage CHAR(3),
+africanAmercian_black CHAR(3),
+americanIndian_alaskanNative CHAR(3),
+asian CHAR(3),
+hawaiian_other CHAR(3),
+noAnswer CHAR(3),
 primaryLanguage CHAR(20) NOT NULL,
 englishProficiency CHAR(3) NOT NULL,
 FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
@@ -141,7 +158,7 @@ FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
 
 CREATE TABLE EDUCATION(
 userID INT(11) NOT NULL,
-highSchoolStatus CHAR(3) NOT NULL,
+highSchoolStatus CHAR(4) NOT NULL,
 highSchooolDiplomaOrEquil CHAR(3) NOT NULL,
 highestGradeComplete CHAR(100) NOT NULL,
 inSchool Char(3) NOT NULL,
@@ -188,6 +205,8 @@ ticketToWork CHAR(3) NOT NULL,
 homelessStatus CHAR(3) NOT NULL,
 exOffender CHAR(3) NOT NULL,
 displacedHomemaker CHAR(3) NOT NULL,
+IsDisability CHAR(3) NOT NULL,
+disabilityDescription CHAR(100),
 singleParent CHAR(3) NOT NULL,
 culturalBarriers CHAR(3) NOT NULL,
 familySize INT(11) NOT NULL,
