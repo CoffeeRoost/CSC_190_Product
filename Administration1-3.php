@@ -167,7 +167,7 @@ echo <<<EOT
                                 <th scope="col">Role</th>
                             </thead> 
 EOT;
-                            $employeeQuerry = "SELECT employeeID,empfname, emplname, MI, employeeRole FROM EMPLOYEE ;" ;
+                            $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
                             if($employeeResult > 0){
@@ -176,7 +176,7 @@ EOT;
                             echo "<tbody>";
                                 echo "<tr scope= \" row \">";
                                 echo "<th>".$row['employeeID']."</th>";
-                                echo "<th>".$row['empfname']. " " . $row['MI'] . " " . $row['emplname']."</th>";
+                                echo "<th>".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</th>";
                                 echo "<th>".$row['employeeRole']."</th>\n";
                                 echo "</tr>\n";
                                 echo " </tbody>";
