@@ -170,21 +170,24 @@ $result = $stmt->get_result();
     <title>California Mobility Center</title>
 </head>
 <body>
-    <section id = "title">
-        <nav class = "navbar navbar-expand-lg bg-Blue">
-            <a href="index.php" class = "navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
+    <section id="title">
+        <nav class="navbar navbar-expand-lg bg-Blue">
+            <a href="index.php" class="navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-4" href="./login.php">Logout</a>
+                        <form action="includes/logout.inc.php" method="post">
+                            <button type="submit" class="nav-link text-white fs-4 mx-4" name="logout">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>
         </nav>
-</section>
+    </section>
+
 	<div class="d-flex">
             <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
                <div>
