@@ -335,19 +335,33 @@
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="race" class="form-label fs-5 m-2">
+                        <label class="form-label fs-5 m-2">
                             Race (Ethnicity) check all that apply
-                            <span class="text-danger">*</span>
                         </label><br>
-                        <select class="form-select-SM m-2 border rounded-2" name="race" id="race">
-                            <option value="" disabled selected hidden>Choose</option>
-                            <option value="black">African American/Black</option>
-                            <option value="native">American Indian/Alaskan Native</option>
-                            <option value="asian">Asian</option>
-                            <option value="islander">Hawaiian/Other Pacific Islander</option>
-                            <option value="white">White</option>
-                            <option value="notAnswer">I do not wish to answer</option>
-                        </select>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="africanAmercian_black" name="africanAmercian_black" value="Yes">
+                            <label for="africanAmercian_black">African American/Black</label><br>
+                        </div>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="americanIndian_alaskanNative" name="americanIndian_alaskanNative" value="Yes">
+                            <label for="americanIndian_alaskanNative">American Indian/Alaskan Native</label><br>
+                        </div>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="asian" name="asian" value="Yes">
+                            <label for="asian">Asian</label><br>
+                        </div>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="hawaiian_other" name="hawaiian_other" value="Yes">
+                            <label for="hawaiian_other">Hawaiian/Other Pacific Islander</label><br>
+                        </div>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="white" name="white" value="Yes">
+                            <label for="white">White</label><br>
+                        </div>
+                        <div class="form-check m-2">
+                            <input type="checkbox" id="noAnswer" name="noAnswer" value="Yes">
+                            <label for="noAnswer">I do not wish to answer</label><br>
+                        </div>
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
