@@ -10,9 +10,10 @@ if(isset($_POST['grant-initial-submit'])){
   //Grab relevant Session variables
   $email = $_SESSION['email'];
   $id = $_SESSION["employeeID"];
+  $userID = $_POST['userID'];
 
   //make sure session varialbes exist
-  if(isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+  if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
@@ -57,10 +58,11 @@ if(isset($_POST['grant-initial-submit'])){
                           exit();
                       }
                       else{
-                          mysqli_stmt_bind_param($stmt,"ii",$_POST['shared_grant_ID'],$_SESSION['userID']);
+                          mysqli_stmt_bind_param($stmt,"ii",$_POST['shared_grant_ID'],$userID);
                           mysqli_stmt_execute($stmt);
 
                           $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
+                          $_SESSION['userID'] = $userID;
                           header("Location: ../grantReportChar.php");
                           exit();
                       }
@@ -172,11 +174,12 @@ if(isset($_POST['grant-initial-submit'])){
                         exit();
                     }
                     else{
-                        mysqli_stmt_bind_param($stmt,"ii",$shared,$_SESSION['userID']);
+                        mysqli_stmt_bind_param($stmt,"ii",$shared,$userID);
                         mysqli_stmt_execute($stmt);
 
                         //Once the generated shared_grant_ID is found, we store it as a Session variable and go to next frontend page
                         $_SESSION['shared_grant_ID'] = $row['shared_grant_ID'];
+                        $_SESSION['userID'] = $userID;
                         //TODO: create another frontend page
                         header ("Location: ../grantReportChar.php");
                         exit();
