@@ -33,6 +33,11 @@
         $phone            =$_POST['phone'];
         $phoneType	      =$_POST['phoneType'];
         $alPhone          =$_POST['alPhone'];
+
+        if(empty($alPhone)){
+            $alPhone = NULL;
+        }
+
         $email            =$_POST['email'];
         $bthday           =$_POST['bthday'];
         $gender           =$_POST['gender'];
