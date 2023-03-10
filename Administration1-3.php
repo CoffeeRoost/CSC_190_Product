@@ -1,11 +1,17 @@
 <?php
     session_start();
-if (isset($_SESSION['adminLogin'])){
-    require_once ('includes/dbh.inc.php');
+    if (!isset($_SESSION['adminLogin'])){
+         //if error, force a logout
+        session_unset();
+        session_destroy();
+        header ("Location: ./LoginAd.php");
+        exit();
+    }
+
+    require 'includes/dbh.inc.php';
     
-    /*echo <<<EOT EOT; use to echo multiple line*/
-    
-    echo <<<EOT
+?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -87,9 +93,8 @@ if (isset($_SESSION['adminLogin'])){
                         <h3 class="fw-bold text-center text-Blue my-1">New Client</h3>
                     </div>
                     <div class="box-client-list text-center overflow-scroll">
-   EOT; 
    
-   
+<?php
                     /* Display information of new client. New Clients have not been coach*/
                        $newClient = "SELECT P.userID, P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
                        Addr.street, Addr.city, Addr.state, Addr.zipcode
@@ -121,10 +126,9 @@ if (isset($_SESSION['adminLogin'])){
                    echo "</div>";
                 echo"</div>";
                 /********************************END NEW CLIENT BLOCK *********************************/
+?>
 
-
-                         /* Display information of clients. Clients have been coached*/
-echo <<< EOT
+ 
                 <div class="d-flex flex-column my-5 me-5 border border-2 border-top-0 border-dark"  style="width:100%; background-color: #E4F5F8;">
                     <div id="client-table" class="collapse show" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
@@ -137,7 +141,7 @@ echo <<< EOT
                                 <th scope="col">Coach Name</th>
                             </thead>
                             <tbody>
-EOT;
+<?php
                         $clientQuerry = "SELECT P.userID, P.fname, P.lname, E.empfname, E.emplname
                         FROM PARTICIPATION AS P JOIN COACH AS co ON P.userID = co.userID JOIN EMPLOYEE AS E ON co.employeeID = E.employeeID;" ;
                         $clientList = mysqli_query($conn, $clientQuerry);
@@ -152,9 +156,9 @@ EOT;
 echo "</tbody></table></div>" ;  
                 /********************************END CLIENT BLOCK*********************************/
 
+?>
+                       
 
-                         /* Display information of employee. Clients have been coached*/
-echo <<<EOT
 
                     <div id="employee-table" class="collapse" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
@@ -166,7 +170,8 @@ echo <<<EOT
                                 <th scope="col">Full Name</th>
                                 <th scope="col">Role</th>
                             </thead> 
-EOT;
+
+<?php                           
                             $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
@@ -187,13 +192,5 @@ EOT;
 echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";    
                 /********************************END EMPLOYEE BLOCK*********************************/
 
-mysqli_close($conn);
-}             
-else {
-     //if error, force a logout
-     session_unset();
-     session_destroy();
-     header ("Location: ./loginAd.php?error=LoginRequirement");
-     exit();
-}
+mysqli_close($conn);           
 ?>
