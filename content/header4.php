@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-4" href="./LoginAd.php">Logout</a>
+                        <a class="nav-link text-white fs-4 mx-4" href="./includes/logout.inc.php">Logout</a>
                     </li>
 
                 </ul>
