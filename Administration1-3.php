@@ -1,6 +1,6 @@
 <?php
     session_start();
-if (isset($_SESSION['employeeID'])){
+if (isset($_SESSION['adminLogin'])){
     require_once ('includes/dbh.inc.php');
     
     /*echo <<<EOT EOT; use to echo multiple line*/
@@ -33,7 +33,7 @@ if (isset($_SESSION['employeeID'])){
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-white fs-4 mx-4" href="./loginAd.php">Logout</a>
+                            <a class="nav-link text-white fs-4 mx-4" href="./includes/logout.inc.php">Logout</a>
                         </li>
     
                     </ul>
@@ -77,7 +77,7 @@ if (isset($_SESSION['employeeID'])){
                         <a href="#" class="btn btn-action btn-lg fs-6">Search</a>
                         <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee</a>
                         <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#client-table,#employee-table">Client</a>
-                        <a href="#" class="btn btn-action btn-lg fs-6">Schedule</a>
+                        <a href="addingEmployee.php" class="btn btn-action btn-lg fs-6">Add Employee</a>
                     </div>
             </div>
     
