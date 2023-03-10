@@ -339,8 +339,8 @@
                             Race (Ethnicity) check all that apply
                         </label><br>
                         <div class="form-check m-2">
-                            <input type="checkbox" id="africanAmercian_black" name="africanAmercian_black" value="Yes">
-                            <label for="africanAmercian_black">African American/Black</label><br>
+                            <input type="checkbox" id="africanAmerican_black" name="africanAmerican_black" value="Yes">
+                            <label for="africanAmerican_black">African American/Black</label><br>
                         </div>
                         <div class="form-check m-2">
                             <input type="checkbox" id="americanIndian_alaskanNative" name="americanIndian_alaskanNative" value="Yes">
