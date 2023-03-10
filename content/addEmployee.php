@@ -1,5 +1,14 @@
+<?php
+  if(!isset($_SESSION['adminLogin'])){
+    //if error, force a logout
+    session_unset();
+    session_destroy();
+    header ("Location: ./LoginAd.php");
+    exit();
+  }
+?>
 <div class="container-fluid">
-  <form action="" method="post">
+  <form action="./includes/addEmployee.inc.php" method="post">
     <h5 class="d-flex justify-content-center text-info mb-5">EMPLOYEE INFORMATION</h5>
 
     <h6 class="mt-5">First Name <span class="text-danger">*</span></h6>
