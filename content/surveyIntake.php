@@ -1,7 +1,7 @@
 <body>
     <div class="d-flex justify-content-center my-5">
         <div class="boxSurvey my-1">
-            <form action="includes/newAccount.inc.php" method="post">
+            <form action="/CSC_190_Product/includes/newAccount.inc.php" method="post">
 		           <div id="survey1" style="transition: 1ms" class="collapse show">
                   <p class="text-center fs-2">Career Pathways Program</p>
                   <div class="bg-white my-3 border rounded-3">
