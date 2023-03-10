@@ -1,7 +1,7 @@
 <body>
     <div class="d-flex justify-content-center my-5">
         <div class="boxSurvey my-1">
-            <form action="/CSC_190_Product/includes/newAccount.inc.php" method="post">
+            <form action="includes/newAccount.inc.php" method="post">
 		           <div id="survey1" style="transition: 1ms" class="collapse show">
                   <p class="text-center fs-2">Career Pathways Program</p>
                   <div class="bg-white my-3 border rounded-3">
@@ -339,8 +339,8 @@
                             Race (Ethnicity) check all that apply
                         </label><br>
                         <div class="form-check m-2">
-                            <input type="checkbox" id="africanAmercian_black" name="africanAmercian_black" value="Yes">
-                            <label for="africanAmercian_black">African American/Black</label><br>
+                            <input type="checkbox" id="africanAmerican_black" name="africanAmerican_black" value="Yes">
+                            <label for="africanAmerican_black">African American/Black</label><br>
                         </div>
                         <div class="form-check m-2">
                             <input type="checkbox" id="americanIndian_alaskanNative" name="americanIndian_alaskanNative" value="Yes">
