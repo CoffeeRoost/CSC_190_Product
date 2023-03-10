@@ -83,12 +83,12 @@ street CHAR(255),
 city CHAR(255),
 state CHAR(255),
 zipcode INT (11),
-country CHAR (255),
+county CHAR (255),
 mailingStreet CHAR(255),
 mailingCity CHAR(255),
 mailingState CHAR(255),
 mailingZipcode INT (11),
-mailingCountry CHAR (255),
+mailingCounty CHAR (255),
 FOREIGN KEY (userID) REFERENCES PARTICIPATION (userID) ON DELETE CASCADE
 );
 
