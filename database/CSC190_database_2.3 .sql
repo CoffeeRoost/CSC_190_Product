@@ -139,11 +139,12 @@ FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
 CREATE TABLE ETHNICITY(
 userID INT(11) NOT NULL,
 hispanicHeritage CHAR(3),
-africanAmercian_black CHAR(3),
-americanIndian_alaskanNative CHAR(3),
-asian CHAR(3),
-hawaiian_other CHAR(3),
-noAnswer CHAR(3),
+africanAmercian_black CHAR(3) DEFAULT 'No',
+americanIndian_alaskanNative CHAR(3) DEFAULT 'No',
+asian CHAR(3) DEFAULT 'No',
+hawaiian_other CHAR(3) DEFAULT 'No',
+white Char(3) DEFAULT 'No',
+noAnswer CHAR(3) DEFAULT 'No',
 primaryLanguage CHAR(20) NOT NULL,
 englishProficiency CHAR(3) NOT NULL,
 FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE

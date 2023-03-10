@@ -51,7 +51,18 @@
         $uscisExpired     =$_POST['uscisExpired'];
         $selective        =$_POST['selective'];
         $hispanic         =$_POST['hispanic'];
-        $race             =$_POST['race'];
+
+        $americanIndian_alaskanNative   =$_POST['americanIndian_alaskanNative'];
+        $africanAmercian_black          =$_POST['africanAmercian_black'];
+        $asian                          =$_POST['asian'];
+        $hawaiian_other                 =$_POST['hawaiian_other'];
+        $white                          =$_POST['white'];
+        $noAnswer                       =$_POST['noAnswer'];
+
+        if(empty($americanIndian_alaskanNative) && empty($africanAmercian_black) && empty($asian) && empty($hawaiian_other) && empty($white)){
+            $noAnswer = 'Yes';
+        }
+
         $language         =$_POST['language'];
         $proficiency      =$_POST['proficiency'];
         $disability       =$_POST['disability'];
@@ -194,10 +205,10 @@
                                     VALUES(?,?,?,?,?);";
                                 $sql5="INSERT INTO EMPLOYMENT (userID,currentMilitaryOrVet,militarySpouse,selectiveService,employmentStatus,payRate,unemployemntInsurance,unemploymentWeeks,farmworker12Months,desiredJobTitle,techExperience)
                                     VALUES(?,?,?,?,?,?,?,?,?,?,?);";
-                                $sql6="INSERT INTO ETHNICITY (userID,hispanicHeritage,race,primaryLanguage,englishProficiency)
-                                    VALUES(?,?,?,?,?);";
-                                $sql7="INSERT INTO HARDSHIP (userID,ticketToWork,homelessStatus,exOffender,displacedHomemaker,singleParent,culturalBarriers,familySize,annualizedFamilyIncome)
-                                    VALUES(?,?,?,?,?,?,?,?,?);";
+                                $sql6="INSERT INTO ETHNICITY (userID,hispanicHeritage,africanAmercian_black,americanIndian_alaskanNative,asian,hawaiian_other,white,noAnswer,primaryLanguage,englishProficiency)
+                                    VALUES(?,?,?,?,?,?,?,?,?,?);";
+                                $sql7="INSERT INTO HARDSHIP (userID,ticketToWork,homelessStatus,exOffender,displacedHomemaker,IsDisability,disabilityDescription,singleParent,culturalBarriers,familySize,annualizedFamilyIncome)
+                                    VALUES(?,?,?,?,?,?,?,?,?,?,?);";
                                 $sql8="INSERT INTO SERVICES (userID,fosterCare,adultEducationWIOATittleII,youthBuild,youthBuildGrant,jobCorps,vocationalEducationCarlPerkins,tanfRecipient,ssiRecipient,gaRecipient,snapRecipientCalFresh,rcaRecipient,ssdiRecipient,snapEmploymentAndTrainingProgram,pellGrant)
                                     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
                                 $stmt=mysqli_stmt_init($conn);
@@ -248,8 +259,8 @@
                                 mysqli_stmt_bind_param($stmt3,"isss",$row['userID'],$citizenship,$uscisNumber,$uscisExpired);
                                 mysqli_stmt_bind_param($stmt4,"issss",$row['userID'],$schoolLevel,$diploma,$highestSchool,$schoolStatus);
                                 mysqli_stmt_bind_param($stmt5,"issssisisss",$row['userID'],$military,$militarySpouse,$selective,$employment,$payRate,$ui,$uiWeek,$farmworker,$jobTitle,$techExp);
-                                mysqli_stmt_bind_param($stmt6,"issss",$row['userID'],$hispanic,$race,$language,$proficiency);
-                                mysqli_stmt_bind_param($stmt7,"issssssii",$row['userID'],$workTicket,$homeless,$exOffer,$displace,$singleParent,$culBarrier,$familySize,$annualIncome);
+                                mysqli_stmt_bind_param($stmt6,"isssssssss",$row['userID'],$hispanic,$africanAmercian_black,$americanIndian_alaskanNative,$asian,hawaiian_other,$white,$noAnswer,$language,$proficiency);
+                                mysqli_stmt_bind_param($stmt7,"issssssssii",$row['userID'],$workTicket,$homeless,$exOffer,$displace,$disability,$typeDisability,$singleParent,$culBarrier,$familySize,$annualIncome);
                                 mysqli_stmt_bind_param($stmt8,"issssssssssssss",$row['userID'],$foster,$adultEdu,$youthBuild,$youthGrantNum,$jobCorp,$carlPerkins,$tanf,$ssi,$generalAssist,$calFresh,$refugeeAssist,$ssdi,$snapTraining,$pellGrant);
                                 mysqli_stmt_execute($stmt);
                                 mysqli_stmt_execute($stmt2);

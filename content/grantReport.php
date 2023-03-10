@@ -2,13 +2,12 @@
     session_start();
 
     //For Testing Purposes, Remove later
-    //$_SESSION['userID'] = 7;
-    //$_SESSION['employeeID'] = 2;
-    //$_SESSION['email'] = "gabcocke@gmail.com";
+    $_SESSION['employeeID'] = 2;
+    $_SESSION['email'] = "gabcocke@gmail.com";
 
     require 'includes/dbh.inc.php';
 
-    if(isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+    if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
@@ -60,6 +59,12 @@
     <form action="includes/grant.inc.php" method="post">
 
     <h5 class="d-flex justify-content-center text-info mb-5">Grant Report</h5>
+
+
+    <h6>User ID (required) </h6>
+    <div class="col-6 my-3">
+    <input type="text" name="userID" id="userID" class="input-underline" placeholder="Your answer" required>
+    </div>
 
     <h6>Pre-established Grant Form? </h6>
     <input type="text" name="shared_grant_ID" id="shared_grant_ID" class="input-underline" placeholder="Your answer" >
