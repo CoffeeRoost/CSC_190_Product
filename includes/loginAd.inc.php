@@ -17,17 +17,18 @@ if(isset($_POST['login-submit'])){
 
      else {
           if($role === "Admin"){
-              $stmt = $conn -> prepare("SELECT * FROM EMPLOYEE AS E JOIN ADMIN AS A ON E.employeeID = A.employeeID WHERE email = ? AND userPassword = ? ;");
-              $stmt -> bind_param("ss", $email, $empPassword);
+              $stmt = $conn -> prepare("SELECT * FROM EMPLOYEE AS E JOIN ADMIN AS A ON E.employeeID = A.employeeID WHERE email = ?;");
+              $stmt -> bind_param("s", $email);
               $stmt -> execute();
               $adminResult = $stmt->get_result();
 
               if ($adminResult->num_rows > 0){
                 $row = $adminResult -> fetch_assoc();
+                $pwdCheck = $row['userPassword']; 
 
-                if($row['userPassword'] === $empPassword){
+                if(password_verify($empPassword,$pwdCheck)){
                     session_start();
-                    $_SESSION['employeeID'] = $row['employeeID'];
+                    $_SESSION['adminLogin'] = $row['employeeID'];
                     header("Location: ../Administration1-3.php");
                     exit();
                 }
@@ -49,15 +50,15 @@ if(isset($_POST['login-submit'])){
 
             }
           else {
-            $stmt = $conn -> prepare("SELECT * FROM EMPLOYEE WHERE email = ? AND userPassword = ? ;");
-              $stmt -> bind_param("ss", $email, $empPassword);
+            $stmt = $conn -> prepare("SELECT * FROM EMPLOYEE WHERE email = ?;");
+              $stmt -> bind_param("s", $email);
               $stmt -> execute();
               $empResult = $stmt->get_result();
 
               if ($empResult->num_rows > 0){
                 $row = $empResult -> fetch_assoc();
-
-                if($row['userPassword'] === $empPassword){
+                $pwdCheck = $row['userPassword']; 
+                if(password_verify($empPassword,$pwdCheck)){
                     session_start();
                     $_SESSION['employeeID'] = $row['employeeID'];
                     header("Location: ../employeeDash.php");
