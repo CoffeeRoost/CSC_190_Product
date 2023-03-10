@@ -1,4 +1,12 @@
 <?php
+// Check if session exists
+if (!isset($_SESSION['userID'])) {
+  // Redirect to employeeDash screen
+  header('Location: Login.php');
+  exit();
+}
+
+// Include header
 include_once('content/header4.php');
 ?>
 
