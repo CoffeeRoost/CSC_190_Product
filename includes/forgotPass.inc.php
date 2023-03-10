@@ -6,6 +6,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
+require_once './email_config.inc.php';
+require './PHPMailer.php';
+require './SMTP.php';
+require './Exception.php';
 
 // checks that the user accessed the page correctly
 if(isset($_POST["passBoxSubmit"])){
@@ -53,19 +57,25 @@ if(isset($_POST["passBoxSubmit"])){
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
     
-    $sender = 'tylerito@csus.edu';
-    $senderName = 'CMC';
+    $sender = EMAIL_FROM;
+    $senderName = EMAIL_FROM_NAME;
     $recipient = $userEmail;
 
     // Replace smtp_username with your Amazon SES SMTP user name.
-    $usernameSmtp = 'REPLACE';
+//    $usernameSmtp = 'AKIA5GFPXH3WQE56FMPY';
+$usernameSmtp = SMTP_USERNAME;
+
     // Replace smtp_password with your Amazon SES SMTP password.
-    $passwordSmtp = 'REPLACE';
+//    $passwordSmtp = 'BBjXl6ukU/eaCByNjtCD0oazr8a1rzTM419aO4NGDUIE';
+$passwordSmtp = SMTP_PASSWORD;
 
-    $host = 'email-smtp.us-west-1.amazonaws.com';
-    $port = 587;
+//    $host = 'email-smtp.us-west-1.amazonaws.com';
+//    $port = 587;
+$host = SMTP_HOST;
+$port = SMTP_PORT;
 
-    $bodyHtml =  'PASSWORD RESET REQUEST';
+
+    $subject =  'PASSWORD RESET REQUEST';
     $bodyHtml =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
     $bodyHtml .= '<p>Here is your password reset link: </br>';
     $bodyHtml .= '<a href="' . $url . '">' . $url . '</a></p>';
@@ -82,17 +92,14 @@ if(isset($_POST["passBoxSubmit"])){
         $mail->Port = $port;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'tls';
-        $mail->addCustomHeader('X-SES-CONFIGURATION-SET', $configurationSet);
+//        $mail->addCustomHeader('X-SES-CONFIGURATION-SET', $configurationSet);
         $mail->addAddress($recipient);
-
         $mail->isHTML(true);
         $mail->Subject    = $subject;
         $mail->Body       = $bodyHtml;
-        $mail->AltBody    = $bodyText;
+//        $mail->AltBody    = $bodyText;
         $mail->Send();
         echo "Email sent!" , PHP_EOL;
-    } catch (phpmailerException $e) {
-        echo "An error occurred. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
     } catch (Exception $e) {
         echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
     }
@@ -100,4 +107,5 @@ if(isset($_POST["passBoxSubmit"])){
     //kick back to login if accesssed incorrectly
     header("Location:../login.php");
 }
+
 ?>
