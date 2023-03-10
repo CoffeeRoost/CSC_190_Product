@@ -75,15 +75,35 @@ $host = SMTP_HOST;
 $port = SMTP_PORT;
 
 
-    $subject =  'PASSWORD RESET REQUEST';
-    $bodyHtml =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
-    $bodyHtml .= '<p>Here is your password reset link: </br>';
-    $bodyHtml .= '<a href="' . $url . '">' . $url . '</a></p>';
+//    $subject =  'PASSWORD RESET REQUEST';
+//    $bodyHtml =  '<p> Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email</p>';
+//   $bodyHtml .= '<p>Here is your password reset link: </br>';
+//    $bodyHtml .= '<a href="' . $url . '">' . $url . '</a></p>';
 
 
-    $mail = new PHPMailer(true);
-
+//    $mail = new PHPMailer(true);
+    $Mail = new PHPMailer(true);
     try {
+        
+
+        // Set up SMTP connection
+        /*$welcomeMail->SMTPDebug = SMTP::DEBUG_SERVER; --> using for debug only*/   
+        $Mail->isSMTP();
+        $Mail->Host = SMTP_HOST;
+        $Mail->Port = SMTP_PORT;
+        $Mail->SMTPAuth = true;
+        $Mail->Username = SMTP_USERNAME;
+        $Mail->Password = SMTP_PASSWORD;
+
+        // Set up email content
+        $Mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
+        $Mail->addAddress($userEmail);
+        $Mail->Subject = 'PASSWORD RESET REQUEST';
+        $Mail->Body = "Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email\n\n".
+                      "Here is your password reset link: \n".
+                      "<a href=" .$url. ">" .$url."</a>";
+        $Mail -> send();
+        /*
         $mail->isSMTP();
         $mail->setFrom($sender, $senderName);
         $mail->Username = $usernameSmtp;
@@ -100,6 +120,7 @@ $port = SMTP_PORT;
 //        $mail->AltBody    = $bodyText;
         $mail->Send();
         echo "Email sent!" , PHP_EOL;
+        */
     } catch (Exception $e) {
         echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
     }
