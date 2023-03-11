@@ -355,21 +355,60 @@
                                     header ("Location: ../survey.php?error=sqlerror");
                                     exit();
                                 }
-                                else {     
+                                else {
+                                    require_once './email_config.inc.php';
+                                    require './PHPMailer.php';
+                                    require './SMTP.php';
+                                    require './Exception.php';
+
+
+                                    use PHPMailer\PHPMailer\PHPMailer;
+                                    use PHPMailer\PHPMailer\SMTP;
+                                    use PHPMailer\PHPMailer\Exception;
+
+                                    // Create a new PHPMailer instance
+                                    $mail = new PHPMailer;
+                                    
+                                    // Set up SMTP connection
+                                    $mail->isSMTP();
+                                    $mail->Host = SMTP_HOST;
+                                    $mail->Port = SMTP_PORT;
+                                    $mail->SMTPAuth = true;
+                                    $mail->Username = SMTP_USERNAME;
+                                    $mail->Password = SMTP_PASSWORD;
+                                    
+                                    // Set up email content
                                     $activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$email&activation_code=$activationCode";
-                                    $to = $email;
-                                    $subject = "Please activate your account";
-                                    $message = "Hi, Please click the following link to activate your account: 
-                                            $activation_link";
-                                    $headers = "From: emailchickennode@gmail.com\r\n";
-                                    if(mail($to,$subject,$message,$headers)){
-                                        header('Location: ../checkEmail.php');
-                                        exit;
+                                    $mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
+                                    $mail->addAddress('thinhnguyen1961973@gmail.com', 'thinhNguyen');
+                                    $mail->Subject = 'Please activate your account';
+                                    $mail->Body = 'Hi, Please click the following link to activate your account: 
+                                            $activation_link';
+
+                                    // Send the email
+                                    if ($mail->send()) {
+                                        header("Location: ../checkEmail.php");
+                                        exit();
+                                    } else {
+                                        header("Location: ../survey.php?error=emailfail");
+                                        exit();
                                     }
-                                    else {
-                                         header("Location: ../survey.php?error=emailfail");
-                                         exit();
-                                    }
+
+
+                                    //$activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$email&activation_code=$activationCode";
+                                    //$to = $email;
+                                    //$subject = "Please activate your account";
+                                    //$message = "Hi, Please click the following link to activate your account: 
+                                    //        $activation_link";
+                                    //$headers = "From: emailchickennode@gmail.com\r\n";
+                                    //if(mail($to,$subject,$message,$headers)){
+                                    //    header('Location: ../checkEmail.php');
+                                    //    exit;
+                                    //}
+                                    //else {
+                                    //     header("Location: ../survey.php?error=emailfail");
+                                    //     exit();
+                                    //}
                                 }
                             }
                             else{
