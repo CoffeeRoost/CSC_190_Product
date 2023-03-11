@@ -2,7 +2,7 @@
 // Check if session exists
 if (!isset($_SESSION['userID'])) {
   // Redirect to employeeDash screen
-  header('Location: Login.php');
+  header('Location: ../login.php');
   exit();
 }
 
