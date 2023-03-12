@@ -83,12 +83,63 @@
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
-                        <label for="state" class="form-label fs-5 m-2">
-                            Address: State
-                            <span class="text-danger">*</span>
-                        </label>
-                        <br>
-                        <input type="text" name="state" id="state" class="m-2 input-underline" placeholder="Your answer" >
+                    <label for="state" class="form-label fs-5 m-2">
+                      Address: State
+                      <span class="text-danger">*</span>
+                    </label><br>
+                    <select class="form-select-SM m-2 border rounded-2" name="state" id="state">
+                      <option value="Alabama">Alabama</option>
+                      <option value="Alaska">Alaska</option>
+                      <option value="Arizona">Arizona</option>
+                      <option value="Arkansas">Arkansas</option>
+                      <option value="California">California</option>
+                      <option value="Colorado">Colorado</option>
+                      <option value="Connecticut">Connecticut</option>
+                      <option value="Delaware">Delaware</option>
+                      <option value="Florida">Florida</option>
+                      <option value="Georgia">Georgia</option>
+                      <option value="Hawaii">Hawaii</option>
+                      <option value="Idaho">Idaho</option>
+                      <option value="Illinois">Illinois</option>
+                      <option value="Indiana">Indiana</option>
+                      <option value="Iowa">Iowa</option>
+                      <option value="Kansas">Kansas</option>
+                      <option value="Kentucky">Kentucky</option>
+                      <option value="Louisiana">Louisiana</option>
+                      <option value="Maine">Maine</option>
+                      <option value="Maryland">Maryland</option>
+                      <option value="Massachusetts">Massachusetts</option>
+                      <option value="Michigan">Michigan</option>
+                      <option value="Minnesota">Minnesota</option>
+                      <option value="Mississippi">Mississippi</option>
+                      <option value="Missouri">Missouri</option>
+                      <option value="Montana">Montana</option>
+                      <option value="Nebraska">Nebraska</option>
+                      <option value="Nevada">Nevada</option>
+                      <option value="New Hampshire">New Hampshire</option>
+                      <option value="New Jersey">New Jersey</option>
+                      <option value="New Mexico">New Mexico</option>
+                      <option value="New York">New York</option>
+                      <option value="North Carolina">North Carolina</option>
+                      <option value="North Dakota">North Dakota</option>
+                      <option value="Ohio">Ohio</option>
+                      <option value="Oklahoma">Oklahoma</option>
+                      <option value="Oregon">Oregon</option>
+                      <option value="Pennsylvania">Pennsylvania</option>
+                      <option value="Rhode Island">Rhode Island</option>
+                      <option value="South Carolina">South Carolina</option>
+                      <option value="South Dakota">South Dakota</option>
+                      <option value="Tennessee">Tennessee</option>
+                      <option value="Texas">Texas</option>
+                      <option value="Utah">Utah</option>
+                      <option value="Vermont">Vermont</option>
+                      <option value="Virginia">Virginia</option>
+                      <option value="Washington">Washington</option>
+                      <option value="West Virginia">West Virginia</option>
+                      <option value="Wisconsin">Wisconsin</option>
+                      <option value="Wyoming">Wyoming</option>
+                    </select>
+
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -250,6 +301,7 @@
                   <div class="d-flex justify-content-between m-1">
                         <a href="index.php" class="btn btn-primary">Back</a>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey1,#survey2" class="btn btn-primary">Next</button>
+                        
                   </div>
                 </div>
 
@@ -264,10 +316,10 @@
                         </label><br>
                         <select class="form-select-SM m-2 border rounded-2" name="citizenship" id="citizenship" >
                             <option value="" disabled selected hidden>Choose</option>
-                            <option value="citizen">Citizen of US or US Territory</option>
-                            <option value="greenCard">US Permanent Resident</option>
+                            <option value="Citizen">Citizen of US or US Territory</option>
+                            <option value="GreenCard">US Permanent Resident</option>
                             <option value="alien">Alien/Refugee Lawfully Admitted to the US</option>
-                            <option value="noneCitizen">None of the above</option>
+                            <option value="NoneCitizen">None of the above</option>
                         </select>
                     </div>
 
@@ -276,7 +328,7 @@
                             If a U.S. Permanent Resident or an Alien/Refugee lawfully admitted to the U.S., please provide your:
                         </label>
                         <br>
-                        <input type="number" name="uscisNumber" id="uscisNumber" class="m-2 input-underline" placeholder="Alien Registration Number">
+                        <input type="text" name="uscisNumber" id="uscisNumber" class="m-2 input-underline" placeholder="Alien Registration Number">
                         <label for="uscisExpired" class="form-label m-2">
                             Expired Date
                         </label>
@@ -286,7 +338,7 @@
                     <div class="bg-white my-3 border rounded-3">
                         <label for="selective" class="form-label fs-5 m-2">
                             Have you registered with the Selective Service? Only applicable for men ages 18 to 25
-                        </label>
+                            <span class="text-danger">*</span></label>
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="selective" id="yselective" value="Yes">
@@ -337,7 +389,7 @@
                     <div class="bg-white my-3 border rounded-3">
                         <label class="form-label fs-5 m-2">
                             Race (Ethnicity) check all that apply
-                        </label><br>
+                            <span class="text-danger">*</span></label><br>
                         <div class="form-check m-2">
                             <input type="checkbox" id="africanAmerican_black" name="africanAmerican_black" value="Yes">
                             <label for="africanAmerican_black">African American/Black</label><br>
@@ -371,15 +423,15 @@
                         </label><br>
                         <select class="form-select-SM m-2 border rounded-2" name="language" id="language">
                             <option value="" disabled selected hidden>Choose</option>
-                            <option value="eng">English</option>
-                            <option value="span">Spanish</option>
-                            <option value="dari">Dari</option>
-                            <option value="pashto">Pashto</option>
-                            <option value="rus">Russian</option>
-                            <option value="viet">Vietnamese</option>
-                            <option value="mandarin">Mandarin</option>
-                            <option value="arabic">Arabic</option>
-                            <option value="farsi">Farsi</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="Dari">Dari</option>
+                            <option value="Pashto">Pashto</option>
+                            <option value="Russian">Russian</option>
+                            <option value="Vietnamese">Vietnamese</option>
+                            <option value="Mandarin">Mandarin</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="Farsi">Farsi</option>
                         </select>
                     </div>
 
@@ -387,7 +439,7 @@
                         <label for="proficiency" class="form-label fs-5 m-2">
                             Do you have limited proficiency in speaking, writing, reading, or understanding English?
                             or Do you have difficulty in speaking, writing, reading, or understanding English?
-                        </label>
+                            <span class="text-danger">*</span></label>
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="proficiency" id="yproficiency" value="Yes">
@@ -472,23 +524,23 @@
                         </label><br>
                         <select class="form-select-SM m-2 border rounded-2" name="highestSchool" id="highestSchool" >
                             <option value="" disabled selected hidden>Choose</option>
-                            <option value="highschool">High School Diploma</option>
-                            <option value="ged">High School Equivalent Diploma (GED)</option>
-                            <option value="certificate">Certificate of Attendance/Completion (Disabled Individuales)</option>
-                            <option value="schoolCertificate">Vocational School Certificate</option>
-                            <option value="technical">Colllege or Technical or Vocational School</option>
-                            <option value="aa">AA</option>
-                            <option value="baAndbs">BA/BS</option>
-                            <option value="master">Master's Degree</option>
-                            <option value="doctor">Doctorate Degree</option>
+                            <option value="Highschool">High School Diploma</option>
+                            <option value="GED">High School Equivalent Diploma (GED)</option>
+                            <option value="Certificate">Certificate of Attendance/Completion (Disabled Individuales)</option>
+                            <option value="SchoolCertificate">Vocational School Certificate</option>
+                            <option value="Technical">Colllege or Technical or Vocational School</option>
+                            <option value="AA/AS">AA/AS</option>
+                            <option value="BA/BS">BA/BS</option>
+                            <option value="Master">Master's Degree</option>
+                            <option value="Doctor">Doctorate Degree</option>
                         </select>
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
                         <label for="schoolStatus" class="form-label fs-5 m-2">
                             School Status
-                        </label>
-                        <span class="text-danger">*</span>
+                            <span class="text-danger">*</span></label>
+            
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="schoolStatus" id="inSchool" value="Yes">
@@ -507,6 +559,7 @@
                     <div class="d-flex justify-content-between m-1">
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey1" class="btn btn-primary">Back</button>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey3" class="btn btn-primary">Next</button>
+                        
                     </div>
                   </div>
 
@@ -654,6 +707,7 @@
                     <div class="d-flex justify-content-between m-1">
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey3" class="btn btn-primary">Back</button>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey3,#survey4" class="btn btn-primary">Next</button>
+                        
                     </div>
                 </div>
             
@@ -932,6 +986,7 @@
                     <div class="d-flex justify-content-between m-1">
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey4,#survey3" class="btn btn-primary">Back</button>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey4,#survey5" class="btn btn-primary">Next</button>
+                        
                     </div>
                 </div>
 
@@ -1122,6 +1177,7 @@
                           <div class="d-flex justify-content-between m-1">
                               <button type="button" data-bs-toggle="collapse" data-bs-target="#survey5,#survey4" class="btn btn-primary">Back</button>
                               <button name="signup-submit" type = "submit" class="btn btn-primary">Submit</button>
+                              
                           </div>
                     </div>
             </form>
