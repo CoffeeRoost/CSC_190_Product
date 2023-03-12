@@ -140,7 +140,7 @@ if(isset($_POST['grant-characteristic-submit'])){
             $stmt_value= "SELECT hispanicHeritage as result_value FROM ETHNICITY WHERE userID=?";
             break;
           case "19":
-            $stmt_value= "SELECT race as result_value FROM ETHNICITY WHERE userID=?";
+            $stmt_value= "SELECT IsDisability as result_value FROM HARDSHIP WHERE userID=?";
             break;
           case "20":
             $stmt_value= "SELECT primaryLanguage as result_value FROM ETHNICITY WHERE userID=?";
@@ -252,6 +252,27 @@ if(isset($_POST['grant-characteristic-submit'])){
             break;
           case "56":
             $stmt_value= "SELECT annualizedFamilyIncome as result_value FROM HARDSHIP WHERE userID=?";
+            break;
+          case "57":
+            $stmt_value= "SELECT disabilityDescription as result_value FROM HARDSHIP WHERE userID=?";
+            break;
+          case "58":
+            $stmt_value= "SELECT africanAmerican_black as result_value FROM ETHNICITY WHERE userID=?";
+            break;
+          case "59":
+            $stmt_value= "SELECT americanIndian_alaskanNative as result_value FROM ETHNICITY WHERE userID=?";
+            break;
+          case "60":
+            $stmt_value= "SELECT asian as result_value FROM ETHNICITY WHERE userID=?";
+            break;
+          case "61":
+            $stmt_value= "SELECT hawaiian_other as result_value FROM ETHNICITY WHERE userID=?";
+            break;
+          case "62":
+            $stmt_value= "SELECT white as result_value FROM ETHNICITY WHERE userID=?";
+            break;
+          case "63":
+            $stmt_value= "SELECT noAnswer as result_value FROM ETHNICITY WHERE userID=?";
             break;
           default:
             $stmt_value= "";
