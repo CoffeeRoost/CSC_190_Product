@@ -36,13 +36,13 @@
         $city             =$_POST['city'];
         $state            =$_POST['state'];
         $zip		      =$_POST['zip'];
-        $country           =$_POST['county'];
+        $county           =$_POST['county'];
         $sameAdd          =$_POST['sameAdd'];
         $mailStreet	      =$_POST['mailStreet'];
         $mailCity		  =$_POST['mailCity'];
         $mailState	      =$_POST['mailState'];
         $mailZip  	      =$_POST['mailZip'];
-        $mailCountry  	  =$_POST['mailCounty'];
+        $mailCounty  	  =$_POST['mailCounty'];
         $phone            =$_POST['phone'];
         $phoneType	      =$_POST['phoneType'];
         $alPhone          =$_POST['alPhone'];
@@ -61,12 +61,14 @@
         $selective                      =$_POST['selective'];
         $hispanic                       =$_POST['hispanic'];
 
-        $americanIndian_alaskanNative   =$_POST['americanIndian_alaskanNative'];
-        $africanAmercian_black          =$_POST['africanAmerican_black'];
-        $asian                          =$_POST['asian'];
-        $hawaiian_other                 =$_POST['hawaiian_other'];
-        $white                          =$_POST['white'];
-        $noAnswer                       =$_POST['noAnswer'];
+        $americanIndian_alaskanNative   =isset($_POST['americanIndian_alaskanNative']) ? 'Yes' : 'No';
+        $africanAmerican_black         =isset($_POST['africanAmerican_black']) ? 'Yes' : 'No';
+        $asian                          =isset($_POST['asian']) ? 'Yes' : 'No';
+        $hawaiian_other                 =isset($_POST['hawaiian_other']) ? 'Yes' : 'No';
+        $white                          =isset($_POST['whitle']) ? 'Yes' : 'No';
+        $noAnswer                       =isset($_POST['noAnswer']) ? 'Yes' : 'No';
+
+
         $language                       =$_POST['language'];
         $proficiency                    =$_POST['proficiency'];
         $disability                     =$_POST['disability'];
@@ -134,13 +136,13 @@
         echo "7city: ".$city. PHP_EOL;          
         echo "8state: ".$state.PHP_EOL;           
         echo "9zip: ".$zip.PHP_EOL;		      
-        echo "10country: ".$country.PHP_EOL;         
+        echo "10county: ".$county.PHP_EOL;         
         echo "11sameAdd: ".$sameAdd.PHP_EOL;         
         echo "12mailstreet: ".$mailStreet.PHP_EOL;	      
         echo "13mailcity: ".$mailCity.PHP_EOL; 		  
         echo "14mainstate: ".$mailState.PHP_EOL; 	     
         echo "15mailzip: ".$mailZip.PHP_EOL;  	      
-        echo "16mailcounty: ".$mailCountry.PHP_EOL;  	  
+        echo "16mailcounty: ".$mailCounty.PHP_EOL;  	  
         echo "17phone: ".$phone.PHP_EOL;            
         echo "18phoneType: ".$phoneType.PHP_EOL; 	     
         echo "19alphone: ".$alPhone.PHP_EOL;          
@@ -157,7 +159,7 @@
         echo "27selective: ".$selective.PHP_EOL;	                     
         echo "28hispannic: ".$hispanic.PHP_EOL;	                      
         echo "29america/alaska: ".$americanIndian_alaskanNative.PHP_EOL;	   
-        echo "30africa/black: ".$africanAmercian_black.PHP_EOL;	          
+        echo "30africa/black: ".$africanAmerican_black.PHP_EOL;	          
         echo "31asian: ".$asian.PHP_EOL;	                         
         echo "32haiwain: ".$hawaiian_other.PHP_EOL;	                 
         echo "33white: ".$white.PHP_EOL;	                         
@@ -213,7 +215,7 @@
 
         /******************************Check survey 1*********************************/
         if(empty($partner) || empty($partFname) || empty($partLname) || empty($SSN)
-        || empty($street)|| empty($city)|| empty($state)|| empty($zip)|| empty($country)
+        || empty($street)|| empty($city)|| empty($state)|| empty($zip)|| empty($county)
         || empty($sameAdd) || empty($phone)|| empty($phoneType)
         || empty($partEmail)|| empty($partBthday) || empty($gender)){
             echo "<script>alert('Please fill out the empty field');</script>";
@@ -253,11 +255,11 @@
             $mailCity		  = $city;
             $mailState	      = $state;
             $mailZip  	      = $zip;
-            $mailCountry  	  = $country;
+            $mailCounty  	  = $county;
             }
             else {
                 if(empty($mailStreet) || empty($mailCity) || empty($mailState) 
-                || empty($mailZip) || empty($mailCountry)){
+                || empty($mailZip) || empty($mailCounty)){
                     echo "<script>alert('Please fill out the empty field');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
                     exit();
@@ -269,7 +271,8 @@
                     echo "<script>alert('Please fill out the other answer');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
                     exit();   
-                 } 
+                 }
+                 $gender = $otherAns;
             }
             else {
                 $otherAns = NULL;
@@ -302,7 +305,7 @@
                  $uscisExpired_mysql = NULL;
             }
             
-            if(empty($americanIndian_alaskanNative) && empty($africanAmercian_black)&&empty($asian)
+            if(empty($americanIndian_alaskanNative) && empty($africanAmerican_black)&&empty($asian)
             && empty($hawaiian_other) && empty($white) && empty($noAnswer)){
                 echo "<script>alert('Please choose your athnicity');</script>";
                 echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
@@ -313,8 +316,8 @@
                     $americanIndian_alaskanNative = "No";
                 }
 
-            if(empty($africanAmercian_black)){
-                    $africanAmercian_black = "No";
+            if(empty($africanAmerican_black)){
+                    $africanAmerican_black = "No";
                 }
 
             if(empty($asian)){
@@ -334,7 +337,7 @@
             }
             if($noAnswer === "Yes"){
                     $americanIndian_alaskanNative = "No";
-                    $africanAmercian_black = "No";
+                    $africanAmerican_black = "No";
                     $asian = "No";
                     $hawaiian_other = "No";
                     $white = "No";
@@ -436,11 +439,15 @@
         /***** Hashing Password *****/
          $participationPassword_hash = password_hash($partPassword,PASSWORD_DEFAULT);
          
+         $activationCode = bin2hex(random_bytes(16));
+         $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
+         $expirary = 1*24*60*60;
+
          /***** Insert to PARTICIPATION *****/
          $stmt1 = $conn-> prepare("INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,programPartnerReference,
-         last4SSn,DOB,gender,primaryPhone,phoneNumType,altPhone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
-         $stmt1->bind_param("ssssssisssss",$partFname,$partLname,$partMname,$partEmail,$participationPassword_hash,$partner,
-         $SSN,$partDOB_mysql,$gender,$phone,$phoneType,$alPhone);
+         last4SSn,DOB,gender,primaryPhone,phoneNumType,altPhone,activation_code,activation_expiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+         $stmt1->bind_param("ssssssissssssi",$partFname,$partLname,$partMname,$partEmail,$participationPassword_hash,$partner,
+         $SSN,$partDOB_mysql,$gender,$phone,$phoneType,$alPhone,$hashedCode,$expirary);
          if(!$stmt1 ->execute()){
                 echo "<script>alert('Query Error 1');</script>";
                 echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
@@ -471,8 +478,8 @@
          /***** Adress table *****/
         $stmt3 = $conn->prepare("INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet, mailingCity, 
         mailingState, mailingZipcode, mailingCounty) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
-        $stmt3 -> bind_param("issssssssss",$userID, $street,$city,$state,$zip,$country,
-        $mailStreet,$mailCity,$mailState,$mailZip,$mailCountry);
+        $stmt3 -> bind_param("issssssssss",$userID, $street,$city,$state,$zip,$county,
+        $mailStreet,$mailCity,$mailState,$mailZip,$mailCounty);
         if(!$stmt3 ->execute()){
                 echo "<script>alert('Query Error 3');</script>";
                 echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
@@ -503,10 +510,10 @@
          $stmt5 -> close();
 
         /***** Ethnicity table *****/
-        $stmt6 = $conn->prepare("INSERT INTO ETHNICITY (userID,hispanicHeritage,africanAmercian_black,americanIndian_alaskanNative,
+        $stmt6 = $conn->prepare("INSERT INTO ETHNICITY (userID,hispanicHeritage,africanAmerican_black,americanIndian_alaskanNative,
         asian,hawaiian_other,white,noAnswer, primaryLanguage,englishProficiency)
         VALUES (?,?,?,?,?,?,?,?,?,?);");
-        $stmt6 -> bind_param("isssssssss", $userID,$hispanic,$africanAmercian_black,$americanIndian_alaskanNative,$asian,
+        $stmt6 -> bind_param("isssssssss", $userID,$hispanic,$africanAmerican_black,$americanIndian_alaskanNative,$asian,
         $hawaiian_other,$white,$noAnswer,$language,$proficiency);
         if(!$stmt6 ->execute()){
                 echo "<script>alert('Query Error 6');</script>";
@@ -567,7 +574,7 @@
          }
          $stmt10 -> close();
 
-        $activation_link = "http://54.67.115.77/index.php";
+        $activation_link = "http://54.67.115.77/includes/activate.php?email=$partEmail&activation_code=$activationCode";
         // Create a new PHPMailer instance
         $confirmMail = new PHPMailer;
 
