@@ -46,8 +46,30 @@ if(isset($_POST['grant-initial-submit'])){
                   //If you get here, they match.
                   //Now it sees if the shared_grant_ID is already given
                   if(!empty($_POST['shared_grant_ID'])){
-                      //If it is, go to the next page for grant characteristics
 
+                      $sql = "SELECT userID FROM GRANT_PARTICIPATION WHERE userID=? AND shared_grant_ID=?";
+                      $stmt= mysqli_stmt_init($conn);
+                      if(!mysqli_stmt_prepare($stmt,$sql)){
+                            //if error, force a logout
+                            session_unset();
+                            session_destroy();
+                            header ("Location: ../loginAd.php?error=sqlerror");
+                            exit();
+                      }
+                      else{
+                          mysqli_stmt_bind_param($stmt,'ii',$userID,$_POST['shared_grant_ID']);
+                          mysqli_stmt_execute($stmt);
+                          $result = mysqli_stmt_get_result($stmt);
+                          
+                          if($row = mysqli_fetch_assoc($result)){
+                              $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
+                              $_SESSION['userID'] = $userID;
+                              header("Location: ../grantReportChar.php?error=MadeItHere");
+                              exit();
+                          }
+                      }
+
+                      //If it is, go to the next page for grant characteristics
                       $sql = "INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID)
                                 VALUES(?,?)";
                       $stmt= mysqli_stmt_init($conn);
@@ -66,7 +88,6 @@ if(isset($_POST['grant-initial-submit'])){
                           header("Location: ../grantReportChar.php");
                           exit();
                       }
-
                   }
               }
           }
