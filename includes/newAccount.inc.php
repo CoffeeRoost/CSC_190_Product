@@ -510,7 +510,7 @@
          $stmt5 -> close();
 
         /***** Ethnicity table *****/
-        $stmt6 = $conn->prepare("INSERT INTO ETHNICITY (userID,hispanicHeritage,africanAmerican_black,americanIndian_alaskanNative,
+        $stmt6 = $conn->prepare("INSERT INTO ETHNICITY (userID,hispanicHeritage,africanAmercian_black,americanIndian_alaskanNative,
         asian,hawaiian_other,white,noAnswer, primaryLanguage,englishProficiency)
         VALUES (?,?,?,?,?,?,?,?,?,?);");
         $stmt6 -> bind_param("isssssssss", $userID,$hispanic,$africanAmerican_black,$americanIndian_alaskanNative,$asian,
