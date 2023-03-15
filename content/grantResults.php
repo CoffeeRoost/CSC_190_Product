@@ -4,6 +4,10 @@ $conn = mysqli_connect("localhost", "root", "", "test");
 
 //search table columns
 if(isset($_POST["search"])) {
+    if ($_POST["query"] == "default") {
+        $stmt = $conn->prepare("SELECT * FROM grant_main");
+    }
+
     if ($_POST["query"] == "expireSoon") {
         $stmt = $conn->prepare("SELECT * FROM grant_main ORDER BY endDate ASC");
     }
@@ -22,10 +26,6 @@ if(isset($_POST["search"])) {
 
     if ($_POST["query"] == "expire3Months") {
         $stmt = $conn->prepare("SELECT * FROM grant_main WHERE endDate <= NOW() + INTERVAL 3 MONTH");
-    }
-
-    if ($_POST["query"] == "default") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main");
     }
     
     $result = filterTable($stmt);
@@ -46,25 +46,26 @@ function filterTable($stmt) {
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> </title>
-    </head>
-    <body> 
+    <div class="container-fluid">
+    <h5 class="d-flex justify-content-center text-info mb-5">Grant Results</h5>
+    <h6 class="mt-5">How do you want to filter the grants by?</h6>
         <form action="grantResults.php" method="post">
-            <input type="radio" name="query" value="expireSoon">
-            <label for="expireSoon">Grants expiring the soonest</label><br>
-            <input type="radio" name="query" value="expireLatest">
-            <label for="expireLatest">Grants expiring the latest</label><br>
-            <input type="radio" name="query" value="createRecent">
-            <label for="createRecent">Grants recently created</label><br>
-            <input type="radio" name="query" value="createOldest">
-            <label for="createOldest">Oldest grants created</label><br>
-            <input type="radio" name="query" value="expire3Months">
-            <label for="expire3Months">Grants expiring within 3 months</label><br>
-            <input type="radio" name="query" value="default">
-            <label for="default">Unfilter</label><br>
-            <input type="submit" name="search" value="Submit"><br><br>
-            <table>
+            <select name="query">
+                <option value="default" hidden selected></option>
+                <option value="expireSoon">Grants expiring the soonest</option>
+                <option value="expireLatest">Grants expiring the latest</option>
+                <option value="createRecent">Grants recently created</option>
+                <option value="createOldest">Oldest grants created</option>
+                <option value="expire3Months">Grants expiring within 3 months</option>
+            </select>
+            
+            <h6 class="mt-5">Want to unfilter the results? Submit without anything selected.</h6>
+
+            <div class="col-6 my-3">
+                <button class="btn btn-info btn-shadow my-3" name="search" type="submit">Submit</button>
+            </div>
+
+            <table class="table table-bordered">
                 <tr>
                     <th>Grant ID</th>
                     <th>Start Date</th>
@@ -85,5 +86,5 @@ function filterTable($stmt) {
                 <?php endwhile;?>
             </table>
         </form>
-    </body>
+    </div>
 </html>
