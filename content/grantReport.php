@@ -94,7 +94,9 @@
     <input type="text" name="personal_contact" id="personal_contact" class="input-underline" placeholder="Your answer" >
 
     <div class="col-6 my-3">
+      <a href="grantResults.php">
       <button type="submit" name="grant-initial-submit" class="btn btn-info btn-shadow my-3">Next</button>
+      </a>
     </div>
 
     </form>

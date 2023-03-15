@@ -82,7 +82,7 @@
                         <option value="16">Alien Registration Code</option>
                         <option value="17">Alient Registration Code Expiration Date</option>
                         <option value="18">Hispanic Heritage</option>
-                        <option value="19">Race</option>
+                        <option value="19">Disability (Y/N)</option>
                         <option value="20">Primary Language</option>
                         <option value="21">English Proficiency</option>
                         <option value="22">High School Status</option>
@@ -120,6 +120,13 @@
                         <option value="54">Cultural Barriers</option>
                         <option value="55">Family Size</option>
                         <option value="56">Annualized Family Income (last 6 months X2)</option>
+                        <option value="57">Type of Disability</option>
+                        <option value="58">African American/Black</option>
+                        <option value="59">American Indian/Alaskan Native</option>
+                        <option value="60">Asian</option>
+                        <option value="61">Hawaiian/Other Pacific Islander</option>
+                        <option value="62">White</option>
+                        <option value="63">Did Not Wish to Answer (Ethncity)</option>
     </select>
 
     <h6 class="mt-5">(New) Characteristic Status<span class="text-danger">*</span></h6>
