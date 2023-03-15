@@ -1,5 +1,5 @@
 
-<?php 
+<?php
     /**********Using for mail function******/
 
     use PHPMailer\PHPMailer\PHPMailer;
@@ -16,14 +16,14 @@
 
         /* Connect to Database */
         require 'dbh.inc.php';
-        
+
         /**********Using for mail function******/
         require_once './email_config.inc.php';
         require './PHPMailer.php';
         require './SMTP.php';
         require './Exception.php';
        /***************************************/
-       
+
         //fetch info to the database form
 
         //survey1
@@ -52,7 +52,7 @@
         $otherAns = $_POST['otherAns'];
         $partDOB_mysql    = date('Y-m-d', strtotime($partBthday));
 
-    
+
 
         //survey2
         $citizenship	                =$_POST['citizenship'];
@@ -80,7 +80,7 @@
 
         $uscisExpired_mysql    = date('Y-m-d', strtotime($uscisExpired));
 
-    
+
 
 
         //survey3
@@ -93,7 +93,7 @@
         $farmworker       =$_POST['farmworker'];
         $jobTitle         =$_POST['jobTitle'];
 
-        
+
 
         //survey4
         $foster           =$_POST['foster'];
@@ -111,7 +111,7 @@
         $snapTraining     =$_POST['snapTraining'];
         $pellGrant        =$_POST['pellGrant'];
 
-        
+
 
         //survey5
         $workTicket       =$_POST['workTicket'];
@@ -125,92 +125,92 @@
         $techExp          =$_POST['techExp'];
         $partPassword         =$_POST['password'];
         $partConfirmPassword  =$_POST['confirmPassword'];
-        
+
         /*echo "\n\nSurvey 1\n". PHP_EOL;
-        echo "1partner: ". $partner.PHP_EOL;         
-        echo "2fname: ". $partFname.PHP_EOL; 	          
-        echo "3Mname: ". $partMname.PHP_EOL; 	     
-        echo "4Lname: ".$partLname.PHP_EOL;        
-        echo "5SSN: ".$SSN.PHP_EOL;           	 
-        echo "6street: ".$street.PHP_EOL;        
-        echo "7city: ".$city. PHP_EOL;          
-        echo "8state: ".$state.PHP_EOL;           
-        echo "9zip: ".$zip.PHP_EOL;		      
-        echo "10county: ".$county.PHP_EOL;         
-        echo "11sameAdd: ".$sameAdd.PHP_EOL;         
-        echo "12mailstreet: ".$mailStreet.PHP_EOL;	      
-        echo "13mailcity: ".$mailCity.PHP_EOL; 		  
-        echo "14mainstate: ".$mailState.PHP_EOL; 	     
-        echo "15mailzip: ".$mailZip.PHP_EOL;  	      
-        echo "16mailcounty: ".$mailCounty.PHP_EOL;  	  
-        echo "17phone: ".$phone.PHP_EOL;            
-        echo "18phoneType: ".$phoneType.PHP_EOL; 	     
-        echo "19alphone: ".$alPhone.PHP_EOL;          
-        echo "20email: ".$partEmail.PHP_EOL;            
-        echo "20DOB: ".$partBthday.PHP_EOL;          
-        echo "21gender: ".$gender.PHP_EOL;           
-        echo "22otherAns ".$otherAns.PHP_EOL; 	  
-        echo "23DOBSQL: ".$partDOB_mysql.PHP_EOL; 
+        echo "1partner: ". $partner.PHP_EOL;
+        echo "2fname: ". $partFname.PHP_EOL;
+        echo "3Mname: ". $partMname.PHP_EOL;
+        echo "4Lname: ".$partLname.PHP_EOL;
+        echo "5SSN: ".$SSN.PHP_EOL;
+        echo "6street: ".$street.PHP_EOL;
+        echo "7city: ".$city. PHP_EOL;
+        echo "8state: ".$state.PHP_EOL;
+        echo "9zip: ".$zip.PHP_EOL;
+        echo "10county: ".$county.PHP_EOL;
+        echo "11sameAdd: ".$sameAdd.PHP_EOL;
+        echo "12mailstreet: ".$mailStreet.PHP_EOL;
+        echo "13mailcity: ".$mailCity.PHP_EOL;
+        echo "14mainstate: ".$mailState.PHP_EOL;
+        echo "15mailzip: ".$mailZip.PHP_EOL;
+        echo "16mailcounty: ".$mailCounty.PHP_EOL;
+        echo "17phone: ".$phone.PHP_EOL;
+        echo "18phoneType: ".$phoneType.PHP_EOL;
+        echo "19alphone: ".$alPhone.PHP_EOL;
+        echo "20email: ".$partEmail.PHP_EOL;
+        echo "20DOB: ".$partBthday.PHP_EOL;
+        echo "21gender: ".$gender.PHP_EOL;
+        echo "22otherAns ".$otherAns.PHP_EOL;
+        echo "23DOBSQL: ".$partDOB_mysql.PHP_EOL;
 
         echo "\n\nSurvey 2\n";
-        echo "24citizen: ".$citizenship.PHP_EOL;	               
-        echo "25#uscis: ".$uscisNumber.PHP_EOL;	                    
-        echo "26uscisExp: ".$uscisExpired.PHP_EOL;	                  
-        echo "27selective: ".$selective.PHP_EOL;	                     
-        echo "28hispannic: ".$hispanic.PHP_EOL;	                      
-        echo "29america/alaska: ".$americanIndian_alaskanNative.PHP_EOL;	   
-        echo "30africa/black: ".$africanAmerican_black.PHP_EOL;	          
-        echo "31asian: ".$asian.PHP_EOL;	                         
-        echo "32haiwain: ".$hawaiian_other.PHP_EOL;	                 
-        echo "33white: ".$white.PHP_EOL;	                         
-        echo "34noAns: ".$noAnswer.PHP_EOL;	                       
-        echo "35language: ".$language.PHP_EOL;	                       
-        echo "36proficiency: ".$proficiency.PHP_EOL;	                   
-        echo "37disability: ".$disability.PHP_EOL;	                    
-        echo "38typeDisability: ".$typeDisability.PHP_EOL;	                
-        echo "39schoolLevel: ".$schoolLevel.PHP_EOL;                   
-        echo "40diploma: ".$diploma.PHP_EOL;                        
-        echo "41highest school: ".$highestSchool.PHP_EOL;                  
-        echo "42school status: ".$schoolStatus.PHP_EOL;	                   
+        echo "24citizen: ".$citizenship.PHP_EOL;
+        echo "25#uscis: ".$uscisNumber.PHP_EOL;
+        echo "26uscisExp: ".$uscisExpired.PHP_EOL;
+        echo "27selective: ".$selective.PHP_EOL;
+        echo "28hispannic: ".$hispanic.PHP_EOL;
+        echo "29america/alaska: ".$americanIndian_alaskanNative.PHP_EOL;
+        echo "30africa/black: ".$africanAmerican_black.PHP_EOL;
+        echo "31asian: ".$asian.PHP_EOL;
+        echo "32haiwain: ".$hawaiian_other.PHP_EOL;
+        echo "33white: ".$white.PHP_EOL;
+        echo "34noAns: ".$noAnswer.PHP_EOL;
+        echo "35language: ".$language.PHP_EOL;
+        echo "36proficiency: ".$proficiency.PHP_EOL;
+        echo "37disability: ".$disability.PHP_EOL;
+        echo "38typeDisability: ".$typeDisability.PHP_EOL;
+        echo "39schoolLevel: ".$schoolLevel.PHP_EOL;
+        echo "40diploma: ".$diploma.PHP_EOL;
+        echo "41highest school: ".$highestSchool.PHP_EOL;
+        echo "42school status: ".$schoolStatus.PHP_EOL;
         echo "43uscisEXP SQL: ".$uscisExpired_mysql.PHP_EOL;
 
         echo "\n\nSurvey 3\n".PHP_EOL;;
-        echo "44military: ".$military.PHP_EOL;        
+        echo "44military: ".$military.PHP_EOL;
         echo "45militarySpouce: ".$militarySpouse.PHP_EOL;
-        echo "46employee: ".$employment.PHP_EOL;     
-        echo "47pay rate: ".$payRate.PHP_EOL;         
-        echo "48ui: ".$ui.PHP_EOL;               
-        echo "49uiweek: ".$uiWeek .PHP_EOL;        
-        echo "50farmworker: ".$farmworker.PHP_EOL;      
+        echo "46employee: ".$employment.PHP_EOL;
+        echo "47pay rate: ".$payRate.PHP_EOL;
+        echo "48ui: ".$ui.PHP_EOL;
+        echo "49uiweek: ".$uiWeek .PHP_EOL;
+        echo "50farmworker: ".$farmworker.PHP_EOL;
         echo "51jobTitle: ".$jobTitle.PHP_EOL;
 
         echo "\n\nSurvey 4\n".PHP_EOL;;
-        echo "52foster: ".$foster.PHP_EOL;           
-        echo "53adult Edu: ".$adultEdu.PHP_EOL;       
-        echo "54youndBuit: ".$youthBuild.PHP_EOL;       
-        echo "55youthGrantNum: ".$youthGrantNum.PHP_EOL;   
-        echo "56jobCopr: ".$jobCorp.PHP_EOL;         
-        echo "57carlPerkin: ".$carlPerkins.PHP_EOL;     
-        echo "58tanf: ".$tanf.PHP_EOL;            
-        echo "59ssi: ".$ssi.PHP_EOL;             
-        echo "60generalAssist: ".$generalAssist.PHP_EOL;   
-        echo "61calFresh: ".$calFresh.PHP_EOL;        
-        echo "62refugeeAssit: ".$refugeeAssist.PHP_EOL;    
-        echo "63ssdi: ".$ssdi.PHP_EOL;            
-        echo "64snapTraining: ".$snapTraining.PHP_EOL;    
-        echo "65pellGrant: ".$pellGrant.PHP_EOL; 
+        echo "52foster: ".$foster.PHP_EOL;
+        echo "53adult Edu: ".$adultEdu.PHP_EOL;
+        echo "54youndBuit: ".$youthBuild.PHP_EOL;
+        echo "55youthGrantNum: ".$youthGrantNum.PHP_EOL;
+        echo "56jobCopr: ".$jobCorp.PHP_EOL;
+        echo "57carlPerkin: ".$carlPerkins.PHP_EOL;
+        echo "58tanf: ".$tanf.PHP_EOL;
+        echo "59ssi: ".$ssi.PHP_EOL;
+        echo "60generalAssist: ".$generalAssist.PHP_EOL;
+        echo "61calFresh: ".$calFresh.PHP_EOL;
+        echo "62refugeeAssit: ".$refugeeAssist.PHP_EOL;
+        echo "63ssdi: ".$ssdi.PHP_EOL;
+        echo "64snapTraining: ".$snapTraining.PHP_EOL;
+        echo "65pellGrant: ".$pellGrant.PHP_EOL;
 
         echo "\n\nSurvey 5\n";
-        echo "66workTicket: ".$workTicket.PHP_EOL;        
-        echo "67homeless: ".$homeless.PHP_EOL;          
-        echo "68exOffer: ".$exOffer.PHP_EOL;           
-        echo "69displace: ".$displace.PHP_EOL;          
-        echo "70singleParent: ".$singleParent.PHP_EOL;      
-        echo "71culBarrier: ".$culBarrier.PHP_EOL;      
-        echo "72familySize: ".$familySize.PHP_EOL;       
-        echo "73annualIncome: ".$annualIncome.PHP_EOL;     
-        echo "74techExp: ".$techExp.PHP_EOL;           
-        echo "75password: ".$partPassword.PHP_EOL;         
+        echo "66workTicket: ".$workTicket.PHP_EOL;
+        echo "67homeless: ".$homeless.PHP_EOL;
+        echo "68exOffer: ".$exOffer.PHP_EOL;
+        echo "69displace: ".$displace.PHP_EOL;
+        echo "70singleParent: ".$singleParent.PHP_EOL;
+        echo "71culBarrier: ".$culBarrier.PHP_EOL;
+        echo "72familySize: ".$familySize.PHP_EOL;
+        echo "73annualIncome: ".$annualIncome.PHP_EOL;
+        echo "74techExp: ".$techExp.PHP_EOL;
+        echo "75password: ".$partPassword.PHP_EOL;
         echo "76confirmPassword: ".$partConfirmPassword.PHP_EOL;*/
 
         /******************************Check survey 1*********************************/
@@ -258,7 +258,7 @@
             $mailCounty  	  = $county;
             }
             else {
-                if(empty($mailStreet) || empty($mailCity) || empty($mailState) 
+                if(empty($mailStreet) || empty($mailCity) || empty($mailState)
                 || empty($mailZip) || empty($mailCounty)){
                     echo "<script>alert('Please fill out the empty field');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
@@ -270,7 +270,7 @@
                  if(empty($otherAns)){
                     echo "<script>alert('Please fill out the other answer');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
-                    exit();   
+                    exit();
                  }
                  $gender = $otherAns;
             }
@@ -296,7 +296,7 @@
                     echo "<script>alert('Please fill out your uscis number and expired date');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
                     exit();
-                } 
+                }
             }
 
             if($citizenship === "Citizen" ){
@@ -304,14 +304,14 @@
                  $uscisExpired = NULL;
                  $uscisExpired_mysql = NULL;
             }
-            
+
             if(empty($americanIndian_alaskanNative) && empty($africanAmerican_black)&&empty($asian)
             && empty($hawaiian_other) && empty($white) && empty($noAnswer)){
                 echo "<script>alert('Please choose your athnicity');</script>";
                 echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
                 exit();
             }
-        
+
             if(empty($americanIndian_alaskanNative)){
                     $americanIndian_alaskanNative = "No";
                 }
@@ -342,7 +342,7 @@
                     $hawaiian_other = "No";
                     $white = "No";
                 }
-            
+
         }
 
             if($disability === "Yes"){
@@ -355,7 +355,7 @@
             else{
                 $typeDisability = NULL;
             }
-        
+
          /****************************** End Check survey 2*********************************/
 
 
@@ -388,11 +388,11 @@
             }
             else{
                 $uiWeek = 0;
-            }   
+            }
         }
          /****************************** End Check survey 3*********************************/
 
-    
+
          /****************************** End Check survey 4*********************************/
          if(empty($foster) || empty($adultEdu) || empty($youthBuild) || empty($jobCorp)
          || empty($carlPerkins) || empty($tanf) || empty($ssi) || empty($generalAssist)
@@ -418,7 +418,7 @@
 
 
          /****************************** End Check survey 5*********************************/
-         if(empty($workTicket) || empty($homeless) || empty($exOffer) || empty($displace) 
+         if(empty($workTicket) || empty($homeless) || empty($exOffer) || empty($displace)
          || empty($singleParent) || empty($culBarrier) || empty($familySize)|| empty($annualIncome)
          || empty($techExp) || empty($partPassword) || empty($partConfirmPassword)){
             echo "<script>alert('Please fill out the empty field');</script>";
@@ -438,7 +438,7 @@
          /****************************** INSERT INTO DATABASE*******************************/
         /***** Hashing Password *****/
          $participationPassword_hash = password_hash($partPassword,PASSWORD_DEFAULT);
-         
+
          $activationCode = bin2hex(random_bytes(16));
          $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
          $expirary = 1*24*60*60;
@@ -454,8 +454,8 @@
                 exit();
          }
          $stmt1 -> close();
-         
-         
+
+
           /***** Get user ID *****/
          $stmt2 = $conn->prepare("SELECT userID, email FROM PARTICIPATION WHERE email = ?; ");
          $stmt2 ->bind_param("s",$partEmail );
@@ -474,9 +474,9 @@
             $_SESSION['userID'] = $row['userID'];
          }
          $stmt2 ->close();
-    
+
          /***** Adress table *****/
-        $stmt3 = $conn->prepare("INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet, mailingCity, 
+        $stmt3 = $conn->prepare("INSERT INTO ADDRESS (userID,street,city,state,zipcode,county,mailingStreet, mailingCity,
         mailingState, mailingZipcode, mailingCounty) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
         $stmt3 -> bind_param("issssssssss",$userID, $street,$city,$state,$zip,$county,
         $mailStreet,$mailCity,$mailState,$mailZip,$mailCounty);
@@ -523,7 +523,7 @@
          $stmt6 -> close();
 
         /***** Employment table *****/
-        $stmt7 = $conn->prepare("INSERT INTO EMPLOYMENT (userID,currentMilitaryOrVet, militarySpouse, selectiveService,employmentStatus, 
+        $stmt7 = $conn->prepare("INSERT INTO EMPLOYMENT (userID,currentMilitaryOrVet, militarySpouse, selectiveService,employmentStatus,
         payRate,unemployemntInsurance,unemploymentWeeks,farmworker12Months,desiredJobTitle,techExperience)
         VALUES (?,?,?,?,?,?,?,?,?,?,?);");
         $stmt7 -> bind_param("issssisisss", $userID,$military,$militarySpouse,$selective,$employment,
@@ -591,10 +591,10 @@
         $confirmMail->addAddress($userEmail, $partFname." ".$partLname);
         $confirmMail->Subject = 'California Confirmation Link';
         $confirmMail->Body = "Welcome ".$partFname." ".$partLname." to California Mobility Center\n\n".
-                             "This is your confirmation link\n".$activation_link; 
-                             
+                             "This is your confirmation link\n".$activation_link;
+
         if ($confirmMail->send()) {
-            header("Location: ../LoginAd.php");
+            header("Location: ../Login.php");
             exit();
         } else {
             echo "<script>alert('Confirmation Email error');</script>";
@@ -602,6 +602,6 @@
             exit();
         }
 
-    }       
+    }
 ?>
 

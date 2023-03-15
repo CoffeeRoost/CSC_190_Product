@@ -3,6 +3,9 @@
 session_start();
 // Start session and check if user is logged in
 if (!isset($_SESSION['userID'])) {
+     //if error, force a logout
+     session_unset();
+     session_destroy();
     //Redirect user to login page if not logged in
     header("Location:Login.php");
     exit();
@@ -17,7 +20,7 @@ $userID = $_SESSION['userID'];
 //  Prepare the query
 $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUserPassword,part.last4SSN,part.programPartnerReference,
                  part.primaryPhone,part.phoneNumType,part.altPhone,part.DOB,part.gender,
-                 
+
                  a.street,a.city,a.state,a.zipcode,a.county,
                  a.mailingStreet,a.mailingCity,a.mailingState,a.mailingZipcode,a.mailingCounty,
 
@@ -26,7 +29,7 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUs
                  eth.hispanicHeritage,eth.africanAmercian_black,eth.americanIndian_alaskanNative,eth.asian,eth.hawaiian_other,eth.white,eth.noAnswer,eth.primaryLanguage,eth.englishProficiency,
 
                  edu.highSchoolStatus,edu.highSchooolDiplomaOrEquil,edu.highestGradeComplete,edu.inSchool,
-                 
+
                  t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
 
                  e.currentMilitaryOrVet,e.militarySpouse,e.selectiveService,e.employmentStatus,
@@ -73,7 +76,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 
-//  Display some personal information from the database tables using php 
+//  Display some personal information from the database tables using php
                       // Fetch the data
                           while($row=mysqli_fetch_assoc($result)){
                             // data from 'Participation' table
@@ -106,7 +109,7 @@ $result = $stmt->get_result();
                             $usCitizenshipStatus=$row['usCitizenshipStatus'];
                             $alienRegistrationCode=$row['alienRegistrationCode'];
                             $alienRegistrationCodeEXP=$row['alienRegistrationCodeEXP'];
-                            
+
                             // data from 'Ethnicity' table
                             $hispanicHeritage=$row['hispanicHeritage'];
                             $africanAmercian_black=$row['africanAmercian_black'];
@@ -200,7 +203,7 @@ $result = $stmt->get_result();
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <form action="includes/logout.inc.php" method="post">
-                            <button type="submit" class="nav-link text-white fs-4 mx-4" name="logout">Logout</button>
+                            <button type="submit" class="nav-link text-white fs-4 mx-4 btn btn-info" name="logout">Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -214,7 +217,7 @@ $result = $stmt->get_result();
                 <li class="nav-item bg-Blue mt-1 mb-md-1">
                     <a href="#" class="nav-link text-white">
                         <?php
-                            echo "<h4>Welcome, $fname $lname !</h4>";
+                            echo "<h6>Welcome, $fname $lname !</h6>";
                         ?>
                     </a>
                 </li>
@@ -230,7 +233,7 @@ $result = $stmt->get_result();
                 </li>
             </ul>
         </div>
-            
+
         <!-- Edit Tab -->
         <div id="editTab" style="display:none;">
             <div class="d-flex flex-column align-items-center mx-5">
@@ -247,7 +250,7 @@ $result = $stmt->get_result();
                         <select class="form-select-SM m-2 border rounded-2" name="partner" id="partner">
                             <?php if ($programPartnerReference=='friend&fam') { ?>
                             <option value="friend&fam" selected>Friend and Family</option>
-                            <?php } ?>  
+                            <?php } ?>
                             <?php if ($programPartnerReference=='Hiring_event') { ?>
                             <option value="Hiring_event" selected>Hiring Event or Career Fair</option>
                             <?php } ?>
@@ -500,7 +503,7 @@ $result = $stmt->get_result();
                             <?php if ($phoneNumType=='otherphone') { ?>
                                 <option value="otherphone" selected>Other</option>
                             <?php } ?>
-                            
+
                             <option value="cellphone">Cell Phone</option>
                             <option value="homePhone">Home Phone</option>
                             <option value="relativesPhone">Relatives Phone</option>
@@ -570,7 +573,7 @@ $result = $stmt->get_result();
                                 <input class="form-check-input" type="radio" name="gender" id="notSay" value="notSay" checked="checked">
                             <?php } else { ?>
                                 <input class="form-check-input" type="radio" name="gender" id="notSay" value="notSay">
-                            <?php } ?>   
+                            <?php } ?>
                             <label class="form-check-label" for="notSay">
                                 Prefer not to say
                             </label>
@@ -580,7 +583,7 @@ $result = $stmt->get_result();
                                 <input class="form-check-input" type="radio" name="gender" id="other" value="other" checked="checked">
                             <?php } else { ?>
                                 <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                            <?php } ?>  
+                            <?php } ?>
                             <label class="form-check-label" for="other">
                                 Other
                             </label>
@@ -588,7 +591,7 @@ $result = $stmt->get_result();
                                 <input type="text" name="otherAns" id="otherAns" class="m-2 input-underline" value="<?php echo $gender?>">
                             <?php } else { ?>
                                 <input type="text" name="otherAns" id="otherAns" class="m-2 input-underline" placeholder="Your answer">
-                            <?php } ?>  
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -610,16 +613,16 @@ $result = $stmt->get_result();
                         <select class="form-select-SM m-2 border rounded-2" name="citizenship" id="citizenship" >
                             <?php if ($usCitizenshipStatus=='citizen') { ?>
                             <option value="citizen" selected>Citizen of US or US Territory</option>
-                            <?php } ?>  
+                            <?php } ?>
                             <?php if ($usCitizenshipStatus=='greenCard') { ?>
                             <option value="greenCard" selected>US Permanent Resident</option>
-                            <?php } ?>  
+                            <?php } ?>
                             <?php if ($usCitizenshipStatus=='alien') { ?>
                             <option value="alien" selected>Alien/Refugee Lawfully Admitted to the US</option>
-                            <?php } ?>  
+                            <?php } ?>
                             <?php if ($usCitizenshipStatus=='noneCitizen') { ?>
                             <option value="noneCitizen" selected>None of the above</option>
-                            <?php } ?>  
+                            <?php } ?>
 
                             <option value="citizen">Citizen of US or US Territory</option>
                             <option value="greenCard">US Permanent Resident</option>
@@ -723,7 +726,7 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-                   
+
                     <div class="bg-white my-3 border rounded-3">
                         <label class="form-label fs-5 m-2">
                             Race (Ethnicity) check all that apply
@@ -849,7 +852,7 @@ $result = $stmt->get_result();
                         </div>
                         <div class="form-check m-2">
                             <?php if ($englishProficiency=='No') { ?>
-                                <input class="form-check-input" type="radio" name="proficiency" id="nonProficiency" value="No" checked="checked"> 
+                                <input class="form-check-input" type="radio" name="proficiency" id="nonProficiency" value="No" checked="checked">
                             <?php } else { ?>
                                 <input class="form-check-input" type="radio" name="proficiency" id="nonProficiency" value="No">
                             <?php } ?>
@@ -1032,9 +1035,9 @@ $result = $stmt->get_result();
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey2,#survey3" class="btn btn-primary">Next</button>
                     </div>
                 </div>
-        
+
                 <!--*************************************************************************************-->
-                    
+
                 <div id="survey3" style="transition: 1ms" class="collapse">
                     <p class="text-center fs-2">Career Pathways Program</p>
                     <div class="bg-white my-3 border rounded-3">
@@ -1323,7 +1326,7 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-                        
+
                     <div class="bg-white my-3 border rounded-3">
                         <label for="youthGrantNum" class="form-label fs-5 m-2">
                             Youth Build Grant Number
@@ -1335,7 +1338,7 @@ $result = $stmt->get_result();
                             <input type="text" name="youthGrantNum" id="youthGrantNum" class="m-2 input-underline" placeholder="AA-99999-99-99-A-99" maxlength="19">
                         <?php } ?>
                     </div>
-   
+
                     <div class="bg-white my-3 border rounded-3">
                         <label for="jobCorp" class="form-label fs-5 m-2">
                             Receiving services from Job Corps
@@ -1475,7 +1478,7 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white my-3 border rounded-3">
                         <label for="calFresh" class="form-label fs-5 m-2">
                             Supplemental Nutrition Assistance Program (SNAP) recipient (Cal Fresh)
@@ -1503,7 +1506,7 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-                
+
                     <div class="bg-white my-3 border rounded-3">
                         <label for="refugeeAssist" class="form-label fs-5 m-2">
                             Refugee Cash Assistance (RCA) recipient
@@ -1587,7 +1590,7 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-  
+
                     <div class="bg-white my-3 border rounded-3">
                         <label for="pellGrant" class="form-label fs-5 m-2">
                             Receiving, or has been notified will receive, Pell Grant
@@ -1621,7 +1624,7 @@ $result = $stmt->get_result();
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#survey4,#survey5" class="btn btn-primary">Next</button>
                     </div>
                 </div>
-        
+
                 <!--*************************************************************************************-->
 
                 <div id="survey5" style="transition: 1ms" class="collapse">
@@ -1653,9 +1656,9 @@ $result = $stmt->get_result();
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="homeless" class="form-label fs-5 m-2"> 
+                        <label for="homeless" class="form-label fs-5 m-2">
                             Homeless
                             <span class="text-danger">*</span>
                         </label>
@@ -1683,7 +1686,7 @@ $result = $stmt->get_result();
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="exOffer" class="form-label fs-5 m-2"> 
+                        <label for="exOffer" class="form-label fs-5 m-2">
                             Ex-Offender
                             <span class="text-danger">*</span>
                         </label>
@@ -1711,7 +1714,7 @@ $result = $stmt->get_result();
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="displace" class="form-label fs-5 m-2"> 
+                        <label for="displace" class="form-label fs-5 m-2">
                             Displaced Homemaker
                             <span class="text-danger">*</span>
                         </label>
@@ -1739,7 +1742,7 @@ $result = $stmt->get_result();
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="singleParent" class="form-label fs-5 m-2"> 
+                        <label for="singleParent" class="form-label fs-5 m-2">
                             Single Parent (including single pregnant women)
                             <span class="text-danger">*</span>
                         </label>
@@ -1767,7 +1770,7 @@ $result = $stmt->get_result();
                     </div>
 
                     <div class="bg-white my-3 border rounded-3">
-                        <label for="culBarrier" class="form-label fs-5 m-2"> 
+                        <label for="culBarrier" class="form-label fs-5 m-2">
                             Cultural Barriers
                             <span class="text-danger">*</span>
                         </label>
@@ -1868,7 +1871,7 @@ $result = $stmt->get_result();
             </div>
             </div>
         </div>
-        
+
         <!-- Personal Information Tab -->
         <div id="personalInfoTab">
             <div class="d-flex flex-column align-items-center mx-5">
@@ -1911,8 +1914,8 @@ $result = $stmt->get_result();
                             <div class="col fw-bold">Zip Code</div>
                             <div class="col-7"><?php echo $zipcode?></div>
                         </div>
-                    </div>  
-                   
+                    </div>
+
 
                     <!--Participant information Edit-->
                     <div id="participant_edit" style="width: 500px; height:auto; transition:1ms;" class="bg-lightBlue my-5 mx-3 collapse">
@@ -2004,7 +2007,7 @@ $result = $stmt->get_result();
                             <button class="nav-link text-Blue" id="" data-bs-toggle="tab" data-bs-target="#supportService-tab" type="button">Support Services</button>
                         </li>
                     </ul>
-                
+
                     <div class="tab-content border border-info bg-lightBlue">
                         <!-- Contact/Demographics Tab  -->
                         <div class="tab-pane fade show active" id="contact-tab" aria-labelledby="contact-tab" tabindex="0">
@@ -2130,7 +2133,7 @@ $result = $stmt->get_result();
                                 <div class="col-7"><?php echo $techExperience?></div>
                             </div>
                             <br>
-                        
+
                             <div class="border bg-white border-info" style="width:100%;">
                                 <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
                             </div>
@@ -2206,12 +2209,12 @@ $result = $stmt->get_result();
                             </div>
                             <?php } ?>
                             <br>
-                           
+
                             <div class="border bg-white border-info" style="width:100%;">
                                 <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ></textarea>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
