@@ -80,7 +80,7 @@
                         <p>Take Action</p>
                     </div>
                     <div class="mb-5 mx-5">
-                        <a href="#" class="btn btn-action btn-lg fs-6">Search</a>
+                        <a href="http://localhost/CSC_190_Product/includes/adminSearchOption.php" class="btn btn-action btn-lg fs-6">Search</a>
                         <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee</a>
                         <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#client-table,#employee-table">Client</a>
                         <a href="addingEmployee.php" class="btn btn-action btn-lg fs-6">Add Employee</a>
