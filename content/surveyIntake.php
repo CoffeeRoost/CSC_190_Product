@@ -1,4 +1,18 @@
 <body>
+	<script>
+		function validateEmail()
+		{
+			value       = document.getElementById("password").value;
+			length8		= (value.length >= 8);
+			uppercase	= value.match(/[A-Z]/);
+			lowercase	= value.match(/[a-z]/);
+			special		= value.match(/[^\w]/);
+			invalid		= (!length8 || !uppercase || !lowercase || !special);
+			
+			document.getElementById("verification").hidden 		= !invalid;
+			document.getElementById("signup-submit").disabled	= invalid;
+		}
+	</script>
     <div class="d-flex justify-content-center my-5">
         <div class="boxSurvey my-1">
             <form action="/CSC_190_Product/includes/newAccount.inc.php" method="post">
@@ -1162,8 +1176,10 @@
                                   <span class="text-danger">*</span>
                               </label>
                               <br>
-                              <input type="password" name="password" id="password" class="m-2 input-underline" placeholder="Your answer">
+                              <input type="password" name="password" id="password" oninput="validateEmail()" class="m-2 input-underline" placeholder="Your answer">
                           </div>
+
+						  <label id="verification" hidden style="color:red">Password must be 8 characters long including at least one uppercase, lowercase, and special character</label>
 
                           <div class="bg-white my-3 border rounded-3">
                               <label for="confirmPassword" class="form-label fs-5 m-2">
@@ -1176,7 +1192,7 @@
 
                           <div class="d-flex justify-content-between m-1">
                               <button type="button" data-bs-toggle="collapse" data-bs-target="#survey5,#survey4" class="btn btn-primary">Back</button>
-                              <button name="signup-submit" type = "submit" class="btn btn-primary">Submit</button>
+                              <button name="signup-submit" id="signup-submit" type = "submit" class="btn btn-primary">Submit</button>
                               
                           </div>
                     </div>
