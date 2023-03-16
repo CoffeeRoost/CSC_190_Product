@@ -18,7 +18,7 @@ if(isset($_POST["passBoxSubmit"])){
     $token = random_bytes(32);
 
     //create a clickable url to be sent to the email   
-    $url = "http://54.67.115.77/resetPage.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "http://54.67.115.77/resetPageAd.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     //sets expires to current time + 1hr
     $expires = date("U") + 1800;
