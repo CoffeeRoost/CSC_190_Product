@@ -67,7 +67,11 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 
 							}
 							else{
-								header("Location: ../login.php?error=noAvailableCoaches");
+
+								mysqli_stmt_bind_param($stmt,'s',$row['email']);
+								mysqli_stmt_execute($stmt);
+
+								header("Location: ../login.php");
 								exit();
 							}
 

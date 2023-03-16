@@ -1,3 +1,4 @@
+<form action="includes/reportActivityToDatabase.php" method="POST">
 <div class="container-fluid">
     <h5 class="d-flex justify-content-center text-info mb-5">REPORT ACTIVITY FORM</h5>
 
@@ -18,7 +19,7 @@
 
     <h6 class="mt-5">Please choose from the list code list and select best code that fits for activity. <span class="text-danger">*</span></h6>
     <select class="form-select-SM border rounded-2" name="trainingCode" id="" required>
-				                <option value="" disabled selected hidden>Choose</option>
+				                <option value="Code">Choose</option>
                         <option value="101">101 Orientation</option>
                         <option value="102">102 Initial Assessment</option>
                         <option value="103">103 Provision of Information on Training Providers/Performance Outcomes</option>
@@ -176,9 +177,11 @@
     <h6 class="mt-5">Notes</h6>
       <div class="col-6 my-3">
         <textarea class="form-control border border-info" rows="4" placeholder="" required=""></textarea>
-        <button class="btn btn-info btn-shadow my-3 " type="submit">Submit</button>
+        <button class="btn btn-info btn-shadow my-3 " type="submit" name="submit">Submit</button>
 
       </div>
 
 
 </div>
+
+</form>

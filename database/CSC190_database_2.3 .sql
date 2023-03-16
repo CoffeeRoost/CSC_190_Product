@@ -14,9 +14,9 @@ DROP TABLE IF EXISTS ADDRESS;
 DROP TABLE IF EXISTS LOGIN;
 DROP TABLE IF EXISTS FILES;
 DROP TABLE IF EXISTS participationReportActivity;
-DROP TABLE IF EXISTS grant_characteristics;
-DROP TABLE IF EXISTS grant_participation;
-DROP TABLE IF EXISTS grant_main;
+DROP TABLE IF EXISTS GRANT_CHARACTERISTICS;
+DROP TABLE IF EXISTS GRANT_PARTICIPATION;
+DROP TABLE IF EXISTS GRANT_MAIN;
 DROP TABLE IF EXISTS PARTICIPATION;
 DROP TABLE IF EXISTS ADMIN;
 DROP TABLE IF EXISTS EMPLOYEE;
@@ -62,11 +62,11 @@ MI     CHAR(2),
 email CHAR(255) NOT NULL,
 newUserPassword CHAR(255) NOT NUll,
 programPartnerReference CHAR(255) NOT NULL,
-last4SSN INT(5),
+last4SSN INT(5) NOT NULL,
 DOB    DATE NOT NULL,
 gender CHAR(50) NOT NULL,
-primaryPhone CHAR(20),
-phoneNumType CHAR(15),
+primaryPhone CHAR(20) NOT NULL,
+phoneNumType CHAR(15) NOT NULL,
 altPhone CHAR(20),
 status INT(1) DEFAULT 0,
 activation_code VARCHAR(255) NOT NULL,
@@ -79,16 +79,16 @@ PRIMARY KEY (userID)
 
 CREATE TABLE ADDRESS(
 userID INT(11) NOT NULL,
-street CHAR(255),
-city CHAR(255),
-state CHAR(255),
-zipcode INT (11),
-country CHAR (255),
+street CHAR(255)NOT NULL,
+city CHAR(255)NOT NULL,
+state CHAR(255)NOT NULL,
+zipcode CHAR(11)NOT NULL,
+county CHAR (255),
 mailingStreet CHAR(255),
 mailingCity CHAR(255),
 mailingState CHAR(255),
-mailingZipcode INT (11),
-mailingCountry CHAR (255),
+mailingZipcode CHAR(11),
+mailingCounty CHAR (255),
 FOREIGN KEY (userID) REFERENCES PARTICIPATION (userID) ON DELETE CASCADE
 );
 
@@ -131,14 +131,14 @@ FOREIGN KEY (employeeID) REFERENCES EMPLOYEE (employeeID) ON DELETE CASCADE
 CREATE TABLE CITIZEN(
 userID INT(11) NOT NULL,
 usCitizenshipStatus CHAR(100) NOT NULL,
-alienRegistrationCode INT(11),
+alienRegistrationCode CHAR(20),
 alienRegistrationCodeEXP DATE,
 FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID) ON DELETE CASCADE
 );
 
 CREATE TABLE ETHNICITY(
 userID INT(11) NOT NULL,
-hispanicHeritage CHAR(3),
+hispanicHeritage CHAR(3) DEFAULT 'No',
 africanAmercian_black CHAR(3) DEFAULT 'No',
 americanIndian_alaskanNative CHAR(3) DEFAULT 'No',
 asian CHAR(3) DEFAULT 'No',
@@ -281,9 +281,10 @@ CREATE TABLE FILES(
 fileID INT(11) AUTO_INCREMENT PRIMARY KEY,
 userID INT(11) NOT NULL,
 file_name VARCHAR(255) NOT NULL,
+file_size int(11) NOT NULL DEFAULT 0,
 file_path VARCHAR(255) NOT NULL,
 file_type VARCHAR(255) NOT NULL,
 uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (userID) REFERENCES participation(userID)
+FOREIGN KEY (userID) REFERENCES PARTICIPATION(userID)
 
 );

@@ -1,4 +1,5 @@
 <?php
+  session_start();
   if(!isset($_SESSION['adminLogin'])){
     //if error, force a logout
     session_unset();
