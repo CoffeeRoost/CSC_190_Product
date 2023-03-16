@@ -1,13 +1,16 @@
-<?php 
-    
+<?php
+
     // Start session and check if user is logged in
     session_start();
     if (!isset($_SESSION['userID'])) {
+        //if error, force a logout
+     session_unset();
+     session_destroy();
         // Redirect user to login page if not logged in
        header("Location: ../Login.php");
        exit();
     }
-    
+
 
     // Include database connection
     require_once 'dbh.inc.php';
@@ -84,10 +87,10 @@
 
     isset($_POST['americanIndian_alaskanNative']) ? 'Yes' : 'No';
     isset($_POST['americanIndian_alaskanNative']) ? 'Yes' : 'No';
-    
+
     isset($_POST['hawaiian_other']) ? 'Yes' : 'No';
     isset($_POST['noAnswer']) ? 'Yes' : 'No';
-    
+
 
     $americanIndian_alaskanNative   =isset($_POST['americanIndian_alaskanNative']) ? 'Yes' : 'No';
     $africanAmerican_black         =isset($_POST['africanAmerican_black']) ? 'Yes' : 'No';
@@ -115,7 +118,7 @@
     if(empty($white)){
         $white = NULL;
     }
-    
+
     $language                =$_POST['language'];
     $proficiency             =$_POST['proficiency'];
 
@@ -200,7 +203,7 @@
         exit();
     }
 
-    $sqlPart = "UPDATE participation p 
+    $sqlPart = "UPDATE participation p
                 SET p.fname = ?,
                     p.lname = ?,
                     p.MI = ?,
@@ -295,9 +298,9 @@
                 h.familySize = ?,
                 h.annualizedFamilyIncome = ?
                 WHERE userID = ?";
-            
+
                 //WHERE p.userID = '$userID'";
-    
+
 
     // Prepare and bind for 'Participation' table
     $stmtPart = $conn->prepare($sqlPart);
@@ -340,9 +343,13 @@
     $stmtHardship->execute();
 
     if (!$stmtPart->error && !$stmtAddress->error && !$stmtCitizen->error && !$stmtEthnicity->error && !$stmtEducation->error && !$stmtEmployment->error && !$stmtServices->error && !$stmtHardship->error) {
-        echo "Participation information saved successfully.";
+        header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+        exit();
     } else {
         echo "Error updating record: " . mysqli_error($conn);
+
+        header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+        exit();
     }
 
     $stmtPart->close();

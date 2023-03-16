@@ -1,0 +1,2 @@
+email: rootuser@cmc.com
+password: root

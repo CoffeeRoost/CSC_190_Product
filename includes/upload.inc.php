@@ -7,6 +7,14 @@
 
         // Include database connection
         require_once 'dbh.inc.php';
+        if (!isset($_SESSION['userID'])) {
+            //if error, force a logout
+            session_unset();
+            session_destroy();
+           //Redirect user to login page if not logged in
+           header("Location:../Login.php");
+           exit();
+       }
 
         // Check if form was submitted and file was uploaded
         if (isset($_POST['submit']) && isset($_FILES['fileToUpload'])) {
