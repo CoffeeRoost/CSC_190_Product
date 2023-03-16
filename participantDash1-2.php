@@ -30,7 +30,7 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUs
 
                  edu.highSchoolStatus,edu.highSchooolDiplomaOrEquil,edu.highestGradeComplete,edu.inSchool,
 
-                 t.coach,t.activityCode,t.trainingProgram, t.startDate, t.endDate,t.notes,
+
 
                  e.currentMilitaryOrVet,e.militarySpouse,e.selectiveService,e.employmentStatus,
                  e.payRate,e.unemployemntInsurance,e.unemploymentWeeks,e.farmworker12Months,
@@ -44,6 +44,7 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUs
                  h.ticketToWork,h.homelessStatus,h.exOffender,h.displacedHomemaker,h.singleParent,
                  h.culturalBarriers,h.familySize,h.annualizedFamilyIncome,h.IsDisability,h.disabilityDescription
 
+
            FROM participation part
            JOIN address a
            ON part.userID=a.userID
@@ -53,8 +54,7 @@ $query = "SELECT part.userID,part.fname,part.lname,part.MI,part.email,part.newUs
            ON part.userID=eth.userID
            JOIN education edu
            ON part.userID=edu.userID
-           JOIN participationReportActivity t
-           On part.userID=t.userID
+
            JOIN employment e
            ON part.userID=e.userID
            JOIN services s
@@ -75,7 +75,8 @@ $stmt->execute();
 // Get the results
 $result = $stmt->get_result();
 
-
+// Initialize $file_names as an empty array
+$file_names = array();
 //  Display some personal information from the database tables using php
                       // Fetch the data
                           while($row=mysqli_fetch_assoc($result)){
@@ -127,13 +128,7 @@ $result = $stmt->get_result();
                             $highestGradeComplete=$row['highestGradeComplete'];
                             $inSchool=$row['inSchool'];
 
-                            // data from participation report activity form
-                            $coachName= $row ['coach'];
-                            $codeActivity= $row ['activityCode'];
-                            $trainingProgram= $row ['trainingProgram'];
-                            $startDate= $row ['startDate'];
-                            $endDate=$row['endDate'];
-                            $reportNote= $row['notes'];
+
 
                             // data from 'Employment' table
                             $currentMilitaryOrVet= $row['currentMilitaryOrVet'];
@@ -175,6 +170,8 @@ $result = $stmt->get_result();
                             $culturalBarriers =$row['culturalBarriers'];
                             $familySize =$row['familySize'];
                             $annualizedFamilyIncome =$row['annualizedFamilyIncome'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -1984,10 +1981,44 @@ $result = $stmt->get_result();
                             </div>
                             <div class="form-group row justify-content-center">
                                 <div class="col-12 col-md-6 my-4">
-                                    <button type="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
+                                    <button type="submit" name="submit" class="btn btn-sm btn-outline-primary py-0">Upload</button>
                                 </div>
                             </div>
+
                         </form>
+                        <div class="mt-1 row">
+                            <h6 class="d-flex mt-4">Files Uploaded</h6>
+                            <?php
+                                // Retrieve file names and paths from the database for the current user
+                                $sql = "SELECT file_name, file_path FROM files WHERE userID=?";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("i", $_SESSION['userID']);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                // Check if any files were found
+                                if ($result->num_rows > 0) {
+                                    // Loop through each file and display a download link
+                                    while ($row = $result->fetch_assoc()) {
+                                        $file_name = $row['file_name'];
+                                        $file_path = $row['file_path'];
+                                        echo '<div class="my-4">
+                                                <h6 class="d-flex"><a href="./includes/'.$file_path.'" download="'.$file_name.'">'.$file_name.'</a></h6>
+                                            </div>';
+                                    }
+                                } else {
+                                    echo '<p>No files uploaded.</p>';
+                                }
+                            ?>
+                        </div>
+
+<!-- *******************************End  Of  Upload and Display Upload Files***************************** -->
+
+
+
+
+
+
                     </div>
                 </div>
 
@@ -2048,6 +2079,37 @@ $result = $stmt->get_result();
                             </div>
                         </div>
 
+<!-- ********************************************************************************************************** -->
+                        <!-- Training Tab  -->
+                        <?php
+                        // Check if training data is available in the database
+                        $sql = "SELECT * FROM participationReportActivity WHERE userID=?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $_SESSION['userID']);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            // Display training data on the dashboard
+                            $row = $result->fetch_assoc();
+                            $coachName = $row['coach'];
+                            $codeActivity = $row['activityCode'];
+                            $trainingProgram = $row['trainingProgram'];
+                            $startDate = $row['startDate'];
+                            $endDate = $row['endDate'];
+                            $reportNote = $row['notes'];
+                        } else {
+                            // Set default values if training data is not available
+                            $coachName = "N/A ";
+                            $codeActivity = "N/A";
+                            $trainingProgram = "N/A ";
+                            $startDate = "N/A ";
+                            $endDate = "N/A";
+                            $reportNote = "Notes ";
+                        }
+
+                        // Display the dashboard with the training data
+                        ?>
                         <!-- Training Tab  -->
                         <div class="tab-pane fade" id="training-tab" tabindex="0">
                             <!-- Display the data from Participant Activity Reporting Form "Task table in database" -->
@@ -2074,9 +2136,10 @@ $result = $stmt->get_result();
                             <br>
 
                             <div class="border bg-white border-info" style="width:100%;">
-                               <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ><?php echo $reportNote?></textarea>
+                                <textarea placeholder="Notes" style="width:100%; height:100px;" class="border border-0 p-1 outline-none" ><?php echo $reportNote?></textarea>
                             </div>
                         </div>
+              <!-- ********************END OF TRAINING TAB************************************* -->
 
                         <!-- Employment/Career Tab  -->
                         <div class="tab-pane fade" id="career-tab" tabindex="0">

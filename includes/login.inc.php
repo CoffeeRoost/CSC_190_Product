@@ -25,7 +25,7 @@ if (isset($_POST['login-submit'])) {
       $stmt->execute();
       $result = $stmt->get_result();
       if ($row = $result->fetch_assoc()) {
-        if ($row['status'] == 0) {
+        if ($row['status'] == 1) {
           if (password_verify($userpassword, $row['newUserPassword'])) {
             $_SESSION['userID'] = $row['userID'];
             header("Location: ../participantDash1-2.php?login=success");

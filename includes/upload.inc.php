@@ -1,10 +1,7 @@
 <?php
-namespace Upload;
 
-class Upload
-{
-    public function uploadFile()
-    {
+
+
         //Start session
         session_start();
 
@@ -39,11 +36,11 @@ class Upload
             }
 
             // Validate file type and size
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'ipynb'];
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'ipynb','pdf','docx','doc','txt','xlsx','pptx','sql'];
             $maxFileSize = 5000000; // 5MB
             $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
             if (!in_array($fileExt, $allowedExtensions)) {
-                $_SESSION['upload_error'] = 'Invalid file type. Only JPG, JPEG, PNG, GIF, and IPYNB files are allowed.';
+                $_SESSION['upload_error'] = 'Invalid file type. Only JPG, JPEG, PNG, GIF, IPYNB, pdf, docx/doc,txt,xlsx,pptx,sql files are allowed.';
                  header("Location: ../participantDash1-2.php?error=invalidfiletype");
                 exit();
             }
@@ -55,16 +52,31 @@ class Upload
             }
 
             // Generate unique file name and move file to uploads directory
-            $newFileName = uniqid('', true) . "." . $fileExt;
+
+            $newFileName = uniqid() . '_' . $fileName; // Generate a unique file name
             $fileDestination = 'uploads/' . $newFileName;
-            if (move_uploaded_file($fileTmpName, $fileDestination)) {
+
+            // Check if file with same name already exists
+            if (file_exists($fileDestination)) {
+                unlink($fileDestination); // Delete existing file
+            }
+            if (!file_exists('uploads')) {
+                mkdir('uploads');
+            }
+
+            if (move_uploaded_file($fileTmpName, $fileDestination))  {
                 // Insert file details into database
                 $userId = $_SESSION['userID'];
                 $sql = "INSERT INTO files (userID, file_name, file_size, file_type, file_path)
-                        VALUES (?, ?, ?, ?, ?)";
+                        VALUES (?, ?, ?, ?, ?)
+                        ON DUPLICATE KEY UPDATE
+                        file_size = VALUES(file_size),
+                        file_type = VALUES(file_type),
+                        file_path = VALUES(file_path)";
+
                 $stmt = $conn->prepare($sql);
                 if ($stmt) {
-                    $stmt->bind_param("issss", $userId, $fileName, $fileSize, $fileType, $fileDestination);
+                    $stmt->bind_param("isiss", $userId, $fileName, $fileSize, $fileType, $fileDestination);
                     $stmt->execute();
                     $_SESSION['upload_success'] = 'File uploaded successfully.';
 
@@ -82,8 +94,6 @@ class Upload
           header("Location: ../participantDash1-2.php?error=nofileuploaded");
           exit();
       }
-  }
-}
 
 
 
