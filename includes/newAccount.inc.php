@@ -441,12 +441,13 @@
 
          $activationCode = bin2hex(random_bytes(16));
          $hashedCode=password_hash($activationCode,PASSWORD_DEFAULT);
-         $expirary = 1*24*60*60;
+         $current_time = date('Y-m-d H:i:s');
+         $expirary = date('Y-m-d H:i:s', strtotime('+1 hour', strtotime($current_time)));
 
          /***** Insert to PARTICIPATION *****/
          $stmt1 = $conn-> prepare("INSERT INTO PARTICIPATION (fname,lname,MI,email,newUserPassword,programPartnerReference,
          last4SSn,DOB,gender,primaryPhone,phoneNumType,altPhone,activation_code,activation_expiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-         $stmt1->bind_param("ssssssissssssi",$partFname,$partLname,$partMname,$partEmail,$participationPassword_hash,$partner,
+         $stmt1->bind_param("ssssssisssssss",$partFname,$partLname,$partMname,$partEmail,$participationPassword_hash,$partner,
          $SSN,$partDOB_mysql,$gender,$phone,$phoneType,$alPhone,$hashedCode,$expirary);
          if(!$stmt1 ->execute()){
                 echo "<script>alert('Query Error 1');</script>";
