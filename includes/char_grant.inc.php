@@ -257,7 +257,7 @@ if(isset($_POST['grant-characteristic-submit'])){
             $stmt_value= "SELECT disabilityDescription as result_value FROM HARDSHIP WHERE userID=?";
             break;
           case "58":
-            $stmt_value= "SELECT africanAmerican_black as result_value FROM ETHNICITY WHERE userID=?";
+            $stmt_value= "SELECT africanAmercian_black as result_value FROM ETHNICITY WHERE userID=?";
             break;
           case "59":
             $stmt_value= "SELECT americanIndian_alaskanNative as result_value FROM ETHNICITY WHERE userID=?";
