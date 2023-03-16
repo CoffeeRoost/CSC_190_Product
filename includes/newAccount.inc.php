@@ -594,7 +594,7 @@
                              "This is your confirmation link\n".$activation_link;
 
         if ($confirmMail->send()) {
-            header("Location: ../Login.php");
+            header("Location: ../checkEmail.php");
             exit();
         } else {
             echo "<script>alert('Confirmation Email error');</script>";
