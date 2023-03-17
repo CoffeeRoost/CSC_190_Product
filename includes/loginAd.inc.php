@@ -29,6 +29,7 @@ if(isset($_POST['login-submit'])){
                 if(password_verify($empPassword,$pwdCheck)){
                     session_start();
                     $_SESSION['adminLogin'] = $row['employeeID'];
+                    $_SESSION['email'] = $email;
                     header("Location: ../Administration1-3.php");
                     exit();
                 }
@@ -61,6 +62,7 @@ if(isset($_POST['login-submit'])){
                 if(password_verify($empPassword,$pwdCheck)){
                     session_start();
                     $_SESSION['employeeID'] = $row['employeeID'];
+                    $_SESSION['email'] = $email;
                     header("Location: ../employeeDash.php");
                     exit();
                 }

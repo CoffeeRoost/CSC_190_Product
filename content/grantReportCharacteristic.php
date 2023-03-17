@@ -2,7 +2,7 @@
     session_start();
     require 'includes/dbh.inc.php';
 
-    if(isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+    if(isset($_SESSION['userID']) || isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
@@ -23,7 +23,7 @@
           if($row = mysqli_fetch_assoc($result)){
 
               //checks if the provided employeeID matches with the email checked employeeID
-              if($_SESSION['employeeID'] !== $row['employeeID']){
+              if($_SESSION['adminLogin'] !== $row['employeeID']){
                   //if not matching, force a logout
                   session_unset();
                   session_destroy();

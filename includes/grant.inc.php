@@ -9,11 +9,11 @@ if(isset($_POST['grant-initial-submit'])){
 
   //Grab relevant Session variables
   $email = $_SESSION['email'];
-  $id = $_SESSION["employeeID"];
+  $id = $_SESSION["adminLogin"];
   $userID = $_POST['userID'];
 
   //make sure session varialbes exist
-  if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+  if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";

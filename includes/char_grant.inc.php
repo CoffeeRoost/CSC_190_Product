@@ -10,12 +10,12 @@ if(isset($_POST['grant-characteristic-submit'])){
 
   //Grab relevant Session variables
   $email = $_SESSION['email'];
-  $id = $_SESSION["employeeID"];
+  $id = $_SESSION["adminLogin"];
   $client = $_SESSION['userID'];
   $shared_grant = $_SESSION['shared_grant_ID'];
 
   //make sure session varialbes exist
-  if(isset($_SESSION['shared_grant_ID']) || isset($_SESSION['userID']) || isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+  if(isset($_SESSION['shared_grant_ID']) || isset($_SESSION['userID']) || isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
 
       //Compare the employeeID and the email to make sure they match
       $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
