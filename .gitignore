@@ -297,6 +297,7 @@ tmp-php.ini
 !/win32/build/Makefile
 
 #-------------------------------------------------------------------------------
-# Visual Studios Auto Generated Files
+# Visual Studios Auto Generated Files or User Settings
 #-------------------------------------------------------------------------------
 .vs/slnx.sqlite
+.vsidx
