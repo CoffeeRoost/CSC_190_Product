@@ -1,6 +1,30 @@
 <?php
 // part 2 of the password reset system. this script file will check the tokens and if confirmed, change the password to the new password entered by the user.
-
+function isValidPassword($password) {
+    // Check if password is between 8-64 characters
+    if (strlen($password) < 8 || strlen($password) > 64) {
+      return false;
+    }
+  
+    // Check if password has at least one uppercase letter
+    if (!preg_match('/[A-Z]/', $password)) {
+      return false;
+    }
+  
+    // Check if password has at least one lowercase letter
+    if (!preg_match('/[a-z]/', $password)) {
+      return false;
+    }
+  
+    // Check if password has at least one special character
+    if (!preg_match('/[^\w\s]/', $password)) {
+      return false;
+    }
+  
+    // Password meets all requirements
+    return true;
+  }
+  
     if (isset($_POST["resetPassBoxSubmit"])){
         
         $selector = $_POST["selector"];
@@ -10,14 +34,19 @@
 
         //checking if the fields are empty, if not kick back to location
         if(empty($password) || empty($passwordRepeat)){
-                header("Location:../login.html?newpassword=empty");
+                header("Location:../resetPageAd.php?selector=" . $selector . "&validator=" . $validator);
+                exit();
+        }
+        if(!isValidPassword($password)){
+                header("Location:../resetPageAd.php?selector=" . $selector . "&validator=" . $validator);
                 exit();
         }
         // make sure passwords are the same, if not kick back to location
         else if( $password != $passwordRepeat) {
-            header("Location:../login.html?newpassword=passnotsame");
+            header("Location:../resetPageAd.php?selector=" . $selector . "&validator=" . $validator);
             exit();
         }
+        
 
         $currentDate = date("U");
         
@@ -91,7 +120,7 @@
                                 else{
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
-                                    header("Location: ../loginAd.php?newpass=passwordupdated");
+                                    header("Location: ../loginAd.php");
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }

@@ -87,6 +87,7 @@ $port = SMTP_PORT;
         $Mail->Password = SMTP_PASSWORD;
 
         // Set up email content
+        $Mail->isHTML(true);
         $Mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
         $Mail->addAddress($userEmail);
         $Mail->Subject = 'PASSWORD RESET REQUEST';
