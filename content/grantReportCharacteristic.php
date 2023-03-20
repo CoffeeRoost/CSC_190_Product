@@ -3,43 +3,37 @@
     require 'includes/dbh.inc.php';
 
     if(isset($_SESSION['userID']) || isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
+        
+        $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
+		$stmt ->bind_param("s",$_SESSION['email']);
+		if(!$stmt ->execute()){
+			session_unset();
+            session_destroy();
+            header ("Location: ./loginAd.php?error=sqlerror");
+            exit();
+		}
 
-      //Compare the employeeID and the email to make sure they match
-      $sql = "SELECT employeeID FROM EMPLOYEE WHERE email=?";
-      $stmt= mysqli_stmt_init($conn);
-      if(!mysqli_stmt_prepare($stmt,$sql)){
-          //if error, force a logout
-          session_unset();
-          session_destroy();
-          header ("Location: ./loginAd.php?error=sqlerror");
-          exit();
-      }
-      else{
-          //execute sql
-          mysqli_stmt_bind_param($stmt,'s',$_SESSION['email']);
-          mysqli_stmt_execute($stmt);
-          $result = mysqli_stmt_get_result($stmt);
+		$result = $stmt->get_result();
 
-          if($row = mysqli_fetch_assoc($result)){
+		if($result->num_rows >0){
+            $row = $result->fetch_assoc();
+            $employeeID = $row['employeeID'];
+        }
+        else{
+            session_unset();
+            session_destroy();
+            header ("Location: ./loginAd.php?error=NoUserEmail");
+            exit();
+        }
 
-              //checks if the provided employeeID matches with the email checked employeeID
-              if($_SESSION['adminLogin'] !== $row['employeeID']){
-                  //if not matching, force a logout
-                  session_unset();
-                  session_destroy();
-                  header ("Location: ./loginAd.php?error=Not_Logged_In");
-                  exit();
-              }//TODO: create another frontend page
-          }
-          else{
-              //if error, force a logout
-                session_unset();
-                session_destroy();
-                header ("Location: ./loginAd.php?error=nouseremail");
-                exit();
-          }
+        $stmt ->close();
 
-      }
+        if($_SESSION['adminLogin'] !== $employeeID){
+            session_unset();
+            session_destroy();
+            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            exit();
+        }
   }
   else{
       //if error, force a logout
