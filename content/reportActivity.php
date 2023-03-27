@@ -1,8 +1,10 @@
-<form action="includes/reportActivityToDatabase.php" method="POST">
-<div class="container-fluid">
-    <h5 class="d-flex justify-content-center text-info mb-5">REPORT ACTIVITY FORM</h5>
+<form action="includes/reportActivityToDatabase.php" method="POST" class="container-fluid custom-container">
 
-    <h6>Coach ID <span class="text-danger">*</span></h6>
+    <h4 class="d-flex justify-content-center text-info mt-5">Participant Activity Reporting Form</h4>
+    <h6 class="d-flex justify-content-center">CMC Career Pathways form to be used for capturing all activity with all participants</h6>
+    <hr>
+    <div class="text-danger mt-3">* Required</div>
+    <h6 class="mt-5">Coach ID <span class="text-danger">*</span></h6>
     <input type="text" name="coachID" id="coachID" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Coach Name <span class="text-danger">*</span></h6>
@@ -182,6 +184,5 @@
       </div>
 
 
-</div>
 
 </form>

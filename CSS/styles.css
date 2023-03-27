@@ -191,7 +191,27 @@
     border-left: 2px solid #000;
     border-bottom: 2px solid #000;
 }
+.custom-container {
+    max-width: 1200px; /* Increase the max-width to make the container wider */
+    margin: 0 auto; /* Center the container horizontally */
+}
 
+.dropdown-item button {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+    margin-right: 10px;
+  }
+
+.dropdown-item button:last-child {
+margin-right: 0;
+}
+
+
+#client_Info p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 /***************************************/
 
 
