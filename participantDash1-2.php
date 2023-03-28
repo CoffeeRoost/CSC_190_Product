@@ -214,7 +214,7 @@ $file_names = array();
                 <li class="nav-item bg-Blue mt-1 mb-md-1">
                     <a href="#" class="nav-link text-white">
                         <?php
-                            echo "<h6>Welcome, $fname $lname !</h6>";
+                            echo "<h6>$fname $lname's Dashboard!</h6>";
                         ?>
                     </a>
                 </li>
