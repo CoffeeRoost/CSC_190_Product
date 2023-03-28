@@ -76,6 +76,8 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                 </div>
                 <div class="box-client-list text-center overflow-scroll">
                     <div class="dropdown-center">
+
+
                         <?php
                         /****************************DISPLAY CLIENT LIST WHO HAS BEEN COACH BY THE EMPLOYEE WHO ARE LOGIN ******************/
 
@@ -120,7 +122,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                                        echo $row['fname']." ". $row['lname'];
                                     echo ' </p>';
 
-                                        echo '<div id="client_Info" class="dropdown-menu collapse" style="width:300px;height:auto; transition:1ms;" >';
+                                        echo '<div id="client_Info" class="dropdown-menu collapse" style="width:100%;height:auto; transition:1ms; word-break: break-word;">';
                                         echo '<p class="dropdown-item">ID: ' . $row['userID'] . '</p>';
                                         echo '<p class="dropdown-item">Last Name: ' . $row['lname'] . '</p>';
                                         echo '<p class="dropdown-item">First Name: ' . $row['fname'] . '</p>';
@@ -142,7 +144,109 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                                             echo '<a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#report_edit,#client_Info">Edit</a>';
                                         echo '</div>';
 
+                                        echo '</div>';
+
+
+
+
+
+                                    // Edit participation report activity information -->
+                                    echo ' <div id="report_edit" class="dropdown-menu collapse" style="width:100%; height:auto; transition:1ms; padding: left 3px; word-wrap: break-word;">';
+
+                                        echo '<form method="post" action="includes/updateReportActivity.inc.php">' ;
+
+                                            echo '<input type="hidden" name="userID" value="' . $row['userID'] . '">';
+                                            echo '<div class="form-group">';
+                                                echo '<div class="col fw-bold">Activity Code:</div>';
+                                                echo '<div class="mt-1">';
+                                                    echo '<select class="form-control" name="activityCode">';
+                                                        echo'<option value="Code">Please choose best code that fits for activity.</option>';
+                                                        echo '<option value="101 Orientation"';
+                                                            if (isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == '101 Orientation') {
+                                                                echo 'selected';
+                                                            }
+                                                            echo '>101 Orientation</option>';
+                                                        echo '<option value="102 Initial Assessment"';
+                                                            if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "102 Initial Assessment") {
+                                                                echo "selected";
+                                                            }
+                                                            echo '>102 Initial Assessment</option>';
+                                                        echo '<option value="103 Provision of Information on Training Providers/Performance Outcomes"';
+                                                           if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "103 Provision of Information on Training Providers/Performance Outcomes"){
+                                                            echo "selected";
+                                                           }
+                                                           echo '>103 Provision of Information on Training Providers/Performance Outcomes</option>';
+                                                    echo '</select>';
+                                                echo '</div>';
+
+                                            echo '</div>';
+
+                                            echo '<div class="form-group">';
+                                                echo '<div class="col fw-bold mt-2">Training Program:</div>';
+                                                echo '<div class="mt-1">';
+                                                    echo '<select class="form-control" name="trainingProgram">';
+                                                        echo '<option value="Training Program">Please choose training program.</option>';
+                                                        echo '<option value="CMC - Essential Skills (5 hours)"';
+                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Essential Skills (5 hours)"){
+                                                                echo "selected";
+                                                            }
+                                                            echo '>CMC - Essential Skills (5 hours)</option>';
+                                                        echo '<option value="CMC - Intro to Assembler (5 hours)"';
+                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Intro to Assembler (5 hours)"){
+                                                               echo "selected";
+                                                            }
+                                                            echo '>CMC - Intro to Assembler (5 hours)</option>';
+                                                        echo '<option value="CMC - Assembler (30 hours)"';
+                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Assembler (30 hours)"){
+                                                               echo "selected";
+                                                            }
+                                                            echo '>CMC - Assembler (30 hours)</option>';
+                                                    echo '</select>';
+                                                echo '</div>';
+                                            echo '</div>';
+
+                                            echo '<div class="form-group">';
+                                                echo '<div class="col fw-bold mt-2">Start Date:</div>';
+                                                echo '<div class="mt-1">';
+                                                    echo '<input type="date" class="form-control" id="startDate" name="startDate" value="' . $row['startDate'] . '">';
+                                                echo '</div>';
+                                            echo '</div>';
+
+                                            echo '<div class="form-group">';
+                                                echo '<div class="col fw-bold mt-2">End Date:</div>';
+                                                echo '<div class="mt-1">';
+
+                                                    echo '<input type="date" class="form-control" id="endDate" name="endDate" value="'.$row['endDate'].'">';
+                                                echo '</div>';
+                                            echo '</div>';
+
+                                            echo '<div class="form-group">';
+
+
+                                                echo '<div class="col fw-bold mt-2">Minutes Spent:</div>';
+                                                echo '<div class="mt-1">';
+                                                    echo '<input type="number" class="form-control" id="minutes" name="minutes"  value="'.$row['minutes'].'">';
+                                                echo '</div>';
+                                            echo '</div>';
+
+                                            echo '<div class="form-group">';
+
+
+                                                echo '<div class="col fw-bold mt-2">Notes:</div>';
+                                                echo '<div class="mt-1">';
+                                                    echo '<textarea type="text" class="form-control border border-info" rows="4" placeholder="Notes" required="" id="notes" name="notes">' . $row['notes'] . '</textarea>';
+
+                                                echo '</div>';
+                                            echo '</div>';
+
+                                            echo '<div class="dropdown-item text-end mt-2 ">';
+                                                echo '<button type="submit" class="text-decoration-none text-white btn btn-primary  btn-sm" >Save</button>';
+                                                echo '<button type="button" class="text-decoration-none text-white btn btn-danger  btn-sm" data-bs-toggle="collapse" data-bs-target="#client_Info,#report_edit" >Cancel</button>';
+                                            echo '</div>';
+                                        echo '</form>';
+
                                     echo '</div>';
+
 
 
 
@@ -158,74 +262,6 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                         /****************************END OF DISPLAY CLIENT LIST******************/
                         ?>
 
-                            <!-- // Edit participation report activity information -->
-
-
-                        <div id="report_edit" class="dropdown-menu collapse" style="width:100%; height:auto; transition:1ms; padding: left 3px; word-wrap: break-word;">
-                            <form method="post" action="includes/updateReportActivity.inc.php">
-
-                                <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
-                                <div class="form-group">
-                                    <div class="col fw-bold">Activity Code:</div>
-                                    <div class="mt-1">
-                                        <select class="form-control" name="activityCode">
-                                            <option value="Code">Please choose best code that fits for activity.</option>
-                                            <option value="101 Orientation" <?php if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "101 Orientation") echo "selected"; ?>>101 Orientation</option>
-                                            <option value="102 Initial Assessment" <?php if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "102 Initial Assessment") echo "selected"; ?>>102 Initial Assessment</option>
-                                            <option value="103 Provision of Information on Training Providers/Performance Outcomes" <?php if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "103 Provision of Information on Training Providers/Performance Outcomes") echo "selected"; ?>>103 Provision of Information on Training Providers/Performance Outcomes</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col fw-bold mt-2">Training Program:</div>
-                                    <div class="mt-1">
-
-                                        <select class="form-control" name="trainingProgram">
-                                            <option value="Training Program">Please choose training program.</option>
-                                            <option value="CMC - Essential Skills (5 hours)" <?php if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Essential Skills (5 hours)") echo "selected"; ?>>CMC - Essential Skills (5 hours)</option>
-                                            <option value="CMC - Intro to Assembler (5 hours)" <?php if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Intro to Assembler (5 hours)") echo "selected"; ?>>CMC - Intro to Assembler (5 hours)</option>
-                                            <option value="CMC - Assembler (30 hours)" <?php if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Assembler (30 hours)") echo "selected"; ?>>CMC - Assembler (30 hours)</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <div class="col fw-bold mt-2">Start Date:</div>
-                                    <div class="mt-1">
-                                    <input type="date" class="form-control" id="startDate" name="startDate" value="<?php echo $row['startDate']; ?>">
-                                </div>
-                                <div class="form-group">
-
-                                    <div class="col fw-bold mt-2">End Date:</div>
-                                    <div class="mt-1">
-                                        <input type="date" class="form-control" id="endDate" name="endDate" value="<?php echo $row['endDate']; ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-
-                                    <div class="col fw-bold mt-2">Minutes Spent:</div>
-                                    <div class="mt-1">
-                                       <input type="number" class="form-control" id="minutes" name="minutes" value="<?php echo $row['minutes']; ?>">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-
-
-                                    <div class="col fw-bold mt-2">Notes:</div>
-                                    <div class="mt-1">
-                                    <textarea type = "text" class="form-control border border-info" rows="4" placeholder="Notes" required=""id="notes" name="notes" value="<?php echo $row['notes']; ?>"></textarea>
-
-                                    </div>
-                                </div>
-                                <div class="dropdown-item text-end mt-2 ">
-                                    <button type="submit" class="text-decoration-none text-white btn btn-primary  btn-sm" data-bs-toggle="collapse" data-bs-target="#client_Info,#report_edit">Save</button>
-                                    <button type="button" class="text-decoration-none text-white btn btn-danger  btn-sm" onclick="closeDropdown()">Cancel</button>
-                                </div>
-                            </form>
-
-                        </div>
 
                     </div>
 
@@ -238,10 +274,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
 </div>
 <!-- Javascript for the cancle button -->
 <script>
-function closeDropdown() {
-    document.getElementById("report_edit").classList.remove("show");
 
-}
 
 function submitSearch() {
   document.getElementById("searchForm").submit();
