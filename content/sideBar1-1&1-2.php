@@ -21,6 +21,11 @@
                             Report Chart
                         </a>
                       </li>
+                      <li class="nav-item bg-Blue mb-md-1">
+                            <a href="./grantReportView.php" class="nav-link text-white">
+                                Grant Report View
+                            </a>
+                          </li>
                   </ul>
-            </div> 
+            </div>
         </div>
