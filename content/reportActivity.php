@@ -21,7 +21,7 @@
 
     <h6 class="mt-5">Please choose from the list code list and select best code that fits for activity. <span class="text-danger">*</span></h6>
     <select class="form-select-SM border rounded-2" name="trainingCode" id="" required>
-				                <option value="Code">Choose</option>
+                        <option value="" disabled selected hidden>Choose</option>
                         <option value="101">101 Orientation</option>
                         <option value="102">102 Initial Assessment</option>
                         <option value="103">103 Provision of Information on Training Providers/Performance Outcomes</option>
@@ -152,7 +152,7 @@
 
     <h6 class="mt-5">If Training Code was selected, specify the training program below</h6>
     <select class="form-select-SM border rounded-2" name="trainingProgram" id="" required>
-				                <option value="Training Program">Choose</option>
+                        <option value="" disabled selected hidden>Choose</option>
                         <option value="essential skills">CMC - Essential Skills (5 hours)</option>
                         <option value="Intro Assembler">CMC - Intro to Assembler (5 hours)</option>
                         <option value="Assembler">CMC - Assembler (30 hours)</option>
@@ -173,12 +173,12 @@
     <input type="date" name="endDate" id="" class="input-underline" placeholder="" required>
 
 
-    <h6 class="mt-5">How much time was spent with pariticipant? <span class="text-danger">*</span>Specify in minutes</h6>
+    <h6 class="mt-5">How much time was spent with pariticipant? <span class="text-danger">*</span> Specify in minutes</h6>
     <input type="number" name="timeSpent" id="timeSpent" class="input-underline" placeholder="Your answer" required>
 
-    <h6 class="mt-5">Notes</h6>
+    <h6 class="mt-5">Notes <span class="text-danger">*</span></h6>
       <div class="col-6 my-3">
-        <textarea class="form-control border border-info" rows="4" placeholder="" required=""></textarea>
+        <textarea class="form-control border border-info" name="notes" rows="4" placeholder="" required></textarea>
         <button class="btn btn-info btn-shadow my-3 " type="submit" name="submit">Submit</button>
 
       </div>
