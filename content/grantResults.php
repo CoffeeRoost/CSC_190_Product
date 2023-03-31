@@ -1,6 +1,6 @@
 <?php
 //connection to database
-$conn = mysqli_connect("localhost", "root", "", "test");
+require 'includes/dbh.inc.php';
 
 //search table columns
 if(isset($_POST["search"])) {
@@ -72,16 +72,16 @@ function filterTable($stmt) {
                     <th>End Date</th>
                     <th>Grant Name</th>
                     <th>Support Organization</th>
-                    <th>Number of Characteristics</th>
+                    <th>Personal Contact</th>
                 </tr>
                 <?php while($row = $result->fetch_assoc()):?>
                     <tr>
-                        <td><?php echo $row['grantId'];?></td>
+                        <td><?php echo $row['grantID'];?></td>
                         <td><?php echo $row['startDate'];?></td>
                         <td><?php echo $row['endDate'];?></td>
-                        <td><?php echo $row['grantName'];?></td>
-                        <td><?php echo $row['suppOrg'];?></td>
-                        <td><?php echo $row['numOfChar'];?></td>
+                        <td><?php echo $row['grant_name'];?></td>
+                        <td><?php echo $row['supporting_organization'];?></td>
+                        <td><?php echo $row['personal_contact'];?></td>
                     </tr>
                 <?php endwhile;?>
             </table>
