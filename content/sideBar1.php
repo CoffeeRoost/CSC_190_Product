@@ -7,7 +7,7 @@
                     </a>
                 </li>
                     <li class="nav-item bg-Blue mb-md-1">
-                        <a href="#" class="nav-link text-white">
+                        <a href="./employeePersonalInformationView.php" class="nav-link text-white">
                           Personal Information
                         </a>
                       </li>
@@ -17,5 +17,5 @@
                         </a>
                       </li>
                   </ul>
-            </div>  
+            </div>
         </div>
