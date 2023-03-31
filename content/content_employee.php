@@ -26,9 +26,9 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                         Emp.desiredJobTitle
                         FROM PARTICIPATION
                         AS P
-                        JOIN ADDRESS AS Addr
+                        LEFT JOIN ADDRESS AS Addr
                         ON P.userID = Addr.userID
-                        JOIN EMPLOYMENT AS Emp
+                        LEFT JOIN EMPLOYMENT AS Emp
                         ON P.userID = Emp.userID
                         WHERE P.userID NOT IN (SELECT co.userID FROM COACH AS co)
                         AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname) LIKE '%$searchTerm%' OR P.userID LIKE '%$searchTerm%'
@@ -42,27 +42,41 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
 
                         if($newClientResult > 0){
                             while($row = mysqli_fetch_assoc($newClientList)) {
-                                echo"<div class=\"dropdown-center\">";
-                                    echo"<p class=\"btn-newClient dropdown-toggle rounded-pill  text-white my-1 mx-1\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
-                                    echo $row['fname']." ". $row['lname'];
-                                    echo"</p>";
-                                    echo"<div class=\"dropdown-menu\" style=\"width:300px;\">";
-                                        echo"<p class=\"dropdown-item\">ID: ".$row['userID']."</p>";
-                                        echo"<p class=\"dropdown-item\">Last Name: ".$row['lname']."</p>";
-                                        echo"<p class=\"dropdown-item\">First Name: ".$row['fname']."</p>";
-                                        echo"<p class=\"dropdown-item\">DOB: ".$row['DOB']."</p>";
-                                        echo"<p class=\"dropdown-item\">Street: ".$row['street'].", ".$row['city']."</p>";
-                                        echo"<p class=\"dropdown-item\">State: ".$row['state']."</p>";
-                                        echo"<p class=\"dropdown-item\">Zipcode: ".$row['zipcode']."</p>";
-                                        echo"<p class=\"dropdown-item\">Phone: ".$row['primaryPhone']."</p>";
-                                        echo"<p class=\"dropdown-item\">Email: ".$row['email']."</p>";
-                                        echo"<p class=\"dropdown-item\">Desired Job Title: ".$row['desiredJobTitle']."</p>";
+                                echo "<div class=\"dropdown-center\">";
+                                echo "<p class=\"btn-newClient dropdown-toggle rounded-pill  text-white my-1 mx-1\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
+                                echo (!empty($row['fname']) ? $row['fname'] : '') . (!empty($row['lname']) ? ' ' . $row['lname'] : '');
+                                echo "</p>";
+                                echo "<div class=\"dropdown-menu\" style=\"width:300px;\">";
 
-                                    echo "</div>";
-                                echo"</div>";
-                            }} else {
-                                echo 'No client found.';
+                                echo "<p class=\"dropdown-item\">ID: " . $row['userID'] . "</p>";
+
+                                if (!empty($row['lname'])) {
+                                    echo "<p class=\"dropdown-item\">Last Name: " . $row['lname'] . "</p>";
+                                } else {
+                                    echo "<p class=\"dropdown-item\">Last Name: N/A</p>";
+                                }
+
+                                if (!empty($row['fname'])) {
+                                     echo "<p class=\"dropdown-item\">First Name: " . $row['fname'] . "</p>";
+                                } else {
+                                     echo "<p class=\"dropdown-item\">First Name: N/A</p>";
+                                }
+
+                                // Check for empty values and show "N/A" if necessary
+                                echo "<p class=\"dropdown-item\">DOB: " . (!empty($row['DOB']) ? $row['DOB'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">Street: " . (!empty($row['street']) && !empty($row['city']) ? $row['street'] . ", " . $row['city'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">State: " . (!empty($row['state']) ? $row['state'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">Zipcode: " . (!empty($row['zipcode']) ? $row['zipcode'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">Phone: " . (!empty($row['primaryPhone']) ? $row['primaryPhone'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">Email: " . (!empty($row['email']) ? $row['email'] : 'N/A') . "</p>";
+                                echo "<p class=\"dropdown-item\">Desired Job Title: " . (!empty($row['desiredJobTitle']) ? $row['desiredJobTitle'] : 'N/A') . "</p>";
+
+                                echo "</div>";
+                                echo "</div>";
                             }
+                        } else {
+                            echo 'No client found.';
+                        }
 
 
                     /********************************END NEW CLIENT BLOCK *********************************/

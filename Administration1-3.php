@@ -9,7 +9,7 @@
     }
 
     require 'includes/dbh.inc.php';
-    
+
 ?>
 
     <!DOCTYPE html>
@@ -18,17 +18,17 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
         <!-- Latest compiled and minified CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Latest compiled JavaScript -->
-    
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="CSS/styles.css">
         <title>California Mobility Center</title>
     </head>
     <body>
-    
+
         <!--Title-->
         <section id = "title">
             <nav class = "navbar navbar-expand-lg bg-Blue">
@@ -41,7 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white fs-4 mx-4" href="./includes/logout.inc.php">Logout</a>
                         </li>
-    
+
                     </ul>
                 </div>
             </nav>
@@ -70,10 +70,17 @@
                                 Grant Report
                             </a>
                           </li>
+
+                          <li class="nav-item bg-Blue mb-md-1">
+                            <a href="./grantReportView.php" class="nav-link text-white">
+                                Grant Report View
+                            </a>
+                          </li>
+
                       </ul>
-                </div> 
+                </div>
             </div>
-    
+
             <div class="d-flex flex-column">
                 <div class="d-flex flex-column bg-lightBlue mx-5 my-5">
                     <div class="text-center bg-Blue mb-4 pt-3 text-white">
@@ -86,14 +93,14 @@
                         <a href="addingEmployee.php" class="btn btn-action btn-lg fs-6">Add Employee</a>
                     </div>
             </div>
-    
+
             <div class="d-flex">
                 <div class="d-flex flex-column my-5 mx-5">
                     <div class="header-client-list">
                         <h3 class="fw-bold text-center text-Blue my-1">New Client</h3>
                     </div>
                     <div class="box-client-list text-center overflow-scroll">
-   
+
 <?php
                     /* Display information of new client. New Clients have not been coach*/
                        $newClient = "SELECT P.userID, P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
@@ -122,13 +129,13 @@
                            echo "</div>";
                         echo"</div>";
                         }}
-       
+
                    echo "</div>";
                 echo"</div>";
                 /********************************END NEW CLIENT BLOCK *********************************/
 ?>
 
- 
+
                 <div class="d-flex flex-column my-5 me-5 border border-2 border-top-0 border-dark"  style="width:100%; background-color: #E4F5F8;">
                     <div id="client-table" class="collapse show" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
@@ -152,12 +159,12 @@
                                 echo "<th>".$row['userID']."</th>";
                                 echo "<th>".$row['fname']." ".$row['lname']."</th>";
                                 echo "<th>".$row['empfname']." ".$row['emplname']."</th>"."</tr>";
-                            }}                             
-echo "</tbody></table></div>" ;  
+                            }}
+echo "</tbody></table></div>" ;
                 /********************************END CLIENT BLOCK*********************************/
 
 ?>
-                       
+
 
 
                     <div id="employee-table" class="collapse" style="transition:1ms;">
@@ -169,9 +176,9 @@ echo "</tbody></table></div>" ;
                                 <th scope="col">ID</th>
                                 <th scope="col">Full Name</th>
                                 <th scope="col">Role</th>
-                            </thead> 
+                            </thead>
 
-<?php                           
+<?php
                             $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
@@ -189,8 +196,8 @@ echo "</tbody></table></div>" ;
                                 }}
                             echo "</table>";
 
-echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";    
+echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";
                 /********************************END EMPLOYEE BLOCK*********************************/
 
-mysqli_close($conn);           
+mysqli_close($conn);
 ?>
