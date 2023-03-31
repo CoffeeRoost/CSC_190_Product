@@ -575,7 +575,8 @@
          }
          $stmt10 -> close();
 
-        $activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$partEmail&activation_code=$activationCode";
+        //$activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$partEmail&activation_code=$activationCode";
+        $activation_link = "http://localhost/CSC_190_Product/accountActivate.php";
         // Create a new PHPMailer instance
         $confirmMail = new PHPMailer;
 
@@ -591,8 +592,10 @@
         $confirmMail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
         $confirmMail->addAddress($userEmail, $partFname." ".$partLname);
         $confirmMail->Subject = 'California Confirmation Link';
+        //$confirmMail->Body = "Welcome ".$partFname." ".$partLname." to California Mobility Center\n\n".
+        //                     "This is your confirmation link\n".$activation_link;
         $confirmMail->Body = "Welcome ".$partFname." ".$partLname." to California Mobility Center\n\n".
-                             "This is your confirmation link\n".$activation_link;
+                             "Go to this page: \n".$activation_link."\n\nAnd use this code to activate your account: \n".$activationCode;
 
         if ($confirmMail->send()) {
             header("Location: ../checkEmail.php");
