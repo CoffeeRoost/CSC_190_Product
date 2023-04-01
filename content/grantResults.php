@@ -2,41 +2,61 @@
 //connection to database
 require 'includes/dbh.inc.php';
 
-//search table columns
-if(isset($_POST["search"])) {
-    if ($_POST["query"] == "default") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main");
-    }
+$search_terms = array(
+    'grantID' => "",
+    'startDate' => "",
+    'endDate' => "",
+    'grant_name' => "",
+    'supporting_organization' => "",
+    'personal_contact' => ""
+);
 
-    if ($_POST["query"] == "expireSoon") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main ORDER BY endDate ASC");
-    }
-    
-    if ($_POST["query"] == "expireLatest") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main ORDER BY endDate DESC");
-    }
+$query = isset($_POST["query"]) ? $_POST["query"] : "default";
 
-    if ($_POST["query"] == "createRecent") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main ORDER BY startDate DESC");
-    }
-
-    if ($_POST["query"] == "createOldest") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main ORDER BY startDate ASC");
-    }
-
-    if ($_POST["query"] == "expire3Months") {
-        $stmt = $conn->prepare("SELECT * FROM grant_main WHERE endDate <= NOW() + INTERVAL 3 MONTH");
-    }
-    
-    $result = filterTable($stmt);
+if (isset($_POST["search"])) {
+    $search_terms = array(
+        'grantID' => isset($_POST["grantID"]) ? $_POST["grantID"] : "",
+        'startDate' => isset($_POST["startDate"]) ? $_POST["startDate"] : "",
+        'endDate' => isset($_POST["endDate"]) ? $_POST["endDate"] : "",
+        'grant_name' => isset($_POST["grant_name"]) ? $_POST["grant_name"] : "",
+        'supporting_organization' => isset($_POST["supporting_organization"]) ? $_POST["supporting_organization"] : "",
+        'personal_contact' => isset($_POST["personal_contact"]) ? $_POST["personal_contact"] : ""
+    );
 }
-else {
-    $stmt = $conn->prepare("SELECT * FROM grant_main");
-    $result = filterTable($stmt);
+
+$base_query = "SELECT * FROM grant_main WHERE grantID LIKE ? AND startDate LIKE ? AND endDate LIKE ? AND grant_name LIKE ? AND supporting_organization LIKE ? AND personal_contact LIKE ?";
+
+switch ($query) {
+    case "expireSoon":
+        $base_query .= " ORDER BY endDate ASC";
+        break;
+    case "expireLatest":
+        $base_query .= " ORDER BY endDate DESC";
+        break;
+    case "createRecent":
+        $base_query .= " ORDER BY startDate DESC";
+        break;
+    case "createOldest":
+        $base_query .= " ORDER BY startDate ASC";
+        break;
+    case "expire3Months":
+        $base_query .= " AND endDate <= NOW() + INTERVAL 3 MONTH";
+        break;
 }
+
+$search_term = array_map(function ($term) {
+    return "%" . $term . "%";
+}, $search_terms);
+
+$stmt = $conn->prepare($base_query);
+
+$stmt->bind_param("ssssss", $search_term['grantID'], $search_term['startDate'], $search_term['endDate'], $search_term['grant_name'], $search_term['supporting_organization'], $search_term['personal_contact']);
+
+$result = filterTable($stmt);
 
 //query execution
-function filterTable($stmt) {
+function filterTable($stmt)
+{
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;
