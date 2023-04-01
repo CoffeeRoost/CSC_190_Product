@@ -66,45 +66,67 @@ function filterTable($stmt)
 
 <!DOCTYPE html>
 <html>
-    <div class="container-fluid">
+
+<div class="container-fluid">
     <h5 class="d-flex justify-content-center text-info mb-5">Grant Results</h5>
-    <h6 class="mt-5">How do you want to filter the grants by?</h6>
-        <form action="grantResults.php" method="post">
-            <select name="query">
-                <option value="default" hidden selected></option>
-                <option value="expireSoon">Grants expiring the soonest</option>
-                <option value="expireLatest">Grants expiring the latest</option>
-                <option value="createRecent">Grants recently created</option>
-                <option value="createOldest">Oldest grants created</option>
-                <option value="expire3Months">Grants expiring within 3 months</option>
-            </select>
-            
-            <h6 class="mt-5">Want to unfilter the results? Submit without anything selected.</h6>
-
-            <div class="col-6 my-3">
-                <button class="btn btn-info btn-shadow my-3" name="search" type="submit">Submit</button>
-            </div>
-
-            <table class="table table-bordered">
+    <h6 class="mt-5">Search by columns:</h6>
+    <form action="grantResults.php" method="post">
+        <h6 class="mt-5">How do you want to filter the grants by?</h6>
+        <select name="query">
+            <option value="default" hidden selected></option>
+            <option value="expireSoon">Grants expiring the soonest</option>
+            <option value="expireLatest">Grants expiring the latest</option>
+            <option value="createRecent">Grants recently created</option>
+            <option value="createOldest">Oldest grants created</option>
+            <option value="expire3Months">Grants expiring within 3 months</option>
+        </select>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Grant ID
+                    <br>
+                    <input type="text" name="grantID" placeholder="Grant ID" value="<?php echo $search_terms['grantID']; ?>">
+                </th>
+                <th>
+                    Start Date
+                    <br>
+                    <input type="text" name="startDate" placeholder="Start Date" value="<?php echo $search_terms['startDate']; ?>">
+                </th>
+                <th>
+                    End Date
+                    <br>
+                    <input type="text" name="endDate" placeholder="End Date" value="<?php echo $search_terms['endDate']; ?>">
+                </th>
+                <th>
+                    Grant Name
+                    <br>
+                    <input type="text" name="grant_name" placeholder="Grant Name" value="<?php echo $search_terms['grant_name']; ?>">
+                </th>
+                <th>
+                    Support Organization
+                    <br>
+                    <input type="text" name="supporting_organization" placeholder="Support Organization" value="<?php echo $search_terms['supporting_organization']; ?>">
+                </th>
+                <th>
+                    Personal Contact
+                    <br>
+                    <input type="text" name="personal_contact" placeholder="Personal Contact" value="<?php echo $search_terms['personal_contact']; ?>">
+                </th>
+            </tr>
+            <?php while ($row = $result->fetch_assoc()) : ?>
                 <tr>
-                    <th>Grant ID</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Grant Name</th>
-                    <th>Support Organization</th>
-                    <th>Personal Contact</th>
+                    <td><?php echo $row['grantID']; ?></td>
+                    <td><?php echo $row['startDate']; ?></td>
+                    <td><?php echo $row['endDate']; ?></td>
+                    <td><?php echo $row['grant_name']; ?></td>
+                    <td><?php echo $row['supporting_organization']; ?></td>
+                    <td><?php echo $row['personal_contact']; ?></td>
                 </tr>
-                <?php while($row = $result->fetch_assoc()):?>
-                    <tr>
-                        <td><?php echo $row['grantID'];?></td>
-                        <td><?php echo $row['startDate'];?></td>
-                        <td><?php echo $row['endDate'];?></td>
-                        <td><?php echo $row['grant_name'];?></td>
-                        <td><?php echo $row['supporting_organization'];?></td>
-                        <td><?php echo $row['personal_contact'];?></td>
-                    </tr>
-                <?php endwhile;?>
-            </table>
-        </form>
-    </div>
+            <?php endwhile; ?>
+        </table>
+        <div class="col-6 my-3">
+            <button class="btn btn-info btn-shadow my-3" name="search" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 </html>
