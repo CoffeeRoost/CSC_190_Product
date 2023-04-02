@@ -66,45 +66,73 @@
 
     <!--Employee Search Option-->
 
+    <style>
+    button[name="submit"] {
+        height: 40px;
+        width: 100px;
+        margin-top: 10px;
+        text-align: center;
+    }
+    </style>
+
     <div class="container my-5">
     <div style="text-align: center;">
     <form method="post">
-        <input type="text" placehodler="Search data" name="search">
-        <button class="btn btn-action btn-sm fs-6" name="submit">Enter Employee Name/ID</button>
+        <input type="text" placeholder="Input ID" name="ID" style="width: 300px;">
+        <input type="text" placeholder="First Name" name="Fname" style="width: 300px;">
+        <input type="text" placeholder="Last Name" name="Lname" style="width: 300px;">
+        <input type="text" placeholder="Middle Name" name="Mname" style="width: 300px;">
+        <input type="text" placeholder="Street" name="Street" style="width: 300px;">
+        <input type="text" placeholder="City" name="City" style="width: 300px;">
+        <input type="text" placeholder="State" name="State" style="width: 300px;">
+        <input type="text" placeholder="Zipcode" name="Zipcode" style="width: 300px;">
+
+        <button class="btn btn-action btn-sm fs-6" name="submit">Search</button>
     </form>
     <div class="container my-5">
-    <style>
-        .btn {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        }
-    </style>
         <table class="table">
             <?php
                 if(isset($_POST['submit'])){
-                    $search=$_POST['search'];
+                    $ID=$_POST['ID'];
+                    $Fname=$_POST['Fname'];
+                    $Lname=$_POST['Lname'];
+                    $Mname=$_POST['Mname'];
+                    $Street=$_POST['Street'];
+                    $City=$_POST['City'];
+                    $State=$_POST['State'];
+                    $Zipcode=$_POST['Zipcode'];
                     
-                    $sql="SELECT * from EMPLOYEE WHERE employeeID='$search' OR empfname='$search' OR emplname='$search'";
+                    $sql="SELECT * from EMPLOYEE WHERE employeeID='$ID' OR empfname='$Fname' OR emplname='$Lname' OR empMI='$Mname'
+                                                    OR empStreet='$Street' OR empCity='$City' OR empState='$State' OR empZipcode='$Zipcode'";
                     $result=mysqli_query($conn,$sql);
                     if($result){
                     if(mysqli_num_rows($result)>0){
-                    echo  '<thead>
-                    <tr>
-                    <th>Employee ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Middle Name</th>
-                    </tr>
-                    </thead>';
-                    $row=mysqli_fetch_assoc($result);
-                    echo '<tbody>
-                    <tr>
-                    <td>'.$row['employeeID'].'</td>
-                    <td>'.$row['empfname'].'</td>
-                    <td>'.$row['emplname'].'</td>
-                    <td>'.$row['empMI'].'</td>
-                    </tr>
-                    </tbody>';
+                        echo  '<thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Middle Name</th>
+                                <th>Street</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zipcode</th>
+                            </tr>
+                        </thead>';
+                    while($row=mysqli_fetch_assoc($result)) {
+                        echo '<tbody>
+                            <tr>
+                                <td>'.$row['employeeID'].'</td>
+                                <td>'.$row['empfname'].'</td>
+                                <td>'.$row['emplname'].'</td>
+                                <td>'.$row['empMI'].'</td>
+                                <td>'.$row['empStreet'].'</td>
+                                <td>'.$row['empCity'].'</td>
+                                <td>'.$row['empState'].'</td>
+                                <td>'.$row['empZipcode'].'</td>
+                            </tr>
+                        </tbody>';
+                    }
                 }else{
                     echo '<h2 class=text-danger>Data Not Found</h2>';
                 }
