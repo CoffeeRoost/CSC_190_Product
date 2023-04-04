@@ -1,9 +1,13 @@
 <?php
     session_start();
 
+    //For Testing Purposes, Remove later
+    //$_SESSION['employeeID'] = 2;
+    //$_SESSION['email'] = "gabcocke@gmail.com";
+
     require 'includes/dbh.inc.php';
 
-    if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+    if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
         
         $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
 		$stmt ->bind_param("s",$_SESSION['email']);
@@ -29,7 +33,7 @@
 
         $stmt ->close();
 
-        if($_SESSION['employeeID'] !== $employeeID){
+        if($_SESSION['adminLogin'] !== $employeeID){
             session_unset();
             session_destroy();
             header ("Location: ./loginAd.php?error=Not_Logged_In");
@@ -45,8 +49,7 @@
     }
 ?>
 
-
-<form action="includes/reportActivityToDatabase.php" method="POST" class="container-fluid custom-container">
+<form action="includes/reportActivityToDatabaseAD.php" method="POST" class="container-fluid custom-container">
 
     <h4 class="d-flex justify-content-center text-info mt-5">Participant Activity Reporting Form</h4>
     <h6 class="d-flex justify-content-center">CMC Career Pathways form to be used for capturing all activity with all participants</h6>
@@ -230,7 +233,7 @@
     <h6 class="mt-5">Notes <span class="text-danger">*</span></h6>
       <div class="col-6 my-3">
         <textarea class="form-control border border-info" name="notes" rows="4" placeholder="" required></textarea>
-        <button class="btn btn-info btn-shadow my-3 " type="submit" name="submitActivityEmployee">Submit</button>
+        <button class="btn btn-info btn-shadow my-3 " type="submit" name="submitActivityAdmin">Submit</button>
 
       </div>
 

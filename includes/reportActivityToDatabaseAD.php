@@ -1,14 +1,14 @@
 <?php
 	session_start();
 
-	if (isset($_POST["submitActivityEmployee"])) {
+	if (isset($_POST["submitActivityAdmin"])) {
 
 		/* Connect to Database */
 		require 'dbh.inc.php';
 
-		$coachID = $_SESSION['employeeID'];
+		$coachID = $_SESSION['adminLogin'];
 
-		if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
+		if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
 
 			$stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
 			$stmt ->bind_param("s",$_SESSION['email']);
