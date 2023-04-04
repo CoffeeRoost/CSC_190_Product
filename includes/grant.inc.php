@@ -2,8 +2,6 @@
 
 session_start();
 
-//2 hours 284
-
 if(isset($_POST['grant-initial-submit'])){
 
   //connection to database

@@ -1,9 +1,6 @@
 <?php
     session_start();
 
-    //For Testing Purposes, Remove later
-    //$_SESSION['employeeID'] = 2;
-    //$_SESSION['email'] = "gabcocke@gmail.com";
 
     require 'includes/dbh.inc.php';
 
