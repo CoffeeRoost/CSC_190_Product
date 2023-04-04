@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 // Start session and check if employee is logged in
 if (!isset($_SESSION['employeeID'])) {
      //if error, force a logout
@@ -37,6 +36,7 @@ $result = $stmt->get_result();
                     // Fetch the data
                     while($row=mysqli_fetch_assoc($result)) {
                         // data from 'Employee' table
+                        $empId= $row['employeeID'];
                         $empfname= $row['empfname'];
                         $emplname= $row['emplname'];
 ?>
@@ -44,13 +44,9 @@ $result = $stmt->get_result();
 <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
         <div>
             <ul class="nav nav-tabs flex-column align-items-center text-center">
-                <li class="nav-item bg-Blue mt-1 mb-md-1">
-                    <a href="#" class="nav-link text-white">
-                        <?php
-                            echo "<h6>Welcome, $empfname, $emplname !</h6>";
-                        ?>
-                    </a>
-                </li>
+                <?php
+                    echo "<h6><br>$empfname $emplname<br>ID: $empId</h6>";
+                ?>
                 <li class="nav-item bg-Blue mb-md-1 mt-1">
                     <a href="employeeDash.php" class="nav-link text-white">
                         Dashboard

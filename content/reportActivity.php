@@ -5,7 +5,7 @@
 
     if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
         
-        $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
+        $stmt = $conn->prepare("SELECT employeeID, empfname, emplname FROM EMPLOYEE WHERE email=?;");
 		$stmt ->bind_param("s",$_SESSION['email']);
 		if(!$stmt ->execute()){
 			session_unset();
@@ -19,6 +19,8 @@
 		if($result->num_rows >0){
             $row = $result->fetch_assoc();
             $employeeID = $row['employeeID'];
+            $empfname= $row['empfname'];
+            $emplname= $row['emplname'];
         }
         else{
             session_unset();
@@ -59,7 +61,7 @@
     -->
 
     <h6 class="mt-5">Coach Name <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
+    <input type="text" name="coachName" id="coachName" class="input-underline" value="<?php echo $empfname; echo " "; echo $emplname ?>" required>
 
     <h6 class="mt-5">Client ID <span class="text-danger">*</span></h6>
     <input type="text" name="clientID" id="clientID" class="input-underline" placeholder="Your answer" required>
