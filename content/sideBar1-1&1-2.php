@@ -12,13 +12,18 @@
                         </a>
                       </li>
                       <li class="nav-item bg-Blue mb-md-1">
+                        <a href="./ClientEmployee.php" class="nav-link text-white">
+                            Assign Clients to Employee
+                        </a>
+                      </li>
+                      <li class="nav-item bg-Blue mb-md-1">
                         <a href="./reportActivityAD.php" class="nav-link text-white">
                             Activity Reporting
                         </a>
                       </li>
                       <li class="nav-item bg-Blue mb-md-1">
                         <a href="./grantReport.php" class="nav-link text-white">
-                            Report Chart
+                            Grant Report
                         </a>
                       </li>
                       <li class="nav-item bg-Blue mb-md-1">
