@@ -21,7 +21,7 @@
 	<script type="text/javascript" language="javascript">
 		$(document).ready(function ()
 		{ 
-			$('#search_results').DataTable({paging: false, searching: false, ordering: true}); 
+			$('#search_results').DataTable({paging: false, searching: true, ordering: true }); 
 		});
 	</script>
 	
@@ -49,45 +49,54 @@
     </section>       
 	
 	<div class="d-flex justify-content-center my-5">
-        <div class="boxContent my-1">
+        <div class="boxContentSearch my-1">
 
 <?php
 
 $search_result = "";
 
-//search table columns
-if(isset($_POST['search'])) {
-    $valueToSearch = $_POST['valueToSearch'];
-    $query = "SELECT * FROM USER WHERE CONCAT('fname', 'lname', 'email', 'phone', 'address', 'city', 'gender') LIKE '%".$valueToSearch."%'";
-    $search_result = filterTable($query);
-}
-else {
-    $query = "SELECT * FROM USER";
-    $search_result = filterTable($query);
-}
+
+$query = "SELECT fname, lname, email, primaryPhone AS phone, street AS address, city, gender FROM participation JOIN address ON participation.userid = address.userid";
+$summary = "SELECT COUNT(*) AS Count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, employmentStatus AS `Employment Status` FROM employment GROUP BY employmentStatus";
+$education = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, highestGradeComplete AS `Highest Grade Complete` FROM education GROUP BY highestGradeComplete";
+$county = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, County FROM address GROUP BY County";
+$city = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, City FROM address GROUP BY City";
+$search_result = filterTable($query);
+$summary_result = filterTable($summary);
+
 //connection to database and query execution
 function filterTable($query) {
-    $connect = mysqli_connect("localhost", "root", "", "csc_190");
+    $connect = mysqli_connect("localhost", "root", "", "csc190");
     $filter_Result = mysqli_query($connect, $query);
     return $filter_Result;
 }
-?>
 
-        <div class="d-flex justify-content-center align-items-center container">
-            <div class="row">
-				<form> 
+function outputTable($result, $columns)
+{
+	if (mysqli_num_rows($result) > 0)
+	{
+		echo '<table class="table table-bordered border-primary table-sm w-50">';
+		echo '<thead>';
+		foreach ($columns as $value)
+		{
+			echo "<th>$value</th>";
+		}
+		echo '</thead>';
+		echo '<tbody>';
+		while($row = mysqli_fetch_assoc($result))
+		{
+			echo "<tr>";
+			
+			foreach ($columns as $value)
+				echo "<td>$row[$value]</td>";
+			
+			echo "</tr>";
+		}
+		echo '</tbody>';
+		echo '</table>';
+	}
+}
 
-					<div class="form-group">
-						<input class="form-control mt-3" type="text" name="valueToSearch" placeholder="Type a value to search"><br><br>
-					</div>
-					<div class="form-actions">
-						
-					</div>
-					<button type="submit" class="btn btn-primary mx-auto">Submit</button>
-				</form>
-			</div>
-		</div>
-        <?php
 
         
         echo '<table id="search_results" class= "table table-hover">';
@@ -102,7 +111,7 @@ function filterTable($query) {
             echo '</tr></thead>';
 			echo '<tbody>';
 			
-            if (mysqli_num_rows($search_result) >0)
+            if (mysqli_num_rows($search_result) > 0)
             {
                 while($row = mysqli_fetch_assoc($search_result))
                 {
@@ -118,6 +127,12 @@ function filterTable($query) {
             }
         echo '</tbody>';    
         echo '</table>';
+		echo '<br></br>';
+		
+		outputTable(filterTable($county), [ "County", "Percentage" ]);
+		outputTable(filterTable($city), [ "City", "Percentage" ]);
+		outputTable($summary_result, [ "Employment Status", "Percentage" ]);
+		outputTable(filterTable($education), [ "Highest Grade Complete", "Percentage" ]);
         ?>
         </div>
     </div>
