@@ -6,7 +6,7 @@
                         <div id ="empNameShow" style="transition:1ms;" class ="collapse show">
                                 <div  class="row my-2">
                                         <div class="col-4 fw-bold">ID</div>
-                                        <div class="col-7">19</div>
+                                        <div class="col-7"><?php echo $employee_id?></div>
 
                                         <div class="col-1 text-end">
                                                 <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empNameShow,#empNameEdit">Edit</a>
@@ -15,32 +15,32 @@
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">First Name</div>
-                                        <div class="col-7">Thinh</div>
+                                        <div class="col-7"><?php echo $first_name?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Middle Name</div>
-                                        <div class="col-7">H</div>
+                                        <div class="col-7"><?php echo $middle_name?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Last Name</div>
-                                        <div class="col-7">Nguyen</div>
+                                        <div class="col-7"><?php echo $last_name?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Date of Birth</div>
-                                        <div class="col-7">06/19/1973</div>
+                                        <div class="col-7"><?php echo $date_of_birth?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Gender</div>
-                                        <div class="col-7">Male</div>
+                                        <div class="col-7"><?php echo $gender?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Race</div>
-                                        <div class="col-7">Asian</div>
+                                        <div class="col-7"><?php echo $race?></div>
                                 </div>
                                 
                         </div>
@@ -107,7 +107,7 @@
                         <div id ="empAddressShow" style="transition:1ms;" class ="collapse show">
                                 <div  class="row my-2">
                                         <div class="col-4 fw-bold">Street</div>
-                                        <div class="col-7">8053 Kirton ct</div>
+                                        <div class="col-7"><?php echo $street?></div>
 
                                         <div class="col-1 text-end">
                                                 <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empAddressShow,#empAddressEdit">Edit</a>
@@ -116,32 +116,32 @@
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">City</div>
-                                        <div class="col-7">Elk Grove</div>
+                                        <div class="col-7"><?php echo $city?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">County</div>
-                                        <div class="col-7">Sacramento</div>
+                                        <div class="col-7"><?php echo $country?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">State</div>
-                                        <div class="col-7">California</div>
+                                        <div class="col-7"><?php echo $state?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Zip Code</div>
-                                        <div class="col-7">92553</div>
+                                        <div class="col-7"><?php echo $zipcode?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Phone</div>
-                                        <div class="col-7">9164567890</div>
+                                        <div class="col-7"><?php echo $phone?></div>
                                 </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Email</div>
-                                        <div class="col-7">thinhnguyen3@csus.edu</div>
+                                        <div class="col-7"><?php echo $email?></div>
                                 </div>      
                         </div>
 
@@ -262,7 +262,7 @@
                         <div id ="empRoleShow" style="transition:1ms;" class ="collapse show">
                                 <div  class="row my-2">
                                         <div class="col-4 fw-bold">Role</div>
-                                        <div class="col-7">Admin</div>
+                                        <div class="col-7"><?php echo $role?></div>
 
                                         <div class="col-1 text-end">
                                                 <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empRoleShow,#empRoleEdit">Edit</a>
@@ -271,7 +271,7 @@
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Program Member</div>
-                                        <div class="col-7">Career and Hiring Event</div>
+                                        <div class="col-7"><?php echo $programMember?></div>
                                 </div>
                         </div>
 
