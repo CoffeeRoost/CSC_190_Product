@@ -10,12 +10,12 @@
 
         //checking if the fields are empty, if not kick back to location
         if(empty($password) || empty($passwordRepeat)){
-                header("Location:../login.html?newpassword=empty");
+            header("Location:../resetPage.php?selector=" . $selector . "&validator=" . $validator . "&passFail=empty");
                 exit();
         }
         // make sure passwords are the same, if not kick back to location
         else if( $password != $passwordRepeat) {
-            header("Location:../login.html?newpassword=passnotsame");
+            header("Location:../resetPage.php?selector=" . $selector . "&validator=" . $validator . "&passFail=repeat");
             exit();
         }
 

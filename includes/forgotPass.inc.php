@@ -87,14 +87,15 @@ $port = SMTP_PORT;
         $Mail->Password = SMTP_PASSWORD;
 
         // Set up email content
+        $Mail->isHTML(true);
         $Mail->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
         $Mail->addAddress($userEmail);
         $Mail->Subject = 'PASSWORD RESET REQUEST';
-        $Mail->Body = "Recived a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email\n\n".
-                      "Here is your password reset link: \n".
+        $Mail->Body = "Recived a password reset request. Please click the link below. If you did not make this request, you can ignore this email\n\n".
+                      "link: \n".
                       '<a href="' . $url . '">' . $url . '</a>';
         $Mail -> send();
-        echo "<h1><center> Password reset success! Please wait up to 10 min to recive your a link in your email </center></h1>";
+        header("Location:../login.php?emailSent=true");
     } catch (Exception $e) {
         echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
     }

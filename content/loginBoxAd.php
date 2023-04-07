@@ -21,3 +21,15 @@
             </div>
         </div>
     </div>
+    <?php
+        if(isset($_GET["emailSent"])){
+            if($_GET["emailSent"] == true){
+                echo '<script>alert("Email Sent! Please check your inbox for instructions on how to reset your password.")</script>';
+            }
+        }
+        if(isset($_GET["newpass"])){
+            if($_GET["newpass"] = "passwordupdated"){
+                echo '<script>alert("Password Reset successful!.")</script>';
+            }
+        }
+    ?>
