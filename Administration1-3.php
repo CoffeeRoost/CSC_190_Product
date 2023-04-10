@@ -7,7 +7,6 @@
         header ("Location: ./LoginAd.php");
         exit();
     }
-
     require 'includes/dbh.inc.php';
 
 ?>
@@ -60,22 +59,22 @@
                                 Personal Information
                             </a>
                           </li>
+
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./ClientEmployee.php" class="nav-link text-white">
-                                Assign Clients to Employees
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./reportActivityAD.php" class="nav-link text-white">
-                                Activity Reporting
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./grantReport.php" class="nav-link text-white">
-                                Grant Report
+                            <a class="nav-link text-white" href="#" data-bs-toggle="collapse" data-bs-target="#e-form">
+                                E-FORM
                             </a>
                           </li>
 
+                          <li id = "e-form" class="nav-item bg-Blue mb-md-1 collapse" style="transition:1ms;" >
+                            <a href="./reportActivityAD.php" class="nav-link bg-lightBlue text-Blue">
+                                Activity Reporting Form
+                            </a>
+                            <a href="./grantReport.php" class="nav-link bg-lightBlue text-Blue">
+                                Grant Report Form
+                            </a>
+                          </li>
+                          
                           <li class="nav-item bg-Blue mb-md-1">
                             <a href="./grantReportView.php" class="nav-link text-white">
                                 Grant Report View
@@ -93,8 +92,8 @@
                     </div>
                     <div class="mb-5 mx-5">
                         <a href="adminSearchOption.php" class="btn btn-action btn-lg fs-6">Search</a>
-                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee</a>
-                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#client-table,#employee-table">Client</a>
+                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee/Client</a>
+                        <a href="./ClientEmployee.php" class="btn btn-action btn-lg fs-6">Assign Client</a>
                         <a href="addingEmployee.php" class="btn btn-action btn-lg fs-6">Add Employee</a>
                     </div>
             </div>
@@ -192,9 +191,9 @@ echo "</tbody></table></div>" ;
 
                             echo "<tbody>";
                                 echo "<tr scope= \" row \">";
-                                echo "<th>".$row['employeeID']."</th>";
-                                echo "<th>".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</th>";
-                                echo "<th>".$row['employeeRole']."</th>\n";
+                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['employeeID']."</a></th>";
+                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</a></th>";
+                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['employeeRole']."</a></th>\n";
                                 echo "</tr>\n";
                                 echo " </tbody>";
 
