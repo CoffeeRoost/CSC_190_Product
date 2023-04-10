@@ -188,12 +188,13 @@ echo "</tbody></table></div>" ;
                             $employeeResult = mysqli_num_rows($employeeList);
                             if($employeeResult > 0){
                                 while($row = mysqli_fetch_assoc($employeeList)) {
-
+                                    $empViewID = $row['employeeID'];
+                            /* "./includes/employeeViewBE.php?id=$empViewID" will create link with unique employee ID for employeeViewBE.php*/
                             echo "<tbody>";
                                 echo "<tr scope= \" row \">";
-                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['employeeID']."</a></th>";
-                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</a></th>";
-                                echo "<th><a href = \"./empInfoView.php\" class= \"nav-link\">".$row['employeeRole']."</a></th>\n";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['employeeID']."</a></th>";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</a></th>";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['employeeRole']."</a></th>\n";
                                 echo "</tr>\n";
                                 echo " </tbody>";
 
