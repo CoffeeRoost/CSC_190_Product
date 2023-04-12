@@ -1,6 +1,4 @@
-
 <?php
-        /*Secure session*/
         session_start();
         if (!isset($_SESSION['adminLogin'])){
              //if error, force a logout
@@ -10,10 +8,8 @@
             exit();
         }
 ?>
-
-
 <div class="container-fluid">
-        <!--Demographic Information Section-->
+
         <div class="mb-5">
                 <fieldset class="border rounded-3 p-3">
                         <legend class="float-none w-auto px-3">Demographic Information</legend>
@@ -55,24 +51,24 @@
                                 </div>
 
                                 <div  class="row mb-2">
-                                        <div class="col-4 fw-bold">Race</div>
+                                        <div class="col-4 fw-bold">Ethnicity</div>
                                         <div class="col-7"><?php echo $_SESSION['empViewRaces']?></div>
                                 </div>
                                 
                         </div>
 
-
-        <!--Demographic Information Edit Section-->
                         <div id ="empNameEdit" style="transition:1ms;" class ="collapse collapse">
-                                <div  class="row my-2">
-                                        <div class="col-4 fw-bold">ID</div>
-                                        <div class="col-7"><?php echo $_SESSION['empViewID']?></div>
 
-                                        <div class="col-1 text-end">
-                                                <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empNameEdit,#empNameShow">Submit</a>
+                                <form method="POST" action="./includes/employeeModifyFunction.inc.php">
+                                        <div  class="row my-2">
+                                                <div class="col-4 fw-bold">ID</div>
+                                                <div class="col-7"><?php echo $_SESSION['empViewID']?></div>
+
+                                                <div class="col-1 text-end">
+                                                        <button type="submit" name ="empDemographicEdit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empNameEdit,#empNameShow">Change</button>
+                                                </div>
                                         </div>
-                                </div>
-                                <form method="POST" action="#">
+
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">First Name</div>
                                                 <div class="col-7">
@@ -104,14 +100,32 @@
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Gender</div>
                                                 <div class="col-7">
-                                                        <input type="text" name="empGender" class="col input-underline" value ="<?php echo $_SESSION['empViewGender']?>">
+                                                <select class="form-select-SM border rounded-2" name="empGender" id="empGender" required>
+                                                        <option value="" selected disabled>Select your gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Non-binary">Non-binary</option>
+                                                        <option value="Transgender">Transgender</option>
+                                                        <option value="Genderqueer">Genderqueer</option>
+                                                        <option value="Agender">Agender</option>
+                                                        <option value="Two-spirit">Two-spirit</option>
+                                                        <option value="Other">Prefer not to say</option>
+                                                </select>
                                                 </div>       
                                         </div>
 
                                         <div  class="row mb-2">
-                                                <div class="col-4 fw-bold">Race</div>
+                                                <div class="col-4 fw-bold">Ethnicity</div>
                                                 <div class="col-7">
-                                                        <input type="text" name="empRaces" class="col input-underline" value ="<?php echo $_SESSION['empViewRaces']?>">
+                                                <select class="form-select-SM border rounded-2" name="empRaces" id="Ethnicity" required>
+                                                        <option value="" selected disabled> Select an ethnicity</option>
+                                                        <option value="Asian">Asian</option>
+                                                        <option value="Black">Black</option>
+                                                        <option value="Hispanic">Hispanic</option>
+                                                        <option value="Native American">Native American</option>
+                                                        <option value="White">White</option>
+                                                        <option value="Other">Other</option>
+                                                </select>
                                                 </div>       
                                         </div>
                                 </form>
@@ -119,7 +133,6 @@
                 </fieldset>
         </div>
 
-        <!--Address Section-->
         <div class="mb-5">
                 <fieldset class="border rounded-3 p-3">
                         <legend class="float-none w-auto px-3">Address</legend>
@@ -164,9 +177,8 @@
                                 </div>      
                         </div>
 
-        <!--Address Edit Section-->
                         <div id ="empAddressEdit" style="transition:1ms;" class ="collapse collapse">
-                                <form method="POST" action="#">
+                                <form method="POST" action="./includes/employeeModifyFunction.inc.php">
                                         <div  class="row my-2">
                                                 <div class="col-4 fw-bold">Street</div>
                                                 <div class="col-7">
@@ -174,7 +186,7 @@
                                                 </div> 
 
                                                 <div class="col-1 text-end">
-                                                        <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empAddressEdit,#empAddressShow">Submit</a>
+                                                        <button type="submit" name ="empAddEdit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empAddressEdit,#empAddressShow">Change</button>
                                                 </div>
                                         </div>
 
@@ -276,7 +288,6 @@
                 </fieldset>
         </div>
 
-        <!--Role and Program Member Section-->
         <div class="mb-5">
                 <fieldset class="border rounded-3 p-3">
                         <legend class="float-none w-auto px-3">Role and Program Member</legend>
@@ -296,9 +307,8 @@
                                 </div>
                         </div>
 
-        <!--Role and Program Member Edit Section-->
                         <div id ="empRoleEdit" style="transition:1ms;" class ="collapse collapse">
-                                <form method="post" action="#">
+                                <form method="POST" action="./includes/employeeModifyFunction.inc.php">
                                         <div  class="row my-2">
                                                 <div class="col-4 fw-bold">Role</div>
                                                 <div class="col-7">
@@ -317,7 +327,7 @@
                                                 </div>
 
                                                 <div class="col-1 text-end">
-                                                        <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empRoleEdit,#empRoleShow">Submit</a>
+                                                        <button type="submit" name ="empRoleEdit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empRoleEdit,#empRoleShow">Change</button>
                                                 </div>
                                         </div>
 
@@ -349,15 +359,70 @@
                 </fieldset>
         </div>
 
+        <div class="mb-5">
+                <fieldset class="border rounded-3 p-3">
+                        <legend class="float-none w-auto px-3">Reset Password</legend>
+                                <form method="POST" action="./includes/employeeModifyFunction.inc.php">
+                                        <div  class="row my-2">
+                                                <div class="col-4 fw-bold">New Password</div>
+                                                <div class="col-6">
+                                                        <input type="text" name="newPassword" class="col input-underline">
+                                                </div>
+
+                                                <form method="POST" action="./includes/employeeModifyFunction.inc.php">
+                                                        <div class="col-1 text-end">
+                                                                <button type="submit" name ="generate" class="text-decoration-none text-Blue border-0 bg-body">Generate</button>
+                                                        </div>
+                                                </form>
+
+                                                <div class="col-1 text-end">
+                                                        <button type="submit" name ="inputPass" class="text-decoration-none text-Blue border-0 bg-body">Reset</button>
+                                                </div>
+                                        </div>
+                                </form>
+                </fieldset>
+        </div> 
+
+
         <div class = "row">
                 <div class= "col">
                         <a href="./Administration1-3.php" class="btn text-white">Back</a>
                 </div>
                 
-                <div class="col text-end">
-                        <button class="btn bg-success text-white">Deactivate</button>
-                        <button class="btn bg-danger text-white">Delete</button>
+                <div class="col d-flex justify-content-end">
+                        <form method="POST" action="./includes/employeeModifyFunction.inc.php">
+                                <button type="submit" name="deactivate" 
+                                        <?php if($_SESSION['empStatus'] == 1){
+                                                echo "class=\"btn bg-success text-white\"";
+                                                }
+                                                else {
+                                                echo "class=\"btn bg-secondary text-white\"";       
+                                                }
+                                        ?>
+                                >
+                                        <?php 
+                                                if($_SESSION['empStatus'] == 1){
+                                                        echo "Deactivate";
+                                                        }
+                                                else {
+                                                        echo "Activate";       
+                                                }
+                                        ?>
+                                </button>
+                        </form>
+
+                        <button onclick="confirmDelete()" class="btn bg-danger text-white ms-3">Delete</button>
                 </div>
         </div>
         
 </div>
+
+<script>
+function confirmDelete() {
+  if (confirm("Account cannot be recovery after delete.\nIf you are not sure. Please using deactivate.\nDo you want to continue delete?")) {
+        window.location.href = "./includes/employeeModifyFunction.inc.php?action=delete";
+  } else {
+    // do nothing
+  }
+}
+</script>
