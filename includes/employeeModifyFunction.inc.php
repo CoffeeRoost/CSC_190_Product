@@ -180,35 +180,30 @@
 
      /************************DEACTIVATED ACCOUNT**********************/
      if(isset($_POST['deactivate'])){
-        if($_SESSION['empStatus'] == 1){
-            $status = 0;
-            $stmt = $conn ->prepare("UPDATE EMPLOYEE SET empStatus = ? WHERE employeeID = ?;");
-            $stmt -> bind_param("ii", $status , $_SESSION['empViewID']);
-            if($stmt -> execute()){
-                echo "<script>alert('Employeed Account is deactivated');</script>";
-                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
-            }
-        }
-        else {
-            $status = 1;
-            $stmt = $conn ->prepare("UPDATE EMPLOYEE SET empStatus = ? WHERE employeeID = ?;");
-            $stmt -> bind_param("ii", $status , $_SESSION['empViewID']);
-            if($stmt -> execute()){
-                echo "<script>alert('Employeed Account is activated');</script>";
-                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
-            }
-        }
+        $pages = "infoView";
+        deactivate_account($conn, $_SESSION['empViewID'], $_SESSION['empStatus'],$pages);
+     }
 
-        $stmt -> close();
-        $conn -> close();
-        
+    if(isset($_POST['deactivate_table'])){
+        $pages = "employeetable";
+        deactivate_account($conn, $_GET['id'], $_GET['status'],$pages);
      }
     /******************************************************************/
+    
 
     /***************************DELETE ACCOUNT*************************/
     if(isset($_GET['action'])){
-        delete_account($conn, $_SESSION['empViewID']);
-    }   
+        if($_GET['action'] === "delete"){
+            delete_account($conn, $_SESSION['empViewID'],$_GET['action'] );
+        }
+
+        if($_GET['action'] === "deleteAtTable"){
+            delete_account($conn, $_GET['id'],$_GET['action']);
+        }
+        
+    }
+
+  
     /******************************************************************/
 
 
@@ -223,14 +218,66 @@ function generatePassword() {
     }
     return $password;
 }
+function deactivate_account($connection, $deactivate_id, $status, $pages){
+    if($status == 1){
+            $changeStatus = 0;
+            $stmt = $connection ->prepare("UPDATE EMPLOYEE SET empStatus = ? WHERE employeeID = ?;");
+            $stmt -> bind_param("ii", $changeStatus , $deactivate_id);
+            if($stmt -> execute()){
 
-function delete_account($connection ,$delete_id){
+                if($pages === "infoView" ){
+                    echo "<script>alert('Employeed Account is deactivated');</script>";
+                    echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$deactivate_id."'}, 300);</script>";
+                    exit();
+                }
+                
+                if($pages === "employeetable"){
+                    echo "<script>alert('Employeed Account is deactivated');</script>";
+                    echo "<script>setTimeout(function(){window.location.href='../employeeTable.php'}, 300);</script>";
+                    exit();
+                }
+            }
+        }
+            else {
+                    $changeStatus = 1;
+                    $stmt = $connection ->prepare("UPDATE EMPLOYEE SET empStatus = ? WHERE employeeID = ?;");
+                    $stmt -> bind_param("ii", $changeStatus , $deactivate_id);
+                    if($stmt -> execute()){
+                        if($pages === "infoView" ){
+                            echo "<script>alert('Employeed Account is activated');</script>";
+                            echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$deactivate_id."'}, 300);</script>";
+                            exit();
+                        }
+                        
+                        if($pages === "employeetable"){
+                            echo "<script>alert('Employeed Account is activated');</script>";
+                            echo "<script>setTimeout(function(){window.location.href='../employeeTable.php'}, 300);</script>";
+                            exit();
+                        }
+
+                    }
+                }
+
+        $stmt -> close();
+        $connection -> close();
+}
+
+function delete_account($connection ,$delete_id, $pages){
     $stmt = $connection -> prepare("DELETE FROM EMPLOYEE WHERE employeeID = ?;");
     $stmt -> bind_param("i",$delete_id);
     if($stmt -> execute()){
-        echo "<script>alert('Employeed Account is delete');</script>";
-        echo "<script>setTimeout(function(){window.location.href='../Administration1-3.php'}, 300);</script>";
-        exit();
+        if($pages === "delete"){
+            echo "<script>alert('Employeed Account is delete');</script>";
+            echo "<script>setTimeout(function(){window.location.href='../Administration1-3.php'}, 300);</script>";
+            exit();
+        }
+
+        if($pages === "deleteAtTable"){
+            echo "<script>alert('Employeed Account is delete');</script>";
+            echo "<script>setTimeout(function(){window.location.href='../employeeTable.php'}, 300);</script>";
+            exit();
+        }
+        
     }
     $stmt -> close();
     $connection -> close();

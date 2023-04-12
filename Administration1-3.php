@@ -179,7 +179,7 @@ echo "</tbody></table></div>" ;
 
                     <div id="employee-table" class="collapse" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
-                            <h3 class="fw-bold text-center text-Blue my-1">Employee</h3>
+                            <a href="./employeeTable.php" class="nav-link"><h3 class="fw-bold text-center text-Blue my-1">Employee</h3></a>
                         </div>
                         <table class="table table-blue table-responsive text-center border border-1 border-start-0 border-end-0 border-dark">
                             <thead class="fs-5 text-Blue">
