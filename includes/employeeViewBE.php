@@ -1,5 +1,4 @@
 <?php
-/*Secure session*/
     session_start();
     if (!isset($_SESSION['adminLogin'])){
           //if error, force a logout
@@ -11,8 +10,8 @@
 
     require './dbh.inc.php';
 
-    /*Get employee ID from the link on dashboard*/
      $id = $_GET['id'];
+     
 
 //Checks to see which name of employee is selected
 $sql = $conn -> prepare("SELECT * FROM employee WHERE employeeID = ?;"); //*****Modify this so to select an employee********
@@ -38,6 +37,7 @@ if($empViewResult -> num_rows > 0){
     $_SESSION['empViewEmail'] = $row['email'];
     $_SESSION['empViewRole'] = $row['employeeRole'];
     $_SESSION['empViewProgram'] = $row['programMember'];
+    $_SESSION['empStatus'] = $row['empStatus'];
     header("Location: /CSC_190_Product/empInfoView.php");
     /*echo $_SESSION['empViewID'];
     echo $_SESSION['empViewfname'];

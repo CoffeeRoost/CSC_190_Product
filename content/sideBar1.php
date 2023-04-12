@@ -61,6 +61,12 @@ $result = $stmt->get_result();
                             Activity Reporting
                         </a>
                       </li>
+					  <li class="nav-item bg-Blue mb-md-1">
+                        <a href="searchOption.php" class="nav-link text-white">
+                          Participant Report
+                        </a>
+                      </li>
+					  
                   </ul>
             </div>
         </div>
