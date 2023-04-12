@@ -37,6 +37,7 @@ empStreet CHAR(255) NOT NULL,
 empCity CHAR(255) NOT NULL,
 empState CHAR(10) NOT NULL,
 empZipcode CHAR(11) NOT NULL,
+empCounty VARCHAR(50),
 empPhone	CHAR(20) NOT NULL,
 empGender CHAR(50) NOT NULL,
 empRaces CHAR(50) NOT NULL,
@@ -44,6 +45,7 @@ email CHAR(255) NOT NULL,
 employeeRole CHAR(255) NOT NULL,
 userPassword CHAR(255) NOT NULL,
 programMember CHAR(255) NOT NULL,
+empStatus BOOLEAN DEFAULT 1,
 PRIMARY KEY (employeeID)
 );
 

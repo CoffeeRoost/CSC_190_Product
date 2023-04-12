@@ -46,7 +46,7 @@ if($empViewResult -> num_rows > 0){
     echo$_SESSION['empViewDOB'];
     echo $_SESSION['empViewStreet'];
     echo $_SESSION['empViewCity'];
-    echo $_SESSION['empViewState']; 
+    echo $_SESSION['empViewState'];
     echo $_SESSION['empViewCounty'];
     echo $_SESSION['empViewZipcode'];
     echo $_SESSION['empViewPhone'];
@@ -68,7 +68,7 @@ else {
 
 //Checks to see if name matches on database
 if (mysqli_num_rows($result) > 0) {
-	//Retrieve the data of employee 
+	//Retrieve the data of employee
 
     //<-- Demographic Information -->
 	$row = mysqli_fetch_assoc($result);
