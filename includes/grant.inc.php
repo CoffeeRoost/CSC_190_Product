@@ -9,31 +9,31 @@ if(isset($_POST['grant-initial-submit'])){
 
   //Grab relevant Session variables
   $email = $_SESSION['email'];
-  $id = $_SESSION["adminLogin"];
+  $id = $_SESSION['adminLogin'];
   $userID = $_POST['userID'];
 
   //make sure session varialbes exist
   if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
 
         $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
-		$stmt ->bind_param("s",$email);
-		if(!$stmt ->execute()){
-			session_unset();
+	  $stmt ->bind_param("s",$_SESSION['email']);
+	  if(!$stmt ->execute()){
+		session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=sqlerror1");
-            exit();
-		}
+           	header ("Location: ../LoginAd.php?error=sqlerror1");
+           	exit();
+	  }
 
-		$result = $stmt->get_result();
+        $result = $stmt->get_result();
 
-		if($result->num_rows >0){
+        if($result->num_rows >0){
             $row = $result->fetch_assoc();
             $employeeID = $row['employeeID'];
         }
         else{
             session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=NoUserEmail");
+            header ("Location: ../LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -42,22 +42,22 @@ if(isset($_POST['grant-initial-submit'])){
         if($id !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ../LoginAd.php?error=Not_Logged_In");
             exit();
         }
 
         if(!empty($_POST['shared_grant_ID'])){
             $stmt2 = $conn->prepare("SELECT userID FROM GRANT_PARTICIPATION WHERE userID=? AND shared_grant_ID=?;");
-		    $stmt2 ->bind_param("ii",$userID,$_POST['shared_grant_ID']);
+		$stmt2 ->bind_param("ii",$userID,$_POST['shared_grant_ID']);
 
             if(!$stmt2 ->execute()){
-			    session_unset();
+		    session_unset();
                 session_destroy();
-                header ("Location: ../loginAd.php?error=sqlerror1");
+                header ("Location: ../LoginAd.php?error=sqlerror1");
                 exit();
-		    }
+		}
 
-		    $result = $stmt2->get_result();
+		$result = $stmt2->get_result();
 
             if($result->num_rows >0){
                 $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
@@ -68,14 +68,14 @@ if(isset($_POST['grant-initial-submit'])){
             else{
                 $stmt2 ->close();
             
-                $stmt3 = $conn->prepare("INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID) VALUES(?,?);");
-		        $stmt3 ->bind_param("ii",$_POST['shared_grant_ID'],$userID);
-		        if(!$stmt3 ->execute()){
-			        session_unset();
+                $stmt3 = $conn->prepare("INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID) VALUES (?,?);");
+		    $stmt3 ->bind_param("ii",$_POST['shared_grant_ID'],$userID);
+		    if(!$stmt3 ->execute()){
+			  session_unset();
                     session_destroy();
-                    header ("Location: ../loginAd.php?error=sqlerror");
+                    header ("Location: ../LoginAd.php?error=sqlerror");
                     exit();
-		        }
+		    }
                 $stmt3 ->close();
 
                 $_SESSION['shared_grant_ID'] = $_POST['shared_grant_ID'];
@@ -89,7 +89,7 @@ if(isset($_POST['grant-initial-submit'])){
       //if error, force a logout
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=Not_Logged_In");
+      header ("Location: ../LoginAd.php?error=Not_Logged_In");
       exit();
   }
 
@@ -113,7 +113,7 @@ if(isset($_POST['grant-initial-submit'])){
   if(!$stmt4 ->execute()){
     session_unset();
     session_destroy();
-    header ("Location: ../loginAd.php?error=sqlerror4");
+    header ("Location: ../LoginAd.php?error=sqlerror4");
     exit();
   }
 
@@ -126,27 +126,27 @@ if(isset($_POST['grant-initial-submit'])){
   else{
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=NotAnAdmin");
+      header ("Location: ../LoginAd.php?error=NotAnAdmin");
       exit();
   }
   $stmt4 ->close();
 
-  $stmt5 = $conn->prepare("INSERT INTO GRANT_MAIN (adminID,grant_name,grantID,startDate,endDate,personal_contact,supporting_organization) VALUES(?,?,?,?,?,?,?);");
-  $stmt5 ->bind_param("isiiiis",$admin,$grant_name,$grantID,$startDate,$endDate,$personal_contact,$supporting_organization);
+  $stmt5 = $conn->prepare("INSERT INTO GRANT_MAIN (adminID,grant_name,grantID,startDate,endDate,personal_contact,supporting_organization) VALUES (?,?,?,?,?,?,?);");
+  $stmt5 ->bind_param("isissis",$admin,$grant_name,$grantID,$startDate,$endDate,$personal_contact,$supporting_organization);
   if(!$stmt5 ->execute()){
     session_unset();
     session_destroy();
-    header ("Location: ../loginAd.php?error=sqlerror5");
+    header ("Location: ../LoginAd.php?error=sqlerror5");
     exit();
   }
   $stmt5 ->close();
 
-  $stmt6 = $conn->prepare("SELECT shared_grant_ID FROM GRANT_MAIN WHERE supporting_organization=? AND grantID=?;");
-  $stmt6 ->bind_param("si",$supporting_organization,$grantID);
+  $stmt6 = $conn->prepare("SELECT shared_grant_ID FROM GRANT_MAIN WHERE supporting_organization=? AND grantID=? AND grant_name=? AND adminID=?;");
+  $stmt6 ->bind_param("sisi",$supporting_organization,$grantID,$grant_name,$admin);
   if(!$stmt6 ->execute()){
     session_unset();
     session_destroy();
-    header ("Location: ../loginAd.php?error=sqlerror6");
+    header ("Location: ../LoginAd.php?error=sqlerror6");
     exit();
   }
 
@@ -159,17 +159,17 @@ if(isset($_POST['grant-initial-submit'])){
   else{
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=NoGrantEntry");
+      header ("Location: ../LoginAd.php?error=NoGrantEntry");
       exit();
   }
   $stmt6 ->close();
 
-  $stmt7 = $conn->prepare("INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID) VALUES(?,?);");
+  $stmt7 = $conn->prepare("INSERT INTO GRANT_PARTICIPATION (shared_grant_ID,userID) VALUES (?,?);");
   $stmt7 ->bind_param("ii",$shared,$userID);
   if(!$stmt7 ->execute()){
     session_unset();
     session_destroy();
-    header ("Location: ../loginAd.php?error=sqlerror7");
+    header ("Location: ../LoginAd.php?error=sqlerror7");
     exit();
   }
   $stmt7 ->close();
@@ -185,6 +185,7 @@ else
   //send back to login page
   session_unset();
   session_destroy();
-  header ("Location: ../loginAd.php");
+  header ("Location: ../LoginAd.php");
   exit();
 }
+?>
