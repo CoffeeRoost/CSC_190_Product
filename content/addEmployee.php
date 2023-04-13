@@ -30,6 +30,9 @@
     <h6 class="mt-5">City <span class="text-danger">*</span></h6>
     <input type="text" name="empCity" id="empCity" class="input-underline" placeholder="city" required>
 
+    <h6 class="mt-5">County <span class="text-danger">*</span></h6>
+    <input type="text" name="empCounty" id="empCounty" class="input-underline" placeholder="County" required>
+
     <h6 class="mt-5">State<span class="text-danger">*</span></h6>
     <select class="form-select-SM border rounded-2" name="empState" id="empState" required>
       <option value="" selected disabled>Select a state</option>

@@ -303,3 +303,7 @@ tmp-php.ini
 .vsidx
 .vs/VSWorkspaceState.json
 .vs/slnx.sqlite-journal
+*.bin
+/.vs/CSC_190_Product/v17
+/.vs/CSC_190_Product/FileContentIndex
+/.vs/CSC_190_Product/config

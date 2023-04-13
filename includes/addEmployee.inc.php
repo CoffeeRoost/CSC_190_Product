@@ -31,6 +31,7 @@ if (isset($_SESSION['adminLogin'])){
         $empStreet = $_POST['empstreet'];
         $empCity = $_POST['empCity'];
         $empState = $_POST['empState'];
+        $empCounty = $_POST['empCounty'];
         $empZipCode = $_POST['empZipCode'];
         $empPhone = $_POST['empPhone'];
         $email = $_POST['email'];
@@ -47,7 +48,7 @@ if (isset($_SESSION['adminLogin'])){
         
         /*Check empty field*/
         if(empty($empfname) || empty($emplname) || empty($empDOB) || empty($empStreet)
-        || empty($empCity) || empty($empState) || empty($empZipCode) || empty($empPhone) 
+        || empty($empCity) || empty($empState) || empty($empCounty) || empty($empZipCode) || empty($empPhone) 
         || empty($email) || empty($empGender) || empty($empEthnicity) || empty($empRole)
         || empty($programMember) || empty($userPassword) || empty($confirmPassword)){
             echo "<script>alert('Please fill out the required field.');</script>";
@@ -86,10 +87,10 @@ if (isset($_SESSION['adminLogin'])){
                 $userPassword_hash = password_hash($userPassword, PASSWORD_DEFAULT);
 
                 $stmt1 = $conn->prepare("INSERT INTO EMPLOYEE(empfname,emplname,empMI,empDOB,empStreet,empCity,
-                empState,empZipcode,empPhone,empGender,empRaces,email,employeeRole,userPassword,programMember)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-                $stmt1 -> bind_param("sssssssssssssss", $empfname,$emplname,$empMI,$empDOB_mysql,$empStreet,$empCity,
-                $empState,$empZipCode,$empPhone,$empGender,$empEthnicity,$email,$empRole, $userPassword_hash,$programMember);
+                empState,empZipcode,empPhone,empGender,empRaces,email,employeeRole,userPassword,programMember,empCounty)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+                $stmt1 -> bind_param("ssssssssssssssss", $empfname,$emplname,$empMI,$empDOB_mysql,$empStreet,$empCity,
+                $empState,$empZipCode,$empPhone,$empGender,$empEthnicity,$email,$empRole, $userPassword_hash,$programMember,$empCounty);
 
                 /*If insert successlly pop up arlet and return to adding Employee page*/
                 /*Set timeout is 300 mean page will wait 0.3s then return to employee adding page*/

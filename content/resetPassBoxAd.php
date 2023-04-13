@@ -6,8 +6,9 @@
                 <?php
                     $selector = $_GET["selector"];
                     $validator = $_GET["validator"];
+
                     if (empty($selector) || empty($validator)){
-                        echo "selector or validator empty!";
+                        echo "selector or validator empty! Please use the Link sent to your email. If redirected from the email, please resubmit reset request";
                     }
                     else{
                         if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){
@@ -23,6 +24,14 @@
                 <label id="verify" hidden style="color:red">Password must be 8 characters long including at least one uppercase, lowercase, and special character</label>
 				</form> 
                 <?php
+                if(isset($_GET["passFail"])){
+                    if($_GET["passFail"] == "empty"){
+                        echo '<script>alert("Please Enter a New Password.")</script>';
+                    }
+                    if($_GET["passFail"] == "repeat"){
+                        echo '<script>alert("Passwords do not match!")</script>';
+                    }
+                }
                         }
                     }
                     ?> 
