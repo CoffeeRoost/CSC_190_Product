@@ -1,7 +1,27 @@
 <?php
 
+// Start session and check if user is logged in
+if (!isset($_SESSION['employeeID'])) {
+    // If error, force a logout
+    session_unset();
+    session_destroy();
+    // Redirect user to Admin login page if not logged in
+    header("Location:LoginAd.php");
+    exit();
+  }
+// Get the user ID from the session variable
+$employeeID = $_SESSION['employeeID'];
 // Get search query from form data
-$searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' : '';
+if (isset($_GET['searchResult'])) {
+    $searchTerm = trim($_GET['searchResult']);
+    if (!empty($searchTerm)) {
+        $searchTerm = '%' . $searchTerm . '%';
+
+
+    } else {
+        echo "Search query is empty.";
+    }
+}
 
 ?>
 <div class="d-flex">
@@ -9,7 +29,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
         <div class="d-flex m-5 border border-info rounded-pill w-search-cover">
             <img src="./image/seachIcon.png" alt="search icon" class="search-icon m-2" onclick="submitSearch()">
             <form id="searchForm" class="my-1"  action="" method="GET">
-                <input type="text" placeholder="Search Client" name="searchResult" class="w-search-bar m-1">
+                <input type="text" placeholder="Search Client by Name or ID" name="searchResult" class="w-search-bar m-1">
             </form>
         </div>
         <div class="d-flex justify-content-between">
@@ -20,7 +40,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                 <div class="box-client text-center overflow-scroll">
                     <?php
                         /* Display information of new client. New Clients have not been coach*/
-
+                        $searchTerm = str_replace('%', '', $searchTerm);
                         $newClient = "SELECT P.userID, P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
                         Addr.street, Addr.city, Addr.state, Addr.zipcode,
                         Emp.desiredJobTitle
@@ -31,12 +51,8 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                         LEFT JOIN EMPLOYMENT AS Emp
                         ON P.userID = Emp.userID
                         WHERE P.userID NOT IN (SELECT co.userID FROM COACH AS co)
-                        AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname) LIKE '%$searchTerm%' OR P.userID LIKE '%$searchTerm%'
-                        OR P.email LIKE '%$searchTerm%' OR  P.DOB LIKE '%$searchTerm%' OR  P.primaryPhone LIKE '%$searchTerm%'
-                        OR Addr.street LIKE '%$searchTerm%'OR Addr.city LIKE '%$searchTerm%' OR Addr.state LIKE '%$searchTerm%'
-                        OR Addr.zipcode LIKE '%$searchTerm%'
-                        OR Emp.desiredJobTitle LIKE '%$searchTerm%' );";
-
+                        AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname)
+                        LIKE '%$searchTerm%' OR P.userID = " . (is_numeric($searchTerm) ? intval($searchTerm) : "NULL") . ")";
                         $newClientList = mysqli_query($conn, $newClient);
                         $newClientResult = mysqli_num_rows($newClientList);
 
@@ -75,7 +91,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                                 echo "</div>";
                             }
                         } else {
-                            echo 'No client found.';
+                            echo 'No new client found.';
                         }
 
 
@@ -103,13 +119,16 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                         <tbody>
 
                             <?php
+                            $searchTerm = str_replace('%', '', $searchTerm);
                                 $clientQuerry = "SELECT P.userID, P.fname, P.lname, E.empfname, E.emplname
                                                  FROM PARTICIPATION AS P
                                                  JOIN COACH AS co
                                                  ON P.userID = co.userID
                                                  JOIN EMPLOYEE AS E
-                                                 ON co.employeeID = E.employeeID;" ;
-
+                                                 ON co.employeeID = E.employeeID
+                                                 WHERE co.employeeID = $employeeID
+                                                 AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname)
+                                                LIKE '%$searchTerm%' OR P.userID = " . (is_numeric($searchTerm) ? intval($searchTerm) : "NULL") . ")";
                                 $clientList = mysqli_query($conn, $clientQuerry);
                                 $clientResult = mysqli_num_rows($clientList);
 
@@ -121,6 +140,9 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                                         echo "<th>".$row['empfname']." ".$row['emplname']."</th>";
                                         echo "</tr>";
                                     }
+                                }
+                                else {
+                                    echo "<tr><td colspan='3'>No client found.</td></tr>";
                                 }
 
                             ?>
