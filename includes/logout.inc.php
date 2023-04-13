@@ -5,6 +5,9 @@
   //Unset all session varibales
   $_SESSION=array();
 
+  //
+  session_unset();
+
   // Destroy session and redirect to login page
   session_destroy();
 

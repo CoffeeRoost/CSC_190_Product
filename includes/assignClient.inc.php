@@ -20,7 +20,7 @@ if(isset($_POST['assign-employee-client'])){
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=sqlerror1");
+            header ("Location: ../LoginAd.php?error=sqlerror1");
             exit();
 		}
 
@@ -33,7 +33,7 @@ if(isset($_POST['assign-employee-client'])){
         else{
             session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=NoUserEmail");
+            header ("Location: ../LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -42,7 +42,7 @@ if(isset($_POST['assign-employee-client'])){
         if($id !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ../LoginAd.php?error=Not_Logged_In");
             exit();
         }
   }
@@ -50,7 +50,7 @@ if(isset($_POST['assign-employee-client'])){
       //if error, force a logout
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=Not_Logged_In");
+      header ("Location: ../LoginAd.php?error=Not_Logged_In");
       exit();
   }
 
@@ -64,7 +64,7 @@ if(isset($_POST['assign-employee-client'])){
   if(!$stmt4 ->execute()){
       session_unset();
       session_destroy();
-      header("Location: ../loginAd.php?error=sqlerror2");
+      header("Location: ../LoginAd.php?error=sqlerror2");
       exit();
   }
   $result = $stmt4->get_result();
@@ -87,7 +87,28 @@ if(isset($_POST['assign-employee-client'])){
       if(!$stmt2 ->execute()){
           session_unset();
           session_destroy();
-          header("Location: ../loginAd.php?error=sqlerror2");
+          header("Location: ../LoginAd.php?error=sqlerror2");
+          exit();
+      }
+      $result = $stmt2->get_result();
+
+      if($result->num_rows >0){
+          $row = $result->fetch_assoc();
+          $employeeID = $row['employeeID'];
+      }
+      else{
+          header("Location: ../ClientEmployee.php?error=MissingFields");
+          exit();
+      }
+      $stmt2 ->close();
+  }
+  else{
+	$stmt2 = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE employeeID=?;");
+      $stmt2 ->bind_param("i",$employeeID);
+      if(!$stmt2 ->execute()){
+          session_unset();
+          session_destroy();
+          header("Location: ../LoginAd.php?error=sqlerror2");
           exit();
       }
       $result = $stmt2->get_result();
@@ -109,7 +130,7 @@ if(isset($_POST['assign-employee-client'])){
   if(!$stmt5 ->execute()){
       session_unset();
       session_destroy();
-      header("Location: ../loginAd.php?error=sqlerror5");
+      header("Location: ../LoginAd.php?error=sqlerror5");
       exit();
   }
   $result = $stmt5->get_result();
@@ -120,7 +141,7 @@ if(isset($_POST['assign-employee-client'])){
       if(!$stmt6 ->execute()){
           session_unset();
           session_destroy();
-          header("Location: ../loginAd.php?error=sqlerror6");
+          header("Location: ../LoginAd.php?error=sqlerror6");
           exit();
       }
       $stmt6 ->close();
@@ -128,12 +149,12 @@ if(isset($_POST['assign-employee-client'])){
   $stmt5 ->close();
 
 
-  $stmt3 = $conn->prepare("INSERT INTO COACH (userID,employeeID) VALUES(?,?);");
+  $stmt3 = $conn->prepare("INSERT INTO COACH (userID,employeeID) VALUES (?,?);");
   $stmt3 ->bind_param("ii",$userID,$employeeID);
   if(!$stmt3 ->execute()){
     session_unset();
     session_destroy();
-    header ("Location: ../loginAd.php?error=sqlerror3");
+    header ("Location: ../LoginAd.php?error=sqlerror3");
     exit();
   }
   $stmt3 ->close();
@@ -147,6 +168,6 @@ else
   //send back to login page
   session_unset();
   session_destroy();
-  header ("Location: ../loginAd.php");
+  header ("Location: ../LoginAd.php");
   exit();
 }

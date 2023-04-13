@@ -16,7 +16,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 		$stmt ->bind_param("s",$inputs['email']);
 		if(!$stmt ->execute()){
 			echo "<script>alert('Query Error 1');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../login.php'}, 0);</script>";
+            echo "<script>setTimeout(function(){window.location.href='../Login.php'}, 0);</script>";
             exit();
 		}
 
@@ -41,7 +41,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 		$stmt2 ->bind_param("s",$programPartnerReference);
 		if(!$stmt2 ->execute()){
 			echo "<script>alert('Query Error 2');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../login.php'}, 0);</script>";
+            echo "<script>setTimeout(function(){window.location.href='../Login.php'}, 0);</script>";
             exit();
 		}
 		
@@ -57,7 +57,7 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 			$stmt3 ->bind_param("iii",$userID,$employeeID,$acceptance);
 			if(!$stmt3 ->execute()){
 				echo "<script>alert('Query Error 3');</script>";
-				echo "<script>setTimeout(function(){window.location.href='../login.php'}, 0);</script>";
+				echo "<script>setTimeout(function(){window.location.href='../Login.php'}, 0);</script>";
 				exit();
 			}
 			$stmt3 ->close();
@@ -71,13 +71,13 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 		$stmt4 ->bind_param("s",$inputs['email']);
 		if(!$stmt4 ->execute()){
 			echo "<script>alert('Query Error 4');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../login.php'}, 0);</script>";
+            echo "<script>setTimeout(function(){window.location.href='../Login.php'}, 0);</script>";
             exit();
 		}
 
 		$stmt4 -> close();
 
-		header("Location: ../login.php");
+		header("Location: ../Login.php");
 		exit();
 	
 	}

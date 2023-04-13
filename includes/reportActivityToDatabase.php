@@ -15,7 +15,7 @@
 			if(!$stmt ->execute()){
 				session_unset();
 				session_destroy();
-				header ("Location: ../loginAd.php?error=sqlerror1");
+				header ("Location: ../LoginAd.php?error=sqlerror1");
 				exit();
 			}
 				
@@ -28,7 +28,7 @@
 		    else{
 			    session_unset();
 				session_destroy();
-	            header ("Location: ../loginAd.php?error=NoUserEmail");
+	            header ("Location: ../LoginAd.php?error=NoUserEmail");
 		        exit();
 			}
 
@@ -37,7 +37,7 @@
 			if($coachID !== $employeeID){
 				session_unset();
 			    session_destroy();
-				header ("Location: ./loginAd.php?error=Not_Logged_In");
+				header ("Location: ../LoginAd.php?error=Not_Logged_In");
 			    exit();
 			}
 
@@ -46,7 +46,7 @@
 			//if error, force a logout
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=Not_Logged_In");
+			header ("Location: ../LoginAd.php?error=Not_Logged_In");
 			exit();
 		}
 	
@@ -73,7 +73,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror");
+			header ("Location: ../LoginAd.php?error=sqlerror");
 			exit();
 		}
 		$result = $stmt->get_result();
@@ -97,7 +97,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror");
+			header ("Location: ../LoginAd.php?error=sqlerror");
 			exit();
 		}
 		$result = $stmt->get_result();
@@ -117,7 +117,7 @@
 			exit();
 		}
 
-		$stmt = $conn->prepare("INSERT INTO PARTICIPATIONREPORTACTIVITY (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
+		$stmt = $conn->prepare("INSERT INTO participationReportActivity (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
 			minutes,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 		$stmt->bind_param("iisssssssis",$clientID,$coachID,$coachName,$clientLName,$clientFName,$trainingCode,$trainingProgram,$startDate,$endDate,
 			$timeSpent,$notes);
@@ -125,7 +125,7 @@
 		if (!$stmt ->execute()) {
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror1");
+			header ("Location: ../LoginAd.php?error=sqlerror1");
 			exit();
 		}
 		$stmt ->close();
@@ -139,7 +139,7 @@
 		//send back to login page
 		session_unset();
 		session_destroy();
-		header ("Location: ../loginAd.php");
+		header ("Location: ../LoginAd.php");
 		exit();
 	}
 ?>

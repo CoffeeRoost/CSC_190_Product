@@ -95,13 +95,13 @@ $port = SMTP_PORT;
                       "link: \n".
                       '<a href="' . $url . '">' . $url . '</a>';
         $Mail -> send();
-        header("Location:../login.php?emailSent=true");
+        header("Location:../Login.php?emailSent=true");
     } catch (Exception $e) {
         echo "Email not sent. {$mail->ErrorInfo}", PHP_EOL; //Catch errors from Amazon SES.
     }
 } else{
     //kick back to login if accesssed incorrectly
-    header("Location:../login.php");
+    header("Location:../Login.php");
 }
 
 ?>

@@ -20,7 +20,7 @@ if(isset($_POST['accept-reject-client'])){
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=sqlerror1");
+            header ("Location: ../LoginAd.php?error=sqlerror1");
             exit();
 		}
 
@@ -33,7 +33,7 @@ if(isset($_POST['accept-reject-client'])){
         else{
             session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=NoUserEmail");
+            header ("Location: ../LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -42,7 +42,7 @@ if(isset($_POST['accept-reject-client'])){
         if($id !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
   }
@@ -50,7 +50,7 @@ if(isset($_POST['accept-reject-client'])){
       //if error, force a logout
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=Not_Logged_In");
+      header ("Location: ../LoginAd.php?error=Not_Logged_In");
       exit();
   }
 
@@ -68,7 +68,7 @@ if(isset($_POST['accept-reject-client'])){
   if(!$stmt4 ->execute()){
       session_unset();
       session_destroy();
-      header("Location: ../loginAd.php?error=sqlerror4");
+      header("Location: ../LoginAd.php?error=sqlerror4");
       exit();
   }
   $result = $stmt4->get_result();
@@ -94,7 +94,7 @@ if(isset($_POST['accept-reject-client'])){
       if(!$stmt6 ->execute()){
           session_unset();
           session_destroy();
-          header("Location: ../loginAd.php?error=sqlerror6");
+          header("Location: ../LoginAd.php?error=sqlerror6");
           exit();
       }
       $stmt6 ->close();
@@ -106,7 +106,7 @@ if(isset($_POST['accept-reject-client'])){
   $stmt5 = $conn->prepare("UPDATE COACH SET accepted = 1 WHERE userID=?;");
   $stmt5 ->bind_param("i",$userID);
   if(!$stmt5 ->execute()){
-      header("Location: ../loginAd.php?error=sqlerror");
+      header("Location: ../LoginAd.php?error=sqlerror");
       exit();
   }
   $stmt5 -> close();
@@ -119,6 +119,6 @@ else
   //send back to login page
   session_unset();
   session_destroy();
-  header ("Location: ../loginAd.php?error=here");
+  header ("Location: ../LoginAd.php?error=here");
   exit();
 }

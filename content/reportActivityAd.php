@@ -1,10 +1,6 @@
 <?php
     session_start();
 
-    //For Testing Purposes, Remove later
-    //$_SESSION['employeeID'] = 2;
-    //$_SESSION['email'] = "gabcocke@gmail.com";
-
     require 'includes/dbh.inc.php';
 
     if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
@@ -14,7 +10,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=sqlerror");
+            header ("Location: ./LoginAd.php?error=sqlerror");
             exit();
 		}
 
@@ -27,7 +23,7 @@
         else{
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=NoUserEmail");
+            header ("Location: ./LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -36,7 +32,7 @@
         if($_SESSION['adminLogin'] !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
     }
@@ -44,22 +40,17 @@
         //if error, force a logout
         session_unset();
         session_destroy();
-        header ("Location: ./loginAd.php?error=Not_Logged_In");
+        header ("Location: ./LoginAd.php?error=Not_Logged_In");
         exit();
     }
 ?>
 
-<form action="includes/reportActivityToDatabaseAD.php" method="POST" class="container-fluid custom-container">
+
+<form action="/includes/reportActivityToDatabaseAD.php" method="post" class="container-fluid custom-container">
 
     <h4 class="d-flex justify-content-center text-info mt-5">Participant Activity Reporting Form</h4>
     <h6 class="d-flex justify-content-center">CMC Career Pathways form to be used for capturing all activity with all participants</h6>
     <hr>
-
-    <!--
-    <div class="text-danger mt-3">* Required</div>
-    <h6 class="mt-5">Coach ID <span class="text-danger">*</span></h6>
-    <input type="text" name="coachID" id="coachID" class="input-underline" placeholder="Your answer" required>
-    -->
 
     <h6 class="mt-5">Coach Name <span class="text-danger">*</span></h6>
     <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
@@ -233,7 +224,7 @@
     <h6 class="mt-5">Notes <span class="text-danger">*</span></h6>
       <div class="col-6 my-3">
         <textarea class="form-control border border-info" name="notes" rows="4" placeholder="" required></textarea>
-        <button class="btn btn-info btn-shadow my-3 " type="submit" name="submitActivityAdmin">Submit</button>
+        <button name="submitActivityAdmin" class="btn btn-info btn-shadow my-3" type="submit">Submit</button>
 
       </div>
 

@@ -22,7 +22,7 @@ if(isset($_POST['grant-characteristic-submit'])){
 	    if(!$stmt ->execute()){
 	        session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=sqlerror");
+            header ("Location: ../LoginAd.php?error=sqlerror");
             exit();
 	    }
 
@@ -35,7 +35,7 @@ if(isset($_POST['grant-characteristic-submit'])){
         else{
             session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=NoUserEmail");
+            header ("Location: ../LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -44,7 +44,7 @@ if(isset($_POST['grant-characteristic-submit'])){
         if($id !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ../loginAd.php?error=Not_Logged_In");
+            header ("Location: ../LoginAd.php?error=Not_Logged_In");
             exit();
         }
   }
@@ -52,7 +52,7 @@ if(isset($_POST['grant-characteristic-submit'])){
       //if error, force a logout
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=Not_Logged_In");
+      header ("Location: ../LoginAd.php?error=Not_Logged_In");
       exit();
   }
 
@@ -279,13 +279,13 @@ if(isset($_POST['grant-characteristic-submit'])){
           if(!$stmt_value ->execute()){
               session_unset();
               session_destroy();
-              header ("Location: ../loginAd.php?error=sqlerror1");
+              header ("Location: ../LoginAd.php?error=sqlerror1");
               exit();
-		  }
+	    }
 
-		  $result = $stmt_value->get_result();
+	    $result = $stmt_value->get_result();
 
-		  if($result->num_rows >0){
+	    if($result->num_rows >0){
               $row = $result->fetch_assoc();
               $result_from_stmt_value = $row['result_value'];
           }
@@ -319,7 +319,7 @@ if(isset($_POST['grant-characteristic-submit'])){
   if(!$stmt2 ->execute()){
       session_unset();
       session_destroy();
-      header("Location: ../loginAd.php?error=sqlerror2");
+      header("Location: ../LoginAd.php?error=sqlerror2");
       exit();
   }
 
@@ -331,17 +331,17 @@ if(isset($_POST['grant-characteristic-submit'])){
   else{
       session_unset();
       session_destroy();
-      header ("Location: ../loginAd.php?error=NoAssociatedEntry");
+      header ("Location: ../LoginAd.php?error=NoAssociatedEntry");
       exit();
   }
   $stmt2 ->close();
 
-  $stmt3 = $conn->prepare("INSERT INTO GRANT_CHARACTERISTICS (characteristic_grant_ID,char_title,char_status) VALUES(?,?,?);");
+  $stmt3 = $conn->prepare("INSERT INTO GRANT_CHARACTERISTICS (characteristic_grant_ID,char_title,char_status) VALUES (?,?,?);");
   $stmt3 ->bind_param("iss",$char_grant_ID,$char_title,$char_status);
   if(!$stmt3 ->execute()){
       session_unset();
       session_destroy();
-      header("Location: ../loginAd.php?error=sqlerror2");
+      header("Location: ../LoginAd.php?error=sqlerror2");
       exit();
   }
   $stmt3 ->close();
@@ -354,6 +354,7 @@ else
   //send back to login page
   session_unset();
   session_destroy();
-  header ("Location: ../loginAd.php");
+  header ("Location: ../LoginAd.php");
   exit();
 }
+?>
