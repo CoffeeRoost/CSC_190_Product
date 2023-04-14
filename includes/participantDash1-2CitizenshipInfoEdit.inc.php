@@ -8,7 +8,7 @@ if (!isset($_SESSION['userID'])) {
     session_unset();
     session_destroy();
     //Redirect user to login page if not logged in
-    header("Location:../LoginAd.php");
+    header("Location:../Login.php");
     exit();
 }
 

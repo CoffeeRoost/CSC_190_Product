@@ -233,6 +233,11 @@ $file_names = array();
 
         <!-- Edit Tab -->
         <div id="editTab" style="display:none;">
+            <?php include 'participantDash1-2EditInfo.php';?>
+        </div>
+
+        <!-- Edit Tab Old -->
+        <div id="editTab1" style="display:none;">
             <div class="d-flex flex-column align-items-center mx-5">
             <div class="d-flex justify-center">
             <div class="boxSurvey my-1">
