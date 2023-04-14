@@ -1,28 +1,29 @@
 <?php
     session_start();
+
     require 'includes/dbh.inc.php';
 
-    if(isset($_SESSION['userID']) || isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
+  if(isset($_SESSION['userID']) || isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
         
         $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
-		$stmt ->bind_param("s",$_SESSION['email']);
-		if(!$stmt ->execute()){
-			session_unset();
+	  $stmt ->bind_param("s",$_SESSION['email']);
+	  if(!$stmt ->execute()){
+		session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=sqlerror");
+            header ("Location: ./LoginAd.php?error=sqlerror");
             exit();
-		}
+	  }
 
-		$result = $stmt->get_result();
+	  $result = $stmt->get_result();
 
-		if($result->num_rows >0){
+	  if($result->num_rows >0){
             $row = $result->fetch_assoc();
             $employeeID = $row['employeeID'];
         }
         else{
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=NoUserEmail");
+            header ("Location: ./LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -31,7 +32,7 @@
         if($_SESSION['adminLogin'] !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
   }
@@ -39,25 +40,31 @@
       //if error, force a logout
       session_unset();
       session_destroy();
-      header ("Location: ./loginAd.php?error=Not_Logged_In");
+      header ("Location: ./LoginAd.php?error=Not_Logged_In");
       exit();
   }
 ?>
 
 
-<div class="container-fluid">
-    <form action="includes/char_grant.inc.php" method="post">
 
-    <h5 class="d-flex justify-content-center text-info mb-5">Grant Characteristic Page</h5>
+<form action="/includes/char_grant.inc.php" method="post" class="container-fluid custom-container">
+
+    <h4 class="d-flex justify-content-center text-info mt-5">Grant Characteristics</h4>
+
+    <h5 class="mt-5">Current Shared_Grant_ID (use to associate current grant with other clients)</h5>
+		<?php
+			// Echo session variables that were set on previous page
+			echo "Shared_Grant_ID is " . $_SESSION['shared_grant_ID'] . ".<br>";
+		?>
 
     <h6 class="mt-5">Characteristic Title <span class="text-danger">*</span></h6>
     <input type="text" name="char_title" id="char_title" class="input-underline" placeholder="Your answer" >
 
-    <h6 class="mt-5">Choose Between Established Status or New Data</h6>
+    <h5 class="mt-5">Choose Between Established Status or New Data</h5>
 
-    <h6 class="mt-5">(Established) Please choose from the characteristic list and select best characteristic that that fits the title you provided. <span class="text-danger">*</span></h6>
+    <h6 class="mt-5">(Established) Please choose from the characteristic list and select best characteristic that that fits the title you provided.</h6>
     <select class="form-select-SM border rounded-2" name="pre_status" id="pre_status" >
-				        <option value="" disabled selected hidden>Choose</option>
+				<option value="" disabled selected hidden>Choose</option>
                         <option value="1">Date of Birth</option>
                         <option value="2">Gender</option>
                         <option value="3">Primary Phone Number</option>
@@ -123,12 +130,11 @@
                         <option value="63">Did Not Wish to Answer (Ethncity)</option>
     </select>
 
-    <h6 class="mt-5">(New) Characteristic Status<span class="text-danger">*</span></h6>
+    <h6 class="mt-5">(New) Characteristic Status</h6>
     <input type="text" name="char_status" id="char_status" class="input-underline" placeholder="Your answer" >
 
     <div class="col-6 my-3">
-      <button type="submit" name="grant-characteristic-submit" class="btn btn-info btn-shadow my-3">Next</button>
+	<button name="grant-characteristic-submit" class="btn btn-info btn-shadow my-3" type="submit">Submit</button>
     </div>
 
     </form>
-  </div>

@@ -23,22 +23,22 @@
                           Who referred you to our program or what partner organization are you from?
                           <span class="text-danger">*</span>
                       </label>
-                        <select class="form-select-SM m-2 border rounded-2" name="partner" id="partner">
+                        <select class="form-select-SM m-2 border rounded-2" name="partner" id="partner" required>
                             <option value="" disabled selected hidden>Choose</option>
-                            <option value="friend&fam">Friend and Family</option>
-                            <option value="Hiring_event">Hiring Event or Career Fair</option>
-                            <option value="Wonmen_Emp">Women's Empowerment</option>
-                            <option value="NextMove">Next Move</option>
-                            <option value="Waking_Village">Waking the Village</option>
-                            <option value="SaintJ">Saint John's</option>
-                            <option value="LaFam">La Familia</option>
-                            <option value="GSU">GS Urban League</option>
-                            <option value="AsianRe">Asian Resources</option>
-                            <option value="FolsomCP">Folsom Cordova CP</option>
-                            <option value="LemonH">Lemon Hill</option>
-                            <option value="SacJ">Sac Job Corp</option>
-                            <option value="Public">Public/Aura Planning</option>
-                            <option value="International">International Rescue Committee Sacramento</option>
+                            <option value="Friend and Family">Friend and Family</option>
+                            <option value="Hiring Event or Career Fair">Hiring Event or Career Fair</option>
+                            <option value="Wonmen's Empowerment">Women's Empowerment</option>
+                            <option value="Next Move">Next Move</option>
+                            <option value="Waking the Village">Waking the Village</option>
+                            <option value="Saint John's">Saint John's</option>
+                            <option value="La Familia">La Familia</option>
+                            <option value="GS Urban League">GS Urban League</option>
+                            <option value="Asian Resources">Asian Resources</option>
+                            <option value="Folsom Cordova">Folsom Cordova CP</option>
+                            <option value="Lemon Hill">Lemon Hill</option>
+                            <option value="Sac Job Corp">Sac Job Corp</option>
+                            <option value="Public/Aura Planning">Public/Aura Planning</option>
+                            <option value="International Rescue Committee Sacramento">International Rescue Committee Sacramento</option>
                         </select>
                   </div>
 
@@ -48,7 +48,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="fname" id="fname" class="m-2 input-underline" placeholder="Your answer" >
+                        <input type="text" name="fname" id="fname" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -65,7 +65,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="lname" id="lname" class="m-2 input-underline" placeholder="Your answer" >
+                        <input type="text" name="lname" id="lname" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -75,7 +75,7 @@
                         </label>
                         <br>
                         <input type="text" name="SSN" id="SSN" class="m-2 input-underline" placeholder="Your answer"
-                        maxlength="4">
+                        maxlength="4" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -84,7 +84,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="street" id="street" class="m-2 input-underline" placeholder="Your answer" >
+                        <input type="text" name="street" id="street" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -93,7 +93,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="city" id="city" class="m-2 input-underline" placeholder="Your answer" >
+                        <input type="text" name="city" id="city" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -101,7 +101,7 @@
                       Address: State
                       <span class="text-danger">*</span>
                     </label><br>
-                    <select class="form-select-SM m-2 border rounded-2" name="state" id="state">
+                    <select class="form-select-SM m-2 border rounded-2" name="state" id="state" required>
                       <option value="Alabama">Alabama</option>
                       <option value="Alaska">Alaska</option>
                       <option value="Arizona">Arizona</option>
@@ -162,7 +162,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="zip" id="zip" class="m-2 input-underline" placeholder="Your answer" >
+                        <input type="text" name="zip" id="zip" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -171,16 +171,17 @@
                             <span class="text-danger">*</span>
                         </label>
                         <br>
-                        <input type="text" name="county" id="county" class="m-2 input-underline" placeholder="Your answer">
+                        <input type="text" name="county" id="county" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
                         <label for="sameAdd" class="form-label fs-5 m-2">
                             Is your mailing address information the same as your address information above?
+				    <span class="text-danger">*</span>
                         </label>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="sameAdd" id="ysameAdd" value="Yes">
+                            <input class="form-check-input" type="radio" name="sameAdd" id="ysameAdd" value="Yes" required>
                             <label class="form-check-label" for="ysameAdd">
                               Yes
                             </label>
@@ -196,7 +197,6 @@
                   <div class="bg-white my-3 border rounded-3">
                         <label for="mailStreet" class="form-label fs-5 m-2">
                             (If above was No) Mailing Address: Street & Number
-                            <span class="text-danger">*</span>
                         </label>
                         <br>
                         <input type="text" name="mailStreet" id="mailStreet" class="m-2 input-underline" placeholder="Your answer">
@@ -205,7 +205,6 @@
                   <div class="bg-white my-3 border rounded-3">
                         <label for="mailCity" class="form-label fs-5 m-2">
                             Mailing Address: City
-                            <span class="text-danger">*</span>
                         </label>
                         <br>
                         <input type="text" name="mailCity" id="mailCity" class="m-2 input-underline" placeholder="Your answer">
@@ -214,7 +213,6 @@
                   <div class="bg-white my-3 border rounded-3">
                         <label for="mailState" class="form-label fs-5 m-2">
                             Mailing Address: State
-                            <span class="text-danger">*</span>
                         </label>
                         <br>
                         <input type="text" name="mailState" id="mailState" class="m-2 input-underline" placeholder="Your answer">
@@ -223,7 +221,6 @@
                   <div class="bg-white my-3 border rounded-3">
                         <label for="mailZip" class="form-label fs-5 m-2">
                             Mailing Address: Zip Code
-                            <span class="text-danger">*</span>
                         </label>
                         <br>
                         <input type="text" name="mailZip" id="mailZip" class="m-2 input-underline" placeholder="Your answer">
@@ -232,7 +229,6 @@
                   <div class="bg-white my-3 border rounded-3">
                           <label for="mailCounty" class="form-label fs-5 m-2">
                               Mailing Address: County
-                              <span class="text-danger">*</span>
                           </label>
                           <br>
                           <input type="text" name="mailCounty" id="mailCounty" class="m-2 input-underline" placeholder="Your answer">
@@ -244,8 +240,8 @@
                           </label>
                           <span class="text-danger">*</span>
                           <br>
-                          <input type="phone" name="phone" id="phone" class="m-2 input-underline" placeholder="Your answer" >
-                          <select class="form-select-SM m-2 border rounded-2" name="phoneType" id="phoneType" >
+                          <input type="phone" name="phone" id="phone" class="m-2 input-underline" placeholder="Your answer" required>
+                          <select class="form-select-SM m-2 border rounded-2" name="phoneType" id="phoneType" required>
                               <option value="cellphone" selected>Cell Phone</option>
                               <option value="homePhone">Home Phone</option>
                               <option value="relativesPhone">Relatives Phone</option>
@@ -268,7 +264,7 @@
                           </label>
                           <span class="text-danger">*</span>
                           <br>
-                          <input type="email" name="email" id="email" class="m-2 input-underline" placeholder="Your answer" >
+                          <input type="email" name="email" id="email" class="m-2 input-underline" placeholder="Your answer" required>
                   </div>
 
                       <div class="bg-white my-3 border rounded-3">
@@ -277,7 +273,7 @@
                           </label>
                           <span class="text-danger">*</span>
                           <br>
-                          <input type="date" name="bthday" id="bthday" class="m-2 input-underline">
+                          <input type="date" name="bthday" id="bthday" class="m-2 input-underline" required>
                   </div>
 
                   <div class="bg-white my-3 border rounded-3">
@@ -287,25 +283,25 @@
                         <span class="text-danger">*</span>
                           <br>
                           <div class="form-check m-2">
-                              <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                              <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
                               <label class="form-check-label" for="male">
                                 Male
                               </label>
                             </div>
                           <div class="form-check m-2">
-                              <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                              <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
                               <label class="form-check-label" for="female">
                                 Female
                               </label>
                           </div>
                           <div class="form-check m-2">
-                              <input class="form-check-input" type="radio" name="gender" id="notSay" value="notSay">
+                              <input class="form-check-input" type="radio" name="gender" id="notSay" value="Not Say" required>
                               <label class="form-check-label" for="notSay">
                                 Prefer not to say
                               </label>
                           </div>
                           <div class="form-check m-2">
-                              <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                              <input class="form-check-input" type="radio" name="gender" id="other" value="Other">
                               <label class="form-check-label" for="other">
                                 Other
                               </label>
@@ -328,11 +324,11 @@
                             US Citizenship Status
                             <span class="text-danger">*</span>
                         </label><br>
-                        <select class="form-select-SM m-2 border rounded-2" name="citizenship" id="citizenship" >
+                        <select class="form-select-SM m-2 border rounded-2" name="citizenship" id="citizenship" required>
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="Citizen">Citizen of US or US Territory</option>
-                            <option value="GreenCard">US Permanent Resident</option>
-                            <option value="alien">Alien/Refugee Lawfully Admitted to the US</option>
+                            <option value="US Pernament Resident">US Permanent Resident</option>
+                            <option value="Alient/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
                             <option value="NoneCitizen">None of the above</option>
                         </select>
                     </div>
@@ -373,7 +369,7 @@
                             </label>
                         </div>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="selective" id="notApplicable" value="Not applicable">
+                            <input class="form-check-input" type="radio" name="selective" id="notApplicable" value="Not applicable" required>
                             <label class="form-check-label" for="notApplicable">
                               Not applicable
                             </label>
@@ -387,7 +383,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="hispanic" id="yhispanic" value="Yes">
+                            <input class="form-check-input" type="radio" name="hispanic" id="yhispanic" value="Yes" required>
                             <label class="form-check-label" for="yhispanic">
                               Yes
                             </label>
@@ -435,7 +431,7 @@
                             What is your primary language?
                             <span class="text-danger">*</span>
                         </label><br>
-                        <select class="form-select-SM m-2 border rounded-2" name="language" id="language">
+                        <select class="form-select-SM m-2 border rounded-2" name="language" id="language" required>
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="English">English</option>
                             <option value="Spanish">Spanish</option>
@@ -453,7 +449,6 @@
                         <label for="proficiency" class="form-label fs-5 m-2">
                             Do you have limited proficiency in speaking, writing, reading, or understanding English?
                             or Do you have difficulty in speaking, writing, reading, or understanding English?
-                            <span class="text-danger">*</span></label>
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="proficiency" id="yproficiency" value="Yes">
@@ -476,7 +471,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="disability" id="ydisability" value="Yes">
+                            <input class="form-check-input" type="radio" name="disability" id="ydisability" value="Yes" required>
                             <label class="form-check-label" for="ydisability">
                               Yes
                             </label>
@@ -502,7 +497,7 @@
                             Highest school grade completed?
                             <span class="text-danger">*</span>
                         </label><br>
-                        <select class="form-select-SM m-2 border rounded-2" name="schoolLevel" id="schoolLevel" >
+                        <select class="form-select-SM m-2 border rounded-2" name="schoolLevel" id="schoolLevel" required>
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="9th">9th grade</option>
                             <option value="10th">10th grade</option>
@@ -518,7 +513,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="diploma" id="ydiploma" value="Yes">
+                            <input class="form-check-input" type="radio" name="diploma" id="ydiploma" value="Yes" required>
                             <label class="form-check-label" for="ydiploma">
                               Yes
                             </label>
@@ -536,17 +531,17 @@
                             Highest school grade completed?
                             <span class="text-danger">*</span>
                         </label><br>
-                        <select class="form-select-SM m-2 border rounded-2" name="highestSchool" id="highestSchool" >
+                        <select class="form-select-SM m-2 border rounded-2" name="highestSchool" id="highestSchool" required>
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="Highschool">High School Diploma</option>
                             <option value="GED">High School Equivalent Diploma (GED)</option>
-                            <option value="Certificate">Certificate of Attendance/Completion (Disabled Individuales)</option>
-                            <option value="SchoolCertificate">Vocational School Certificate</option>
-                            <option value="Technical">Colllege or Technical or Vocational School</option>
+                            <option value="Certificate of Attendance/Completion">Certificate of Attendance/Completion (Disabled Individuales)</option>
+                            <option value="Vocational School Certificate">Vocational School Certificate</option>
+                            <option value="College or Technical or Vocational School">College or Technical or Vocational School</option>
                             <option value="AA/AS">AA/AS</option>
                             <option value="BA/BS">BA/BS</option>
-                            <option value="Master">Master's Degree</option>
-                            <option value="Doctor">Doctorate Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                            <option value="Doctor's Degree">Doctorate Degree</option>
                         </select>
                     </div>
 
@@ -557,7 +552,7 @@
             
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="schoolStatus" id="inSchool" value="Yes">
+                            <input class="form-check-input" type="radio" name="schoolStatus" id="inSchool" value="Yes" required>
                             <label class="form-check-label" for="inSchool">
                               Yes
                             </label>
@@ -588,7 +583,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="military" id="ymilitary" value="Yes">
+                            <input class="form-check-input" type="radio" name="military" id="ymilitary" value="Yes" required>
                             <label class="form-check-label" for="ymilitary">
                               Yes
                             </label>
@@ -608,7 +603,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="militarySpouse" id="ymilitarySpouse" value="Yes">
+                            <input class="form-check-input" type="radio" name="militarySpouse" id="ymilitarySpouse" value="Yes" required>
                             <label class="form-check-label" for="ymilitarySpouse">
                               Yes
                             </label>
@@ -628,7 +623,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="employment" id="yemployment" value="Employed">
+                            <input class="form-check-input" type="radio" name="employment" id="yemployment" value="Employed" required>
                             <label class="form-check-label" for="yemployment">
                               Employed
                             </label>
@@ -674,7 +669,7 @@
                             </label>
                         </div>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="ui" id="neither" value="Neither">
+                            <input class="form-check-input" type="radio" name="ui" id="neither" value="Neither" required>
                             <label class="form-check-label" for="neither">
                                 Neither
                             </label>
@@ -696,7 +691,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="farmworker" id="yfarmworker" value="Yes">
+                            <input class="form-check-input" type="radio" name="farmworker" id="yfarmworker" value="Yes" required>
                             <label class="form-check-label" for="yfarmworker">
                               Yes
                             </label>
@@ -715,7 +710,7 @@
                         </label>
                         <span class="text-danger">*</span>
                         <br>
-                        <input type="text" name="jobTitle" id="jobTitle" class="m-2 input-underline" placeholder="Your answer">
+                        <input type="text" name="jobTitle" id="jobTitle" class="m-2 input-underline" placeholder="Your answer" required>
                     </div>
 
                     <div class="d-flex justify-content-between m-1">
@@ -737,7 +732,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="foster" id="yfoster" value="Yes">
+                            <input class="form-check-input" type="radio" name="foster" id="yfoster" value="Yes" required>
                             <label class="form-check-label" for="yfoster">
                               Yes
                             </label>
@@ -757,7 +752,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="adultEdu" id="yadultEdu" value="Yes">
+                            <input class="form-check-input" type="radio" name="adultEdu" id="yadultEdu" value="Yes" required>
                             <label class="form-check-label" for="yadultEdu">
                               Yes
                             </label>
@@ -777,7 +772,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="youthBuild" id="yyouthBuild" value="Yes">
+                            <input class="form-check-input" type="radio" name="youthBuild" id="yyouthBuild" value="Yes" required>
                             <label class="form-check-label" for="yyouthBuild">
                               Yes
                             </label>
@@ -805,7 +800,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="jobCorp" id="yjobCorp" value="Yes" >
+                            <input class="form-check-input" type="radio" name="jobCorp" id="yjobCorp" value="Yes" required>
                             <label class="form-check-label" for="yjobCorp">
                               Yes
                             </label>
@@ -825,7 +820,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="carlPerkins" id="ycarlPerkins" value="Yes">
+                            <input class="form-check-input" type="radio" name="carlPerkins" id="ycarlPerkins" value="Yes" required>
                             <label class="form-check-label" for="ycarlPerkins">
                               Yes
                             </label>
@@ -845,7 +840,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="tanf" id="ytanf" value="Yes">
+                            <input class="form-check-input" type="radio" name="tanf" id="ytanf" value="Yes" required>
                             <label class="form-check-label" for="ytanf">
                               Yes
                             </label>
@@ -865,7 +860,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="ssi" id="yssi" value="Yes">
+                            <input class="form-check-input" type="radio" name="ssi" id="yssi" value="Yes" required>
                             <label class="form-check-label" for="yssi">
                               Yes
                             </label>
@@ -885,7 +880,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="generalAssist" id="ygeneralAssist" value="Yes">
+                            <input class="form-check-input" type="radio" name="generalAssist" id="ygeneralAssist" value="Yes" required>
                             <label class="form-check-label" for="ygeneralAssist">
                               Yes
                             </label>
@@ -905,7 +900,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="calFresh" id="ycalFresh" value="Yes">
+                            <input class="form-check-input" type="radio" name="calFresh" id="ycalFresh" value="Yes" required>
                             <label class="form-check-label" for="ycalFresh">
                               Yes
                             </label>
@@ -925,7 +920,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="refugeeAssist" id="yrefugeeAssist" value="Yes">
+                            <input class="form-check-input" type="radio" name="refugeeAssist" id="yrefugeeAssist" value="Yes" required>
                             <label class="form-check-label" for="yrefugeeAssist">
                               Yes
                             </label>
@@ -945,7 +940,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="ssdi" id="yssdi" value="Yes">
+                            <input class="form-check-input" type="radio" name="ssdi" id="yssdi" value="Yes" required>
                             <label class="form-check-label" for="yssdi">
                               Yes
                             </label>
@@ -965,7 +960,7 @@
                         <span class="text-danger">*</span>
                         <br>
                         <div class="form-check m-2">
-                            <input class="form-check-input" type="radio" name="snapTraining" id="ysnapTraining" value="Yes">
+                            <input class="form-check-input" type="radio" name="snapTraining" id="ysnapTraining" value="Yes" required>
                             <label class="form-check-label" for="ysnapTraining">
                               Yes
                             </label>
@@ -985,7 +980,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="pellGrant" id="ypellGrant" value="Yes">
+                                  <input class="form-check-input" type="radio" name="pellGrant" id="ypellGrant" value="Yes" required>
                                   <label class="form-check-label" for="ypellGrant">
                                     Yes
                                   </label>
@@ -1013,7 +1008,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="workTicket" id="yworkTicket" value="Yes">
+                                  <input class="form-check-input" type="radio" name="workTicket" id="yworkTicket" value="Yes" required>
                                   <label class="form-check-label" for="yworkTicket">
                                     Yes
                                   </label>
@@ -1033,7 +1028,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="homeless" id="yhomeless" value="Yes">
+                                  <input class="form-check-input" type="radio" name="homeless" id="yhomeless" value="Yes" required>
                                   <label class="form-check-label" for="yhomeless">
                                     Yes
                                   </label>
@@ -1053,7 +1048,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="exOffer" id="yExOffer" value="Yes">
+                                  <input class="form-check-input" type="radio" name="exOffer" id="yExOffer" value="Yes" required>
                                   <label class="form-check-label" for="yExOffer">
                                     Yes
                                   </label>
@@ -1073,7 +1068,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="displace" id="ydisplace" value="Yes">
+                                  <input class="form-check-input" type="radio" name="displace" id="ydisplace" value="Yes" required>
                                   <label class="form-check-label" for="ydisplace">
                                     Yes
                                   </label>
@@ -1093,7 +1088,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="singleParent" id="ysingleParent" value="Yes">
+                                  <input class="form-check-input" type="radio" name="singleParent" id="ysingleParent" value="Yes" required>
                                   <label class="form-check-label" for="ysingleParent">
                                     Yes
                                   </label>
@@ -1113,7 +1108,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="culBarrier" id="yculBarrier" value="Yes">
+                                  <input class="form-check-input" type="radio" name="culBarrier" id="yculBarrier" value="Yes" required>
                                   <label class="form-check-label" for="yculBarrier">
                                     Yes
                                   </label>
@@ -1132,7 +1127,7 @@
                               </label>
                               <span class="text-danger">*</span>
                               <br>
-                              <input type="number" name="familySize" id="familySize" class="m-2 input-underline" placeholder="Your answer">
+                              <input type="number" name="familySize" id="familySize" class="m-2 input-underline" placeholder="Your answer" required>
                           </div>
 
                           <div class="bg-white my-3 border rounded-3">
@@ -1141,7 +1136,7 @@
                               </label>
                               <span class="text-danger">*</span>
                               <br>
-                              <input type="number" name="annualIncome" id="annualIncome" class="m-2 input-underline" placeholder="Your answer">
+                              <input type="number" name="annualIncome" id="annualIncome" class="m-2 input-underline" placeholder="Your answer" required>
                           </div>
 
                           <div class="bg-white my-3 border rounded-3">
@@ -1151,7 +1146,7 @@
                               <span class="text-danger">*</span>
                               <br>
                               <div class="form-check m-2">
-                                  <input class="form-check-input" type="radio" name="techExp" id="ytechExp" value="Yes">
+                                  <input class="form-check-input" type="radio" name="techExp" id="ytechExp" value="Yes" required>
                                   <label class="form-check-label" for="ytechExp">
                                     Yes
                                   </label>
@@ -1176,7 +1171,7 @@
                                   <span class="text-danger">*</span>
                               </label>
                               <br>
-                              <input type="password" name="password" id="password" oninput="validateEmail()" class="m-2 input-underline" placeholder="Your answer">
+                              <input type="password" name="password" id="password" oninput="validateEmail()" class="m-2 input-underline" placeholder="Your answer" required>
                           </div>
 
 						  <label id="verification" hidden style="color:red">Password must be 8 characters long including at least one uppercase, lowercase, and special character</label>
@@ -1187,7 +1182,7 @@
                                   <span class="text-danger">*</span>
                               </label>
                               <br>
-                              <input type="password" name="confirmPassword" id="confirmPassword" class="m-2 input-underline" placeholder="Your answer">
+                              <input type="password" name="confirmPassword" id="confirmPassword" class="m-2 input-underline" placeholder="Your answer" required>
                           </div>
 
                           <div class="d-flex justify-content-between m-1">

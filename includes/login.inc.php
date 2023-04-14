@@ -7,18 +7,18 @@ if (isset($_POST['login-submit'])) {
 
   if (empty($email)) {
     $_SESSION['error'] = 'Please enter your email.';
-    header("Location: ../login.php");
+    header("Location: ../Login.php");
     exit();
   } else if(empty($userpassword)){
     $_SESSION['error'] = 'Please enter your password.';
-    header("Location: ../login.php");
+    header("Location: ../Login.php");
     exit();
   } else {
     $sql = "SELECT userID, email, newUserPassword, status FROM PARTICIPATION WHERE email=?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
       $_SESSION['error'] = 'Internal server error. Please try again later!';
-      header("Location: ../login.php");
+      header("Location: ../Login.php");
       exit();
     } else {
       $stmt->bind_param('s', $email);
@@ -32,17 +32,17 @@ if (isset($_POST['login-submit'])) {
             exit();
           } else {
             $_SESSION['error'] = 'Incorrect password. Please try again!';
-            header("Location: ../login.php");
+            header("Location: ../Login.php");
             exit();
           }
         } else {
           $_SESSION['error'] = 'Your account is not activated yet. Please check your email to activate your account!';
-          header("Location: ../login.php");
+          header("Location: ../Login.php");
           exit();
         }
       } else {
         $_SESSION['error'] = 'Email address not found. Please try again!';
-        header("Location: ../login.php");
+        header("Location: ../Login.php");
         exit();
       }
     }
@@ -50,6 +50,6 @@ if (isset($_POST['login-submit'])) {
   }
   $conn->close(); // close the database connection
 } else {
-  header("Location: ../login.php");
+  header("Location: ../Login.php");
   exit();
 }

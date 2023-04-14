@@ -10,7 +10,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=sqlerror");
+            header ("Location: ./LoginAd.php?error=sqlerror");
             exit();
 		}
 
@@ -23,7 +23,7 @@
         else{
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=NoUserEmail");
+            header ("Location: ./LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -32,7 +32,7 @@
         if($_SESSION['employeeID'] !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
     }
@@ -40,7 +40,7 @@
         //if error, force a logout
         session_unset();
         session_destroy();
-        header ("Location: ./loginAd.php?error=Not_Logged_In");
+        header ("Location: ./LoginAd.php?error=Not_Logged_In");
         exit();
     }
 ?>

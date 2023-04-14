@@ -7,7 +7,6 @@
         header ("Location: ./LoginAd.php");
         exit();
     }
-
     require 'includes/dbh.inc.php';
 
 ?>
@@ -56,29 +55,35 @@
                         </a>
                     </li>
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
+                            <a href="./includes/employeeViewBE.php?role=admin" class="nav-link text-white">
                                 Personal Information
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./ClientEmployee.php" class="nav-link text-white">
-                                Assign Clients to Employees
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./reportActivityAD.php" class="nav-link text-white">
-                                Activity Reporting
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./grantReport.php" class="nav-link text-white">
-                                Grant Report
                             </a>
                           </li>
 
                           <li class="nav-item bg-Blue mb-md-1">
+                            <a class="nav-link text-white" href="#" data-bs-toggle="collapse" data-bs-target="#e-form">
+                                E-FORM
+                            </a>
+                          </li>
+
+                          <li id = "e-form" class="nav-item bg-Blue mb-md-1 collapse" style="transition:1ms;" >
+                            <a href="./reportActivityAD.php" class="nav-link bg-lightBlue text-Blue">
+                                Activity Reporting Form
+                            </a>
+                            <a href="./grantReport.php" class="nav-link bg-lightBlue text-Blue">
+                                Grant Report Form
+                            </a>
+                          </li>
+                          
+                          <li class="nav-item bg-Blue mb-md-1">
                             <a href="./grantReportView.php" class="nav-link text-white">
                                 Grant Report View
+                            </a>
+                          </li>
+						  
+						  <li class="nav-item bg-Blue mb-md-1">
+                            <a href="./adminSearchOption.php" class="nav-link text-white">
+                                Participant Report
                             </a>
                           </li>
 
@@ -93,8 +98,8 @@
                     </div>
                     <div class="mb-5 mx-5">
                         <a href="adminSearchOption.php" class="btn btn-action btn-lg fs-6">Search</a>
-                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee</a>
-                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#client-table,#employee-table">Client</a>
+                        <a href="#" class="btn btn-action btn-lg fs-6" data-bs-toggle="collapse" data-bs-target="#employee-table,#client-table">Employee/Client</a>
+                        <a href="./ClientEmployee.php" class="btn btn-action btn-lg fs-6">Assign Client</a>
                         <a href="addingEmployee.php" class="btn btn-action btn-lg fs-6">Add Employee</a>
                     </div>
             </div>
@@ -174,7 +179,7 @@ echo "</tbody></table></div>" ;
 
                     <div id="employee-table" class="collapse" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
-                            <h3 class="fw-bold text-center text-Blue my-1">Employee</h3>
+                            <a href="./employeeTable.php" class="nav-link"><h3 class="fw-bold text-center text-Blue my-1">Employee</h3></a>
                         </div>
                         <table class="table table-blue table-responsive text-center border border-1 border-start-0 border-end-0 border-dark">
                             <thead class="fs-5 text-Blue">
@@ -184,17 +189,18 @@ echo "</tbody></table></div>" ;
                             </thead>
 
 <?php
-                            $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
+                            $employeeQuerry = "SELECT * FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
                             if($employeeResult > 0){
                                 while($row = mysqli_fetch_assoc($employeeList)) {
-
+                                    $empViewID = $row['employeeID'];
+                            /* "./includes/employeeViewBE.php?id=$empViewID" will create link with unique employee ID for employeeViewBE.php*/
                             echo "<tbody>";
                                 echo "<tr scope= \" row \">";
-                                echo "<th>".$row['employeeID']."</th>";
-                                echo "<th>".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</th>";
-                                echo "<th>".$row['employeeRole']."</th>\n";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['employeeID']."</a></th>";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['empfname']. " " . $row['empMI'] . " " . $row['emplname']."</a></th>";
+                                echo "<th><a href = \"./includes/employeeViewBE.php?id=$empViewID\" class= \"nav-link\">".$row['employeeRole']."</a></th>\n";
                                 echo "</tr>\n";
                                 echo " </tbody>";
 

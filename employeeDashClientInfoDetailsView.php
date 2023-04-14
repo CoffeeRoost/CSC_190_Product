@@ -14,7 +14,7 @@ if (!isset($_SESSION['employeeID'])) {
     header("Location:LoginAd.php");
     exit();
 }
-require 'includes/dbh.inc.php';
+
 
 include_once('content/header4.php');
 ?>
@@ -22,6 +22,6 @@ include_once('content/header4.php');
 <div class="d-flex">
     <?php
         include_once('content/sideBar1.php');
-        include_once('content/reportActivityEmp.php');
+        include_once('content/employeeDashClientInfoDetails.php');
     ?>
 </div>

@@ -91,7 +91,7 @@
                                 else{
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
-                                    header("Location: ../login.php?newpass=passwordupdated");
+                                    header("Location: ../Login.php?newpass=passwordupdated");
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }

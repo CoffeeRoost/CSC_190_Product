@@ -15,7 +15,7 @@
 			if(!$stmt ->execute()){
 				session_unset();
 				session_destroy();
-				header ("Location: ../loginAd.php?error=sqlerror1");
+				header ("Location: ../LoginAd.php?error=sqlerror1");
 				exit();
 			}
 				
@@ -28,7 +28,7 @@
 		    else{
 			    session_unset();
 				session_destroy();
-	            header ("Location: ../loginAd.php?error=NoUserEmail");
+	            header ("Location: ../LoginAd.php?error=NoUserEmail");
 		        exit();
 			}
 
@@ -37,7 +37,7 @@
 			if($coachID !== $employeeID){
 				session_unset();
 			    session_destroy();
-				header ("Location: ./loginAd.php?error=Not_Logged_In");
+				header ("Location: ../LoginAd.php?error=Not_Logged_In");
 			    exit();
 			}
 
@@ -46,7 +46,7 @@
 			//if error, force a logout
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=Not_Logged_In");
+			header ("Location: ../LoginAd.php?error=Not_Logged_In");
 			exit();
 		}
 	
@@ -73,7 +73,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror");
+			header ("Location: ../LoginAd.php?error=sqlerror");
 			exit();
 		}
 		$result = $stmt->get_result();
@@ -85,7 +85,7 @@
 			$checkLname = $row['lname'];
 		}
 		else{
-			header ("Location: ../reportActivity.php?error=NotAValidClientID");
+			header ("Location: ../reportActivityAD.php?error=NotAValidClientID");
 			exit();
 		}
 		$stmt ->close();
@@ -97,27 +97,48 @@
 		if(!$stmt ->execute()){
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror");
+			header ("Location: ../LoginAd.php?error=sqlerror");
 			exit();
 		}
 		$result = $stmt->get_result();
 
 		if($result->num_rows <= 0){
-			header ("Location: ../reportActivity.php?error=NotAnAssociatedClient");
+			header ("Location: ../reportActivityAD.php?error=NotAnAssociatedClient");
 			exit();
 		}
 		$stmt ->close();
 
 		if ($checkFname != $clientFName) {
-			header("Location: ../reportActivity.php?error=ClientFirstNameDoesNotMatch");
+			header("Location: ../reportActivityAD.php?error=ClientFirstNameDoesNotMatch");
 			exit();
 		}
 		else if ($checkLname != $clientLName) {
-			header("Location: ../reportActivity.php?error=ClientLastNameDoesNotMatch");
+			header("Location: ../reportActivityAD.php?error=ClientLastNameDoesNotMatch");
 			exit();
 		}
 
-		$stmt = $conn->prepare("INSERT INTO PARTICIPATIONREPORTACTIVITY (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
+		//checks to see if given Activity Report exists already
+		$stmt = $conn->prepare("SELECT reportActID FROM participationReportActivity WHERE userID=? AND employeeID=? AND activityCode=? AND trainingProgram=? AND startDate=? AND endDate=? AND minutes=? AND notes=?;");
+		$stmt ->bind_param("iissssis",$clientID,$coachID,$trainingCode,$trainingProgram,$startDate,$endDate,
+			$timeSpent,$notes);
+
+		if(!$stmt ->execute()){
+			session_unset();
+			session_destroy();
+			header ("Location: ../LoginAd.php?error=sqlerror");
+			exit();
+		}
+		$result = $stmt->get_result();
+
+		if($result->num_rows > 0){
+			header ("Location: ../reportActivity.php?error=TrainingReportAlreadyExists");
+			exit();
+		}
+		$stmt ->close();
+
+
+
+		$stmt = $conn->prepare("INSERT INTO participationReportActivity (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
 			minutes,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 		$stmt->bind_param("iisssssssis",$clientID,$coachID,$coachName,$clientLName,$clientFName,$trainingCode,$trainingProgram,$startDate,$endDate,
 			$timeSpent,$notes);
@@ -125,11 +146,11 @@
 		if (!$stmt ->execute()) {
 			session_unset();
 			session_destroy();
-			header ("Location: ../loginAd.php?error=sqlerror1");
+			header ("Location: ../LoginAd.php?error=sqlerror1");
 			exit();
 		}
 		$stmt ->close();
-		header("Location: ../reportActivity.php?savingReportActivityForm=success");
+		header("Location: ../reportActivityAD.php?savingReportActivityForm=success");
 		exit();
 
 
@@ -139,7 +160,7 @@
 		//send back to login page
 		session_unset();
 		session_destroy();
-		header ("Location: ../loginAd.php");
+		header ("Location: ../LoginAd.php");
 		exit();
 	}
 ?>

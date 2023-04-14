@@ -1,7 +1,27 @@
 <?php
 
+// Start session and check if user is logged in
+if (!isset($_SESSION['employeeID'])) {
+    // If error, force a logout
+    session_unset();
+    session_destroy();
+    // Redirect user to Admin login page if not logged in
+    header("Location:LoginAd.php");
+    exit();
+  }
+// Get the user ID from the session variable
+$employeeID = $_SESSION['employeeID'];
 // Get search query from form data
-$searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' : '';
+if (isset($_GET['searchResult'])) {
+    $searchTerm = trim($_GET['searchResult']);
+    if (!empty($searchTerm)) {
+        $searchTerm = '%' . $searchTerm . '%';
+
+
+    } else {
+        echo "Search query is empty.";
+    }
+}
 
 ?>
 <div class="d-flex">
@@ -9,7 +29,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
         <div class="d-flex m-5 border border-info rounded-pill w-search-cover">
             <img src="./image/seachIcon.png" alt="search icon" class="search-icon m-2" onclick="submitSearch()">
             <form id="searchForm" class="my-1"  action="" method="GET">
-                <input type="text" placeholder="Search Client" name="searchResult" class="w-search-bar m-1">
+                <input type="text" placeholder="Search Client by Name or ID" name="searchResult" class="w-search-bar m-1">
             </form>
         </div>
         <div class="d-flex justify-content-between">
@@ -20,7 +40,7 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                 <div class="box-client text-center overflow-scroll">
                     <?php
                         /* Display information of new client. New Clients have not been coach*/
-
+                        $searchTerm = str_replace('%', '', $searchTerm);
                         $newClient = "SELECT P.userID, P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
                         Addr.street, Addr.city, Addr.state, Addr.zipcode,
                         Emp.desiredJobTitle
@@ -31,12 +51,8 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                         LEFT JOIN EMPLOYMENT AS Emp
                         ON P.userID = Emp.userID
                         WHERE P.userID NOT IN (SELECT co.userID FROM COACH AS co)
-                        AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname) LIKE '%$searchTerm%' OR P.userID LIKE '%$searchTerm%'
-                        OR P.email LIKE '%$searchTerm%' OR  P.DOB LIKE '%$searchTerm%' OR  P.primaryPhone LIKE '%$searchTerm%'
-                        OR Addr.street LIKE '%$searchTerm%'OR Addr.city LIKE '%$searchTerm%' OR Addr.state LIKE '%$searchTerm%'
-                        OR Addr.zipcode LIKE '%$searchTerm%'
-                        OR Emp.desiredJobTitle LIKE '%$searchTerm%' );";
-
+                        AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname)
+                        LIKE '%$searchTerm%' OR P.userID = " . (is_numeric($searchTerm) ? intval($searchTerm) : "NULL") . ")";
                         $newClientList = mysqli_query($conn, $newClient);
                         $newClientResult = mysqli_num_rows($newClientList);
 
@@ -75,216 +91,77 @@ $searchTerm  = isset($_GET['searchResult']) ? '%' . $_GET['searchResult'] . '%' 
                                 echo "</div>";
                             }
                         } else {
-                            echo 'No client found.';
+                            echo 'No new client found.';
                         }
 
 
-                    /********************************END NEW CLIENT BLOCK *********************************/
+
                     ?>
                 </div>
             </div>
 
-            <div class="d-flex flex-column my-5">
-                <div class="header-client-list">
-                    <h3 class="fw-bold text-center text-Blue my-1">Client list</h3>
-                </div>
-                <div class="box-client-list text-center overflow-scroll">
-                    <div class="dropdown-center">
-
-
-                        <?php
-                        /****************************DISPLAY CLIENT LIST WHO HAS BEEN COACH BY THE EMPLOYEE WHO ARE LOGIN ******************/
-
-
-                            //Query to select clients who have been coahc by the logged-in employee
-                            $clientQuery ="SELECT PRA.activityCode, PRA.trainingProgram, PRA.startDate,
-                                                    PRA.endDate, PRA.minutes,  PRA.notes,P.userID,
-                                                    P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
-                                                    Addr.street, Addr.city, Addr.state, Addr.zipcode,
-                                                    Emp.desiredJobTitle
-                                            FROM participationReportActivity PRA
-                                            INNER JOIN COACH C ON C.employeeID = PRA.employeeID
-                                            INNER JOIN PARTICIPATION P ON P.userID = PRA.userID
-                                            JOIN ADDRESS AS Addr ON P.userID = Addr.userID
-                                            JOIN EMPLOYMENT AS Emp ON P.userID = Emp.userID
-                                            WHERE C.employeeID = ?
-                                            AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname) LIKE '%$searchTerm%' OR P.userID LIKE '%$searchTerm%'
-                                            OR P.email LIKE '%$searchTerm%' OR  P.DOB LIKE '%$searchTerm%' OR  P.primaryPhone LIKE '%$searchTerm%'
-                                            OR Addr.street LIKE '%$searchTerm%'OR Addr.city LIKE '%$searchTerm%' OR Addr.state LIKE '%$searchTerm%'
-                                            OR Addr.zipcode LIKE '%$searchTerm%'
-                                            OR Emp.desiredJobTitle LIKE '%$searchTerm%'
-                                            OR PRA.activityCode LIKE '%$searchTerm%'
-                                            OR PRA.trainingProgram LIKE '%$searchTerm%'
-                                            OR PRA.startDate LIKE '%$searchTerm%'
-                                            OR PRA.endDate LIKE '%$searchTerm%'
-                                            OR PRA.minutes LIKE '%$searchTerm%'
-                                            OR PRA.notes LIKE '%$searchTerm%' );";
+                    <!-- /********************************END NEW CLIENT BLOCK *********************************/ -->
 
 
 
-                            $stmt = $conn->prepare($clientQuery);
-                            $stmt->bind_param("i", $_SESSION['employeeID']); //Bind the parameter to the statement
-                            $stmt-> execute(); //Execute the prepared statement
-                            $result = $stmt-> get_result();//Get the result set
-                            //Check if any rows were returned
-                            if ($result->num_rows > 0) {
-                                //Display client list
-                                while($row = $result->fetch_assoc()){
-
-                                    echo '<p class="btn-newClient dropdown-toggle rounded-pill  text-white my-1 mx-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">';
-
-                                       echo $row['fname']." ". $row['lname'];
-                                    echo ' </p>';
-
-                                        echo '<div id="client_Info" class="dropdown-menu collapse" style="width:100%;height:auto; transition:1ms; word-break: break-word;">';
-                                        echo '<p class="dropdown-item">ID: ' . $row['userID'] . '</p>';
-                                        echo '<p class="dropdown-item">Last Name: ' . $row['lname'] . '</p>';
-                                        echo '<p class="dropdown-item">First Name: ' . $row['fname'] . '</p>';
-                                        echo '<p class="dropdown-item">DOB: ' . $row['DOB'] . '</p>';
-                                        echo '<p class="dropdown-item">Street: '.$row['street'].", ".$row['city']."</p>";
-                                        echo '<p class="dropdown-item">State: '.$row['state']."</p>";
-                                        echo '<p class="dropdown-item">Zipcode: '.$row['zipcode']."</p>";
-                                        echo '<p class="dropdown-item">Email: ' . $row['email'] . '</p>';
-                                        echo '<p class="dropdown-item">Phone: ' . $row['primaryPhone'] . '</p>';
-                                        echo '<p class="dropdown-item">Activity Code: ' . $row['activityCode'] . '</p>';
-                                        echo '<p class="dropdown-item">Training Code: ' . $row['trainingProgram'] . '</p>';
-                                        echo '<p class="dropdown-item">Start Date: ' . $row['startDate'] . '</p>';
-                                        echo '<p class="dropdown-item">End Date: ' . $row['endDate'] . '</p>';
-
-                                        echo '<p class="dropdown-item">Time Spent with Participant: ' . $row['minutes'] . '</p>';
-                                        echo '<p class="dropdown-item">Notes: ' . $row['notes'] . '</p>';
-
-                                        echo '<div class="dropdown-item text-end">';
-                                            echo '<a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#report_edit,#client_Info">Edit</a>';
-                                        echo '</div>';
-
-                                        echo '</div>';
-
-
-
-
-
-                                    // Edit participation report activity information -->
-                                    echo ' <div id="report_edit" class="dropdown-menu collapse" style="width:100%; height:auto; transition:1ms; padding: left 3px; word-wrap: break-word;">';
-
-                                        echo '<form method="post" action="includes/updateReportActivity.inc.php">' ;
-
-                                            echo '<input type="hidden" name="userID" value="' . $row['userID'] . '">';
-                                            echo '<div class="form-group">';
-                                                echo '<div class="col fw-bold">Activity Code:</div>';
-                                                echo '<div class="mt-1">';
-                                                    echo '<select class="form-control" name="activityCode">';
-                                                        echo'<option value="Code">Please choose best code that fits for activity.</option>';
-                                                        echo '<option value="101 Orientation"';
-                                                            if (isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == '101 Orientation') {
-                                                                echo 'selected';
-                                                            }
-                                                            echo '>101 Orientation</option>';
-                                                        echo '<option value="102 Initial Assessment"';
-                                                            if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "102 Initial Assessment") {
-                                                                echo "selected";
-                                                            }
-                                                            echo '>102 Initial Assessment</option>';
-                                                        echo '<option value="103 Provision of Information on Training Providers/Performance Outcomes"';
-                                                           if(isset($row['activityCode']) && !empty($row['activityCode']) && $row['activityCode'] == "103 Provision of Information on Training Providers/Performance Outcomes"){
-                                                            echo "selected";
-                                                           }
-                                                           echo '>103 Provision of Information on Training Providers/Performance Outcomes</option>';
-                                                    echo '</select>';
-                                                echo '</div>';
-
-                                            echo '</div>';
-
-                                            echo '<div class="form-group">';
-                                                echo '<div class="col fw-bold mt-2">Training Program:</div>';
-                                                echo '<div class="mt-1">';
-                                                    echo '<select class="form-control" name="trainingProgram">';
-                                                        echo '<option value="Training Program">Please choose training program.</option>';
-                                                        echo '<option value="CMC - Essential Skills (5 hours)"';
-                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Essential Skills (5 hours)"){
-                                                                echo "selected";
-                                                            }
-                                                            echo '>CMC - Essential Skills (5 hours)</option>';
-                                                        echo '<option value="CMC - Intro to Assembler (5 hours)"';
-                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Intro to Assembler (5 hours)"){
-                                                               echo "selected";
-                                                            }
-                                                            echo '>CMC - Intro to Assembler (5 hours)</option>';
-                                                        echo '<option value="CMC - Assembler (30 hours)"';
-                                                            if(isset($row['trainingProgram']) && !empty($row['trainingProgram']) && $row['trainingProgram'] == "CMC - Assembler (30 hours)"){
-                                                               echo "selected";
-                                                            }
-                                                            echo '>CMC - Assembler (30 hours)</option>';
-                                                    echo '</select>';
-                                                echo '</div>';
-                                            echo '</div>';
-
-                                            echo '<div class="form-group">';
-                                                echo '<div class="col fw-bold mt-2">Start Date:</div>';
-                                                echo '<div class="mt-1">';
-                                                    echo '<input type="date" class="form-control" id="startDate" name="startDate" value="' . $row['startDate'] . '">';
-                                                echo '</div>';
-                                            echo '</div>';
-
-                                            echo '<div class="form-group">';
-                                                echo '<div class="col fw-bold mt-2">End Date:</div>';
-                                                echo '<div class="mt-1">';
-
-                                                    echo '<input type="date" class="form-control" id="endDate" name="endDate" value="'.$row['endDate'].'">';
-                                                echo '</div>';
-                                            echo '</div>';
-
-                                            echo '<div class="form-group">';
-
-
-                                                echo '<div class="col fw-bold mt-2">Minutes Spent:</div>';
-                                                echo '<div class="mt-1">';
-                                                    echo '<input type="number" class="form-control" id="minutes" name="minutes"  value="'.$row['minutes'].'">';
-                                                echo '</div>';
-                                            echo '</div>';
-
-                                            echo '<div class="form-group">';
-
-
-                                                echo '<div class="col fw-bold mt-2">Notes:</div>';
-                                                echo '<div class="mt-1">';
-                                                    echo '<textarea type="text" class="form-control border border-info" rows="4" placeholder="Notes" required="" id="notes" name="notes">' . $row['notes'] . '</textarea>';
-
-                                                echo '</div>';
-                                            echo '</div>';
-
-                                            echo '<div class="dropdown-item text-end mt-2 ">';
-                                                echo '<button type="submit" class="text-decoration-none text-white btn btn-primary  btn-sm" >Save</button>';
-                                                echo '<button type="button" class="text-decoration-none text-white btn btn-danger  btn-sm" data-bs-toggle="collapse" data-bs-target="#client_Info,#report_edit" >Cancel</button>';
-                                            echo '</div>';
-                                        echo '</form>';
-
-                                    echo '</div>';
-
-
-
-
-                                }
-                            } else {
-                                echo 'No client found.';
-                            }
-
-
-
-
-
-                        /****************************END OF DISPLAY CLIENT LIST******************/
-                        ?>
-
-
+            <!-- /****************************DISPLAY CLIENT LIST WHO HAS BEEN COACH BY THE EMPLOYEE WHO ARE LOGIN ******************/ -->
+            <div class="d-flex flex-column my-5 me-5 border border-2 border-top-0 border-dark"  style="width:100%; background-color: #E4F5F8;">
+                <div id="client-table" class="collapse show" style="transition:1ms;">
+                    <div style="width:100%; border-top: 2px solid #000;">
+                        <h3 class="fw-bold text-center text-Blue my-1">Client</h3>
                     </div>
+                    <table class="table table-blue table-responsive text-center border border-1 border-start-0 border-end-0 border-dark">
+                        <thead class="fs-5 text-Blue">
+                            <th scope="col">ID</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Coach Name</th>
+                        </thead>
+                        <tbody>
 
+                            <?php
+                            $searchTerm = str_replace('%', '', $searchTerm);
+                                $clientQuerry = "SELECT P.userID, P.fname, P.lname, E.empfname, E.emplname
+                                                 FROM PARTICIPATION AS P
+                                                 JOIN COACH AS co
+                                                 ON P.userID = co.userID
+                                                 JOIN EMPLOYEE AS E
+                                                 ON co.employeeID = E.employeeID
+                                                 WHERE co.employeeID = $employeeID
+                                                 AND ((P.fname LIKE '%$searchTerm%' OR P.lname LIKE '%$searchTerm%') OR CONCAT(P.fname, ' ', P.lname)
+                                                LIKE '%$searchTerm%' OR P.userID = " . (is_numeric($searchTerm) ? intval($searchTerm) : "NULL") . ")";
+                                $clientList = mysqli_query($conn, $clientQuerry);
+                                $clientResult = mysqli_num_rows($clientList);
+
+                                if($clientResult > 0){
+                                    while ($row = mysqli_fetch_assoc($clientList)) {
+                                        echo"<tr scope=\"row\">";
+                                        echo "<th><span class='clickable' onclick='window.location=\"./employeeDashClientInfoDetailsView.php?userID=".$row['userID']."\"'>".$row['userID']."</span></th>";
+                                        echo "<th><span class='clickable' onclick='window.location=\"./employeeDashClientInfoDetailsView.php?userID=".$row['userID']."\"'>".$row['fname']." ".$row['lname']."</span></th>";
+                                        echo "<th>".$row['empfname']." ".$row['emplname']."</th>";
+                                        echo "</tr>";
+                                    }
+                                }
+                                else {
+                                    echo "<tr><td colspan='3'>No client found.</td></tr>";
+                                }
+
+                            ?>
+
+                        </tbody>
+                    </table>
                 </div>
+                            <!-- /********************************END CLIENT BLOCK*********************************/ -->
+
+
 
             </div>
 
+
+
         </div>
-     </div>
+
+
+    </div>
 </div>
 <!-- Javascript for the cancle button -->
 <script>

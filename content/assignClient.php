@@ -1,10 +1,6 @@
 <?php
     session_start();
 
-    //For Testing Purposes, Remove later
-    //$_SESSION['employeeID'] = 2;
-    //$_SESSION['email'] = "gabcocke@gmail.com";
-
     require 'includes/dbh.inc.php';
 
     if(isset($_SESSION['adminLogin']) || isset($_SESSION['email'])){
@@ -14,7 +10,7 @@
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=sqlerror");
+            header ("Location: ./LoginAd.php?error=sqlerror");
             exit();
 		}
 
@@ -27,7 +23,7 @@
         else{
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=NoUserEmail");
+            header ("Location: ./LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -36,7 +32,7 @@
         if($_SESSION['adminLogin'] !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
     }
@@ -44,13 +40,13 @@
         //if error, force a logout
         session_unset();
         session_destroy();
-        header ("Location: ./loginAd.php?error=Not_Logged_In");
+        header ("Location: ./LoginAd.php?error=Not_Logged_In");
         exit();
     }
 ?>
 
 <div class="container-fluid">
-    <form action="includes/assignClient.inc.php" method="post">
+    <form action="/includes/assignClient.inc.php" method="post">
 
     <h4 class="d-flex justify-content-center text-info mb-5">Assign a Client to Employee Page</h5>
 

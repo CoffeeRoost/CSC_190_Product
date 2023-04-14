@@ -5,12 +5,12 @@
 
     if(isset($_SESSION['employeeID']) || isset($_SESSION['email'])){
         
-        $stmt = $conn->prepare("SELECT employeeID, empfname, emplname FROM EMPLOYEE WHERE email=?;");
+        $stmt = $conn->prepare("SELECT employeeID FROM EMPLOYEE WHERE email=?;");
 		$stmt ->bind_param("s",$_SESSION['email']);
 		if(!$stmt ->execute()){
 			session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=sqlerror");
+            header ("Location: ./LoginAd.php?error=sqlerror");
             exit();
 		}
 
@@ -19,13 +19,11 @@
 		if($result->num_rows >0){
             $row = $result->fetch_assoc();
             $employeeID = $row['employeeID'];
-            $empfname= $row['empfname'];
-            $emplname= $row['emplname'];
         }
         else{
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=NoUserEmail");
+            header ("Location: ./LoginAd.php?error=NoUserEmail");
             exit();
         }
 
@@ -34,7 +32,7 @@
         if($_SESSION['employeeID'] !== $employeeID){
             session_unset();
             session_destroy();
-            header ("Location: ./loginAd.php?error=Not_Logged_In");
+            header ("Location: ./LoginAd.php?error=Not_Logged_In");
             exit();
         }
     }
@@ -42,13 +40,13 @@
         //if error, force a logout
         session_unset();
         session_destroy();
-        header ("Location: ./loginAd.php?error=Not_Logged_In");
+        header ("Location: ./LoginAd.php?error=Not_Logged_In");
         exit();
     }
 ?>
 
 
-<form action="includes/reportActivityToDatabase.php" method="POST" class="container-fluid custom-container">
+<form action="/includes/reportActivityToDatabase.php" method="post" class="container-fluid custom-container">
 
     <h4 class="d-flex justify-content-center text-info mt-5">Participant Activity Reporting Form</h4>
     <h6 class="d-flex justify-content-center">CMC Career Pathways form to be used for capturing all activity with all participants</h6>
@@ -61,7 +59,7 @@
     -->
 
     <h6 class="mt-5">Coach Name <span class="text-danger">*</span></h6>
-    <input type="text" name="coachName" id="coachName" class="input-underline" value="<?php echo $empfname; echo " "; echo $emplname ?>" required>
+    <input type="text" name="coachName" id="coachName" class="input-underline" placeholder="Your answer" required>
 
     <h6 class="mt-5">Client ID <span class="text-danger">*</span></h6>
     <input type="text" name="clientID" id="clientID" class="input-underline" placeholder="Your answer" required>
@@ -232,7 +230,7 @@
     <h6 class="mt-5">Notes <span class="text-danger">*</span></h6>
       <div class="col-6 my-3">
         <textarea class="form-control border border-info" name="notes" rows="4" placeholder="" required></textarea>
-        <button class="btn btn-info btn-shadow my-3 " type="submit" name="submitActivityEmployee">Submit</button>
+        <button name="submitActivityEmployee" class="btn btn-info btn-shadow my-3" type="submit">Submit</button>
 
       </div>
 

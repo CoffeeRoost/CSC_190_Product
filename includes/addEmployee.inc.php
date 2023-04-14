@@ -165,7 +165,7 @@ else {
     //if error, force a logout
      session_unset();
      session_destroy();
-     header ("Location: ./loginAd.php?error=LoginRequirement");
+     header ("Location: ./LoginAd.php?error=LoginRequirement");
      exit(); 
 }
 

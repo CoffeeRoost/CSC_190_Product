@@ -15,6 +15,6 @@
 <div class="d-flex">
     <?php
         include_once('content/sideBar1-1&1-2.php');
-        include_once('content/adminSearching.php');
+        include_once('content/empSearchResultFE.php');
     ?>
 </div>

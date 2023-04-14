@@ -18,7 +18,7 @@ $employeeID = $_SESSION['employeeID'];
 
 // Prepare the query
 $query = "SELECT empfname, emplname
-          FROM employee
+          FROM EMPLOYEE
           WHERE employeeID = ?";
 
 // Create a prepared statement
@@ -36,7 +36,6 @@ $result = $stmt->get_result();
                     // Fetch the data
                     while($row=mysqli_fetch_assoc($result)) {
                         // data from 'Employee' table
-                        $empId= $row['employeeID'];
                         $empfname= $row['empfname'];
                         $emplname= $row['emplname'];
 ?>
@@ -44,27 +43,33 @@ $result = $stmt->get_result();
 <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
         <div>
             <ul class="nav nav-tabs flex-column align-items-center text-center">
-                <?php
-                    echo "<h6><br>$empfname $emplname<br>ID: $empId</h6>";
-                ?>
-                <li class="nav-item bg-Blue mb-md-1 mt-1">
-                    <a href="employeeDash.php" class="nav-link text-white">
-                        Dashboard
-                    </a>
-                </li>
+
+                    <li class="nav-item bg-Blue mb-md-1 mt-1">
+                        <a href="./employeeDash.php" class="nav-link text-white">
+                            <?php
+                                echo "<h6> $empfname $emplname's Dashboard! <br> ID: $employeeID</h6>";
+                            ?>
+                        </a>
+                    </li>
                     <li class="nav-item bg-Blue mb-md-1">
                         <a href="./employeePersonalInformationView.php" class="nav-link text-white">
                           Personal Information
                         </a>
                       </li>
                       <li class="nav-item bg-Blue mb-md-1">
-                        <a href="reportActivity.php" class="nav-link text-white">
-                          Report Activity
+                        <a href="./reportActivity.php" class="nav-link text-white">
+                            Activity Reporting
                         </a>
                       </li>
+					  <li class="nav-item bg-Blue mb-md-1">
+                        <a href="searchOption.php" class="nav-link text-white">
+                          Participant Report
+                        </a>
+                      </li>
+					  
                   </ul>
             </div>
         </div>
 <?php
-    }
+	}
 ?>
