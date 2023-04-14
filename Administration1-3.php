@@ -55,7 +55,7 @@
                         </a>
                     </li>
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
+                            <a href="./includes/employeeViewBE.php?role=admin" class="nav-link text-white">
                                 Personal Information
                             </a>
                           </li>
@@ -189,7 +189,7 @@ echo "</tbody></table></div>" ;
                             </thead>
 
 <?php
-                            $employeeQuerry = "SELECT employeeID,empfname, emplname, empMI, employeeRole FROM EMPLOYEE ;" ;
+                            $employeeQuerry = "SELECT * FROM EMPLOYEE ;" ;
                             $employeeList = mysqli_query($conn, $employeeQuerry);
                             $employeeResult = mysqli_num_rows($employeeList);
                             if($employeeResult > 0){

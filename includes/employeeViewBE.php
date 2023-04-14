@@ -10,8 +10,13 @@
 
     require './dbh.inc.php';
 
-     $id = $_GET['id'];
-     
+    if($_GET['role'] === "admin"){
+        $id = $_SESSION['adminLogin'];
+    }
+    else {
+        $id = $_GET['id'];
+    } 
+    
 
 //Checks to see which name of employee is selected
 $sql = $conn -> prepare("SELECT * FROM employee WHERE employeeID = ?;"); //*****Modify this so to select an employee********
@@ -38,6 +43,10 @@ if($empViewResult -> num_rows > 0){
     $_SESSION['empViewRole'] = $row['employeeRole'];
     $_SESSION['empViewProgram'] = $row['programMember'];
     $_SESSION['empStatus'] = $row['empStatus'];
+
+    if($_GET['role'] === "admin"){
+        header("Location: /CSC_190_Product/adminPersonal.php");
+    }
     header("Location: /CSC_190_Product/empInfoView.php");
     /*echo $_SESSION['empViewID'];
     echo $_SESSION['empViewfname'];
