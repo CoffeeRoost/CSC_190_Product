@@ -117,6 +117,27 @@
 			exit();
 		}
 
+		//checks to see if given Activity Report exists already
+		$stmt = $conn->prepare("SELECT reportActID FROM participationReportActivity WHERE userID=? AND employeeID=? AND activityCode=? AND trainingProgram=? AND startDate=? AND endDate=? AND minutes=? AND notes=?;");
+		$stmt ->bind_param("iissssis",$clientID,$coachID,$trainingCode,$trainingProgram,$startDate,$endDate,
+			$timeSpent,$notes);
+
+		if(!$stmt ->execute()){
+			session_unset();
+			session_destroy();
+			header ("Location: ../LoginAd.php?error=sqlerror");
+			exit();
+		}
+		$result = $stmt->get_result();
+
+		if($result->num_rows > 0){
+			header ("Location: ../reportActivity.php?error=TrainingReportAlreadyExists");
+			exit();
+		}
+		$stmt ->close();
+
+
+
 		$stmt = $conn->prepare("INSERT INTO participationReportActivity (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
 			minutes,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 		$stmt->bind_param("iisssssssis",$clientID,$coachID,$coachName,$clientLName,$clientFName,$trainingCode,$trainingProgram,$startDate,$endDate,
