@@ -14,14 +14,9 @@ if (!isset($_SESSION['userID'])) {
 //connect to database
 require_once ('includes/dbh.inc.php');
 
-<<<<<<< HEAD
 
 
 
-=======
-// Get the user ID from the session variable
-$userID = $_SESSION['userID'];
->>>>>>> c5407718bddcf9a970ffc6b4b470028eb9c9aeac
 
 
 ?>
@@ -106,7 +101,7 @@ $userID = $_SESSION['userID'];
             <!--Participant information Edit-->
 
 =======
-        
+
         <!-- Edit Tab -->
         <div id="editTab" style="display:none;">
             <?php include 'participantDash1-2EditInfo.php';?>
@@ -702,10 +697,7 @@ $userID = $_SESSION['userID'];
         </div>
 
     </div>
-<<<<<<< HEAD
 
 
-=======
->>>>>>> c5407718bddcf9a970ffc6b4b470028eb9c9aeac
 </body>
 </html>
