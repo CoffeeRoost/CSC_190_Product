@@ -31,39 +31,62 @@ if (isset($_POST['update']) && isset($_POST['characteristic_grant_ID']) && isset
     $adminID = $_POST['adminID'];
     $grant_name = $_POST['grant_name'];
 
-  // Update GRANT_MAIN table
-  $sql1 = "UPDATE GRANT_MAIN SET adminID = ?, grant_name = ?, grantID = ?, startDate = ?, endDate = ?, personal_contact = ?, supporting_organization = ? WHERE shared_grant_ID = ?";
+// Update GRANT_MAIN table
+$sql1 = "UPDATE GRANT_MAIN SET adminID = ?, grant_name = ?, grantID = ?, startDate = ?, endDate = ?, personal_contact = ?, supporting_organization = ? WHERE shared_grant_ID = ?";
 $stmt1 = $conn->prepare($sql1);
 $stmt1->bind_param("isissssi", $adminID, $grant_name, $grantID, $startDate, $endDate, $personal_contact, $supporting_organization, $shared_grant_ID);
 
+// Update GRANT_CHARACTERISTICS table
+$sql2 = "UPDATE GRANT_CHARACTERISTICS SET char_title = ?, char_status = ? WHERE characteristic_grant_ID = ?";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->bind_param("ssi", $char_title, $char_status, $characteristic_grant_ID);
 
-  // Update GRANT_CHARACTERISTICS table
-  $sql2 = "UPDATE GRANT_CHARACTERISTICS SET char_title = ?, char_status = ? WHERE characteristic_grant_ID = ?";
-  $stmt2 = $conn->prepare($sql2);
-  $stmt2->bind_param("ssi", $char_title, $char_status, $characteristic_grant_ID);
-
-  // Update GRANT_PARTICIPATION table
+// Update GRANT_PARTICIPATION table
 $sql3 = "UPDATE GRANT_PARTICIPATION SET characteristic_grant_ID = ?, userID = ? WHERE shared_grant_ID = ?";
 $stmt3 = $conn->prepare($sql3);
 $stmt3->bind_param("iii", $characteristic_grant_ID, $userID, $shared_grant_ID);
 
-    $stmt1->execute();
-    $stmt2->execute();
-    $stmt3->execute();
+$stmt1->execute();
+$stmt2->execute();
+$stmt3->execute();
 }
 
 // Delete functionality
 if (isset($_POST['delete'])) {
-  $characteristic_grant_ID = $_POST['characteristic_grant_ID'];
-  $sql = "DELETE FROM GRANT_CHARACTERISTICS WHERE characteristic_grant_ID = ?";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param("i", $characteristic_grant_ID);
-  if ($stmt->execute()) {
-      header('Location: grantReportView.php');
-      exit;
-  } else {
-      echo "Error: " . $conn->error;
-  }
+    $characteristic_grant_ID = $_POST['characteristic_grant_ID'];
+    $sql = "SELECT shared_grant_ID FROM GRANT_PARTICIPATION WHERE characteristic_grant_ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $characteristic_grant_ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $shared_grant_ID = null;
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $shared_grant_ID = $row['shared_grant_ID'];
+    }
+    
+    $sql = "DELETE FROM GRANT_CHARACTERISTICS WHERE characteristic_grant_ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $characteristic_grant_ID);
+    if ($stmt->execute()) {
+        if ($shared_grant_ID) {
+            // Delete from GRANT_PARTICIPATION table
+            $sql = "DELETE FROM GRANT_PARTICIPATION WHERE shared_grant_ID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $shared_grant_ID);
+            $stmt->execute();
+            
+            // Delete from GRANT_MAIN table
+            $sql = "DELETE FROM GRANT_MAIN WHERE shared_grant_ID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $shared_grant_ID);
+            $stmt->execute();
+        }
+        header('Location: grantReportView.php');
+        exit;
+    } else {
+        echo "Error: " . $conn->error;
+    }
 }
 
 // Fetch data for the main table
@@ -77,6 +100,7 @@ $result = $conn->query($sql);
 
 <script>
 function submitUpdateForm() {
+    alert('Form submitted successfully');
     document.getElementById('updateForm').submit();
 }
 </script>
@@ -124,7 +148,7 @@ function submitUpdateForm() {
     <td>
         <form action="" method="post">
             <input type="hidden" name="characteristic_grant_ID" value="<?php echo $row['characteristic_grant_ID']; ?>">
-            <button type="submit" name="edit" class="btn btn-warning btn-sm">Edit</button>
+            <button type="submit" name="edit" class="btn btn-warning btn-sm btn-primary">Edit</button>
             <button type="submit" name="delete" class="btn btn-danger btn-sm">Delete</button>
         </form>
     </td>
@@ -135,17 +159,14 @@ if (isset($edit_mode) && $edit_mode && $edit_row['characteristic_grant_ID'] == $
 ?>
     <tr>
         <td colspan="13">
-            <form id="updateForm" method="post">
-                <input type="hidden" name="characteristic_grant_ID" value="<?php echo $row['characteristic_grant_ID']; ?>">
-                <input type="hidden" name="old_adminID" value="<?php echo $row['adminID']; ?>">
-                <input type="hidden" name="old_userID" value="<?php echo $row['userID']; ?>">
+        <form id="updateForm" method="post">
                 <div class="form-group">
                     <label for="adminID">Admin ID</label>
-                    <input type="number" class="form-control" name="adminID" id="adminID" value="<?php echo $row['adminID']; ?>" required>
+                    <input type="number" class="form-control" name="adminID" id="adminID" value="<?php echo $row['adminID']; ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="userID">User ID</label>
-                    <input type="number" class="form-control" name="userID" id="userID" value="<?php echo $row['userID']; ?>" required>
+                    <input type="number" class="form-control" name="userID" id="userID" value="<?php echo $row['userID']; ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="grant_name">Grant Name</label>
@@ -153,7 +174,7 @@ if (isset($edit_mode) && $edit_mode && $edit_row['characteristic_grant_ID'] == $
                 </div>
                 <div class="form-group">
                 <label for="grantID">Grant ID</label>
-                    <input type="text" class="form-control" name="grantID" id="grantID" value="<?php echo $row['grantID']; ?>" required>
+                    <input type="text" class="form-control" name="grantID" id="grantID" value="<?php echo $row['grantID']; ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="startDate">Start Date</label>
