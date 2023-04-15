@@ -78,11 +78,7 @@ require_once ('includes/dbh.inc.php');
                     </a>
                 </li>
                 <li class="nav-item bg-Blue mb-md-1">
-<<<<<<< HEAD
                     <a href="./participantPersonalInformation.php" class="nav-link text-white" >
-=======
-                    <a href="./participantDash1-2EditInfo.php" class="nav-link text-white" onclick="personalInfoTab()">
->>>>>>> c5407718bddcf9a970ffc6b4b470028eb9c9aeac
                         Personal Information
                     </a>
                 </li>
@@ -93,22 +89,12 @@ require_once ('includes/dbh.inc.php');
                 </li>
             </ul>
         </div>
-<<<<<<< HEAD
             <!-- ************************************************End of Side Bar********************************************************************************************************* -->
 
 
             <!-- **************************************************************************************************************************************************** -->
             <!--Participant information Edit-->
 
-=======
-
-        <!-- Edit Tab -->
-        <div id="editTab" style="display:none;">
-            <?php include 'participantDash1-2EditInfo.php';?>
-        </div>
-
-        <!-- Personal Information Tab -->
->>>>>>> c5407718bddcf9a970ffc6b4b470028eb9c9aeac
         <div id="personalInfoTab">
             <div class="d-flex flex-column align-items-center mx-5">
                 <div class="d-flex justify-center">
