@@ -117,9 +117,12 @@
 			exit();
 		}
 
+		$startDate_sql = date('Y-m-d', strtotime($startDate));
+		$endDate_sql = date('Y-m-d', strtotime($endDate));
+
 		//checks to see if given Activity Report exists already
-		$stmt = $conn->prepare("SELECT reportActID FROM participationReportActivity WHERE userID=? AND employeeID=? AND activityCode=? AND trainingProgram=? AND startDate=? AND endDate=? AND minutes=? AND notes=?;");
-		$stmt ->bind_param("iissssis",$clientID,$coachID,$trainingCode,$trainingProgram,$startDate,$endDate,
+		$stmt = $conn->prepare("SELECT startDate,endDate FROM participationReportActivity WHERE userID=? AND employeeID=? AND activityCode=? AND trainingProgram=? AND startDate=? AND endDate=? AND minutes=? AND notes=?;");
+		$stmt ->bind_param("iissssis",$clientID,$coachID,$trainingCode,$trainingProgram,$startDate_sql,$endDate_sql,
 			$timeSpent,$notes);
 
 		if(!$stmt ->execute()){
@@ -137,10 +140,9 @@
 		$stmt ->close();
 
 
-
 		$stmt = $conn->prepare("INSERT INTO participationReportActivity (userID,employeeID,coach,clientLName,clientFName,activityCode,trainingProgram,startDate,endDate,
 			minutes,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
-		$stmt->bind_param("iisssssssis",$clientID,$coachID,$coachName,$clientLName,$clientFName,$trainingCode,$trainingProgram,$startDate,$endDate,
+		$stmt->bind_param("iisssssssis",$clientID,$coachID,$coachName,$clientLName,$clientFName,$trainingCode,$trainingProgram,$startDate_sql,$endDate_sql,
 			$timeSpent,$notes);
 					
 		if (!$stmt ->execute()) {

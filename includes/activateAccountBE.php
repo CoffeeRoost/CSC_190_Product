@@ -18,7 +18,7 @@
 
 		require 'dbh.inc.php';
 
-        $stmt = $conn->prepare("SELECT activation_code,programPartnerReference,userID FROM PARTICIPATION WHERE email=?;");
+        $stmt = $conn->prepare("SELECT status,activation_code,programPartnerReference,userID,activation_expiry FROM PARTICIPATION WHERE email=?;");
 		$stmt ->bind_param("s",$email);
 		if(!$stmt ->execute()){
 			echo "<script>alert('Query Error 1');</script>";
@@ -33,9 +33,28 @@
             $userID = $row['userID'];
             $activation_codeCheck = $row['activation_code'];
             $programPartnerReference = $row['programPartnerReference'];
+			$activation_exp = $row['activation_expiry'];
+			$status = $row['status'];
 			$acceptance = 0;
         }
         $stmt ->close();
+
+		$current_time = date('Y-m-d H:i:s');
+		if ($activation_exp < $current_time && $status === 0){
+			$stmt5 = $conn->prepare("DELETE FROM PARTICIPATION WHERE userID=?;");
+			$stmt5 ->bind_param("i",$userID);
+			if(!$stmt5 ->execute()){
+				echo "<script>alert('Query Error 5');</script>";
+				echo "<script>setTimeout(function(){window.location.href='../Login.php'}, 0);</script>";
+				exit();
+			}
+
+			$stmt5 ->close();
+
+			header("Location:../index.php?error=PassedExpirationDate");
+			exit();
+		}
+
 
 		$actCheck=password_verify($code,$activation_codeCheck);
 		if($actCheck==false){

@@ -99,10 +99,14 @@ if(isset($_POST['grant-initial-submit'])){
   $grantID                  =$_POST['grantID'];
   $startDate                =$_POST['startDate'];
   $endDate                  =$_POST['endDate'];
+ 
+  $startDate_sql = date('Y-m-d', strtotime($startDate));
+  $endDate_sql = date('Y-m-d', strtotime($endDate));
+
   $supporting_organization  =$_POST['supporting_organization'];
   $personal_contact         =$_POST['personal_contact'];
 
-  if(empty($grant_name)||empty($supporting_organization)||empty($personal_contact)||empty($grantID)||empty($startDate)||empty($endDate)){
+  if(empty($grant_name)||empty($supporting_organization)||empty($personal_contact)||empty($grantID)||empty($startDate_sql)||empty($endDate_sql)){
     header ("Location: ../grantReport.php?error=emptyfields");
     exit();
   }
@@ -132,7 +136,7 @@ if(isset($_POST['grant-initial-submit'])){
   $stmt4 ->close();
 
   $stmt5 = $conn->prepare("INSERT INTO GRANT_MAIN (adminID,grant_name,grantID,startDate,endDate,personal_contact,supporting_organization) VALUES (?,?,?,?,?,?,?);");
-  $stmt5 ->bind_param("isissis",$admin,$grant_name,$grantID,$startDate,$endDate,$personal_contact,$supporting_organization);
+  $stmt5 ->bind_param("isissis",$admin,$grant_name,$grantID,$startDate_sql,$endDate_sql,$personal_contact,$supporting_organization);
   if(!$stmt5 ->execute()){
     session_unset();
     session_destroy();
