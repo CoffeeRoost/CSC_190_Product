@@ -12,7 +12,7 @@ class DeleteTest extends TestCase {
                 'lname' => 'Doe',
                 'email' => 'johndoe@example.com',
                 'programPartnerReference' => 'Testing Organization',
-                'last4SSN' => '0',
+                'last4SSN' => '7777',
             ),
             // add more expected data rows here
         );
