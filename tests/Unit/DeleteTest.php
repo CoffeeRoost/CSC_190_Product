@@ -7,12 +7,12 @@ class DeleteTest extends TestCase {
         // Arrange
         $expectedData = array(
             array(
-		        'userID'=> '777',
+		        'userID'=> '0',
                 'fname' => 'John',
                 'lname' => 'Doe',
                 'email' => 'johndoe@example.com',
                 'programPartnerReference' => 'Testing Organization',
-                'last4SSN' => '7777',
+                'last4SSN' => '0',
             ),
             // add more expected data rows here
         );
@@ -28,7 +28,7 @@ class DeleteTest extends TestCase {
         $testSTMT = $conn->prepare("DELETE FROM PARTICIPATION WHERE userID=?;");
 		$testSTMT ->bind_param("i",$userID);
 
-        $userID = 777;
+        $userID = 0;
 
 		$testSTMT ->execute();
         $testSTMT ->close();

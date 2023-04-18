@@ -8,7 +8,7 @@ class InsertTest extends TestCase {
         // Arrange
         $expectedData = array(
             array(
-		        'userID'=> '777',
+		        'userID'=> '0',
                 'fname' => 'John',
                 'lname' => 'Doe',
                 'email' => 'johndoe@example.com',
@@ -32,7 +32,7 @@ class InsertTest extends TestCase {
         $testSTMT->bind_param("isssssissssss",$userID,$partFname,$partLname,$partEmail,$participationPassword_hash,$partner,
                                 $SSN,$partDOB_mysql,$gender,$phone,$phoneType,$hashedCode,$expirary);
         
-        $userID = 777;
+        $userID = 0;
         $partFname = "John";
         $partLname = "Doe";
         $partEmail = "johndoe@example.com";
