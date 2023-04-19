@@ -141,20 +141,23 @@
     <h6 class="mt-5">Program Member<span class="text-danger">*</span></h6>
     <select class="form-select-SM border rounded-2" name="programMember" id="programMember" required>
         <option value="" disabled selected hidden>Choose</option>
-        <option value="friend&fam">Friend and Family</option>
-        <option value="Hiring_event">Hiring Event or Career Fair</option>
-        <option value="Wonmen_Emp">Women's Empowerment</option>
-        <option value="NextMove">Next Move</option>
-        <option value="Waking_Village">Waking the Village</option>
-        <option value="SaintJ">Saint John's</option>
-        <option value="LaFam">La Familia</option>
-        <option value="GSU">GS Urban League</option>
-        <option value="AsianRe">Asian Resources</option>
-        <option value="FolsomCP">Folsom Cordova CP</option>
-        <option value="LemonH">Lemon Hill</option>
-        <option value="SacJ">Sac Job Corp</option>
-        <option value="Public">Public/Aura Planning</option>
-        <option value="customer-service-rep">Customer Service Representative</option>
+        <option value="Friend and Family">Friend and Family</option>
+        <option value="Hiring Event or Career Fair">Hiring Event or Career Fair</option>
+        <option value="Wonmen's Empowerment">Women's Empowerment</option>
+        <option value="Next Move">Next Move</option>
+        <option value="Waking the Village">Waking the Village</option>
+        <option value="Saint John's">Saint John's</option>
+        <option value="La Familia">La Familia</option>
+        <option value="GS Urban League">GS Urban League</option>
+        <option value="Asian Resources">Asian Resources</option>
+        <option value="Folsom Cordova">Folsom Cordova CP</option>
+        <option value="Lemon Hill">Lemon Hill</option>
+        <option value="Sac Job Corp">Sac Job Corp</option>
+        <option value="Public/Aura Planning">Public/Aura Planning</option>
+        <option value="International Rescue Committee Sacramento">International Rescue Committee Sacramento</option>
+        <option value="Community Resource Project">Community Resource Project</option>
+        <option value="Fellowship">Fellowship</option>
+        <option value="Other">Other</option>
     </select>
     
     <h6 class="mt-5"> Password <span class="text-danger">*</span></h6>
