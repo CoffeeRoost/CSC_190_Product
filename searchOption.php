@@ -88,6 +88,34 @@ $summary = "SELECT COUNT(*) AS Count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () A
 $education = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, highestGradeComplete AS `Highest Grade Complete` FROM education GROUP BY highestGradeComplete";
 $county = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, County FROM address GROUP BY County";
 $city = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, City FROM address GROUP BY City";
+$zip = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, zipcode as `ZIP Code` FROM ADDRESS GROUP BY zipcode";
+$language = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, primaryLanguage as `Primary Language` FROM ETHNICITY GROUP BY primaryLanguage";
+$citizenship = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, usCitizenshipStatus as `US Citizenship Status` FROM CITIZEN GROUP BY usCitizenshipStatus";
+$disability="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, IsDisability as `Has Disability` FROM HARDSHIP GROUP BY IsDisability";
+$military="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, currentMilitaryOrVet as `Current Military or Veteran` FROM EMPLOYMENT GROUP BY currentMilitaryOrVet";
+$military_spouse="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, militarySpouse as `Military Spouse` FROM EMPLOYMENT GROUP BY militarySpouse";
+$unemploy_insurance="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, unemployemntInsurance as `Unemployment Insurance` FROM EMPLOYMENT GROUP BY unemployemntInsurance";
+$farm_worker="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, farmworker12Months as `Farm Worker` FROM EMPLOYMENT GROUP BY farmworker12Months";
+$foster_care="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, fosterCare as `Foster Care support` FROM SERVICES GROUP BY fosterCare";
+$adult_WIOA="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, adultEducationWIOATittleII as `Adult Education WIOA` FROM SERVICES GROUP BY adultEducationWIOATittleII";
+$youth_build="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, youthBuild as `Youth Build services` FROM SERVICES GROUP BY youthBuild";
+$job_corps="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, jobCorps as `Job Corps services` FROM SERVICES GROUP BY jobCorps";
+$carl="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, vocationalEducationCarlPerkins as `Carl Perkins recipient` FROM SERVICES GROUP BY vocationalEducationCarlPerkins";
+$tanf="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, tanfRecipient as `TANF recipient` FROM SERVICES GROUP BY tanfRecipient";
+$ssi="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, ssiRecipient as `SSI Recipient` FROM SERVICES GROUP BY ssiRecipient";
+$ga="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, gaRecipient as `GA Recipient` FROM SERVICES GROUP BY gaRecipient";
+$snap_calfresh="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, snapRecipientCalFresh as `SNAP CALFRESH Recipient` FROM SERVICES GROUP BY snapRecipientCalFresh";
+$rca="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, rcaRecipient as `RCA Recipient` FROM SERVICES GROUP BY rcaRecipient";
+$ssdi="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, ssdiRecipient as `SSDI Recipient` FROM SERVICES GROUP BY ssdiRecipient";
+$pell="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, pellGrant as `Pell Grant Recipient` FROM SERVICES GROUP BY pellGrant";
+$ticket_to_work="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, ticketToWork as `Ticket to Work` FROM HARDSHIP GROUP BY ticketToWork";
+$homeless_status="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, homelessStatus as `Experiencing Homelessness` FROM HARDSHIP GROUP BY homelessStatus";
+$ex_offender="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, exOffender as `Ex-Offender` FROM HARDSHIP GROUP BY exOffender";
+$homemaker="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, displacedHomemaker as `Displaced Homemaker` FROM HARDSHIP GROUP BY displacedHomemaker";
+$single_parent="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, singleParent as `Single Parent` FROM HARDSHIP GROUP BY singleParent";
+$cultural_barriers="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, culturalBarriers as `Cultural Barriers` FROM HARDSHIP GROUP BY culturalBarriers";
+$family_size="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, familySize as `Family Size` FROM HARDSHIP GROUP BY familySize";
+
 $search_result = filterTable($query);
 $summary_result = filterTable($summary);
 
@@ -160,6 +188,33 @@ function outputTable($result, $columns)
 		outputTable(filterTable($city), [ "City", "Percentage" ]);
 		outputTable($summary_result, [ "Employment Status", "Percentage" ]);
 		outputTable(filterTable($education), [ "Highest Grade Complete", "Percentage" ]);
+		outputTable(filterTable($zip), [ "ZIP Code", "Percentage" ]);
+		outputTable(filterTable($language),[ "Primary Language", "Percentage" ]);
+		outputTable(filterTable($citizenship),[ "US Citizenship Status", "Percentage" ]);
+		outputTable(filterTable($disability),[ "Has Disability", "Percentage" ]);
+		outputTable(filterTable($military),[ "Current Military or Veteran", "Percentage" ]);
+		outputTable(filterTable($military_spouse),[ "Military Spouse", "Percentage" ]);
+		outputTable(filterTable($unemploy_insurance),[ "Unemployment Insurance", "Percentage" ]);
+		outputTable(filterTable($farm_worker),[ "Farm Worker", "Percentage" ]);
+		outputTable(filterTable($foster_care),[ "Foster Care support", "Percentage" ]);
+		outputTable(filterTable($adult_WIOA),[ "Adult Education WIOA", "Percentage" ]);
+		outputTable(filterTable($youth_build),[ "Youth Build services", "Percentage" ]);
+		outputTable(filterTable($job_corps),[ "Job Corps services", "Percentage" ]);
+		outputTable(filterTable($carl),[ "Carl Perkins recipient", "Percentage" ]);
+		outputTable(filterTable($tanf),[ "TANF recipient", "Percentage" ]);
+		outputTable(filterTable($ssi),[ "SSI Recipient", "Percentage" ]);
+		outputTable(filterTable($ga),[ "GA Recipient", "Percentage" ]);
+		outputTable(filterTable($snap_calfresh),[ "SNAP CALFRESH Recipient", "Percentage" ]);
+		outputTable(filterTable($rca),[ "RCA Recipient", "Percentage" ]);
+		outputTable(filterTable($ssdi),[ "SSDI Recipient", "Percentage" ]);
+		outputTable(filterTable($pell),[ "Pell Grant Recipient", "Percentage" ]);
+		outputTable(filterTable($ticket_to_work),[ "Ticket to Work", "Percentage" ]);
+		outputTable(filterTable($homeless_status),[ "Experiencing Homelessness", "Percentage" ]);
+		outputTable(filterTable($ex_offender),[ "Ex-Offender", "Percentage" ]);
+		outputTable(filterTable($homemaker),[ "Displaced Homemaker", "Percentage" ]);
+		outputTable(filterTable($single_parent),[ "Single Parent", "Percentage" ]);
+		outputTable(filterTable($cultural_barriers),[ "Cultural Barriers", "Percentage" ]);
+		outputTable(filterTable($family_size),[ "Family Size", "Percentage" ]);
         ?>
         </div>
     </div>
