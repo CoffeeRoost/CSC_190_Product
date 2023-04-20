@@ -367,8 +367,11 @@ $programMember=$row['programMember'];
                                                                 <option value="Lemon Hill" <?php echo ($programMember === 'Lemon Hill') ? 'selected' : ''; ?>>Lemon Hill</option>
                                                                 <option value="Sac Job Corp" <?php echo ($programMember === 'Sac Job Corp') ? 'selected' : ''; ?>>Sac Job Corp</option>
                                                                 <option value="Public/Aura Planning" <?php echo ($programMember === 'Public/Aura Planning') ? 'selected' : ''; ?>>Public/Aura Planning</option>
-                                                                <option value="Customer Service Representative" <?php echo ($programMember === 'Customer Service Representative') ? 'selected' : ''; ?>>Customer Service Representative</option>
-                                                        </select>
+                                                                <option value="International Rescue Committee Sacramento" <?php echo ($programMember === 'International Rescue Committee Sacramento') ? 'selected' : ''; ?>>International Rescue Committee Sacramento</option>
+                                                                <option value="Community Resource Project" <?php echo ($programMember === 'Community Resource Project') ? 'selected' : ''; ?>>Community Resource Project</option>
+                                                                <option value="Fellowship" <?php echo ($programMember === 'Fellowship') ? 'selected' : ''; ?>>Fellowship</option>
+                                                                <option value="Other" <?php echo ($programMember === 'Other') ? 'selected' : ''; ?>>Other</option>   
+                                                         </select>
                                                 </div>
                                         </div>
                                 </form>

@@ -200,7 +200,10 @@
                                 <option value="Lemon Hill">Lemon Hill</option>
                                 <option value="Sac Job Corp">Sac Job Corp</option>
                                 <option value="Public/Aura Planning">Public/Aura Planning</option>
-                                <option value="Customer Service Representative">Customer Service Representative</option>
+                                <option value="International Rescue Committee Sacramento">International Rescue Committee Sacramento</option>
+                                <option value="Community Resource Project">Community Resource Project</option>
+                                <option value="Fellowship">Fellowship</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>

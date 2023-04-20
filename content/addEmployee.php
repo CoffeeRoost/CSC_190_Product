@@ -143,14 +143,14 @@
         <option value="" disabled selected hidden>Choose</option>
         <option value="Friend and Family">Friend and Family</option>
         <option value="Hiring Event or Career Fair">Hiring Event or Career Fair</option>
-        <option value="Wonmen's Empowerment">Women's Empowerment</option>
+        <option value="Women's Empowerment">Women's Empowerment</option>
         <option value="Next Move">Next Move</option>
         <option value="Waking the Village">Waking the Village</option>
         <option value="Saint John's">Saint John's</option>
         <option value="La Familia">La Familia</option>
         <option value="GS Urban League">GS Urban League</option>
         <option value="Asian Resources">Asian Resources</option>
-        <option value="Folsom Cordova">Folsom Cordova CP</option>
+        <option value="Folsom Cordova CP">Folsom Cordova CP</option>
         <option value="Lemon Hill">Lemon Hill</option>
         <option value="Sac Job Corp">Sac Job Corp</option>
         <option value="Public/Aura Planning">Public/Aura Planning</option>

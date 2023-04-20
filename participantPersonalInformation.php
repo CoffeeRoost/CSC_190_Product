@@ -48,47 +48,56 @@
                     <div  class="row mb-2">
                         <div class="col-4 fw-bold">Partner Organization</div>
                         <div class="col-7">
-                            <?php if ($programPartnerReference=='friend&fam') { ?>
-                            <option value="friend&fam" selected>Friend and Family</option>
+                            <?php if ($programPartnerReference=='Friend and Family') { ?>
+                            <option value="Friend and Family" selected>Friend and Family</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='Hiring_event') { ?>
-                            <option value="Hiring_event" selected>Hiring Event or Career Fair</option>
+                            <?php if ($programPartnerReference=='Hiring Event or Career Fair') { ?>
+                            <option value="Hiring Event or Career Fair" selected>Hiring Event or Career Fair</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='Women_Emp') { ?>
-                            <option value="Women_Emp" selected>Women's Empowerment</option>
+                            <?php if ($programPartnerReference=="Women's Empowerment") { ?>
+                            <option value="Women's Empowerment" selected>Women's Empowerment</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='NextMove') { ?>
-                            <option value="NextMove" selected>Next Move</option>
+                            <?php if ($programPartnerReference=='Next Move') { ?>
+                            <option value="Next Move" selected>Next Move</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='Waking_Village') { ?>
-                            <option value="Waking_Village" selected>Waking the Village</option>
+                            <?php if ($programPartnerReference=='Waking the Village') { ?>
+                            <option value="Waking the Village" selected>Waking the Village</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='SaintJ') { ?>
-                            <option value="SaintJ" selected>Saint John's</option>
+                            <?php if ($programPartnerReference=="Saint John's") { ?>
+                            <option value="Saint John's" selected>Saint John's</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='LaFam') { ?>
-                            <option value="LaFam" selected>La Familia</option>
+                            <?php if ($programPartnerReference=='La Familia') { ?>
+                            <option value="La Familia" selected>La Familia</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='GSU') { ?>
-                            <option value="GSU" selected>GS Urban League</option>
+                            <?php if ($programPartnerReference=='GS Urban League') { ?>
+                            <option value="GS Urban League" selected>GS Urban League</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='AsianRe') { ?>
-                            <option value="AsianRe" selected>Asian Resources</option>
+                            <?php if ($programPartnerReference=='Asian Resources') { ?>
+                            <option value="Asian Resources" selected>Asian Resources</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='FolsomCP') { ?>
-                            <option value="FolsomCP" selected>Folsom Cordova CP</option>
+                            <?php if ($programPartnerReference=='Folsom Cordova CP') { ?>
+                            <option value="Folsom Cordova CP" selected>Folsom Cordova CP</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='LemonH') { ?>
-                            <option value="LemonH" selected>Lemon Hill</option>
+                            <?php if ($programPartnerReference=='Lemon Hill') { ?>
+                            <option value="Lemon Hill" selected>Lemon Hill</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='SacJ') { ?>
-                            <option value="SacJ" selected>Sac Job Corp</option>
+                            <?php if ($programPartnerReference=='Sac Job Corp') { ?>
+                            <option value="Sac Job Corp" selected>Sac Job Corp</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='Public') { ?>
-                            <option value="Public" selected>Public/Aura Planning</option>
+                            <?php if ($programPartnerReference=='Public/Aura Planning') { ?>
+                            <option value="Public/Aura Planning" selected>Public/Aura Planning</option>
                             <?php } ?>
-                            <?php if ($programPartnerReference=='International') { ?>
-                            <option value="International" selected>International Rescue Committee Sacramento</option>
+                            <?php if ($programPartnerReference=='International Rescue Committee Sacramento') { ?>
+                            <option value="International Rescue Committee Sacramento" selected>International Rescue Committee Sacramento</option>
+                            <?php } ?>
+                            <?php if ($programPartnerReference=='Community Resource Project') { ?>
+                            <option value="Community Resource Project" selected>Community Resource Project</option>
+                            <?php } ?>
+                            <?php if ($programPartnerReference=='Fellowship') { ?>
+                            <option value="Fellowship" selected>Fellowship</option>
+                            <?php } ?>
+                            <?php if ($programPartnerReference=='Other') { ?>
+                            <option value="Other" selected>Other</option>
                             <?php } ?>
                         </div>
                     </div>
@@ -191,63 +200,75 @@
                             <div class="col-4 fw-bold">Partner Organization</div>
                             <div class="col-7">
                                 <select class="form-select-SM m-2 border rounded-2" name="partner" id="partner">
-                                    <?php if ($programPartnerReference=='friend&fam') { ?>
-                                    <option value="friend&fam" selected>Friend and Family</option>
+                                    <?php if ($programPartnerReference=='Friend and Family') { ?>
+                                    <option value="Friend and Family" selected>Friend and Family</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='Hiring_event') { ?>
-                                    <option value="Hiring_event" selected>Hiring Event or Career Fair</option>
+                                    <?php if ($programPartnerReference=='Hiring Event or Career Fair') { ?>
+                                    <option value="Hiring Event or Career Fair" selected>Hiring Event or Career Fair</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='Women_Emp') { ?>
-                                    <option value="Women_Emp" selected>Women's Empowerment</option>
+                                    <?php if ($programPartnerReference=="Women's Empowerment") { ?>
+                                    <option value="Women's Empowerment" selected>Women's Empowerment</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='NextMove') { ?>
-                                    <option value="NextMove" selected>Next Move</option>
+                                    <?php if ($programPartnerReference=='Next Move') { ?>
+                                    <option value="Next Move" selected>Next Move</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='Waking_Village') { ?>
-                                    <option value="Waking_Village" selected>Waking the Village</option>
+                                    <?php if ($programPartnerReference=='Waking the Village') { ?>
+                                    <option value="Waking the Village" selected>Waking the Village</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='SaintJ') { ?>
-                                    <option value="SaintJ" selected>Saint John's</option>
+                                    <?php if ($programPartnerReference=="Saint John's") { ?>
+                                    <option value="Saint John's" selected>Saint John's</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='LaFam') { ?>
-                                    <option value="LaFam" selected>La Familia</option>
+                                    <?php if ($programPartnerReference=='La Familia') { ?>
+                                    <option value="La Familia" selected>La Familia</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='GSU') { ?>
-                                    <option value="GSU" selected>GS Urban League</option>
+                                    <?php if ($programPartnerReference=='GS Urban League') { ?>
+                                    <option value="GS Urban League" selected>GS Urban League</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='AsianRe') { ?>
-                                    <option value="AsianRe" selected>Asian Resources</option>
+                                    <?php if ($programPartnerReference=='Asian Resources') { ?>
+                                    <option value="Asian Resources" selected>Asian Resources</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='FolsomCP') { ?>
-                                    <option value="FolsomCP" selected>Folsom Cordova CP</option>
+                                    <?php if ($programPartnerReference=='Folsom Cordova CP') { ?>
+                                    <option value="Folsom Cordova CP" selected>Folsom Cordova CP</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='LemonH') { ?>
-                                    <option value="LemonH" selected>Lemon Hill</option>
+                                    <?php if ($programPartnerReference=='Lemon Hill') { ?>
+                                    <option value="Lemon Hill" selected>Lemon Hill</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='SacJ') { ?>
-                                    <option value="SacJ" selected>Sac Job Corp</option>
+                                    <?php if ($programPartnerReference=='Sac Job Corp') { ?>
+                                    <option value="Sac Job Corp" selected>Sac Job Corp</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='Public') { ?>
-                                    <option value="Public" selected>Public/Aura Planning</option>
+                                    <?php if ($programPartnerReference=='Public/Aura Planning') { ?>
+                                    <option value="Public/Aura Planning" selected>Public/Aura Planning</option>
                                     <?php } ?>
-                                    <?php if ($programPartnerReference=='International') { ?>
-                                    <option value="International" selected>International Rescue Committee Sacramento</option>
+                                    <?php if ($programPartnerReference=='International Rescue Committee Sacramento') { ?>
+                                    <option value="International Rescue Committee Sacramento" selected>International Rescue Committee Sacramento</option>
+                                    <?php } ?>
+                                    <?php if ($programPartnerReference=='Community Resource Project') { ?>
+                                    <option value="Community Resource Project" selected>Community Resource Project</option>
+                                    <?php } ?>
+                                    <?php if ($programPartnerReference=='Fellowship') { ?>
+                                    <option value="Fellowship" selected>Fellowship</option>
+                                    <?php } ?>
+                                    <?php if ($programPartnerReference=='Other') { ?>
+                                    <option value="Other" selected>Other</option>
                                     <?php } ?>
 
-                                    <option value="friend&fam">Friend and Family</option>
-                                    <option value="Hiring_event">Hiring Event or Career Fair</option>
-                                    <option value="Women_Emp">Women's Empowerment</option>
-                                    <option value="NextMove">Next Move</option>
-                                    <option value="Waking_Village">Waking the Village</option>
-                                    <option value="SaintJ">Saint John's</option>
-                                    <option value="LaFam">La Familia</option>
-                                    <option value="GSU">GS Urban League</option>
-                                    <option value="AsianRe">Asian Resources</option>
-                                    <option value="FolsomCP">Folsom Cordova CP</option>
-                                    <option value="LemonH">Lemon Hill</option>
-                                    <option value="SacJ">Sac Job Corp</option>
-                                    <option value="Public">Public/Aura Planning</option>
-                                    <option value="International">International Rescue Committee Sacramento</option>
+                                    <option value="Friend and Family">Friend and Family</option>
+                                    <option value="Hiring Event or Career Fair">Hiring Event or Career Fair</option>
+                                    <option value="Women's Empowerment">Women's Empowerment</option>
+                                    <option value="Next Move">Next Move</option>
+                                    <option value="Waking the Village">Waking the Village</option>
+                                    <option value="Saint John's">Saint John's</option>
+                                    <option value="La Familia">La Familia</option>
+                                    <option value="GS Urban League">GS Urban League</option>
+                                    <option value="Asian Resources">Asian Resources</option>
+                                    <option value="Folsom Cordova CP">Folsom Cordova CP</option>
+                                    <option value="Lemon Hill">Lemon Hill</option>
+                                    <option value="Sac Job Corp">Sac Job Corp</option>
+                                    <option value="Public/Aura Planning">Public/Aura Planning</option>
+                                    <option value="International Rescue Committee Sacramento">International Rescue Committee Sacramento</option>
+                                    <option value="Community Resource Project">Community Resource Project</option>
+                                    <option value="Fellowship">Fellowship</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>

@@ -7,12 +7,10 @@ class DeleteTest extends TestCase {
         // Arrange
         $expectedData = array(
             array(
-		        'userID'=> '0',
-                'fname' => 'John',
-                'lname' => 'Doe',
-                'email' => 'johndoe@example.com',
-                'programPartnerReference' => 'Testing Organization',
-                'last4SSN' => '7777',
+                'IntegerTest' => '0',
+		        'VarCharTestPK'=> 'TestV',
+                'DateTest' => '2023-03-02',
+                'CharTest' => 'TestC',
             ),
             // add more expected data rows here
         );
@@ -25,17 +23,17 @@ class DeleteTest extends TestCase {
             exit();
         }
 
-        $testSTMT = $conn->prepare("DELETE FROM PARTICIPATION WHERE userID=?;");
-		$testSTMT ->bind_param("i",$userID);
+        $testSTMT = $conn->prepare("DELETE FROM TESTING WHERE VarCharTestPK=?;");
+		$testSTMT ->bind_param("s",$VarCharTestPK);
 
-        $userID = 0;
+        $VarCharTestPK = "TestV";
 
 		$testSTMT ->execute();
         $testSTMT ->close();
 
         // Act
         $actualData = array();
-        $query = "SELECT userID, fname, lname, email, programPartnerReference, last4SSN FROM PARTICIPATION WHERE userID=$userID";
+        $query = "SELECT IntegerTest,VarCharTestPK,DateTest,CharTest FROM TESTING WHERE VarCharTestPK='$VarCharTestPK'";
         $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             $actualData[] = $row;
