@@ -37,7 +37,7 @@ if(empty($citizenship))
     exit();
 }
 
-$sql = "UPDATE citizen c
+$sql = "UPDATE CITIZEN c
         SET c.usCitizenshipStatus = ?,
             c.alienRegistrationCode = ?,
             c.alienRegistrationCodeEXP = ?
@@ -49,11 +49,11 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("sisi", $citizenship, $uscisNumber, $uscisExpired, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantPersonalInformation.php?saveUpdatingRecord=success");
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantPersonalInformation.php?ErrorUpdatingRecord=fail");
     exit();
 }
 ?>

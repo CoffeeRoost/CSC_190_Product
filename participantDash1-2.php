@@ -14,11 +14,6 @@ if (!isset($_SESSION['userID'])) {
 //connect to database
 require_once ('includes/dbh.inc.php');
 
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +34,7 @@ require_once ('includes/dbh.inc.php');
 <body>
     <!-- ************************************************Navbar for Logout******************************************************************************************************* -->
     <section id="title">
-        <nav class="navbar navbar-expand-lg bg-Blue"style="width:100vw;>
+        <nav class="navbar navbar-expand-lg bg-Blue"style="width:100vw;">
             <a href="index.php" class="navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,7 +55,7 @@ require_once ('includes/dbh.inc.php');
         <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
             <ul class="nav nav-tabs flex-column align-items-center text-center">
                 <li class="nav-item bg-Blue mt-1 mb-md-1">
-                    <a href="#personalInfoTab" class="nav-link text-white" >
+                    <a href="./participantDash1-2.php" class="nav-link text-white" >
 
                          <?php
                         // Write a SQL query to retrieve the user's first name and last name from the PARTICIPATION table
@@ -78,13 +73,8 @@ require_once ('includes/dbh.inc.php');
                     </a>
                 </li>
                 <li class="nav-item bg-Blue mb-md-1">
-                    <a href="./participantPersonalInformation.php" class="nav-link text-white" >
+                    <a href="./includes/clientPersonalViewBE.php?id=<?php echo $_SESSION['userID']?>" class="nav-link text-white" >
                         Personal Information
-                    </a>
-                </li>
-                <li class="nav-item bg-Blue mb-md-1">
-                    <a href="./participantEducationInfo.php" class="nav-link text-white" >
-                       Education
                     </a>
                 </li>
             </ul>

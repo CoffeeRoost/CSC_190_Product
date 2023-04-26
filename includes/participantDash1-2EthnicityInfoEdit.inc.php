@@ -67,7 +67,7 @@ if(empty($hispanic)||empty($language)||empty($proficiency))
     exit();
 }
 
-$sql = "UPDATE ethnicity eth
+$sql = "UPDATE ETHNICITY eth
         SET eth.hispanicHeritage = ?,
             eth.africanAmercian_black = ?,
             eth.americanIndian_alaskanNative = ?,
@@ -85,11 +85,12 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("sssssssssi", $hispanic, $africanAmercian_black, $americanIndian_alaskanNative, $asian, $hawaiian_other, $white, $noAnswer, $language, $proficiency, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success#participantPersonalInformationTab");
+
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail#participantPersonalInformationTab");
     exit();
 }
 ?>

@@ -36,7 +36,7 @@ if(empty($phone)||empty($phoneType)||empty($email))
     exit();
 }
 
-$sql = "UPDATE participation p
+$sql = "UPDATE PARTICIPATION p
         SET p.email = ?,
             p.primaryPhone = ?,
             p.phoneNumType = ?,
@@ -49,11 +49,11 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("ssssi", $email, $phone, $phoneType, $alPhone, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantPersonalInformation.php?saveUpdatingRecord=success");
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantPersonalInformation.php?ErrorUpdatingRecord=fail");
     exit();
 }
 ?>

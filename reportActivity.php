@@ -1,5 +1,6 @@
 <?php
 
+
 //Start session
 session_start();
 // Include database connection
@@ -15,6 +16,8 @@ if (!isset($_SESSION['employeeID'])) {
     exit();
 }
 require 'includes/dbh.inc.php';
+
+
 
 include_once('content/header4.php');
 ?>

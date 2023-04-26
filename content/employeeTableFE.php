@@ -50,13 +50,13 @@
                     echo "<div class =\"d-flex\">";
                         echo "<form method=\"POST\" action=\"./includes/employeeModifyFunction.inc.php?id=$empViewID&status=$status\">";
                             if($status == 1){
-                                echo "<button type=\"submit\" name=\"deactivate_table\" class=\"bg-success text-white me-1\" style=\"width:100px\">Deactivate</button>";
+                                echo "<button type=\"submit\" name=\"deactivate_table\" class=\"bg-success text-white me-1 rounded\" style=\"width:100px\">Deactivate</button>";
                             }
                             else {
-                                echo "<button type=\"submit\" name=\"deactivate_table\" class=\"bg-secondary text-white me-1\" style=\"width:100px\">Activate</button>";      
+                                echo "<button type=\"submit\" name=\"deactivate_table\" class=\"bg-secondary text-white me-1 rounded\" style=\"width:100px\">Activate</button>";      
                             }
                         echo "</form>";
-                            echo "<button class=\"bg-danger text-white ms-1\" onclick=\"confirmDelete(".$empViewID.")\" style=\"width:100px\">Delete</button>";
+                            echo "<button class=\"bg-danger text-white ms-1 rounded\" onclick=\"confirmDelete(".$empViewID.")\" style=\"width:100px\">Delete</button>";
                     echo "</div>";    
                         
                     echo "</td>";

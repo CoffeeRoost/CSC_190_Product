@@ -25,7 +25,7 @@ $empRaces= $_POST['empRaces'];
 
 
 // Update the database with the new personal information
-$sql = "UPDATE employee
+$sql = "UPDATE EMPLOYEE
     SET empfname = ?,
         emplname = ?,
         empMI = ?,

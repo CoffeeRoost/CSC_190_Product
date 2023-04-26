@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+
 if (isset($_POST['login-submit'])) {
   require 'dbh.inc.php';
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -25,7 +27,7 @@ if (isset($_POST['login-submit'])) {
       $stmt->execute();
       $result = $stmt->get_result();
       if ($row = $result->fetch_assoc()) {
-        if ($row['status'] == 1) {
+        if ($row['status'] > 0 ) {
           if (password_verify($userpassword, $row['newUserPassword'])) {
             $_SESSION['userID'] = $row['userID'];
             header("Location: ../participantDash1-2.php?login=success");

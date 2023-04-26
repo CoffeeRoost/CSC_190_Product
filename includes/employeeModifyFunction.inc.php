@@ -12,7 +12,7 @@
           //if error, force a logout
          session_unset();
          session_destroy();
-         header ("Location: ./LoginAd.php");
+         header ("Location: ../LoginAd.php");
          exit();
      }
     require './dbh.inc.php';
@@ -33,14 +33,30 @@
         empDOB = ?, empGender = ?, empRaces = ? WHERE employeeID = ? ;");
         $stmt -> bind_param("ssssssi",$empfnameEdit, $empMI_Edit, $emplnameEdit, $empDOB_Edit, $empGenderEdit, $empRacesEdit, $_SESSION['empViewID']);
         if($stmt -> execute()){
-            echo "<script>alert('Employeed Demographic is modified');</script>";
-            echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Employeed Demographic is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?role=admin&id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Employeed Demographic is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
+            
         }
         else {
-            echo "<script>alert('Modify Failed');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../adminPersonal.php'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
+                exit();
+            }
+            
         }
         $stmt -> close();
         $conn -> close();
@@ -60,9 +76,17 @@
         
         /*Check valid email form*/
         if(!filter_var($empEmail,FILTER_VALIDATE_EMAIL)){
-            echo "<script>alert('Email error. Please try again.');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);script>";
-            exit();
+            
+            if(isset($_GET['role'])){
+                echo "<script>alert('Email error. Please try again.');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../adminPersonal.php'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Email error. Please try again.');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
+                exit();
+            }
         }
         /*************************/
         
@@ -73,27 +97,50 @@
             $stmt1 ->execute();
             $check_email = $stmt1 ->get_result();
             if ($check_email ->num_rows > 0){
+
+                if(isset($_GET['role'])){
+                echo "<script>alert('Your email is already used, please use another email.');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?role=admin&id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+                }
+                else {
                     echo "<script>alert('Your email is already used, please use another email.');</script>";
                     echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
                     exit();
                 }
+                
+            }
             $stmt1 -> close();
         }
         
-        /*************************/
+        /************************************/
 
         $stmt2 = $conn -> prepare("UPDATE EMPLOYEE SET empStreet = ?, empCity = ?, empState = ?, empZipcode = ?, empPhone = ?, email = ?, empCounty = ? WHERE employeeID = ? ;");
         $stmt2 -> bind_param("sssssssi", $empStreet, $empCity, $empState,$empZip, $empPhone, $empEmail, $empCounty, $_SESSION['empViewID']);
 
         if($stmt2 ->execute()){
-            echo "<script>alert('Employeed Address is modified');</script>";
-            echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Employeed Address is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?role=admin&id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Employeed Address is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
         }
         else {
-            echo "<script>alert('Modify Failed');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../adminPersonal.php'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
+                exit();
+            }
         }
         $stmt2 -> close();
         $conn -> close();    
@@ -110,14 +157,28 @@
         $stmt -> bind_param("ssi", $empRole, $programMember,$_SESSION['empViewID']);
         
         if($stmt ->execute()){
-            echo "<script>alert('Employeed Role and Program Member is modified');</script>";
-            echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Employeed Role is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?role=admin&id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Employeed Role is modified');</script>";
+                echo "<script>setTimeout(function(){window.location.href='./employeeViewBE.php?id=".$_SESSION['empViewID']."'}, 300);</script>";
+                exit();
+            }
         }
         else {
-            echo "<script>alert('Modify Failed');</script>";
-            echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
-            exit();
+            if(isset($_GET['role'])){
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../adminPersonal.php'}, 300);</script>";
+                exit();
+            }
+            else {
+                echo "<script>alert('Modify Failed');</script>";
+                echo "<script>setTimeout(function(){window.location.href='../empInfoView.php'}, 300);</script>";
+                exit();
+            }
         }
         $stmt -> close();
         $conn -> close();    
@@ -210,12 +271,20 @@
 
 
 function generatePassword() {
-    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
-    $length = 8;
     $password = '';
-    for ($i = 0; $i < $length; $i++) {
-        $password .= $chars[rand(0, strlen($chars) - 1)];
+    $capital_letter = chr(rand(65, 90)); // generates a random capital letter (ASCII code 65-90)
+    $specific_letter = chr(rand(33, 47)); // generates a random specific letter (ASCII code 33-47)
+    $password .= $capital_letter . $specific_letter; // add the capital letter and specific letter to the password
+    
+    for ($i = 0; $i < 6; $i++) { // generate 6 more random characters
+        $password .= chr(rand(97, 122)); // lowercase letters (ASCII code 97-122)
     }
+    
+    // shuffle the password to ensure the capital letter and specific letter are in random positions
+    $password_array = str_split($password);
+    shuffle($password_array);
+    $password = implode('', $password_array);
+    
     return $password;
 }
 function deactivate_account($connection, $deactivate_id, $status, $pages){

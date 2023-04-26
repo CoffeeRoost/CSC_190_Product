@@ -60,13 +60,12 @@ $result = $stmt->get_result();
                         <a href="./reportActivity.php" class="nav-link text-white">
                             Activity Reporting
                         </a>
-                      </li>
-					  <li class="nav-item bg-Blue mb-md-1">
-                        <a href="searchOption.php" class="nav-link text-white">
-                          Participant Report
+		      </li>
+                      <li class="nav-item bg-Blue mb-md-1">
+                        <a href="./searchOption.php" class="nav-link text-white">
+                            Participant Report
                         </a>
                       </li>
-					  
                   </ul>
             </div>
         </div>

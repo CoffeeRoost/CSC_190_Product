@@ -20,11 +20,11 @@ $userID=$_SESSION['userID'];
 $street           =$_POST['street'];
 $city             =$_POST['city'];
 $state            =$_POST['state'];
-$zip		      =$_POST['zip'];
+$zip		          =$_POST['zip'];
 $county           =$_POST['county'];
 
 $mailStreet	      =$_POST['mailStreet'];
-$mailCity		  =$_POST['mailCity'];
+$mailCity		      =$_POST['mailCity'];
 $mailState	      =$_POST['mailState'];
 $mailZip  	      =$_POST['mailZip'];
 $mailCounty  	  =$_POST['mailCounty'];
@@ -46,7 +46,7 @@ if(empty($street)||empty($city)||empty($state)||empty($zip)||empty($county))
     exit();
 }
 
-$sql = "UPDATE address a
+$sql = "UPDATE ADDRESS a
         SET a.street = ?,
             a.city = ?,
             a.state = ?,
@@ -65,11 +65,11 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("sssissssisi", $street, $city, $state, $zip, $county, $mailStreet, $mailCity, $mailState, $mailZip, $mailCounty, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantPersonalInformation.php?saveUpdatingRecord=success");
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantPersonalInformation.php?ErrorUpdatingRecord=fail");
     exit();
 }
 ?>

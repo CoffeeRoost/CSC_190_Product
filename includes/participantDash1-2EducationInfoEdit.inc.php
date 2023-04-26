@@ -31,7 +31,7 @@ if(empty($schoolLevel)||empty($diploma)||empty($highestSchool)||empty($schoolSta
     exit();
 }
 
-$sql = "UPDATE education edu
+$sql = "UPDATE EDUCATION edu
         SET edu.highSchoolStatus = ?,
             edu.highSchooolDiplomaOrEquil = ?,
             edu.highestGradeComplete = ?,
@@ -44,11 +44,11 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("ssssi", $schoolLevel, $diploma, $highestSchool, $schoolStatus, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantPersonalInformation.php?saveUpdatingRecord=success");
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantPersonalInformation.php?ErrorUpdatingRecord=fail");
     exit();
 }
 ?>

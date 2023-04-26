@@ -1,4 +1,3 @@
-<script src="/includes/validatePassword.js"></script>
 <div class="d-flex justify-content-center my-5">
         <div class="boxContent my-1">
         <h3 class="text-center fw-bold my-5">Reset Password</h3>
@@ -6,7 +5,6 @@
                 <?php
                     $selector = $_GET["selector"];
                     $validator = $_GET["validator"];
-
                     if (empty($selector) || empty($validator)){
                         echo "selector or validator empty!";
                     }
@@ -17,21 +15,12 @@
                 <input type="hidden" name="selector" value="<?php echo $selector; ?>">
                 <input type="hidden" name="validator" value="<?php echo $validator; ?>">   
                 <label  class="form-label" for="resetPass">New Password</label><br>
-                <input class="form-control" type="password" name="password" id="resetPass" oninput="validatePassword('resetPass', 'verify', 'resetPassBoxSubmit')" required><br>
+                <input class="form-control" type="password" name="password" id="resetPass" required><br>
                 <label class="form-label" for="ConfirmPassword">Confirm New Password</label><br>
                 <input type="password" name="passRepeat" id="ConfirmPassword" class="form-control" required><br>
-                <button type="submit" name="resetPassBoxSubmit" id="resetPassBoxSubmit" class="btn btn-primary">Submit</button><br>
-                <label id="verify" hidden style="color:red">Password must be 8 characters long including at least one uppercase, lowercase, and special character</label>
-				</form> 
+                <button type="submit" name="resetPassBoxSubmit" class="btn btn-primary">Submit</button><br>
+                </form> 
                 <?php
-                if(isset($_GET["passFail"])){
-                    if($_GET["passFail"] == "empty"){
-                        echo '<script>alert("Please Enter a New Password.")</script>';
-                    }
-                    if($_GET["passFail"] == "repeat"){
-                        echo '<script>alert("Passwords do not match!")</script>';
-                    }
-                }
                         }
                     }
                     ?> 

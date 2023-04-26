@@ -74,16 +74,9 @@
                                 Grant Report Form
                             </a>
                           </li>
-                          
                           <li class="nav-item bg-Blue mb-md-1">
                             <a href="./grantReportView.php" class="nav-link text-white">
                                 Grant Report View
-                            </a>
-                          </li>
-						  
-						  <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./adminSearchOption.php" class="nav-link text-white">
-                                Participant Report
                             </a>
                           </li>
 
@@ -107,41 +100,45 @@
             <div class="d-flex">
                 <div class="d-flex flex-column my-5 mx-5">
                     <div class="header-client-list">
-                        <h3 class="fw-bold text-center text-Blue my-1">New Client</h3>
+                        <a href="./newClientTable.php" class="nav-link"><h3 class="fw-bold text-center text-Blue my-1">New Client</h3></a>
                     </div>
                     <div class="box-client-list text-center overflow-scroll">
 
 <?php
                     /* Display information of new client. New Clients have not been coach*/
-                       $newClient = "SELECT P.userID, P.fname, P.lname, P.email, P.DOB, P.primaryPhone,
-                       Addr.street, Addr.city, Addr.state, Addr.zipcode
-                       FROM PARTICIPATION AS P JOIN ADDRESS AS Addr ON P.userID = Addr.userID
-                       WHERE P.userID NOT IN (SELECT co.userID FROM COACH AS co);";
-                       $newClientList = mysqli_query($conn, $newClient);
-                       $newClientResult = mysqli_num_rows($newClientList);
+                    $newClient = "SELECT * FROM PARTICIPATION AS P JOIN ADDRESS AS Addr ON P.userID = Addr.userID WHERE P.userID NOT IN (SELECT co.userID FROM COACH AS co);";
+                    $newClientList = mysqli_query($conn, $newClient);
+                    $newClientResult = mysqli_num_rows($newClientList);
 
-                       if($newClientResult > 0){
-                        while($row = mysqli_fetch_assoc($newClientList)) {
-                            echo"<div class=\"dropdown-center\">";
-                            echo"<p class=\"btn-newClient dropdown-toggle rounded-pill  text-white my-1 mx-1\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
-                            echo $row['fname']. " ". $row['lname'];
-                            echo"</p>";
-                            echo"<div class=\"dropdown-menu\" style=\"width:300px;\">";
-                                echo"<p class=\"dropdown-item\">ID: ".$row['userID']."</p>";
-                                echo"<p class=\"dropdown-item\">Last Name: ".$row['lname']."</p>";
-                                echo"<p class=\"dropdown-item\">First Name: ".$row['fname']."</p>";
-                                echo"<p class=\"dropdown-item\">DOB: ".$row['DOB']."</p>";
-                                echo"<p class=\"dropdown-item\">Street: ".$row['street'].", ".$row['city']."</p>";
-                                echo"<p class=\"dropdown-item\">State: ".$row['state']."</p>";
-                                echo"<p class=\"dropdown-item\">Zipcode: ".$row['zipcode']."</p>";
-                                echo"<p class=\"dropdown-item\">Phone: ".$row['primaryPhone']."</p>";
-                                echo"<p class=\"dropdown-item\">Email: ".$row['email']."</p>";
-                           echo "</div>";
-                        echo"</div>";
-                        }}
-
-                   echo "</div>";
-                echo"</div>";
+                    if($newClientResult > 0){
+                     while($row = mysqli_fetch_assoc($newClientList)) {
+                         $newClientViewID = $row['userID'];
+                         if($row['status'] == 1){
+                             $convert_date = date('m-d-Y', strtotime($row['DOB']));
+                             echo"<div class=\"dropdown-center\">";
+                             echo"<p class=\"btn-newClient dropdown-toggle rounded-pill  text-white my-1 mx-1\" type=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">";
+                             echo $row['fname']. " ". $row['lname'];
+                             echo"</p>";
+                             echo"<div class=\"dropdown-menu\" style=\"width:300px;\">";
+                             echo"<p class=\"dropdown-item\">ID: ".$row['userID']."</p>";
+                             echo"<p class=\"dropdown-item\">Last Name: ".$row['lname']."</p>";
+                             echo"<p class=\"dropdown-item\">First Name: ".$row['fname']."</p>";
+                             echo"<p class=\"dropdown-item\">DOB: ".$convert_date."</p>";
+                             echo"<p class=\"dropdown-item\">Street: ".$row['street']."</p>";
+                             echo"<p class=\"dropdown-item\">City: ".$row['city']."</p>";
+                             echo"<p class=\"dropdown-item\">State: ".$row['state']."</p>";
+                             echo"<p class=\"dropdown-item\">Zipcode: ".$row['zipcode']."</p>";
+                             echo"<p class=\"dropdown-item\">Phone: ".$row['primaryPhone']."</p>";
+                             echo"<p class=\"dropdown-item\">Email: ".$row['email']."</p>";
+                             echo"<a class=\"dropdown-item text-Blue\" href = \"./includes/clientViewBE.php?id=$newClientViewID\">Detail</a>";
+                             echo "</div>";
+                             echo"</div>";
+                         }
+                         
+                     }}
+                echo "</div>";
+             echo"</div>";
+             mysqli_free_result($newClientList);
                 /********************************END NEW CLIENT BLOCK *********************************/
 ?>
 
@@ -149,9 +146,9 @@
                 <div class="d-flex flex-column my-5 me-5 border border-2 border-top-0 border-dark"  style="width:100%; background-color: #E4F5F8;">
                     <div id="client-table" class="collapse show" style="transition:1ms;">
                         <div style="width:100%; border-top: 2px solid #000;">
-                            <h3 class="fw-bold text-center text-Blue my-1">Client</h3>
+                            <a href="./clientTable.php" class="nav-link"><h3 class="fw-bold text-center text-Blue my-1">Client</h3></a>
                         </div>
-                        <table class="table table-blue table-responsive text-center border border-1 border-start-0 border-end-0 border-dark">
+                        <table class="table table-blue table-responsive table-hover text-center border border-1 border-start-0 border-end-0 border-dark">
                             <thead class="fs-5 text-Blue">
                                 <th scope="col">ID</th>
                                 <th scope="col">Full Name</th>
@@ -159,18 +156,20 @@
                             </thead>
                             <tbody>
 <?php
-                        $clientQuerry = "SELECT P.userID, P.fname, P.lname, E.empfname, E.emplname
-                        FROM PARTICIPATION AS P JOIN COACH AS co ON P.userID = co.userID JOIN EMPLOYEE AS E ON co.employeeID = E.employeeID;" ;
+                        $clientQuerry = "SELECT * FROM PARTICIPATION AS P JOIN COACH AS co ON P.userID = co.userID JOIN EMPLOYEE AS E ON co.employeeID = E.employeeID;" ;
                         $clientList = mysqli_query($conn, $clientQuerry);
                         $clientResult = mysqli_num_rows($clientList);
                         if($clientResult > 0){
                             while($row = mysqli_fetch_assoc($clientList)) {
+                                $clientViewID = $row['userID'];
                                 echo"<tr scope=\"row\">";
-                                echo "<th>".$row['userID']."</th>";
-                                echo "<th>".$row['fname']." ".$row['lname']."</th>";
-                                echo "<th>".$row['empfname']." ".$row['emplname']."</th>"."</tr>";
+                                echo "<th><a href = \"./includes/clientViewBE.php?id=$clientViewID&role=client\" class= \"nav-link\">".$row['userID']."</a></th>";
+                                echo "<th><a href = \"./includes/clientViewBE.php?id=$clientViewID&role=client\" class= \"nav-link\">".$row['fname']." ".$row['lname']."</a></th>";
+                                echo "<th><a href = \"./includes/clientViewBE.php?id=$clientViewID&role=client\" class= \"nav-link\">".$row['empfname']." ".$row['emplname']."</a></th>"."</tr>";
                             }}
-echo "</tbody></table></div>" ;
+                        echo "</tbody></table></div>" ;
+                        mysqli_free_result($clientList);
+
                 /********************************END CLIENT BLOCK*********************************/
 
 ?>
@@ -181,7 +180,7 @@ echo "</tbody></table></div>" ;
                         <div style="width:100%; border-top: 2px solid #000;">
                             <a href="./employeeTable.php" class="nav-link"><h3 class="fw-bold text-center text-Blue my-1">Employee</h3></a>
                         </div>
-                        <table class="table table-blue table-responsive text-center border border-1 border-start-0 border-end-0 border-dark">
+                        <table class="table table-blue table-responsive table-hover text-center border border-1 border-start-0 border-end-0 border-dark">
                             <thead class="fs-5 text-Blue">
                                 <th scope="col">ID</th>
                                 <th scope="col">Full Name</th>
@@ -206,9 +205,7 @@ echo "</tbody></table></div>" ;
 
                                 }}
                             echo "</table>";
-
-echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";
+                            echo "</div>\n</div>\n</div>\n</div>\n</body>\n</html> ";
+                            mysqli_free_result($employeeList);
                 /********************************END EMPLOYEE BLOCK*********************************/
-
-mysqli_close($conn);
 ?>

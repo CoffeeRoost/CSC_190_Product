@@ -45,7 +45,7 @@
     }
 ?>
 
-    <form action="/includes/grant.inc.php" method="post" class="container-fluid custom-container">
+    <form action="includes/grant.inc.php" method="post" class="container-fluid custom-container">
 
     <h4 class="d-flex justify-content-center text-info mt-5">Grant Report</h4>
     

@@ -82,13 +82,13 @@ if(strtoupper($_SERVER['REQUEST_METHOD']) === 'GET'){
 	
 	}
 
-	mysqli_stmt_close($stmt);
 	//close database connection
-	mysqli_close($conn);
+	$conn -> close();
 }
-else{
+}
+else {
 	//send back to newAccount page
 	header ("Location: ../survey.php?error=invalidActivationLink");
  	exit();
 }
-
+?>

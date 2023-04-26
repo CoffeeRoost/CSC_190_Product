@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['employeeID'])){
+         //if error, force a logout
+        session_unset();
+        session_destroy();
+        header ("Location: ./LoginAd.php");
+        exit();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +19,7 @@
 	
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css"/>
 	<!-- Latest compiled JavaScript -->
 	
@@ -30,47 +41,41 @@
 </head>
 <body>
  <section id = "title">
-        <nav class = "navbar navbar-expand-lg bg-Blue">
-            <a href="index.php" class = "navbar-brand"><img class="logo" src="image/CMC-logo-horizontal.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fs-4" href="./survey.html">Let's Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fs-4 mx-3" href="./login.php">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </section>       
+            <nav class = "navbar navbar-expand-lg bg-Blue">
+                <a href="index.php" class = "navbar-brand"><img class="logo" src="image/CMC-logo-horizontal(1).png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fs-4 mx-4" href="./includes/logout.inc.php">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </section>    
 	<div class="d-flex">
         <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
             <div>
                 <ul class="nav nav-tabs flex-column align-items-center text-center">
                     <li class="nav-item bg-Blue mt-1 mb-md-1">
-                        <a href="./Administration1-3.php" class="nav-link text-white">
+                        <a href="./employeeDash.php" class="nav-link text-white">
                             Dashboard
                         </a>
                     </li>
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
+                            <a href="./employeePersonalInformationView.php" class="nav-link text-white">
                                 Personal Information
                             </a>
                           </li>
+
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./reportActivityAD.php" class="nav-link text-white">
-                                Activity Reporting
-                            </a>
-                          </li>
-                          <li class="nav-item bg-Blue mb-md-1">
-                            <a href="./grantReport.php" class="nav-link text-white">
-                                Grant Report
-                            </a>
-                          </li>
+                        <a href="./reportActivity.php" class="nav-link text-white">
+                            Activity Reporting
+                        </a>
+		      	</li>
                       </ul>
                 </div> 
             </div>
@@ -83,11 +88,11 @@
 $search_result = "";
 
 
-$query = "SELECT fname, lname, email, primaryPhone AS phone, street AS address, city, gender FROM participation JOIN address ON participation.userid = address.userid";
-$summary = "SELECT COUNT(*) AS Count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, employmentStatus AS `Employment Status` FROM employment GROUP BY employmentStatus";
-$education = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, highestGradeComplete AS `Highest Grade Complete` FROM education GROUP BY highestGradeComplete";
-$county = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, County FROM address GROUP BY County";
-$city = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, City FROM address GROUP BY City";
+$query = "SELECT ADDRESS.userID, fname, lname, email, primaryPhone AS phone, street AS address, city, gender FROM PARTICIPATION JOIN ADDRESS ON PARTICIPATION.userID = ADDRESS.userID";
+$summary = "SELECT COUNT(*) AS Count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, employmentStatus AS `Employment Status` FROM EMPLOYMENT GROUP BY employmentStatus";
+$education = "SELECT COUNT(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, highestGradeComplete AS `Highest Grade Complete` FROM EDUCATION GROUP BY highestGradeComplete";
+$county = "SELECT COUNT(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, County FROM ADDRESS GROUP BY County";
+$city = "SELECT COUNTY(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, city FROM ADDRESS GROUP BY city";
 $zip = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, zipcode as `ZIP Code` FROM ADDRESS GROUP BY zipcode";
 $language = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, primaryLanguage as `Primary Language` FROM ETHNICITY GROUP BY primaryLanguage";
 $citizenship = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, usCitizenshipStatus as `US Citizenship Status` FROM CITIZEN GROUP BY usCitizenshipStatus";
@@ -115,14 +120,15 @@ $homemaker="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () A
 $single_parent="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, singleParent as `Single Parent` FROM HARDSHIP GROUP BY singleParent";
 $cultural_barriers="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, culturalBarriers as `Cultural Barriers` FROM HARDSHIP GROUP BY culturalBarriers";
 $family_size="SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, familySize as `Family Size` FROM HARDSHIP GROUP BY familySize";
-
 $search_result = filterTable($query);
 $summary_result = filterTable($summary);
 
 //connection to database and query execution
 function filterTable($query) {
-    $connect = mysqli_connect("localhost", "root", "", "csc190");
-    $filter_Result = mysqli_query($connect, $query);
+    require 'includes/dbh.inc.php';
+
+    //$connect = new mysqli($servername, $dBUsername, $dBPassword, 
+    $filter_Result = mysqli_query($conn, $query);
     return $filter_Result;
 }
 
@@ -156,6 +162,7 @@ function outputTable($result, $columns)
         
         echo '<table id="search_results" class= "table table-hover">';
             echo '<thead class="results"><tr>';
+		    echo '<th>  UserID   </th>';
                 echo '<th>  First   </th>';
                 echo '<th>  Last    </th>';
                 echo '<th>  Email   </th>';
@@ -170,7 +177,8 @@ function outputTable($result, $columns)
             {
                 while($row = mysqli_fetch_assoc($search_result))
                 {
-                    echo '<tr> <td>' . $row["fname"] . '</td>';
+			  echo '<tr> <td>' . $row["userID"] . '</td>';
+                    echo '<td>' . $row["fname"] . '</td>';
                     echo '<td>' . $row["lname"] . '</td>';
                     echo '<td>' . $row["email"] . '</td>';
                     echo '<td>' . $row["phone"] . '</td>';

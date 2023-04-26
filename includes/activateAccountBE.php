@@ -55,7 +55,6 @@
 			exit();
 		}
 
-
 		$actCheck=password_verify($code,$activation_codeCheck);
 		if($actCheck==false){
 			header("Location: ../index.php?error=wrongActivationCode");

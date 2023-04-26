@@ -15,6 +15,8 @@
            header("Location:../Login.php");
            exit();
        }
+       error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
         // Check if form was submitted and file was uploaded
         if (isset($_POST['submit']) && isset($_FILES['fileToUpload'])) {
@@ -62,8 +64,7 @@
             // Generate unique file name and move file to uploads directory
 
             $newFileName = uniqid() . '_' . $fileName; // Generate a unique file name
-            $fileDestination = 'uploads/' . $newFileName;
-
+            $fileDestination = '/var/www/html/includes/uploads/' . $newFileName;
             // Check if file with same name already exists
             if (file_exists($fileDestination)) {
                 unlink($fileDestination); // Delete existing file
@@ -72,10 +73,11 @@
                 mkdir('uploads');
             }
 
+
             if (move_uploaded_file($fileTmpName, $fileDestination))  {
                 // Insert file details into database
                 $userId = $_SESSION['userID'];
-                $sql = "INSERT INTO files (userID, file_name, file_size, file_type, file_path)
+                $sql = "INSERT INTO FILES (userID, file_name, file_size, file_path, file_type)
                         VALUES (?, ?, ?, ?, ?)
                         ON DUPLICATE KEY UPDATE
                         file_size = VALUES(file_size),
@@ -84,7 +86,7 @@
 
                 $stmt = $conn->prepare($sql);
                 if ($stmt) {
-                    $stmt->bind_param("isiss", $userId, $fileName, $fileSize, $fileType, $fileDestination);
+                    $stmt->bind_param("isiss", $userId, $fileName, $fileSize,$fileDestination ,$fileType);
                     $stmt->execute();
                     $_SESSION['upload_success'] = 'File uploaded successfully.';
 
@@ -104,7 +106,7 @@
       }
 
 
-
+      $conn->close();
 
 
 ?>

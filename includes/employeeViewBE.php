@@ -4,7 +4,7 @@
           //if error, force a logout
          session_unset();
          session_destroy();
-         header ("Location: ./LoginAd.php");
+         header ("Location: ../LoginAd.php");
          exit();
      }
 
@@ -16,10 +16,9 @@
     else {
         $id = $_GET['id'];
     } 
-    
 
 //Checks to see which name of employee is selected
-$sql = $conn -> prepare("SELECT * FROM employee WHERE employeeID = ?;"); //*****Modify this so to select an employee********
+$sql = $conn -> prepare("SELECT * FROM EMPLOYEE WHERE employeeID = ?;"); //*****Modify this so to select an employee********
 $sql -> bind_param("i", $id);
 $sql -> execute();
 $empViewResult = $sql->get_result();
@@ -43,11 +42,12 @@ if($empViewResult -> num_rows > 0){
     $_SESSION['empViewRole'] = $row['employeeRole'];
     $_SESSION['empViewProgram'] = $row['programMember'];
     $_SESSION['empStatus'] = $row['empStatus'];
-
     if($_GET['role'] === "admin"){
-        header("Location: /CSC_190_Product/adminPersonal.php");
+        header("Location: ../adminPersonal.php");
     }
-    header("Location: /CSC_190_Product/empInfoView.php");
+    else{
+        header("Location: ../empInfoView.php");
+    }
     /*echo $_SESSION['empViewID'];
     echo $_SESSION['empViewfname'];
     echo $_SESSION['empViewlname'];
@@ -55,7 +55,7 @@ if($empViewResult -> num_rows > 0){
     echo$_SESSION['empViewDOB'];
     echo $_SESSION['empViewStreet'];
     echo $_SESSION['empViewCity'];
-    echo $_SESSION['empViewState'];
+    echo $_SESSION['empViewState']; 
     echo $_SESSION['empViewCounty'];
     echo $_SESSION['empViewZipcode'];
     echo $_SESSION['empViewPhone'];
@@ -63,21 +63,21 @@ if($empViewResult -> num_rows > 0){
     echo $_SESSION['empViewRaces'];
     echo $_SESSION['empViewEmail'];
     echo $_SESSION['empViewRole'];
-echo $_SESSION['empViewProgram'];*/
+    echo $_SESSION['empViewProgram'];*/
 }
 
 else {
     echo "<script>alert('Fetching Error.');</script>";
     echo "<script>setTimeout(function(){window.location.href='../Administration1-3.php'}, 300);</script>";
     exit();
-    header("Location ./Administration1-3.php");
+    header("Location ../Administration1-3.php");
 }
 
 /*$result = mysqli_query($conn, $sql);
 
 //Checks to see if name matches on database
 if (mysqli_num_rows($result) > 0) {
-	//Retrieve the data of employee
+	//Retrieve the data of employee 
 
     //<-- Demographic Information -->
 	$row = mysqli_fetch_assoc($result);

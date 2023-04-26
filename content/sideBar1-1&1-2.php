@@ -7,7 +7,7 @@
                         </a>
                     </li>
                           <li class="nav-item bg-Blue mb-md-1">
-                            <a href="#" class="nav-link text-white">
+                            <a href="./includes/employeeViewBE.php?role=admin" class="nav-link text-white">
                                 Personal Information
                             </a>
                           </li>

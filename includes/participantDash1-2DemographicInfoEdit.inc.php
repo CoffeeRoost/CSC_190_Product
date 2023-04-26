@@ -40,16 +40,9 @@ if($gender === 'other'){
 $partner          =$_POST['partner'];
 $SSN          	  =$_POST['SSN'];
 
-if(empty($partner)||empty($fname)||empty($lname)||empty($SSN)||empty($bthday)||empty($gender))
-{
-    // check empty fields
-    // redirect to participation dashboard page
-    header ("Location: ../participantDash1-2.php?error=emptyfields");
-    // //stop the code to run
-    exit();
-}
 
-$sql = "UPDATE participation p
+
+$sql = "UPDATE PARTICIPATION p
         SET p.fname = ?,
             p.lname = ?,
             p.MI = ?,
@@ -65,11 +58,11 @@ $stmt = $conn->prepare($sql);
 if ($stmt) {
     $stmt->bind_param("ssssssii", $fname, $lname, $mname, $bthday, $gender, $partner, $SSN, $userID);
     $stmt->execute();
-    header("Location: ../participantDash1-2.php?saveUpdatingRecord=success");
+    header("Location: ../participantPersonalInformation.php?saveUpdatingRecord=success");
     exit();
 } else {
     echo "Error updating record: " . $conn->error();
-    header("Location: ../participantDash1-2.php?ErrorUpdatingRecord=fail");
+    header("Location: ../participantPersonalInformation.php?ErrorUpdatingRecord=fail");
     exit();
 }
 ?>

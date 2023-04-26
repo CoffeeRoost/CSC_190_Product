@@ -1,5 +1,6 @@
 <?php
 
+
 //Start session
 session_start();
 // Include database connection
@@ -14,6 +15,8 @@ if (!isset($_SESSION['employeeID'])) {
     header("Location:LoginAd.php");
     exit();
 }
+
+
 require 'includes/dbh.inc.php';
 
 include_once('content/header4.php');

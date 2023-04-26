@@ -1,5 +1,12 @@
 <?php
-        session_start();
+        //session_start();
+
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        }
+
+
         if (!isset($_SESSION['adminLogin'])){
              //if error, force a logout
             session_unset();
@@ -32,7 +39,7 @@
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">ID number</div>
                         <div class="col-7">
-                                <input type="number" name="empSearchID" class="col input-underline" placeholder="ID number" >
+                                <input type="number" name="searchID" class="col input-underline" placeholder="ID number" >
                         </div>
                     </div>
             </fieldset>  
@@ -44,20 +51,20 @@
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">First Name</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchFname" class="col input-underline"
+                                <input type="text" name="searchFname" class="col input-underline"
                                 style ="width:65%;" placeholder="First Name" >
                         </div>
 
                         <div class="col-2 fw-bold">Middle Name</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchMI" class="col input-underline" style ="width:65%;" placeholder="Middle Name" >
+                                <input type="text" name="searchMI" class="col input-underline" style ="width:65%;" placeholder="Middle Name" >
                         </div>
                     </div>
 
                     <div class="row my-2">
                         <div class="col-2 fw-bold">Last Name</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchLname" class="col input-underline" style ="width:65%;" placeholder="Last Name" >
+                                <input type="text" name="searchLname" class="col input-underline" style ="width:65%;" placeholder="Last Name" >
                         </div>
                     </div>
             </fieldset>  
@@ -69,26 +76,26 @@
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">Street</div>
                         <div class="col-7">
-                                <input type="text" name="empSearchStreet" class="col input-underline" style ="width:65%;" placeholder="Street" >
+                                <input type="text" name="searchStreet" class="col input-underline" style ="width:65%;" placeholder="Street" >
                         </div>
                     </div>
 
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">City</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchCity" class="col input-underline" style ="width:65%;" placeholder="City" >
+                                <input type="text" name="searchCity" class="col input-underline" style ="width:65%;" placeholder="City" >
                         </div>
 
                         <div class="col-2 fw-bold">County</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchCounty" class="col input-underline" style ="width:65%;" placeholder="County" >
+                                <input type="text" name="searchCounty" class="col input-underline" style ="width:65%;" placeholder="County" >
                         </div>   
                     </div>
 
                     <div class="row my-2">
                     <div class="col-2 fw-bold">State</div>
                         <div class="col-4">
-                            <select class="form-select-SM border rounded-2" style ="width:65%;" name="empSearchState">
+                            <select class="form-select-SM border rounded-2" style ="width:65%;" name="searchState">
                                 <option value="" disabled selected hidden>Choose</option>
                                 <option value="Alabama">AL</option>
                                 <option value="Alaska">AK</option>
@@ -146,21 +153,21 @@
 
                         <div class="col-2 fw-bold">Code</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchZip" class="col input-underline" style ="width:65%;" placeholder="Zip Code" >
+                                <input type="text" name="searchZip" class="col input-underline" style ="width:65%;" placeholder="Zip Code" >
                         </div>
                     </div>
 
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">Phone</div>
                         <div class="col-7">
-                                <input type="text" name="empSearchPhone" class="col input-underline" style ="width:65%;" placeholder="Phone number" >
+                                <input type="text" name="searchPhone" class="col input-underline" style ="width:65%;" placeholder="Phone number" >
                         </div>
                     </div>
 
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">Email</div>
                         <div class="col-7">
-                                <input type="email" name="empSearchEmail" class="col input-underline" style ="width:65%;" placeholder="Email" >
+                                <input type="email" name="searchEmail" class="col input-underline" style ="width:65%;" placeholder="Email" >
                         </div>
                     </div>
             </fieldset>  
@@ -172,20 +179,20 @@
                     <div  class="row my-2">
                         <div class="col-2 fw-bold">Races</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchRace" class="col input-underline"
+                                <input type="text" name="searchRace" class="col input-underline"
                                 style ="width:65%;" placeholder="Races" >
                         </div>
 
                         <div class="col-2 fw-bold">Gender</div>
                         <div class="col-4">
-                                <input type="text" name="empSearchGender" class="col input-underline" style ="width:65%;" placeholder="Gender" >
+                                <input type="text" name="searchGender" class="col input-underline" style ="width:65%;" placeholder="Gender" >
                         </div>
                     </div>
 
                     <div class="row my-2">
                         <div class="col-2 fw-bold">Program Member</div>
                         <div class="col-7">
-                            <select class="form-select-SM border rounded-2" name="empSearchProgramMember" id="programMember">
+                            <select class="form-select-SM border rounded-2" name="searchProgramMember" id="programMember">
                                 <option value="" disabled selected hidden>Choose</option>
                                 <option value="Friend and Family">Friend and Family</option>
                                 <option value="Hiring Event or Career Fair">Hiring Event or Career Fair</option>

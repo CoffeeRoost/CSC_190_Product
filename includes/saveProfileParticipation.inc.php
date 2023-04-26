@@ -23,8 +23,8 @@ if (!isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
 
     // Update the database with the new personal information
-    $sql = "UPDATE participation p
-        INNER JOIN address a ON p.userID = a.userID
+    $sql = "UPDATE PARTICIPATION p
+        INNER JOIN ADDRESS a ON p.userID = a.userID
         SET p.fname = ?,
             p.lname = ?,
             p.email = ?,

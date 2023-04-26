@@ -1,5 +1,22 @@
 <?php
 
+if(!isset($_SESSION)) { 
+        session_start(); 
+}
+
+
+//session_start();
+// Include database connection
+// Start session and check if user is logged in
+if (!isset($_SESSION['employeeID'])) {
+ //if error, force a logout
+ session_unset();
+ session_destroy();
+//Redirect user to login page if not logged in
+header("Location:../LoginAd.php");
+exit();
+}
+
 //connect to database
 require_once ('includes/dbh.inc.php');
 
@@ -106,7 +123,7 @@ $programMember=$row['programMember'];
 
                                                 <div class="col-1 text-end">
 
-                                                        <button type="submit" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empNameEdit,#empNameShow">Save</button>
+                                                        <button type="submit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empNameEdit,#empNameShow">Save</button>
                                                 </div>
                                         </div>
 
@@ -211,7 +228,7 @@ $programMember=$row['programMember'];
                                                 </div>
 
                                                 <div class="col-1 text-end">
-                                                        <button type="submit" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empAddressEdit,#empAddressShow">Save</button>
+                                                        <button type="submit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empAddressEdit,#empAddressShow">Save</button>
                                                 </div>
                                         </div>
 
@@ -344,7 +361,7 @@ $programMember=$row['programMember'];
                                                 <div class="col-4 fw-bold">Role</div>
                                                 <div class="col-7"><?php echo $employeeRole?></div>
                                                 <div class="col-1 text-end">
-                                                        <button type="submit" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#empRoleEdit,#empRoleShow">Save</button>
+                                                        <button type="submit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#empRoleEdit,#empRoleShow">Save</button>
                                                 </div>
 
                                         </div>
@@ -370,8 +387,8 @@ $programMember=$row['programMember'];
                                                                 <option value="International Rescue Committee Sacramento" <?php echo ($programMember === 'International Rescue Committee Sacramento') ? 'selected' : ''; ?>>International Rescue Committee Sacramento</option>
                                                                 <option value="Community Resource Project" <?php echo ($programMember === 'Community Resource Project') ? 'selected' : ''; ?>>Community Resource Project</option>
                                                                 <option value="Fellowship" <?php echo ($programMember === 'Fellowship') ? 'selected' : ''; ?>>Fellowship</option>
-                                                                <option value="Other" <?php echo ($programMember === 'Other') ? 'selected' : ''; ?>>Other</option>   
-                                                         </select>
+                                                                <option value="Other" <?php echo ($programMember === 'Other') ? 'selected' : ''; ?>>Other</option> 
+                                                        </select>
                                                 </div>
                                         </div>
                                 </form>

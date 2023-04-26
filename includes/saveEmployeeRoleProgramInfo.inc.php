@@ -21,7 +21,7 @@ $employeeID=$_SESSION['employeeID'];
 $programMember=$_POST['programMember'];
 
 // Update the database with the new personal information
-$sql = "UPDATE employee
+$sql = "UPDATE EMPLOYEE
     SET  programMember = ?
     WHERE employeeID = ?";
 

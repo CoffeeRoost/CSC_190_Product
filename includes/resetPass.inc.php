@@ -10,12 +10,12 @@
 
         //checking if the fields are empty, if not kick back to location
         if(empty($password) || empty($passwordRepeat)){
-            header("Location:../resetPage.php?selector=" . $selector . "&validator=" . $validator . "&passFail=empty");
+                header("Location:../Login.php?newpassword=empty");
                 exit();
         }
         // make sure passwords are the same, if not kick back to location
         else if( $password != $passwordRepeat) {
-            header("Location:../resetPage.php?selector=" . $selector . "&validator=" . $validator . "&passFail=repeat");
+            header("Location:../Login.php?newpassword=passnotsame");
             exit();
         }
 
@@ -92,6 +92,7 @@
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
                                     header("Location: ../Login.php?newpass=passwordupdated");
+						exit();
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }
@@ -104,6 +105,7 @@
 
     }
     else{
-        header("Location:.../login.html");
+        header("Location:../Login.php");
+	  exit();
     }
 ?>

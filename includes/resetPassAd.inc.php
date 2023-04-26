@@ -1,6 +1,6 @@
 <?php
+// part 2 of the password reset system. this script file will check the tokens and if confirmed, change the password to the new password entered by the user.
 
-  
     if (isset($_POST["resetPassBoxSubmit"])){
         
         $selector = $_POST["selector"];
@@ -10,16 +10,14 @@
 
         //checking if the fields are empty, if not kick back to location
         if(empty($password) || empty($passwordRepeat)){
-                header("Location:../resetPageAd.php?selector=" . $selector . "&validator=" . $validator . "&passFail=empty");
+                header("Location:../LoginAd.php?newpassword=empty");
                 exit();
         }
-        
         // make sure passwords are the same, if not kick back to location
         else if( $password != $passwordRepeat) {
-            header("Location:../resetPageAd.php?selector=" . $selector . "&validator=" . $validator . "&passFail=repeat");
+            header("Location:../LoginAd.php?newpassword=passnotsame");
             exit();
         }
-        
 
         $currentDate = date("U");
         
@@ -94,6 +92,7 @@
                                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                     mysqli_stmt_execute($stmt);
                                     header("Location: ../LoginAd.php?newpass=passwordupdated");
+						exit();
                                     // need to add a check in the login file to check success message... see forgotPass
                                 }
                             }
@@ -106,6 +105,7 @@
 
     }
     else{
-        header("Location:.../login.html");
+        header("Location:../LoginAd.php");
+	  exit();
     }
 ?>

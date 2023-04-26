@@ -46,7 +46,7 @@
 ?>
 
 <div class="container-fluid">
-    <form action="/includes/assignClient.inc.php" method="post">
+    <form action="includes/assignClient.inc.php" method="post">
 
     <h4 class="d-flex justify-content-center text-info mb-5">Assign a Client to Employee Page</h5>
 

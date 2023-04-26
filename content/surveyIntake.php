@@ -15,7 +15,7 @@
 	</script>
     <div class="d-flex justify-content-center my-5">
         <div class="boxSurvey my-1">
-            <form action="/includes/newAccount.inc.php" method="post">
+            <form action="includes/newAccount.inc.php" method="post">
 		           <div id="survey1" style="transition: 1ms" class="collapse show">
                   <p class="text-center fs-2">Career Pathways Program</p>
                   <div class="bg-white my-3 border rounded-3">
@@ -245,11 +245,11 @@
                           <br>
                           <input type="phone" name="phone" id="phone" class="m-2 input-underline" placeholder="Your answer" required>
                           <select class="form-select-SM m-2 border rounded-2" name="phoneType" id="phoneType" required>
-                              <option value="cellphone" selected>Cell Phone</option>
-                              <option value="homePhone">Home Phone</option>
-                              <option value="relativesPhone">Relatives Phone</option>
-                              <option value="workphone">Work Phone</option>
-                              <option value="otherphone">Other</option>
+                              <option value="Cell Phone" selected>Cell Phone</option>
+                              <option value="Home Phone">Home Phone</option>
+                              <option value="Relatives Phone">Relatives Phone</option>
+                              <option value="Work phone">Work Phone</option>
+                              <option value="Other">Other</option>
                           </select>
                    </div>
 
@@ -332,7 +332,7 @@
                             <option value="Citizen">Citizen of US or US Territory</option>
                             <option value="US Pernament Resident">US Permanent Resident</option>
                             <option value="Alient/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
-                            <option value="NoneCitizen">None of the above</option>
+                            <option value="None Citizen">None of the above</option>
                         </select>
                     </div>
 
@@ -536,7 +536,7 @@
                         </label><br>
                         <select class="form-select-SM m-2 border rounded-2" name="highestSchool" id="highestSchool" required>
                             <option value="" disabled selected hidden>Choose</option>
-                            <option value="Highschool">High School Diploma</option>
+                            <option value="High School">High School Diploma</option>
                             <option value="GED">High School Equivalent Diploma (GED)</option>
                             <option value="Certificate of Attendance/Completion">Certificate of Attendance/Completion (Disabled Individuales)</option>
                             <option value="Vocational School Certificate">Vocational School Certificate</option>

@@ -22,3 +22,4 @@ function filter(array $data, array $fields, array $messages = []): array
 
     return [$inputs, $errors];
 }
+?>
