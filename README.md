@@ -194,13 +194,13 @@ Deployment on AWS
 
   9. Sprint 9: (4/3--4/17)
 
-## Database
+## Database Diagrams
 
-##### Figure:EER Diagram
 
 ![My Image](/image/EERDagram.jpg)
 
+##### Figure:EER Diagram
 
-#### Figure: Relational Diagram
 
 ![My Image](/image/RelationalDagram.jpg)
+#### Figure: Relational Diagram
