@@ -196,7 +196,7 @@ Deployment on AWS
 
 ## Database
 
-##### Figure:EER Diagrams
+##### Figure:EER Diagram
 
 ![My Image](/image/EERDagram.jpg)
 
