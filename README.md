@@ -6,7 +6,45 @@
 * This is a project about a case management system that can keep and track client records and progress in the Career Pathways Program. The system would track individual clients and accept information based on an existing intake form. After clients input their basic information, employees report a client’s progress in the program to the system following an existing activity report form. Alongside this basic info compilation, backhouse accounting is expected for individual client’s profit gain/loss and grant connections.
 
 * The current system used to track this information employs excel sheets and a google survey. The former requires manual updating which is prone to human error and the latter does not completely fulfil the client’s expectations concerning certain information recording.
-This program will provide a set system that stores information in SQL databases that can be accessed using specific pages or by the database admin. This controls the information insertion which is otherwise compromised by an inconsistent system.
+This program will provide a set system that stores information in a MySQl database that can be accessed using specific pages or by the database admin. This controls the information insertion which is otherwise compromised by an inconsistent system.
+
+## Team Chicken Node Members and Contacts
+1. Name: Gabby Cocke
+    * Email address: gabbycocke@csus.edu
+    * Phone number: 530-379-6925
+
+2. Name: Hardev Singh
+    * Email address: hardevsingh@csus.edu
+    * Phone number: 916-318-1264
+
+3. Name: Thuy Duong 
+    * Email address: thuyduong2@csus.edu
+    * Phone number: 916-812-5912
+
+4. Name: Tyler Ito
+    * Email address: tylerito@csus.edu
+    * Phone number: 916-477-0356
+
+5. Name: Mimi Darke
+    * Email address: yupingxue@csus.edu
+    * Phone number: 651-497-7858
+
+6. Name: Steven Symansiv
+    * Email address: stevensymansiv@csus.edu
+    * Phone number: 916-963-6630
+
+7. Name: Sirapicha Sawettanant
+    * Email address: ssawettanant@csus.edu
+    * Phone number: 279-799-6989
+
+8. Name: Thinh Nguyen
+    * Email address: thinhnguyen3@csus.edu
+    * Phone number: 916-838-0641
+
+9. Name: David Wen
+    * Email address: davidwen@csus.edu
+    * Phone number: 707-934-0999
+
 
 ## Technologies
 
