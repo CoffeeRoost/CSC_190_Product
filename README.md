@@ -200,7 +200,7 @@ Deployment on AWS
 ![My Image](/image/EERDagram.jpg)
 
 ##### Figure:EER Diagram
-
+<br>
 
 ![My Image](/image/RelationalDagram.jpg)
 #### Figure: Relational Diagram
