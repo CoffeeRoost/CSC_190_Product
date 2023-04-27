@@ -575,8 +575,8 @@
          }
          $stmt10 -> close();
 
-        //$activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$partEmail&activation_code=$activationCode";
-        $activation_link = "http://54.67.115.77/accountActivate.php";
+        $activation_link = "http://localhost/CSC_190_Product/includes/activate.php?email=$partEmail&activation_code=$activationCode";
+        //$activation_link = "http://54.67.115.77/accountActivate.php";
         // Create a new PHPMailer instance
         $confirmMail = new PHPMailer;
 

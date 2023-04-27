@@ -1,5 +1,5 @@
 <?php
-        session_start();
+
         if (!isset($_SESSION['adminLogin'])){
              //if error, force a logout
             session_unset();
@@ -10,22 +10,22 @@
 ?>
 <div class="container-fluid">
         <div class="mb-5 sticky-lg-top p-2">
-                <div  class="row bg-lightBlue">     
-                        <a class="col nav-link border p-3 text-center" href="#Demographic">Demographic</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Address">Address</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Mailing">Mailing</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Citizenship">Citizenship</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Education">Education</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Military">Military</a>      
+                <div  class="row bg-lightBlue">
+                        <a class="col nav-link border p-3 text-center" href="#Demographic">Demographic</a>
+                        <a class="col nav-link border p-3 text-center" href="#Address">Address</a>
+                        <a class="col nav-link border p-3 text-center" href="#Mailing">Mailing</a>
+                        <a class="col nav-link border p-3 text-center" href="#Citizenship">Citizenship</a>
+                        <a class="col nav-link border p-3 text-center" href="#Education">Education</a>
+                        <a class="col nav-link border p-3 text-center" href="#Military">Military</a>
                         <a class="col nav-link border p-3 text-center" href="#Employment">Employment</a>
-                        <a class="col nav-link border p-3 text-center" href="#Income">Income</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Service">Service</a>      
-                        <a class="col nav-link border p-3 text-center" href="#Hardship">Hardship</a>      
-                        <?php 
+                        <a class="col nav-link border p-3 text-center" href="#Income">Income</a>
+                        <a class="col nav-link border p-3 text-center" href="#Service">Service</a>
+                        <a class="col nav-link border p-3 text-center" href="#Hardship">Hardship</a>
+                        <?php
                                 if($_SESSION['role'] === "Client"){
                                 echo "<a class=\"col nav-link border p-3 text-center\" href=\"#Coach\">Coach</a>";
-                                }  ?>    
-                        <a class="col-1 nav-link border p-3 text-center" href="#Reset">Reset</a>      
+                                }  ?>
+                        <a class="col-1 nav-link border p-3 text-center" href="#Reset">Reset</a>
                 </div>
         </div>
         <div class="mb-5" id = "Demographic">
@@ -91,7 +91,7 @@
                                         <div class="col-4 fw-bold">English Proficiency</div>
                                         <div class="col-7"><?php echo $_SESSION['viewProficiency']?></div>
                                 </div>
-                                
+
                         </div>
 
                         <div id ="clientNameEdit" style="transition:1ms;" class ="collapse collapse">
@@ -110,116 +110,116 @@
                                                 <div class="col-4 fw-bold">First Name</div>
                                                 <div class="col-7">
                                                         <input type="text" name="fname" class="col input-underline" value ="<?php echo $_SESSION['viewFname']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Middle Name</div>
                                                 <div class="col-7">
                                                         <input type="text" name="MI" class="col input-underline" value ="<?php echo $_SESSION['viewMI']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Last Name</div>
                                                 <div class="col-7">
                                                         <input type="text" name="lname" class="col input-underline" value ="<?php echo $_SESSION['viewLname']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Date of Birth</div>
                                                 <div class="col-7">
                                                         <input type="date" name="DOB" class="col input-underline" value ="<?php echo $_SESSION['DOB'] ?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Last four SSN</div>
                                                 <div class="col-7">
                                                         <input type="number" name="last4SSN" class="col input-underline"  value ="<?php echo $_SESSION['view4SSN'] ?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Gender</div>
                                                 <div class="col-7">
                                                         <div class="form-check m-2">
-                                                                <input class="form-check-input" type="radio" name="gender" id="male" value="Male"<?php 
+                                                                <input class="form-check-input" type="radio" name="gender" id="male" value="Male"<?php
                                                                 echo ($_SESSION['viewGender'] === "Male")? 'checked' : ''?>>
                                                                 <label class="form-check-label" for="male">
                                                                         Male
                                                                 </label>
                                                         </div>
                                                         <div class="form-check m-2">
-                                                                <input class="form-check-input" type="radio" name="gender" id="female" value="Female" <?php 
+                                                                <input class="form-check-input" type="radio" name="gender" id="female" value="Female" <?php
                                                                 echo ($_SESSION['viewGender'] === "Female")? 'checked' : ''?>>
                                                                 <label class="form-check-label" for="female">
                                                                         Female
                                                                 </label>
                                                         </div>
                                                         <div class="form-check m-2">
-                                                                <input class="form-check-input" type="radio" name="gender" id="notSay" value="Not Say" <?php 
+                                                                <input class="form-check-input" type="radio" name="gender" id="notSay" value="Not Say" <?php
                                                                 echo ($_SESSION['viewGender'] === "Not Say")? 'checked' : ''?>>
                                                                 <label class="form-check-label" for="notSay">
                                                                         Prefer not to say
                                                                 </label>
                                                         </div>
                                                         <div class="form-check m-2">
-                                                                <input class="form-check-input" type="radio" name="gender" id="other" value="Other"<?php 
+                                                                <input class="form-check-input" type="radio" name="gender" id="other" value="Other"<?php
                                                                 echo ($_SESSION['viewGender'] !== "Male" && $_SESSION['viewGender'] !== "Female" && $_SESSION['viewGender'] !== "Not say" )? "checked" : ''?>>
                                                                 <label class="form-check-label" for="other">
                                                                         Other
                                                                 </label>
-                                                                <input type="text" name="otherAns" id="otherAns" class="m-2 input-underline" value="<?php 
+                                                                <input type="text" name="otherAns" id="otherAns" class="m-2 input-underline" value="<?php
                                                                 echo ($_SESSION['viewGender'] !== "Male" && $_SESSION['viewGender'] !== "Female" && $_SESSION['viewGender'] !== "Not say" )? $_SESSION['viewGender'] : ''?>"/>
-                                                        </div>          
-                                                </div>       
+                                                        </div>
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Ethnicity</div>
                                                 <div class="col-7">
-                                                        
+
                                                         <div class="form-check m-2 p-0">
                                                                 <input type="checkbox" id="africanAmerican_black" name="africanAmerican_black" value="Yes"
-                                                                <?php 
+                                                                <?php
                                                                 echo ($_SESSION['black'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="africanAmerican_black">African American/Black</label><br>
                                                         </div>
 
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="americanIndian_alaskanNative" name="americanIndian_alaskanNative" value="Yes" <?php 
+                                                                <input type="checkbox" id="americanIndian_alaskanNative" name="americanIndian_alaskanNative" value="Yes" <?php
                                                                 echo ($_SESSION['native'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="americanIndian_alaskanNative">American Indian/Alaskan Native</label><br>
                                                         </div>
-                                                        
+
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="asian" name="asian" value="Yes" <?php 
+                                                                <input type="checkbox" id="asian" name="asian" value="Yes" <?php
                                                                 echo ($_SESSION['asian'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="asian">Asian</label><br>
                                                                 </div>
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="hawaiian_other" name="hawaiian_other" value="Yes" <?php 
+                                                                <input type="checkbox" id="hawaiian_other" name="hawaiian_other" value="Yes" <?php
                                                                 echo ($_SESSION['hawaiian'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="hawaiian_other">Hawaiian/Other Pacific Islander</label><br>
                                                         </div>
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="Hispanic" name="hispanic" value="Yes" <?php 
+                                                                <input type="checkbox" id="Hispanic" name="hispanic" value="Yes" <?php
                                                                 echo ($_SESSION['hispanic'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="hispanic">Hispanic Heritage</label><br>
                                                         </div>
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="white" name="white" value="Yes" <?php 
+                                                                <input type="checkbox" id="white" name="white" value="Yes" <?php
                                                                 echo ($_SESSION['white'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="white">White</label><br>
                                                                 </div>
                                                         <div class="form-check m-2 p-0">
-                                                                <input type="checkbox" id="noAnswer" name="noAnswer" value="Yes" <?php 
+                                                                <input type="checkbox" id="noAnswer" name="noAnswer" value="Yes" <?php
                                                                 echo ($_SESSION['noRaces'] === "Yes")? 'checked' : ''?>>
                                                                 <label for="noAnswer">I do not wish to answer</label><br>
                                                         </div>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -276,7 +276,7 @@
                                                 </div>
                                         </div>
                                 </form>
-                        </div>       
+                        </div>
                 </fieldset>
         </div>
 
@@ -320,7 +320,7 @@
                                         <div class="col-2"><?php echo $_SESSION['viewPhoneType']?></div>
 
                                 </div>
-                                
+
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Alternative Phone Number</div>
                                         <div class="col-7"><?php echo (!empty($_SESSION['viewAltPhone']))? $_SESSION['viewAltPhone']: "N/A" ?></div>
@@ -330,7 +330,7 @@
                                         <div class="col-4 fw-bold">Email</div>
                                         <div class="col-7"><?php echo $_SESSION['viewEmail']?></div>
                                 </div>
-                                
+
                         </div>
 
                         <div id ="clientAddressEdit" style="transition:1ms;" class ="collapse collapse">
@@ -339,7 +339,7 @@
                                                 <div class="col-4 fw-bold">Street</div>
                                                 <div class="col-7">
                                                         <input type="text" name="street" class="col input-underline" value ="<?php echo $_SESSION['viewStreet']?>">
-                                                </div> 
+                                                </div>
 
                                                 <div class="col-1 text-end">
                                                         <button type="submit" name ="clientAddEdit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#clientAddressEdit,#clientAddressShow">Save</button>
@@ -350,14 +350,14 @@
                                                 <div class="col-4 fw-bold">City</div>
                                                 <div class="col-7">
                                                         <input type="text" name="city" class="col input-underline" value ="<?php echo $_SESSION['viewCity']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">County</div>
                                                 <div class="col-7">
                                                         <input type="text" name="county" class="col input-underline" value ="<?php echo $_SESSION['viewCounty']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -415,38 +415,38 @@
                                                         <option value="Wisconsin"<?php echo ($_SESSION['viewState'] === 'Wisconsin') ? ' selected' : ''; ?>>Wisconsin</option>
                                                         <option value="Wyoming"<?php echo ($_SESSION['viewState'] === 'Wyoming') ? ' selected' : ''; ?>>Wyoming</option>
                                                 </select>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Zip Code</div>
                                                 <div class="col-7">
                                                         <input type="text" name="zipcode" class="col input-underline" value ="<?php echo $_SESSION['viewZipcode']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Phone</div>
                                                 <div class="col-7">
                                                         <input type="text" name="phone" class="col input-underline" value ="<?php echo $_SESSION['viewPhone']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Alternative Phone Number</div>
                                                 <div class="col-7">
                                                         <input type="text" name="altPhone" class="col input-underline" value ="<?php echo (!empty($_SESSION['viewAltPhone']))? $_SESSION['viewAltPhone']: "" ?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Email</div>
                                                 <div class="col-7">
                                                         <input type="email" name="email" class="col input-underline" value ="">
-                                                </div>       
+                                                </div>
                                         </div>
                                 </form>
-                        </div>       
+                        </div>
 
                 </fieldset>
         </div>
@@ -463,22 +463,22 @@
                                                 <a href="#" class="text-decoration-none text-Blue" data-bs-toggle="collapse" data-bs-target="#mailingAddressShow,#mailingAddressEdit">Edit</a>
                                         </div>
                                 </div>
-                                
+
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Mailing City</div>
                                         <div class="col-7"><?php echo $_SESSION['mailingCity']?></div>
-                                </div> 
+                                </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Mailing County</div>
                                         <div class="col-7"><?php echo $_SESSION['mailingCounty']?></div>
-                                </div> 
+                                </div>
 
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Mailing State</div>
                                         <div class="col-7"><?php echo $_SESSION['mailingState']?></div>
                                 </div>
-                                
+
                                 <div  class="row mb-2">
                                         <div class="col-4 fw-bold">Mailing Zip Code</div>
                                         <div class="col-7"><?php echo $_SESSION['mailingZipcode']?></div>
@@ -491,7 +491,7 @@
                                                 <div class="col-4 fw-bold">Mailing Street</div>
                                                 <div class="col-7">
                                                         <input type="text" name="mailingStreet" class="col input-underline" value ="<?php echo $_SESSION['mailingStreet']?>">
-                                                </div> 
+                                                </div>
 
                                                 <div class="col-1 text-end">
                                                         <button type="submit" name ="mailAddEdit" class="text-decoration-none text-Blue border-0 bg-body" data-bs-toggle="collapse" data-bs-target="#mailingAddressEdit,#mailingAddressShow">Save</button>
@@ -502,14 +502,14 @@
                                                 <div class="col-4 fw-bold">Mailing City</div>
                                                 <div class="col-7">
                                                         <input type="text" name="mailingCity" class="col input-underline" value ="<?php echo $_SESSION['mailingCity']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Mailing County</div>
                                                 <div class="col-7">
                                                         <input type="text" name="mailingCounty" class="col input-underline" value ="<?php echo $_SESSION['mailingCounty']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -569,17 +569,17 @@
                                                         <option value="Wyoming"<?php echo ($_SESSION['mailingState'] === 'Wyoming') ? ' selected' : ''; ?>>Wyoming</option>
 
                                                 </select>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Zip Code</div>
                                                 <div class="col-7">
                                                         <input type="text" name="mailingZipcode" class="col input-underline" value ="<?php echo $_SESSION['mailingZipcode']?>">
-                                                </div>       
+                                                </div>
                                         </div>
                                 </form>
-                        </div>       
+                        </div>
                 </fieldset>
         </div>
 
@@ -631,14 +631,14 @@
                                                 <div class="col-4 fw-bold">Alien Registration Code</div>
                                                 <div class="col-7">
                                                         <input type="text" name="alienCode" class="col input-underline" value ="<?php echo (!empty($_SESSION['alienRegistrationCode'])) ? $_SESSION['alienRegistrationCode'] :""?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Alien Registration Code Expired Date</div>
                                                 <div class="col-7">
                                                         <input type="date" name="alienCodeEXP" class="col input-underline" value ="<?php echo (!empty($_SESSION['alienRegistrationCodeEXP'])) ? $_SESSION['alienRegistrationCodeEXP'] :""?>">
-                                                </div>       
+                                                </div>
                                         </div>
                                 </form>
                         </div>
@@ -699,7 +699,7 @@
                                                                 <option value="11th" <?php echo ($_SESSION['highSchoolStatus'] === '11th') ? 'selected' : ''; ?>>11th grade</option>
                                                                 <option value="12th" <?php echo ($_SESSION['highSchoolStatus'] === '12th') ? 'selected' : ''; ?>>12th grade</option>
                                                         </select>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -709,7 +709,7 @@
                                                                 <option value="Yes" <?php echo ($_SESSION['highSchooolDiplomaOrEquil'] === 'Yes') ? 'selected' : ''; ?>>Yes</option>
                                                                 <option value="No" <?php echo ($_SESSION['highSchooolDiplomaOrEquil'] === 'No') ? 'selected' : ''; ?>>No</option>
                                                         </select>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -727,7 +727,7 @@
                                                                 <option value="Master's Degree" <?php echo ($_SESSION['highestGradeComplete'] === "Master's Degree") ? 'selected' : ''; ?>>Master's Degree</option>
                                                                 <option value="Doctor's Degree" <?php echo ($_SESSION['highestGradeComplete'] === "Doctor's Degree") ? 'selected' : ''; ?>>Doctorate Degree</option>
                                                         </select>
-                                                </div>       
+                                                </div>
                                         </div>
                                 </form>
                         </div>
@@ -778,12 +778,12 @@
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Military Spouse</div>
                                                 <div class="col-7">
-                                                        
+
                                                         <select class="form-select-SM m-2 border rounded-2" name="militarySpouse" id="militarySpouse" >
                                                                 <option value="Yes" <?php echo ($_SESSION['militarySpouse'] === 'Yes') ? 'selected' : ''; ?>>Yes</option>
                                                                 <option value="No" <?php echo ($_SESSION['militarySpouse'] === 'No') ? 'selected' : ''; ?>>No</option>
                                                         </select>
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -795,7 +795,7 @@
                                                                 <option value="Documented exemption" <?php echo ($_SESSION['selectiveService'] === 'Documented exemption') ? 'selected' : ''; ?>>Documented exemption</option>
                                                                 <option value="No" <?php echo ($_SESSION['selectiveService'] === 'Not applicable') ? 'selected' : ''; ?>>Not applicable</option>
                                                         </select>
-                                                </div>       
+                                                </div>
                                         </div>
                                 </form>
                         </div>
@@ -866,9 +866,9 @@
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Pay Rate</div>
-                                                <div class="col-7">       
+                                                <div class="col-7">
                                                         <input type="number" name="payRate" class="col input-underline" value ="<?php echo $_SESSION['viewPayrate']?>">
-                                                </div>       
+                                                </div>
                                         </div>
 
                                         <div  class="row mb-2">
@@ -884,7 +884,7 @@
 
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Number of Week Unemployment</div>
-                                                <div class="col-7">       
+                                                <div class="col-7">
                                                         <input type="number" name="uiWeek" class="col input-underline" value ="<?php echo $_SESSION['unemploymentWeeks']?>">
                                                 </div>
                                         </div>
@@ -958,7 +958,7 @@
                                                 <div class="col-7">
                                                         <input type="text" name="income" class="col input-underline" value ="<?php echo $_SESSION['annualizedFamilyIncome']?>">
                                                 </div>
-                                        </div>                                      
+                                        </div>
                                 </form>
                         </div>
 
@@ -1081,7 +1081,7 @@
                                                         <input type="text" name="youthGrantNum" class="col input-underline" value ="<?php echo (!empty($_SESSION['youthBuildGrant']))?$_SESSION['youthBuildGrant']:""?>">
                                                 </div>
                                         </div>
- 
+
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Job Corps</div>
                                                 <div class="col-7">
@@ -1269,7 +1269,7 @@
                                                         </select>
                                                 </div>
                                         </div>
- 
+
                                         <div  class="row mb-2">
                                                 <div class="col-4 fw-bold">Homeless</div>
                                                 <div class="col-7">
@@ -1363,31 +1363,31 @@
                                         </div>
                                 </form>
                 </fieldset>
-        </div> 
+        </div>
 
 
         <div class = "row">
                 <div class= "col">
                         <a href="./Administration1-3.php" class="btn text-white">Back</a>
                 </div>
-                
+
                 <div class="col d-flex justify-content-end">
                         <form method="POST" action="./includes/clientModifyFunction.inc.php?id=<?php echo $_SESSION['viewID']?>&status=<?php echo $_SESSION['clientStatus']?>">
-                                <button type="submit" name="deactivate" 
+                                <button type="submit" name="deactivate"
                                         <?php if($_SESSION['clientStatus'] == 1){
                                                 echo "class=\"btn bg-success text-white\"";
                                                 }
                                                 else {
-                                                echo "class=\"btn bg-secondary text-white\"";       
+                                                echo "class=\"btn bg-secondary text-white\"";
                                                 }
                                         ?>
                                 >
-                                        <?php 
+                                        <?php
                                                 if($_SESSION['clientStatus'] == 1){
                                                         echo "Deactivate";
                                                         }
                                                 else {
-                                                        echo "Activate";       
+                                                        echo "Activate";
                                                 }
                                         ?>
                                 </button>
@@ -1396,7 +1396,7 @@
                         <button onclick="confirmDelete(<?php echo $_SESSION['viewID']?>)" class="btn bg-danger text-white ms-3">Delete</button>
                 </div>
         </div>
-        
+
 </div>
 
 <script>

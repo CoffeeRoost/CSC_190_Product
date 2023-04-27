@@ -1,11 +1,7 @@
 <?php
-
 if(!isset($_SESSION)) { 
         session_start(); 
 }
-
-
-//session_start();
 // Include database connection
 // Start session and check if user is logged in
 if (!isset($_SESSION['employeeID'])) {

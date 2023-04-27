@@ -1,6 +1,4 @@
 <?php
-
-    /*
     session_start();
     if (!isset($_SESSION['adminLogin'])){
             //if error, force a logout
@@ -9,7 +7,6 @@
             header ("Location: ./LoginAd.php");
             exit();
     }
-    */
 
     include_once('content/header4.php');
 

@@ -1,8 +1,5 @@
 <?php
-    
-    if(!isset($_SESSION)) { 
-        session_start(); 
-    } 
+
 
     require 'includes/dbh.inc.php';
 

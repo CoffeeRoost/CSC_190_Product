@@ -15,28 +15,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-	
+
+
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css"/>
 	<!-- Latest compiled JavaScript -->
-	
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
-	
+
 	<!-- Use the JavaScript DataTable library to easily sort query results -->
 	<script type="text/javascript" language="javascript">
 		$(document).ready(function ()
-		{ 
-			$('#search_results').DataTable({paging: false, searching: true, ordering: true }); 
+		{
+			$('#search_results').DataTable({paging: false, searching: true, ordering: true });
 		});
 	</script>
-	
-    
+
+
     <title>California Mobility Center</title>
 </head>
 <body>
@@ -55,7 +55,7 @@
                     </ul>
                 </div>
             </nav>
-        </section>    
+        </section>
 	<div class="d-flex">
         <div class="d-flex flex-column flex-shrink-1 align-items-center bg-lightBlue w-300" id="sideBar">
             <div>
@@ -77,11 +77,11 @@
                         </a>
 		      	</li>
                       </ul>
-                </div> 
+                </div>
             </div>
-	
+
 	<div class="container"><br></br><br></br>
-        
+
 
 <?php
 
@@ -92,7 +92,7 @@ $query = "SELECT ADDRESS.userID, fname, lname, email, primaryPhone AS phone, str
 $summary = "SELECT COUNT(*) AS Count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, employmentStatus AS `Employment Status` FROM EMPLOYMENT GROUP BY employmentStatus";
 $education = "SELECT COUNT(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, highestGradeComplete AS `Highest Grade Complete` FROM EDUCATION GROUP BY highestGradeComplete";
 $county = "SELECT COUNT(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, County FROM ADDRESS GROUP BY County";
-$city = "SELECT COUNTY(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, city FROM ADDRESS GROUP BY city";
+$city = "SELECT COUNT(*) AS count, 100.0 * COUNT(*) / SUM(COUNT(*)) OVER () AS Percentage, city FROM ADDRESS GROUP BY city";
 $zip = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, zipcode as `ZIP Code` FROM ADDRESS GROUP BY zipcode";
 $language = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, primaryLanguage as `Primary Language` FROM ETHNICITY GROUP BY primaryLanguage";
 $citizenship = "SELECT count(*) AS count, 100.0 * count(*) / sum(count(*)) OVER () AS Percentage, usCitizenshipStatus as `US Citizenship Status` FROM CITIZEN GROUP BY usCitizenshipStatus";
@@ -127,7 +127,7 @@ $summary_result = filterTable($summary);
 function filterTable($query) {
     require 'includes/dbh.inc.php';
 
-    //$connect = new mysqli($servername, $dBUsername, $dBPassword, 
+    //$connect = new mysqli($servername, $dBUsername, $dBPassword,
     $filter_Result = mysqli_query($conn, $query);
     return $filter_Result;
 }
@@ -147,10 +147,10 @@ function outputTable($result, $columns)
 		while($row = mysqli_fetch_assoc($result))
 		{
 			echo "<tr>";
-			
+
 			foreach ($columns as $value)
 				echo "<td>$row[$value]</td>";
-			
+
 			echo "</tr>";
 		}
 		echo '</tbody>';
@@ -159,7 +159,7 @@ function outputTable($result, $columns)
 }
 
 
-        
+
         echo '<table id="search_results" class= "table table-hover">';
             echo '<thead class="results"><tr>';
 		    echo '<th>  UserID   </th>';
@@ -172,7 +172,7 @@ function outputTable($result, $columns)
                 echo '<th>  Gender   </th>';
             echo '</tr></thead>';
 			echo '<tbody>';
-			
+
             if (mysqli_num_rows($search_result) > 0)
             {
                 while($row = mysqli_fetch_assoc($search_result))
@@ -185,13 +185,13 @@ function outputTable($result, $columns)
                     echo '<td>' . $row["address"] . '</td>';
                     echo '<td>' . $row["city"] . '</td>';
                     echo '<td>' . $row["gender"] .  '</td></tr>';
-                    
+
                 }
             }
-        echo '</tbody>';    
+        echo '</tbody>';
         echo '</table>';
 		echo '<br></br>';
-		
+
 		outputTable(filterTable($county), [ "County", "Percentage" ]);
 		outputTable(filterTable($city), [ "City", "Percentage" ]);
 		outputTable($summary_result, [ "Employment Status", "Percentage" ]);

@@ -2,7 +2,7 @@
     session_start();
 if (isset($_SESSION['adminLogin'])){       
   
-    require 'dbh.inc.php';
+    require './dbh.inc.php';
 
     $id = $_GET['id'];
     $_SESSION['role'] = 'New Client';//Using separate new client and client
@@ -201,11 +201,11 @@ else {
      session_unset();
      session_destroy();
      if($admin){
-        header ("Location: ../LoginAd.php");
+        header ("Location: ./LoginAd.php");
         exit();
      }
      else {
-        header ("Location: ../Login.php");
+        header ("Location: ./Login.php");
         exit();
      }
      

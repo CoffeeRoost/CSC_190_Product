@@ -343,7 +343,7 @@
                                                                 <option value="Next Move"<?php echo ($_SESSION['empViewProgram'] === 'Next Move') ? 'selected' : ''; ?>>Next Move</option>
                                                                 <option value="Waking the Village"<?php echo ($_SESSION['empViewProgram'] === 'Waking the Village') ? 'selected' : ''; ?>>Waking the Village</option>
                                                                 <option value="Saint John's"<?php echo ($_SESSION['empViewProgram'] === 'Saint John\'s') ? 'selected' : ''; ?>>Saint John's</option>
-                                					            <option value="La Familia"<?php echo ($_SESSION['empViewProgram'] === 'La Familia') ? 'selected' : ''; ?>>La Familia</option>
+                                					    <option value="La Familia"<?php echo ($_SESSION['empViewProgram'] === 'La Familia') ? 'selected' : ''; ?>>La Familia</option>
                                                                 <option value="GS Urban League"<?php echo ($_SESSION['empViewProgram'] === 'GS Urban League') ? 'selected' : ''; ?>>GS Urban League</option>
                                                                 <option value="Asian Resources"<?php echo ($_SESSION['empViewProgram'] === 'Asian Resources') ? 'selected' : ''; ?>>Asian Resources</option>
                                                                 <option value="Folsom Cordova CP"<?php echo ($_SESSION['empViewProgram'] === 'Folsom Cordova CP') ? 'selected' : ''; ?>>Folsom Cordova CP</option>
@@ -351,9 +351,9 @@
                                                                 <option value="Sac Job Corp"<?php echo ($_SESSION['empViewProgram'] === 'Sac Job Corp') ? 'selected' : ''; ?>>Sac Job Corp</option>
                                                                 <option value="Public/Aura Planning"<?php echo ($_SESSION['empViewProgram'] === 'Public/Aura Planning') ? 'selected' : ''; ?>>Public/Aura Planning</option>
                                                                 <option value="International Rescue Committee Sacramento"<?php echo ($_SESSION['empViewProgram'] === 'International Rescue Committee Sacramento') ? 'selected' : ''; ?>>International Rescue Committee Sacramento</option>
-										                        <option value="Community Resource Project"<?php echo ($_SESSION['empViewProgram'] === 'Community Resource Project') ? 'selected' : ''; ?>>Community Resource Project</option>
-										                        <option value="Fellowship"<?php echo ($_SESSION['empViewProgram'] === 'Fellowship') ? 'selected' : ''; ?>>Fellowship</option>
-										                        <option value="Other"<?php echo ($_SESSION['empViewProgram'] === 'Other') ? 'selected' : ''; ?>>Other</option>
+										    <option value="Community Resource Project"<?php echo ($_SESSION['empViewProgram'] === 'Community Resource Project') ? 'selected' : ''; ?>>Community Resource Project</option>
+										    <option value="Fellowship"<?php echo ($_SESSION['empViewProgram'] === 'Fellowship') ? 'selected' : ''; ?>>Fellowship</option>
+										    <option value="Other"<?php echo ($_SESSION['empViewProgram'] === 'Other') ? 'selected' : ''; ?>>Other</option>
                                                         </select>
                                                 </div>
                                         </div>
