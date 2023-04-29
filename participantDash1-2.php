@@ -259,7 +259,8 @@ require_once ('includes/dbh.inc.php');
                                     while ($row = $result->fetch_assoc()) {
                                         $file_name = $row['file_name'];
                                         $file_path = $row['file_path'];
-                                        $url = 'http://54.67.115.77/includes/uploads/' . rawurlencode(basename($file_path));
+                                        //$url = 'http://54.67.115.77/includes/uploads/' . rawurlencode(basename($file_path));--SERVER
+                                        $url = 'http://localhost/csc_190_product/includes/uploads/' . rawurlencode(basename($file_path)); //LOCAL
                                         echo '<div class="my-4">
                                                 <h6 class="d-flex"><a href="' . $url . '" download="' . $file_name . '">' . $file_name . '</a></h6>
                                             </div>';

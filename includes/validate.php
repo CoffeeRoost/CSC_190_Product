@@ -203,7 +203,7 @@ function is_secure(array $data, string $field): bool
 * @param string $column
 * @return bool
 */
-function is_unique(array $data, string $field, string $table, string $column): bool
+/*function is_unique(array $data, string $field, string $table, string $column): bool
 {
     if (!isset($data[$field])) {
         return true;
@@ -217,4 +217,5 @@ function is_unique(array $data, string $field, string $table, string $column): b
     $stmt->execute();
 
     return $stmt->fetchColumn() === false;
-}
+}*/
+?>

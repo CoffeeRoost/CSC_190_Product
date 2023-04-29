@@ -45,7 +45,8 @@ ini_set('display_errors', '1');
 
   // Get the user ID from the session variable
     $adminID = $_SESSION['adminID'];
-
+  // internal ID for display 
+    $orderID = 1; 
 
   // Create a prepared statement
   $stmt = $conn->prepare($grantReportQuery);
@@ -102,7 +103,7 @@ ini_set('display_errors', '1');
                   $charTitle = $row['char_title'];
                   $charStatus = $row['char_status'];
               ?>
-                <tr id ="grantReportShow_<?php echo $sharedGrantID?>" style="transition:1ms;" class ="collapse show" >
+                <tr id ="grantReportShow_<?php echo $orderID?>" style="transition:1ms;" class ="collapse show" >
                       <td class ="col text-center"><?php  echo $adminID ?></td>
                       <td class ="col text-center"><?php  echo $userID ?></td>
                       <td class ="col text-center"><?php  echo $grantName ?></td>
@@ -119,7 +120,7 @@ ini_set('display_errors', '1');
                         <div class="d-flex">
 
 
-                        <button type="submit" name="edit" class="bg-success text-white me-1 rounded" style="width:60px" data-bs-toggle="collapse" data-bs-target="#grantReportShow_<?php echo $sharedGrantID?>, #grantReportEdit_<?php echo $sharedGrantID ?>" aria-expanded="false" aria-controls="grantReportEdit_<?php echo $sharedGrantID ?>">Edit</button>
+                        <button type="submit" name="edit" class="bg-success text-white me-1 rounded" style="width:60px" data-bs-toggle="collapse" data-bs-target="#grantReportShow_<?php echo $orderID?>, #grantReportEdit_<?php echo $orderID ?>" aria-expanded="false" aria-controls="grantReportEdit_<?php echo $sharedGrantID ?>">Edit</button>
 
 
 
@@ -135,7 +136,7 @@ ini_set('display_errors', '1');
 
                       </tr>
                     <!-- Grant Report Activity Edit -->
-                    <tr id ="grantReportEdit_<?php echo $sharedGrantID ?>" style="transition:1ms;" class ="collapse collapse">
+                    <tr id ="grantReportEdit_<?php echo $orderID ?>" style="transition:1ms;" class ="collapse collapse">
                           <form action="./includes/handleSaveGrantActivity.inc.php" method="post">
                                   
                                       <td class="col text-center"> <input type="hidden" name="adminID" value="<?php echo $adminID ?>"></td>
@@ -160,7 +161,7 @@ ini_set('display_errors', '1');
                       </td>
                     </tr>
               <?php
-                }
+                $orderID++; }
               ?>
 
             </tbody>

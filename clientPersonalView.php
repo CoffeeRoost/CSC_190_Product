@@ -1,6 +1,4 @@
 <?php
-
-/*
     session_start();
     if (!isset($_SESSION['userID'])){
             //if error, force a logout
@@ -9,7 +7,6 @@
             header ("Location: ./Login.php");
             exit();
     }
-    */
 
     include_once('content/header4.php');
 

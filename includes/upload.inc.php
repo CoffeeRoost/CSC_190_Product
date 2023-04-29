@@ -16,7 +16,7 @@
            exit();
        }
        error_reporting(E_ALL);
-ini_set('display_errors', '1');
+       ini_set('display_errors', '1');
 
         // Check if form was submitted and file was uploaded
         if (isset($_POST['submit']) && isset($_FILES['fileToUpload'])) {
@@ -64,7 +64,10 @@ ini_set('display_errors', '1');
             // Generate unique file name and move file to uploads directory
 
             $newFileName = uniqid() . '_' . $fileName; // Generate a unique file name
-            $fileDestination = '/var/www/html/includes/uploads/' . $newFileName;
+            // make sure to change the file destination
+            //$fileDestination = '/var/www/html/includes/uploads/' . $newFileName;
+            //for the local host
+            $fileDestination = '/xampp/htdocs/CSC_190_PRODUCT/includes/uploads/' . $newFileName;
             // Check if file with same name already exists
             if (file_exists($fileDestination)) {
                 unlink($fileDestination); // Delete existing file

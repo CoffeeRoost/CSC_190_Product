@@ -1,11 +1,8 @@
 <?php
-        //session_start();
-
         if(!isset($_SESSION)) 
         { 
             session_start(); 
         }
-
 
         if (!isset($_SESSION['adminLogin'])){
              //if error, force a logout

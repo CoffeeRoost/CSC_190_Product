@@ -11,8 +11,8 @@ if (!isset($_SESSION['employeeID'])) {
   }
 // Get the user ID from the session variable
 $employeeID = $_SESSION['employeeID'];
-$searchTerm = "";
 // Get search query from form data
+$searchTerm="";
 if (isset($_GET['searchResult'])) {
     $searchTerm = trim($_GET['searchResult']);
     if (!empty($searchTerm)) {

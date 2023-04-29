@@ -31,7 +31,7 @@
 
         $stmt = $conn -> prepare("UPDATE EMPLOYEE SET empfname = ?, emplname = ?, empMI = ?, 
         empDOB = ?, empGender = ?, empRaces = ? WHERE employeeID = ? ;");
-        $stmt -> bind_param("ssssssi",$empfnameEdit, $empMI_Edit, $emplnameEdit, $empDOB_Edit, $empGenderEdit, $empRacesEdit, $_SESSION['empViewID']);
+        $stmt -> bind_param("ssssssi",$empfnameEdit,$emplnameEdit, $empMI_Edit, $empDOB_Edit, $empGenderEdit, $empRacesEdit, $_SESSION['empViewID']);
         if($stmt -> execute()){
             if(isset($_GET['role'])){
                 echo "<script>alert('Employeed Demographic is modified');</script>";

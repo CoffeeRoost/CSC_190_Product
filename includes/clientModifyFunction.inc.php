@@ -56,6 +56,7 @@
             $proficiency = $_POST['proficiency'];
             $program = $_POST['programMember'];
 
+            
 
             if(empty($fname) || empty($lname)|| empty($dOB) || empty($last4SSN)){
 
@@ -68,7 +69,7 @@
                 }     
             }
 
-            if(strlen($last4SSN) < 4 || strlen($last4SSN) > 4 || $last4SSN == "0" ){
+            if(strlen($last4SSN) < 4 || strlen($last4SSN) > 4 || $last4SSN == '0' ){
                 if($role === "personal"){
                     error_message("Invalid last four SSN", $personalLink);
                 }

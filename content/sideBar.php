@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+
 // Start session and check if user is logged in
 if (!isset($_SESSION['userID'])) {
      //if error, force a logout
