@@ -1,0 +1,1112 @@
+{
+  "id": "0f7a4966-7676-49e9-a1b1-5e8f96ebee87",
+  "version": "2.0",
+  "name": "Search for Specific Client Records",
+  "url": "http://54.67.115.77",
+  "tests": [{
+    "id": "787231af-ed4d-4f95-a80a-9cb53730f306",
+    "name": "Search for Specific Client Records",
+    "commands": [{
+      "id": "485f2dc5-0ba8-4abf-b567-0b4ab04cf184",
+      "comment": "",
+      "command": "open",
+      "target": "/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c9ecb55a-a9ca-45ed-8cd4-f93341c429f8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1433x807",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e7d485b-35e0-4ca8-915e-3fddae741520",
+      "comment": "",
+      "command": "setSpeed",
+      "target": "500",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "78c95a6d-3e3d-4975-a872-3fec6ca11a7a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e0a15ed-4b50-413c-a0c9-527c435bc772",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40adbe7c-e71f-4357-96a5-7d86f49be40e",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "32cb69bc-4c06-4c88-a503-8a7f1731dba6",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "a0af05f5-79b8-4a69-9cd1-4dd1da19e66a",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "390e6796-6651-4c1a-8588-9ee56e99bd6e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Search",
+      "targets": [
+        ["linkText=Search", "linkText"],
+        ["css=.btn:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15486ced-5911-44b7-b290-9fe9e6edf3b4",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15463dd8-5f9a-4235-ae2a-d75a6a937cf7",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "37c1b84c-ad9b-4b24-93e9-18cb93839e3c",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "418a7c75-7780-4b25-a8ca-82dd3821178f",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "25"
+    }, {
+      "id": "ef0958fd-3ce6-4a38-b539-073ae4303f53",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "81b88b35-495a-4faf-8188-71990c2e08b2",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=25",
+      "targets": [
+        ["linkText=25", "linkText"],
+        ["css=.col-1:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'25')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './includes/clientViewBE.php?id=25')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'25')]", "xpath:innerText"]
+      ],
+      "value": "25"
+    }, {
+      "id": "8785b987-3429-44ac-a7ba-5312b166d073",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f6f7b94-87ec-4872-9796-cc3929729012",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78df7cc0-7cb7-43c6-af15-0e8f02ed7950",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "27a3005b-a011-4157-8608-708ac67c1a54",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6efa5f92-5afe-4b38-9493-993a5098f01a",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "27"
+    }, {
+      "id": "f84087fc-1d77-4684-b7d3-d36b2c9940b0",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "eaa0cc02-6f12-4852-bf62-16939c91ef5a",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=27",
+      "targets": [
+        ["linkText=27", "linkText"],
+        ["css=.col-1:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'27')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './includes/clientViewBE.php?id=27')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'27')]", "xpath:innerText"]
+      ],
+      "value": "27"
+    }, {
+      "id": "c0c8172e-aa7f-4782-a6bb-1214cbd8b3bd",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "461c1fc7-a679-47ad-bd04-f1d9a8e42ba2",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "189515ef-a788-4654-a052-e3c2e2f1668e",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "7560a362-0919-4de2-810a-24ecdafa48b5",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83e4be1a-c2ed-4a5e-8b64-fbacb113819a",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "28"
+    }, {
+      "id": "352b9d64-214a-4cf8-8e5e-98f715a5f711",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchID",
+      "targets": [
+        ["name=searchID", "name"],
+        ["css=.row:nth-child(1) .col", "css:finder"],
+        ["xpath=//input[@name='searchID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e302bfd4-0743-4053-a0bb-a9f52c29c191",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=28",
+      "targets": [
+        ["linkText=28", "linkText"],
+        ["css=.col-1:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'28')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './includes/clientViewBE.php?id=28')]", "xpath:href"],
+        ["xpath=//th/a", "xpath:position"],
+        ["xpath=//a[contains(.,'28')]", "xpath:innerText"]
+      ],
+      "value": "28"
+    }, {
+      "id": "c6f203f2-270f-4098-857e-cabb13bdc012",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "64dc41b1-719f-4518-93d7-07765b892081",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a11e95e-d2d3-477e-9228-48d6cd4025be",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "57f944c6-04cd-4b19-be4a-cb3be1cf88f4",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchFname",
+      "targets": [
+        ["name=searchFname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(2) > .col-4:nth-child(2) > .col", "css:finder"],
+        ["xpath=//input[@name='searchFname']", "xpath:attributes"],
+        ["xpath=//div[3]/fieldset/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3dd6707c-fe10-44e7-a5b9-27f6a2976704",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchFname",
+      "targets": [
+        ["name=searchFname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(2) > .col-4:nth-child(2) > .col", "css:finder"],
+        ["xpath=//input[@name='searchFname']", "xpath:attributes"],
+        ["xpath=//div[3]/fieldset/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "Thuy"
+    }, {
+      "id": "7b343833-dd2e-4d3e-8e3a-5a1bdaa72aa5",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchFname",
+      "targets": [
+        ["name=searchFname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(2) > .col-4:nth-child(2) > .col", "css:finder"],
+        ["xpath=//input[@name='searchFname']", "xpath:attributes"],
+        ["xpath=//div[3]/fieldset/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "6d959bda-7625-42c8-8089-80635cda3d7b",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-2:nth-child(2) > .nav-link",
+      "targets": [
+        ["css=.col-2:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Thuy  Duong')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=25')])[2]", "xpath:href"],
+        ["xpath=//td/a", "xpath:position"]
+      ],
+      "value": "Thuy Duong"
+    }, {
+      "id": "f3f6f3a2-f381-4375-a510-cacc5705b6dc",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0108664c-c31f-4549-9f26-8ca37a52afbd",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec1588f7-4b97-46bf-904b-3f373156da51",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "f02f31aa-b9f1-4cc5-9ea4-b7f7680f18d9",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchLname",
+      "targets": [
+        ["name=searchLname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(3) .col", "css:finder"],
+        ["xpath=//input[@name='searchLname']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f1fb94cf-fdd3-4a3c-9018-c84f78f5bbb0",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchLname",
+      "targets": [
+        ["name=searchLname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(3) .col", "css:finder"],
+        ["xpath=//input[@name='searchLname']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Leng"
+    }, {
+      "id": "69605953-6f5c-4988-ab79-08a4820a9646",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchLname",
+      "targets": [
+        ["name=searchLname", "name"],
+        ["css=.mb-5:nth-child(3) .row:nth-child(3) .col", "css:finder"],
+        ["xpath=//input[@name='searchLname']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "d3ca5f61-dc94-4dce-a2e4-f585157f9e4e",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-2:nth-child(2) > .nav-link",
+      "targets": [
+        ["css=.col-2:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Alex  Leng')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=23')])[2]", "xpath:href"],
+        ["xpath=//td/a", "xpath:position"]
+      ],
+      "value": "Alex Leng"
+    }, {
+      "id": "7d192777-bffc-49a8-96e7-6f160291afef",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "46969a8a-a60c-4e6c-aa21-84707341ddaf",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchState",
+      "targets": [
+        ["name=searchState", "name"],
+        ["css=.col-4 > .form-select-SM", "css:finder"],
+        ["xpath=//select[@name='searchState']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a0640bd-7dd2-4236-b553-16416eb30665",
+      "comment": "",
+      "command": "select",
+      "target": "name=searchState",
+      "targets": [],
+      "value": "label=CA"
+    }, {
+      "id": "b951a61a-3ca7-4305-b825-e18977d644a8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container-fluid",
+      "targets": [
+        ["css=.container-fluid", "css:finder"],
+        ["xpath=//div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d8ce0fdc-97f1-40ca-9c77-92c1ff7b6c95",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3119497b-3835-4f56-be06-94ae4e79ac01",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "05f47a6a-083e-4aa7-af99-9a5eddc73f74",
+      "comment": "",
+      "command": "click",
+      "target": "id=Searching",
+      "targets": [
+        ["id=Searching", "id"],
+        ["name=Searching", "name"],
+        ["css=#Searching", "css:finder"],
+        ["xpath=//button[@id='Searching']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc1b0b01-c912-4278-8420-878ce3ba587c",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Some St. 498 Someplace, CountY, California 65434",
+      "targets": [
+        ["linkText=Some St. 498 Someplace, CountY, California 65434", "linkText"],
+        ["css=tr:nth-child(1) > .col-3 > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Some St. 498 Someplace, CountY, California 65434')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=16')])[3]", "xpath:href"],
+        ["xpath=//td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Some St. 498 Someplace, CountY, California 65434')]", "xpath:innerText"]
+      ],
+      "value": "Some St. 498 Someplace, CountY, California 65434"
+    }, {
+      "id": "eb3f17d1-20ee-4324-8a3a-43b67a12a577",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Somewhere 303 Somewhere, Sacramento, California 89893",
+      "targets": [
+        ["linkText=Somewhere 303 Somewhere, Sacramento, California 89893", "linkText"],
+        ["css=tr:nth-child(2) > .col-3 > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Somewhere 303 Somewhere, Sacramento, California 89893')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=22')])[3]", "xpath:href"],
+        ["xpath=//tr[2]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Somewhere 303 Somewhere, Sacramento, California 89893')]", "xpath:innerText"]
+      ],
+      "value": "Somewhere 303 Somewhere, Sacramento, California 89893"
+    }, {
+      "id": "c766a652-b0f4-4245-8ae7-d66352fc11ed",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=456 College street Fullerton, Fullerton, California 95786",
+      "targets": [
+        ["linkText=456 College street Fullerton, Fullerton, California 95786", "linkText"],
+        ["css=tr:nth-child(5) > .col-3 > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'456 College street Fullerton, Fullerton, California 95786')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=27')])[3]", "xpath:href"],
+        ["xpath=//tr[5]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'456 College street Fullerton, Fullerton, California 95786')]", "xpath:innerText"]
+      ],
+      "value": "456 College street Fullerton, Fullerton, California 95786"
+    }, {
+      "id": "8804b477-30fd-4f2b-8602-cf71c2f5e96a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "446ff95b-76fd-42dd-b0ec-fa8ada243f31",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2e36770-5fb3-4f10-b601-0f949ba33bee",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "f86b0a6e-8694-4b77-b154-fa2b2dae1a08",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchCounty",
+      "targets": [
+        ["name=searchCounty", "name"],
+        ["css=.row:nth-child(3) > .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchCounty']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d45c800-a3cf-43b7-9b5f-3afbacdb80be",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchCounty",
+      "targets": [
+        ["name=searchCounty", "name"],
+        ["css=.row:nth-child(3) > .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchCounty']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "Sacramento"
+    }, {
+      "id": "bf82c5f2-d19b-497c-b91d-786b26d4e402",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchCounty",
+      "targets": [
+        ["name=searchCounty", "name"],
+        ["css=.row:nth-child(3) > .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchCounty']", "xpath:attributes"],
+        ["xpath=//div[2]/div[4]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "f95d4ec4-a034-4a1a-bf7c-dc2c01e2545a",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=145 Any Street Elk Grove, Sacramento, Arizona 68955",
+      "targets": [
+        ["linkText=145 Any Street Elk Grove, Sacramento, Arizona 68955", "linkText"],
+        ["css=tr:nth-child(1) > .col-3 > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'145 Any Street Elk Grove, Sacramento, Arizona 68955')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=14')])[3]", "xpath:href"],
+        ["xpath=//td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'145 Any Street Elk Grove, Sacramento, Arizona 68955')]", "xpath:innerText"]
+      ],
+      "value": "145 Any Street Elk Grove, Sacramento, Arizona 68955"
+    }, {
+      "id": "2ba5f4c6-ab27-4113-959d-cad453d9dfdc",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Somewhere 303 Somewhere, Sacramento, California 89893",
+      "targets": [
+        ["linkText=Somewhere 303 Somewhere, Sacramento, California 89893", "linkText"],
+        ["css=tr:nth-child(2) > .col-3 > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Somewhere 303 Somewhere, Sacramento, California 89893')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=22')])[3]", "xpath:href"],
+        ["xpath=//tr[2]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Somewhere 303 Somewhere, Sacramento, California 89893')]", "xpath:innerText"]
+      ],
+      "value": "Somewhere 303 Somewhere, Sacramento, California 89893"
+    }, {
+      "id": "2e6f8636-6e9d-433b-8f43-e581e60963f5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "35082dde-a47b-4cd4-bdf1-7eeb6e75ed48",
+      "comment": "",
+      "command": "click",
+      "target": "id=programMember",
+      "targets": [
+        ["id=programMember", "id"],
+        ["name=searchProgramMember", "name"],
+        ["css=#programMember", "css:finder"],
+        ["xpath=//select[@id='programMember']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "881dd191-87a6-4b1b-9a7a-411bdebd8bfa",
+      "comment": "",
+      "command": "select",
+      "target": "id=programMember",
+      "targets": [],
+      "value": "label=Friend and Family"
+    }, {
+      "id": "2092459e-a451-448e-b932-485eade1a3a1",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "Client"
+    }, {
+      "id": "6f7040af-8a83-4fa3-92ec-646c92845dad",
+      "comment": "",
+      "command": "click",
+      "target": "id=Searching",
+      "targets": [
+        ["id=Searching", "id"],
+        ["name=Searching", "name"],
+        ["css=#Searching", "css:finder"],
+        ["xpath=//button[@id='Searching']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "57a53ac1-57c8-481a-8f32-5a7e5705d177",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Friend and Family",
+      "targets": [
+        ["linkText=Friend and Family", "linkText"],
+        ["css=tr:nth-child(1) > .col-1:nth-child(6) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Friend and Family')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=14')])[6]", "xpath:href"],
+        ["xpath=//td[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Friend and Family')]", "xpath:innerText"]
+      ],
+      "value": "Friend and Family"
+    }, {
+      "id": "31f8586c-0977-4f24-aa99-111c341443cb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > .col-1:nth-child(6) > .nav-link",
+      "targets": [
+        ["css=tr:nth-child(2) > .col-1:nth-child(6) > .nav-link", "css:finder"],
+        ["xpath=(//a[contains(text(),'Friend and Family')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=25')])[6]", "xpath:href"],
+        ["xpath=//tr[2]/td[5]/a", "xpath:position"]
+      ],
+      "value": "Friend and Family"
+    }, {
+      "id": "c207485a-e67a-4956-a667-1892645187f6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5fab789-bc5b-4c96-b0f5-53d1072b1b98",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchMI",
+      "targets": [
+        ["name=searchMI", "name"],
+        ["css=.mb-5:nth-child(3) .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchMI']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "813e031c-8403-45eb-a0ed-00e2267226c1",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchMI",
+      "targets": [
+        ["name=searchMI", "name"],
+        ["css=.mb-5:nth-child(3) .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchMI']", "xpath:attributes"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Male"
+    }, {
+      "id": "8b7bb334-b3da-4a42-a52c-9a4c77e0df0b",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "723ecae5-6024-4d07-91f7-e8c3d72b6590",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "bbc98e99-692e-4b07-b5e1-3b77086491fc",
+      "comment": "",
+      "command": "click",
+      "target": "id=Searching",
+      "targets": [
+        ["id=Searching", "id"],
+        ["name=Searching", "name"],
+        ["css=#Searching", "css:finder"],
+        ["xpath=//button[@id='Searching']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4f6a4b91-d687-4cfb-8a00-2e906b6078a6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "43350d00-cdac-4dc8-867e-a8635f7efdb2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mb-5:nth-child(1) > .border",
+      "targets": [
+        ["css=.mb-5:nth-child(1) > .border", "css:finder"],
+        ["xpath=//fieldset", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "637c1d5e-bd4e-444d-8ab6-4a86cdf684ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1ee3f8a-c05d-46be-a9de-8a02c44e44a9",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "5feebcfc-c0a6-424c-a6e7-4b4a3de4ec17",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchGender",
+      "targets": [
+        ["name=searchGender", "name"],
+        ["css=.mb-5:nth-child(5) .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchGender']", "xpath:attributes"],
+        ["xpath=//div[5]/fieldset/div/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e20ed6d7-eff6-4257-af21-fe0a5379cc72",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchGender",
+      "targets": [
+        ["name=searchGender", "name"],
+        ["css=.mb-5:nth-child(5) .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchGender']", "xpath:attributes"],
+        ["xpath=//div[5]/fieldset/div/div[4]/input", "xpath:position"]
+      ],
+      "value": "Female"
+    }, {
+      "id": "4bf13171-d9cc-4c3f-9d52-25a8cf7c8569",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=searchGender",
+      "targets": [
+        ["name=searchGender", "name"],
+        ["css=.mb-5:nth-child(5) .col-4:nth-child(4) > .col", "css:finder"],
+        ["xpath=//input[@name='searchGender']", "xpath:attributes"],
+        ["xpath=//div[5]/fieldset/div/div[4]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "2ff10537-754a-4a0b-a14a-6e4090d0d684",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ea23695-62f7-4b01-919e-6d8d8432d6ba",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchRace",
+      "targets": [
+        ["name=searchRace", "name"],
+        ["css=.mb-5:nth-child(5) .col-4:nth-child(2) > .col", "css:finder"],
+        ["xpath=//input[@name='searchRace']", "xpath:attributes"],
+        ["xpath=//div[5]/fieldset/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "14a9f6f7-b7d3-4593-ac24-531d685127e2",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchRace",
+      "targets": [
+        ["name=searchRace", "name"],
+        ["css=.mb-5:nth-child(5) .col-4:nth-child(2) > .col", "css:finder"],
+        ["xpath=//input[@name='searchRace']", "xpath:attributes"],
+        ["xpath=//div[5]/fieldset/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "Asian"
+    }, {
+      "id": "4a9b9547-035b-4cb6-9d73-7d8d2cf84bbb",
+      "comment": "",
+      "command": "click",
+      "target": "id=SearchingRole",
+      "targets": [
+        ["id=SearchingRole", "id"],
+        ["name=SearchingRole", "name"],
+        ["css=#SearchingRole", "css:finder"],
+        ["xpath=//select[@id='SearchingRole']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "381d2d41-b335-40cb-8f8d-3ca23e8472e3",
+      "comment": "",
+      "command": "select",
+      "target": "id=SearchingRole",
+      "targets": [],
+      "value": "label=Client"
+    }, {
+      "id": "78f21402-1763-4c83-a76d-c3911a0e233b",
+      "comment": "",
+      "command": "click",
+      "target": "id=Searching",
+      "targets": [
+        ["id=Searching", "id"],
+        ["name=Searching", "name"],
+        ["css=#Searching", "css:finder"],
+        ["xpath=//button[@id='Searching']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "635a4e6f-d20a-49e7-a30c-0dacfae7bca9",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Asian",
+      "targets": [
+        ["linkText=Asian", "linkText"],
+        ["css=tr:nth-child(1) > .col-1:nth-child(6) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Asian')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=14')])[6]", "xpath:href"],
+        ["xpath=//td[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Asian')]", "xpath:innerText"]
+      ],
+      "value": "Asian"
+    }, {
+      "id": "b832d98c-92aa-4a2c-b0b6-441522ea11b7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > .col-1:nth-child(6) > .nav-link",
+      "targets": [
+        ["css=tr:nth-child(2) > .col-1:nth-child(6) > .nav-link", "css:finder"],
+        ["xpath=(//a[contains(text(),'Asian')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=23')])[6]", "xpath:href"],
+        ["xpath=//tr[2]/td[5]/a", "xpath:position"]
+      ],
+      "value": "Asian"
+    }, {
+      "id": "6acc2957-a205-4341-b19a-6708b435bac9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(3) > .col-1:nth-child(6) > .nav-link",
+      "targets": [
+        ["css=tr:nth-child(3) > .col-1:nth-child(6) > .nav-link", "css:finder"],
+        ["xpath=(//a[contains(text(),'Asian')])[3]", "xpath:link"],
+        ["xpath=(//a[contains(@href, './includes/clientViewBE.php?id=25')])[6]", "xpath:href"],
+        ["xpath=//tr[3]/td[5]/a", "xpath:position"]
+      ],
+      "value": "Asian"
+    }, {
+      "id": "21bd4dc7-62f6-4867-b542-82c7c4e15231",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=New search",
+      "targets": [
+        ["linkText=New search", "linkText"],
+        ["css=.rounded-pill", "css:finder"],
+        ["xpath=//a[contains(text(),'New search')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './adminSearchOption.php')]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a8e75574-3e64-4222-90c9-24803dbf2e6f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "23122045-9386-42e7-87fa-75f9c05ff368",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["787231af-ed4d-4f95-a80a-9cb53730f306"]
+  }],
+  "urls": ["http://54.67.115.77/"],
+  "plugins": []
+}
