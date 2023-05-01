@@ -1,0 +1,214 @@
+{
+  "id": "2d49b50e-5593-45a1-9a01-e6e0790b069d",
+  "version": "2.0",
+  "name": "1_Admin Fill Out New Main Info of Grant Report",
+  "url": "",
+  "tests": [{
+    "id": "b712b3b4-9563-40fd-882f-0a074df7fc63",
+    "name": "Insert on New Grant Form",
+    "commands": [{
+      "id": "e79b37e9-f2ad-45e3-92b8-baf9f16bcccf",
+      "comment": "Click on Login Admin Button",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a313e81c-90c9-46f6-94cd-ff33d5e7f3ec",
+      "comment": "Insert Admin's Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "1172bf42-1305-4063-aac8-8bea572793d7",
+      "comment": "Insert Admin's Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "ca19838b-80d1-4b70-aa2d-e7498878df41",
+      "comment": "Click on Admin Login Button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c8d7c8d-44d3-4c67-8069-3590f8cd098c",
+      "comment": "Drop Down E-Form Tab",
+      "command": "click",
+      "target": "linkText=E-FORM",
+      "targets": [
+        ["linkText=E-FORM", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'E-FORM')]", "xpath:link"],
+        ["xpath=//div[@id='sideBar']/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'E-FORM')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "05630b8d-0819-46ab-8dfd-6b21f4dfe228",
+      "comment": "Click on Grant Report Form Button",
+      "command": "click",
+      "target": "linkText=Grant Report Form",
+      "targets": [
+        ["linkText=Grant Report Form", "linkText"],
+        ["css=.nav-link:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Grant Report Form')]", "xpath:link"],
+        ["xpath=//li[@id='e-form']/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './grantReport.php')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Grant Report Form')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1d72ea5-bd1f-4750-858f-dfe82f20048e",
+      "comment": "Insert Client's userID into Client ID",
+      "command": "type",
+      "target": "id=userID",
+      "targets": [
+        ["id=userID", "id"],
+        ["name=userID", "name"],
+        ["css=#userID", "css:finder"],
+        ["xpath=//input[@id='userID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "d7bb265f-7bea-4305-983c-b894f885b8c5",
+      "comment": "Insert Grant ID",
+      "command": "type",
+      "target": "id=grantID",
+      "targets": [
+        ["id=grantID", "id"],
+        ["name=grantID", "name"],
+        ["css=#grantID", "css:finder"],
+        ["xpath=//input[@id='grantID']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "12346"
+    }, {
+      "id": "1eea1605-3cb5-46bf-b76f-12a3715c5c9c",
+      "comment": "Insert Start Date of Grant",
+      "command": "type",
+      "target": "id=startDate",
+      "targets": [
+        ["id=startDate", "id"],
+        ["name=startDate", "name"],
+        ["css=#startDate", "css:finder"],
+        ["xpath=//input[@id='startDate']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "2032-04-09"
+    }, {
+      "id": "62afeae4-5eb8-478d-97bc-13713c854617",
+      "comment": "Insert End Date of Grant",
+      "command": "type",
+      "target": "id=endDate",
+      "targets": [
+        ["id=endDate", "id"],
+        ["name=endDate", "name"],
+        ["css=#endDate", "css:finder"],
+        ["xpath=//input[@id='endDate']", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "2033-04-09"
+    }, {
+      "id": "f66cad53-9836-4153-8445-297bb025afb4",
+      "comment": "Insert Grant Name",
+      "command": "type",
+      "target": "id=grant_name",
+      "targets": [
+        ["id=grant_name", "id"],
+        ["name=grant_name", "name"],
+        ["css=#grant_name", "css:finder"],
+        ["xpath=//input[@id='grant_name']", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "Test Grant Name 2"
+    }, {
+      "id": "75b3b272-27a3-475f-84ae-5d1d5569c255",
+      "comment": "Insert Associated Support Organization of Grant",
+      "command": "type",
+      "target": "id=supporting_organization",
+      "targets": [
+        ["id=supporting_organization", "id"],
+        ["name=supporting_organization", "name"],
+        ["css=#supporting_organization", "css:finder"],
+        ["xpath=//input[@id='supporting_organization']", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "Testing Organization"
+    }, {
+      "id": "4ae40fb5-cb23-4f29-bca0-dfb887a4fb3d",
+      "comment": "Insert Personal Contact Number associated with Grant",
+      "command": "type",
+      "target": "id=personal_contact",
+      "targets": [
+        ["id=personal_contact", "id"],
+        ["name=personal_contact", "name"],
+        ["css=#personal_contact", "css:finder"],
+        ["xpath=//input[@id='personal_contact']", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "5308901234"
+    }, {
+      "id": "50b26690-1a4c-4cc4-abb7-39c50c8b892f",
+      "comment": "Click Next Button",
+      "command": "click",
+      "target": "css=.col-6:nth-child(20) > .btn",
+      "targets": [
+        ["css=.col-6:nth-child(20) > .btn", "css:finder"],
+        ["xpath=(//button[@name='grant-initial-submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "73bc6934-a776-49f9-b806-6baeb0a5c6f6",
+      "comment": "Message for Tester: Record the Shared Grant ID",
+      "command": "",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f6e6ea7b-c7a1-4e5c-8049-d792e887b874",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b712b3b4-9563-40fd-882f-0a074df7fc63"]
+  }],
+  "urls": [],
+  "plugins": []
+}

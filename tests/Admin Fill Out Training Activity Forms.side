@@ -1,0 +1,238 @@
+{
+  "id": "a085e769-eba0-42ac-9aa9-b18d1213cc87",
+  "version": "2.0",
+  "name": "Admin Fill Out Training Activity Forms",
+  "url": "",
+  "tests": [{
+    "id": "acacd78e-e39e-4530-b814-a1702e73e6bb",
+    "name": "Filling Out Training Forms on Admin Side",
+    "commands": [{
+      "id": "45f38ee9-29c6-4a1b-81e0-6bacf2b1f7ea",
+      "comment": "Click on Login Admin button",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "544a816d-d75f-4435-8314-0d64ea12509c",
+      "comment": "Insert Admin's Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "9f51f473-9706-4e52-bde7-b902a4ba2c82",
+      "comment": "Insert Admin's Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "a2652803-b923-4e04-8913-e4d558805b3e",
+      "comment": "Click on Login Admin button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe5b51ff-b103-4350-8ac6-9d089f0054bd",
+      "comment": "Unlock E-Form Page",
+      "command": "click",
+      "target": "linkText=E-FORM",
+      "targets": [
+        ["linkText=E-FORM", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'E-FORM')]", "xpath:link"],
+        ["xpath=//div[@id='sideBar']/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'E-FORM')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e774f86-1c00-432f-93f9-4bfde35b3694",
+      "comment": "Click on Activity Reporting Form",
+      "command": "click",
+      "target": "linkText=Activity Reporting Form",
+      "targets": [
+        ["linkText=Activity Reporting Form", "linkText"],
+        ["css=#e-form > .nav-link:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Activity Reporting Form')]", "xpath:link"],
+        ["xpath=//li[@id='e-form']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './reportActivityAD.php')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Activity Reporting Form')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d194595-85ea-491d-b264-044ae3fccfa3",
+      "comment": "Enter Coach Fname",
+      "command": "type",
+      "target": "id=coachName",
+      "targets": [
+        ["id=coachName", "id"],
+        ["name=coachName", "name"],
+        ["css=#coachName", "css:finder"],
+        ["xpath=//input[@id='coachName']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "46edb402-5c84-4572-a6db-569487b31bd3",
+      "comment": "Enter in Assigned Client's userID",
+      "command": "type",
+      "target": "id=clientID",
+      "targets": [
+        ["id=clientID", "id"],
+        ["name=clientID", "name"],
+        ["css=#clientID", "css:finder"],
+        ["xpath=//input[@id='clientID']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "6255a1d2-7871-474c-91c6-419f85706f79",
+      "comment": "Enter in Client's Lname",
+      "command": "type",
+      "target": "id=clientLName",
+      "targets": [
+        ["id=clientLName", "id"],
+        ["name=clientLName", "name"],
+        ["css=#clientLName", "css:finder"],
+        ["xpath=//input[@id='clientLName']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "Cocke"
+    }, {
+      "id": "4d1dfa4c-942c-4b82-971d-d11fa237c355",
+      "comment": "Enter in Client's Fname",
+      "command": "type",
+      "target": "id=clientFName",
+      "targets": [
+        ["id=clientFName", "id"],
+        ["name=clientFName", "name"],
+        ["css=#clientFName", "css:finder"],
+        ["xpath=//input[@id='clientFName']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "Gabby"
+    }, {
+      "id": "d06dc85b-6f51-44e9-b7de-6e4e0a1d7d34",
+      "comment": "Click on Code in Code List",
+      "command": "select",
+      "target": "name=trainingCode",
+      "targets": [],
+      "value": "102 Initial Assessment"
+    }, {
+      "id": "069777a2-f255-40e7-8fab-8dee8a664ac9",
+      "comment": "Click on Training Program in Training Program List",
+      "command": "select",
+      "target": "name=trainingProgram",
+      "targets": [
+        ["name=trainingProgram", "name"],
+        ["css=.form-select-SM:nth-child(15)", "css:finder"],
+        ["xpath=(//select[@id=''])[2]", "xpath:attributes"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": "Math Tutoring"
+    }, {
+      "id": "092e8e8f-868e-47df-a697-bfa9955a0296",
+      "comment": "Click on Calendar Input for Start Date",
+      "command": "type",
+      "target": "name=startDate",
+      "targets": [
+        ["name=startDate", "name"],
+        ["css=.input-underline:nth-child(17)", "css:finder"],
+        ["xpath=//input[@id='']", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "2023-03-09"
+    }, {
+      "id": "a16d4955-a45d-486e-ae86-73c532c00d1e",
+      "comment": "Click on Calendar Input for End Date",
+      "command": "type",
+      "target": "name=endDate",
+      "targets": [
+        ["name=endDate", "name"],
+        ["css=.input-underline:nth-child(19)", "css:finder"],
+        ["xpath=(//input[@id=''])[2]", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "2023-03-09"
+    }, {
+      "id": "0d3468f8-149e-4a79-b82d-0c42c8397057",
+      "comment": "Enter Amount of Time Spent with Client",
+      "command": "type",
+      "target": "id=timeSpent",
+      "targets": [
+        ["id=timeSpent", "id"],
+        ["name=timeSpent", "name"],
+        ["css=#timeSpent", "css:finder"],
+        ["xpath=//input[@id='timeSpent']", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "120"
+    }, {
+      "id": "71a607aa-7fde-46d1-a759-c97c4678ec3e",
+      "comment": "Enter Notes on Activity Report",
+      "command": "type",
+      "target": "name=notes",
+      "targets": [
+        ["name=notes", "name"],
+        ["css=.form-control", "css:finder"],
+        ["xpath=//textarea[@name='notes']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Here are some Notes on the Activity"
+    }, {
+      "id": "83e93817-0e46-4a38-baa2-4237a8bf78cb",
+      "comment": "Click Submit Button on the Form",
+      "command": "click",
+      "target": "name=submitActivityAdmin",
+      "targets": [
+        ["name=submitActivityAdmin", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='submitActivityAdmin']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1d2a623c-56ba-42cb-8511-a49234821b1b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["acacd78e-e39e-4530-b814-a1702e73e6bb"]
+  }],
+  "urls": [],
+  "plugins": []
+}

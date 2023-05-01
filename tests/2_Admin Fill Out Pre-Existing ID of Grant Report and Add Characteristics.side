@@ -1,0 +1,222 @@
+{
+  "id": "ab56bf46-8283-4337-b2b6-eac0e20d6799",
+  "version": "2.0",
+  "name": "2_Admin Fill Out Pre-Existing ID of Grant Report and Add Characteristics",
+  "url": "",
+  "tests": [{
+    "id": "a3b55c66-b0bc-4c0f-80a8-8afe0e25d472",
+    "name": "Untitled",
+    "commands": [{
+      "id": "e3fbad7a-1c44-4996-9d3a-467bb9859c8a",
+      "comment": "Click Login Admin Button",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b875ab8f-7452-422c-b298-1835c75c49fc",
+      "comment": "Insert Admin Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "b02a204e-aa25-4021-8f09-79fccd97a5dd",
+      "comment": "Insert Admin Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "675af05e-1883-4fd0-af53-f3a39e440c3f",
+      "comment": "Click Admin Login Button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "36cc5b01-fd43-4fc0-b9ff-a6bbc9bbdf92",
+      "comment": "Display E-Form Contents",
+      "command": "click",
+      "target": "linkText=E-FORM",
+      "targets": [
+        ["linkText=E-FORM", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'E-FORM')]", "xpath:link"],
+        ["xpath=//div[@id='sideBar']/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'E-FORM')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "65f5ba80-fffc-4e2a-a851-3fbf587adc63",
+      "comment": "Click on Grant Report Form",
+      "command": "click",
+      "target": "linkText=Grant Report Form",
+      "targets": [
+        ["linkText=Grant Report Form", "linkText"],
+        ["css=.nav-link:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Grant Report Form')]", "xpath:link"],
+        ["xpath=//li[@id='e-form']/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './grantReport.php')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Grant Report Form')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "edbd74f3-1d38-49af-b2be-f6b07493c476",
+      "comment": "Insert Client's userID onto Client ID",
+      "command": "type",
+      "target": "id=userID",
+      "targets": [
+        ["id=userID", "id"],
+        ["name=userID", "name"],
+        ["css=#userID", "css:finder"],
+        ["xpath=//input[@id='userID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "63321e96-c310-4c2e-9e8c-da042a2e38ee",
+      "comment": "Insert Pre-Existing Grant Form ID (shared_grant_ID)",
+      "command": "type",
+      "target": "id=shared_grant_ID",
+      "targets": [
+        ["id=shared_grant_ID", "id"],
+        ["name=shared_grant_ID", "name"],
+        ["css=#shared_grant_ID", "css:finder"],
+        ["xpath=//input[@id='shared_grant_ID']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "19"
+    }, {
+      "id": "8035657c-b62a-4073-91a9-37996acd0caa",
+      "comment": "Click Next Button",
+      "command": "click",
+      "target": "name=grant-initial-submit",
+      "targets": [
+        ["name=grant-initial-submit", "name"],
+        ["css=.col-6:nth-child(6) > .btn", "css:finder"],
+        ["xpath=//button[@name='grant-initial-submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb2e5896-49f9-425b-8f84-0088e8d74c60",
+      "comment": "Insert Characteristic Title/Description",
+      "command": "type",
+      "target": "id=char_title",
+      "targets": [
+        ["id=char_title", "id"],
+        ["name=char_title", "name"],
+        ["css=#char_title", "css:finder"],
+        ["xpath=//input[@id='char_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Testing Title"
+    }, {
+      "id": "deba2580-f84c-41e0-8c3c-5a3d97008f8f",
+      "comment": "Use Drop Down to Access Pre-Provided Information on Client",
+      "command": "select",
+      "target": "id=pre_status",
+      "targets": [
+        ["id=pre_status", "id"],
+        ["name=pre_status", "name"],
+        ["css=#pre_status", "css:finder"],
+        ["xpath=//select[@id='pre_status']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "Street"
+    }, {
+      "id": "f215fbb4-81b8-40f3-af9a-7fb2a81810ee",
+      "comment": "Click Submit Button",
+      "command": "click",
+      "target": "name=grant-characteristic-submit",
+      "targets": [
+        ["name=grant-characteristic-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='grant-characteristic-submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "65e19dc6-8ed3-4ee7-ac07-809503e47f21",
+      "comment": "Insert 2nd Characteristic Title/Description",
+      "command": "type",
+      "target": "id=char_title",
+      "targets": [
+        ["id=char_title", "id"],
+        ["name=char_title", "name"],
+        ["css=#char_title", "css:finder"],
+        ["xpath=//input[@id='char_title']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Testing Title 2"
+    }, {
+      "id": "92d8c078-3bd2-4c7f-9bc9-bf3b0a64dc6b",
+      "comment": "Insert Original Characteristic Value (not pre-provided)",
+      "command": "type",
+      "target": "id=char_status",
+      "targets": [
+        ["id=char_status", "id"],
+        ["name=char_status", "name"],
+        ["css=#char_status", "css:finder"],
+        ["xpath=//input[@id='char_status']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "TEST Value"
+    }, {
+      "id": "62e8ae78-b169-4392-a614-f7a2e96be14e",
+      "comment": "Click Submit Button",
+      "command": "click",
+      "target": "name=grant-characteristic-submit",
+      "targets": [
+        ["name=grant-characteristic-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='grant-characteristic-submit']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f7b98b69-2465-4d91-a614-ccf53ea693a6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a3b55c66-b0bc-4c0f-80a8-8afe0e25d472"]
+  }],
+  "urls": [],
+  "plugins": []
+}
