@@ -452,6 +452,8 @@
                         <label for="proficiency" class="form-label fs-5 m-2">
                             Do you have limited proficiency in speaking, writing, reading, or understanding English?
                             or Do you have difficulty in speaking, writing, reading, or understanding English?
+			    <span class="text-danger">*</span>
+			</label>
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="proficiency" id="yproficiency" value="Yes">
