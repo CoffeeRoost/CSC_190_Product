@@ -291,7 +291,7 @@
         }
         else {
 
-            if($citizenship === "greenCard" || $citizenship === "alien"){
+            if($citizenship === "US Pernament Resident" || $citizenship === "Alien/Refugee Lawfully Admitted to the US"){
                 if(empty($uscisNumber) || empty($uscisExpired)){
                     echo "<script>alert('Please fill out your uscis number and expired date');</script>";
                     echo "<script>setTimeout(function(){window.location.href='../survey.php'}, 0);</script>";
