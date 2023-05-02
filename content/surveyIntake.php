@@ -331,7 +331,7 @@
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="Citizen">Citizen of US or US Territory</option>
                             <option value="US Pernament Resident">US Permanent Resident</option>
-                            <option value="Alient/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
+                            <option value="Alien/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
                             <option value="None Citizen">None of the above</option>
                         </select>
                     </div>
