@@ -10,39 +10,39 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Team Chicken Node Members and Contacts
 1. Name: Gabby Cocke
-    * Email address: gabbycocke@csus.edu
+    * Email address: gabcocke@gmail.com
     * Phone number: 530-379-6925
 
 2. Name: Hardev Singh
-    * Email address: hardevsingh@csus.edu
+    * Email address: hardevsingh2001@gmail.com
     * Phone number: 916-318-1264
 
 3. Name: Thuy Duong 
-    * Email address: thuyduong2@csus.edu
+    * Email address: cindyduong999@gmail.com
     * Phone number: 916-812-5912
 
 4. Name: Tyler Ito
-    * Email address: tylerito@csus.edu
+    * Email address: t_ito132@yahoo.com
     * Phone number: 916-477-0356
 
 5. Name: Mimi Darke
-    * Email address: yupingxue@csus.edu
+    * Email address: medinillamagnifica26@gmail.com
     * Phone number: 651-497-7858
 
 6. Name: Steven Symansiv
-    * Email address: stevensymansiv@csus.edu
+    * Email address: divisionadversus@gmail.com
     * Phone number: 916-963-6630
 
 7. Name: Sirapicha Sawettanant
-    * Email address: ssawettanant@csus.edu
+    * Email address: sawettanants@gmail.com
     * Phone number: 279-799-6989
 
 8. Name: Thinh Nguyen
-    * Email address: thinhnguyen3@csus.edu
+    * Email address: tinnnguyen1deff5@gmail.com
     * Phone number: 916-838-0641
 
 9. Name: David Wen
-    * Email address: davidwen@csus.edu
+    * Email address: davidwen25@gmail.com
     * Phone number: 707-934-0999
 
 
