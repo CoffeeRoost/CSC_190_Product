@@ -46,6 +46,17 @@ This program will provide a set system that stores information in a MySQl databa
     * Email address: davidwen25@gmail.com
     * Phone number: 707-934-0999
 
+## Working Product Screenshots
+
+Homepage
+
+Login Page
+
+Participant
+
+Employee
+
+Admin
 
 ## Technologies
 
