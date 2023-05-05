@@ -48,15 +48,15 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Working Product Screenshots
 
-###Homepage
-
-###Login Page
-
-###Participant
+### Homepage
+![My Image](/image/HomePage_screenshot.jpg)
+### Login Page
+![My Image](/image/Login_screenshot.jpg)
+### Participant
 ![My Image](/image/Participant_Dashboard.JPG)
-###Employee
+### Employee
 ![My Image](/image/Employee_Dashboard.JPG)
-###Admin
+### Admin
 ![My Image](/image/Admin_Dashboard.JPG)
 ## Technologies
 
