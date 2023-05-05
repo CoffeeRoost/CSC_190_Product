@@ -344,21 +344,41 @@ This program will provide a set system that stores information in a MySQl databa
 
       * Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
 
-  5. Sprint 5: (2/6--2/19)
+  5. Sprint 5: (2/1--2/22)
 
-      * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report, CN-178 Connecting Prior Pages with Session Data
+      * Total Stories Completed: 1
 
-  6. Sprint 6: (2/20--3/5)
+      * Major Milestones: CN-190 Grant Report: Finished (2/16)
 
-      * Stories: CN-177 Grant Page
+  6. Sprint 6: (2/22--3/8)
 
-  7. Sprint 7: (3/6--3/19)
+      * Total Stories Completed: 1
 
-  8. Sprint 8: (3/20--4/2)
+      * Major Milestones: CN-232 Grant Report Synch: Finished (3/2)
 
-      * Stories: CN-36 Reports and Guidelines System
+  7. Sprint 7: (3/8--3/22)
 
-  9. Sprint 9: (4/3--4/17)
+      * Total Stories Completed: 4
+
+      * Major Milestones: CN-213 Participation Dashboard: Finished (3/9), CN-227 Participation Login Page: Finished (3/16), CN-213 Participation Dashboard: Finished (3/16)
+
+  8. Sprint 8: (3/22--4/5)
+
+      * Total Stories Completed: 2
+
+      * Major Milestones: CN-14 Task Report: Finished (3/22), CN-187 CSC 191: Recovery Admin: Finished (4/5)
+
+  9. Sprint 9: (4/5--4/19)
+
+      * Total Stories Completed: 7
+
+      * Major Milestones: CN-294 Edit Participation Info: Finished (4/17), CN-242 Employee Dashboard: Finished (4/13), CN-231 Administration Dashboard: Finished (4/19), CN-214 AWS test server: Finished (4/19), CN-13 Search Option: Finished (4/19)
+
+  10. Sprint 10: (4/19--5/3)
+
+      * Total Stories Completed: None concerning Jira
+
+      * Major Milestones: Documentation Being Completed
 
 ## Database Diagrams
 
