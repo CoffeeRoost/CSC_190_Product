@@ -9,6 +9,7 @@
 This program will provide a set system that stores information in a MySQl database that can be accessed using specific pages or by the database admin. This controls the information insertion which is otherwise compromised by an inconsistent system.
 
 ## Team Chicken Node Members and Contacts
+![TeamChickeNodeArt](https://user-images.githubusercontent.com/90881895/236378467-f492487a-629b-4d1a-894f-cf4c6a7cf3ac.png)
 1. Name: Gabby Cocke
     * Email address: gabcocke@gmail.com
     * Phone number: 530-379-6925
