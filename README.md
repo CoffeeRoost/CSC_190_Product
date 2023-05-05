@@ -83,9 +83,9 @@ This program will provide a set system that stores information in a MySQl databa
 
 * Languages: PHP serves as the primary programming language for this application.
 
-* MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+* MySQL Version: MySQL 8.0.28 (2022-01-18)
 
-* Email Functionality and Configuration: Email functionality is essential for authentication purposes, such as login requirements and client account creation. The PHP mail function, currently implemented in the newAccount.inc file (located in the includes folder), requires the configuration of php.ini and sendmail files with SMTP information. These files can be accessed in the XAMPP file settings but may be inconsistent with other applications. It is necessary to modify these files to match your hosting server's SMTP settings for seamless functionality.
+* Email Functionality and Configuration: Email functionality plays a crucial role in authentication processes, including login requirements and client account creation. PHPMailer is employed for this purpose. To modify the email address or email server settings, update the email_config.inc.php file, which can be found in the following directory: CSC_190_Product > includes > email_config.inc.php. While these files are accessible in the XAMPP file settings, they might be inconsistent with other applications. Therefore, it is essential to adjust these files to align with your hosting server's SMTP settings, ensuring smooth functionality.
 
 ## Deployment
 
