@@ -46,16 +46,29 @@ This program will provide a set system that stores information in a MySQl databa
     * Email address: davidwen25@gmail.com
     * Phone number: 707-934-0999
 
+## Working Product Screenshots
 
+###Homepage
+
+###Login Page
+
+###Participant
+![My Image](/image/Participant_Dashboard.JPG)
+###Employee
+![My Image](/image/Employee_Dashboard.JPG)
+###Admin
+![My Image](/image/Admin_Dashboard.JPG)
 ## Technologies
 
-* Frontend: Primarily written in html, the frontend is primarily stylized with bootstrap v5 with support by a CSS style page. For consistency with the backend, though, all frontend files are converted to php.
+* Frontend: The frontend is primarily designed using HTML and is styled with the help of Bootstrap v5 and a dedicated CSS stylesheet. To ensure consistency with the backend, all frontend files are converted to PHP.
 
-* Backend: The backend is solely coded in php and some of Javascript.
+* Backend: The backend is developed exclusively in PHP, supplemented with some JavaScript code.
 
-* Database: This program primarily uses a MySQL database (relational).
+* Database: This application primarily utilizes a MySQL relational database for data management.
 
-* IDE: This program was coded in Visual Studios with Xampp serving as the localhost display and database reference.
+* Integrated Development Environment (IDE): The program was developed in Visual Studio, with XAMPP serving as the localhost display and database reference. Visual Studio Code provided access to PowerShell for testing purposes. Selenium IDE was employed as the automated testing tool.
+
+* Amazon Web Services (AWS) Stack: This program is hosted on AWS, utilizing both EC2 and RDS services. For the EC2 setup, the operating system employed is Amazon Linux, with the instance type being t2.micro and an allocated storage capacity of 8GB. The selected region is us-west-1 (Northern California). As for RDS, MySQL Community 8.0.28 serves as the chosen engine option, running on Amazon Linux. The database instance class is a Burstable class db.t2.micro, featuring general-purpose SSD storage (gp2). The region for RDS is also us-west-1 (Northern California). Additionally, Amazon Simple Email Service (SES) is used for handling email functionality.
 
 ##### Figure: Initial Webpage
 
@@ -63,13 +76,16 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Dependencies:
 
-* Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
+* Frameworks: Frontend Framework: Bootstrap v5 is used as the frontend framework for display purposes.
+              Localhost Testing: XAMPP Version 8.1.10 serves as the localhost test environment.
+              Testing Framework: PHPUnit is used for testing, along with XAMPP Version 8.1.10.
+              Email Functionality: PHPMailer facilitates the sending of emails.
 
-* Languages: The primary language of this application is PHP.
+* Languages: PHP serves as the primary programming language for this application.
 
-* MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+* MySQL Version: MySQL 8.0.28 (2022-01-18)
 
-* Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
+* Email Functionality and Configuration: Email functionality plays a crucial role in authentication processes, including login requirements and client account creation. PHPMailer is employed for this purpose. To modify the email address or email server settings, update the email_config.inc.php file, which can be found in the following directory: CSC_190_Product > includes > email_config.inc.php. While these files are accessible in the XAMPP file settings, they might be inconsistent with other applications. Therefore, it is essential to adjust these files to align with your hosting server's SMTP settings, ensuring smooth functionality.
 
 ## Deployment
 
@@ -450,21 +466,41 @@ This program will provide a set system that stores information in a MySQl databa
 
       * Major Milestones: CN-101 Database Adjustment: Finished (11/10), CN-139 Report Activity form: Finished (11/22)
 
-  5. Sprint 5: (2/6--2/19)
+  5. Sprint 5: (2/1--2/22)
 
-      * Stories: CN-118 File Organization, CN-13 Search Page, CN-14 Task Report, CN-178 Connecting Prior Pages with Session Data
+      * Total Stories Completed: 1
 
-  6. Sprint 6: (2/20--3/5)
+      * Major Milestones: CN-190 Grant Report: Finished (2/16)
 
-      * Stories: CN-177 Grant Page
+  6. Sprint 6: (2/22--3/8)
 
-  7. Sprint 7: (3/6--3/19)
+      * Total Stories Completed: 1
 
-  8. Sprint 8: (3/20--4/2)
+      * Major Milestones: CN-232 Grant Report Synch: Finished (3/2)
 
-      * Stories: CN-36 Reports and Guidelines System
+  7. Sprint 7: (3/8--3/22)
 
-  9. Sprint 9: (4/3--4/17)
+      * Total Stories Completed: 4
+
+      * Major Milestones: CN-213 Participation Dashboard: Finished (3/9), CN-227 Participation Login Page: Finished (3/16), CN-213 Participation Dashboard: Finished (3/16)
+
+  8. Sprint 8: (3/22--4/5)
+
+      * Total Stories Completed: 2
+
+      * Major Milestones: CN-14 Task Report: Finished (3/22), CN-187 CSC 191: Recovery Admin: Finished (4/5)
+
+  9. Sprint 9: (4/5--4/19)
+
+      * Total Stories Completed: 7
+
+      * Major Milestones: CN-294 Edit Participation Info: Finished (4/17), CN-242 Employee Dashboard: Finished (4/13), CN-231 Administration Dashboard: Finished (4/19), CN-214 AWS test server: Finished (4/19), CN-13 Search Option: Finished (4/19)
+
+  10. Sprint 10: (4/19--5/3)
+
+      * Total Stories Completed: None concerning Jira
+
+      * Major Milestones: Documentation Being Completed
 
 ## Database Diagrams
 
