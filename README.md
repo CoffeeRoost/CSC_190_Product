@@ -48,16 +48,16 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Working Product Screenshots
 
-Homepage
+###Homepage
 
-Login Page
+###Login Page
 
-Participant
-
-Employee
-
-Admin
-
+###Participant
+![My Image](/image/Participant_Dashboard.JPG)
+###Employee
+![My Image](/image/Employee_Dashboard.JPG)
+###Admin
+![My Image](/image/Admin_Dashboard.JPG)
 ## Technologies
 
 * Frontend: Primarily written in html, the frontend is primarily stylized with bootstrap v5 with support by a CSS style page. For consistency with the backend, though, all frontend files are converted to php.
