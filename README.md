@@ -323,24 +323,24 @@ This program will provide a set system that stores information in a MySQl databa
 
   2. Setting up PHPUnit testing on a Mac is similar to that on Windows. You can use Homebrew to install PHP and Composer.
 
-  3. For setting up a test environment for Selenium, you can refer to the following link for instructions on how to set up Selenium for automated testing of web applications: https://www.selenium.dev/selenium-ide/
+  3. For setting up a test environment for Selenium, you can refer to the following link for instructions on how to set up Selenium for automated testing of web applications: https://www.selenium.dev/selenium-ide/.
 
   #### After setting up the testing environment:
     ##### We have written test cases for important database functions and performed PHP Unit tests on them. These tests were run on the command line and the results were output on the terminal window. The important functions we created tests for include:
 
-     * **Connection to the database**
-     * **Insert statements**
-     * **Select statements**
-     * **Update statements**
-     * **Delete statements**
-  ###### Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
-      * **Database Connection Test Result**: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
+     **Connection to the database**
+     **Insert statements**
+     **Select statements**
+     **Update statements**
+     **Delete statements**
+      ###### Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
+      **Database Connection Test Result**: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
        ![My Image](/image/connectDatabase.jpg)
-      * **Insert Statement Test Result**: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
+      **Insert Statement Test Result**: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
       ![My Image](/image/insert.jpg)
       ![My Image](/image/insertDatabase.jpg)
 
-      * **Select Statement Test Result**: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
+      **Select Statement Test Result**: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
       ![My Image](/image/select.jpg)
 
 
