@@ -48,25 +48,25 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Working Product Screenshots
 
-### Homepage
-![My Image](/image/HomePage_screenshot.jpg)
-### Login Page
-![My Image](/image/Login_screenshot.jpg)
-### Participant
+###Homepage
+
+###Login Page
+
+###Participant
 ![My Image](/image/Participant_Dashboard.JPG)
-### Employee
+###Employee
 ![My Image](/image/Employee_Dashboard.JPG)
-### Admin
+###Admin
 ![My Image](/image/Admin_Dashboard.JPG)
 ## Technologies
 
-* Frontend: Primarily written in html, the frontend is primarily stylized with bootstrap v5 with support by a CSS style page. For consistency with the backend, though, all frontend files are converted to php.
+* Frontend: The frontend is primarily designed using HTML and is styled with the help of Bootstrap v5 and a dedicated CSS stylesheet. To ensure consistency with the backend, all frontend files are converted to PHP.
 
-* Backend: The backend is solely coded in php and some of Javascript.
+* Backend: The backend is developed exclusively in PHP, supplemented with some JavaScript code.
 
-* Database: This program primarily uses a MySQL database (relational).
+* Database: This application primarily utilizes a MySQL relational database for data management.
 
-* IDE: This program was coded in Visual Studios with Xampp serving as the localhost display and database reference.
+* Integrated Development Environment (IDE): The program was developed in Visual Studio, with XAMPP serving as the localhost display and database reference. Visual Studio Code provided access to PowerShell for testing purposes. Selenium IDE was employed as the automated testing tool.
 
 ##### Figure: Initial Webpage
 
@@ -74,13 +74,16 @@ This program will provide a set system that stores information in a MySQl databa
 
 ## Dependencies:
 
-* Frameworks: As previously mentioned, this program uses Bootstrap v5 as it’s frontend framework for display purposes.
+* Frameworks: Frontend Framework: Bootstrap v5 is used as the frontend framework for display purposes.
+              Localhost Testing: XAMPP Version 8.1.10 serves as the localhost test environment.
+              Testing Framework: PHPUnit is used for testing, along with XAMPP Version 8.1.10.
+              Email Functionality: PHPMailer facilitates the sending of emails.
 
-* Languages: The primary language of this application is PHP.
+* Languages: PHP serves as the primary programming language for this application.
 
 * MySQL Version: 15.1 Distrib 10.4.25-MariaDB, for Win64 (AMD64)
 
-* Email functionality: For authentication purposes for login requirements and client account creation, this program requires email functionality. Currently in the newAccount.inc file (located in the includes file), the php mail function is utilized. This requires the php.ini and sendmail configuration file to be edited with smtp information. These files are easily accessible in the Xampp file settings but are probably inconsistent with other applications. Editing this file in congruence for your hosting server’s smtp settings is required for functionality.
+* Email Functionality and Configuration: Email functionality is essential for authentication purposes, such as login requirements and client account creation. The PHP mail function, currently implemented in the newAccount.inc file (located in the includes folder), requires the configuration of php.ini and sendmail files with SMTP information. These files can be accessed in the XAMPP file settings but may be inconsistent with other applications. It is necessary to modify these files to match your hosting server's SMTP settings for seamless functionality.
 
 ## Deployment
 
