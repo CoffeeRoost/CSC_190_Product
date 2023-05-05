@@ -18,7 +18,7 @@ This program will provide a set system that stores information in a MySQl databa
     * Email address: hardevsingh2001@gmail.com
     * Phone number: 916-318-1264
 
-3. Name: Thuy Duong 
+3. Name: Thuy Duong
     * Email address: cindyduong999@gmail.com
     * Phone number: 916-812-5912
 
@@ -78,7 +78,7 @@ This program will provide a set system that stores information in a MySQl databa
 * Deployment on AWS
 (AWS Account is Required)
  * Amazon Elastic Compute (EC2)
-     
+
    1. [Go to aws.amazon.com and Login ](https://aws.amazon.com)
    2. Click on EC2
 ![Step 2 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/bcba5c46-2903-4564-8423-b0fffb8021d8/81340f5a-59bf-42cf-9da7-d82baa022811.png?crop=focalpoint&fit=crop&fp-x=0.1550&fp-y=0.1668&fp-z=3.1331&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=555&mark-y=342&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NiZoPTQ0JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
@@ -152,7 +152,7 @@ This program will provide a set system that stores information in a MySQl databa
 ![Step 19 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/21fb1553-3e9f-4e7e-a696-4462ac832be7/a73e39e8-411b-4d7d-a1ac-8226bcd1b85f.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
 
 
-   20. Click on the instance ID for detail information about instance 
+   20. Click on the instance ID for detail information about instance
 ![Step 20 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/a96630a0-2e29-4166-844a-15f361c738f1/f79056cc-770f-4057-8a75-646a0e264d99.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
 
 * Amazon Relational Database Service (RDS)
@@ -202,7 +202,7 @@ This program will provide a set system that stores information in a MySQl databa
 ![Step 12 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/2574f181-5e08-4fc2-8de6-627158aa1239/170c38de-1a6f-4439-8b2b-626b09c5a6fe.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5878&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=328&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
 
 
-   13. Create password by typing your password or auto-generation 
+   13. Create password by typing your password or auto-generation
 ![Step 13 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/2e9c7ea0-76e5-4f17-8f16-24d4c9a67ee9/75cc90eb-ca89-4548-bafb-be6b0a625f4b.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5204&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=328&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
 
 
@@ -251,7 +251,7 @@ This program will provide a set system that stores information in a MySQl databa
 
       ```ssh -i /path/to/your/private/key.pem ec2-user@<EC2-instance-public-IP>```
 
-      b. Note: The username might be different based on the operating system of your EC2 instance. For Amazon Linux 2, use "ec2-user". For 
+      b. Note: The username might be different based on the operating system of your EC2 instance. For Amazon Linux 2, use "ec2-user". For
    5. Install the Apache web server by running the following command:
 
       ```sudo yum install httpd -y```
@@ -300,7 +300,13 @@ This program will provide a set system that stores information in a MySQl databa
       * Email functionality is also tested
 
   4.  Other tests to be added with more page functionality...
-
+## System Diagram
+### Participation
+![My Image](/image/participationSystemDagram.jpg)
+### Employee
+![My Image](/image/EmployeeSystemDiagram.jpg)
+### Admin
+![My Image](/image/AdminSystemDiagram.jpg)
 ## Timeline
 
   1. Sprint 0/1 (9/27—10/9):
