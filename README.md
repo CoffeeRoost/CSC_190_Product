@@ -284,22 +284,139 @@ This program will provide a set system that stores information in a MySQl databa
 * All files located in the oldFiles folder may be removed and are recommended to be removed for security reasons (before deployment this folder will be removed along with all of its contents). This also applies to all old database files not pertaining to the current database version.
 
 ## Testing: Important Features to Consider
+  1. To ensure that important features are thoroughly tested, we use PHPUnit for unit tests, integration tests, and functional tests of PHP code, as well as Selenium for automated testing of web application functionality.
+  - First, we need to set up test enviroment PHPUnit
+      A. Set up a test environment for PHPUnit testing on Windows, following these steps
+       1. Istall PHP:
+        a. First you need to instal PHP if you don't have. If you  have PHP install already, ignore this step
+        b. You can download the the latest version of PHP for Windows from the offical PHP website at https://windows.php.net/download/. Choose the version that matches your system architecture.
+          (1). After downloading the PHP zip file, extract it to a directory on your computer.
+          (2).Add the path to the PHP executable to your system’s PATH environment variable. This will allows you to run the ‘php’ command from anywhere in the command prompt.
+       2. Install Composer:
+        a.Composer is a dependency manager for PHP.
+        b.You can download the latest version of Composer for Windows from the official Composer website at https://getcomposer.org/download/.
+          (1).After downloading the Composer setup file, run it and follow the prompts to install Composer.
+       3. Install PHPUnit: PHPUnit is a PHP testing framework, and you can install it using Composer
+       4. Create a test file
+         a. Create a test directory
+         b. Write you tests
+       5. Run tests by running this commnad line: ./vendor/bin/phpunit
+      B.Setting up PHPUnit testing on a Mac is similar to that on Windows. You can use Homebrew to install PHP and Composer.
+    - Second, we need to set up test environment for Selenium
+      1. Here is a link on how to set up Selenium for automated testing of web applications:
+         https://www.selenium.dev/selenium-ide/
 
-  1. Survey and Email Authentication: Once the website is running, the user is recommended to make sure the client survey form is accepting information into the database. To test this feature, simply fill out the intake survey with all required information and then provide the account's password. Following this, if email functionality is working, the user should receive an email with their authentication link. Clicking it leads into the next test function.
+    1. After setting up the testing environment:
+    - We have written test cases for important database functions and performed PHP Unit tests on them. These tests were run on the command line and the results were output on the terminal window. The important functions we created tests for include:
 
-      * Tests Database Select, Insert, and Update statements
-      * Email functionality is also tested
+      * Connection to the database
+      * Insert statements
+      * Select statements
+      * Update statements
+      * Delete statements.
+    - Here are some examples of the screenshots of test results and their descriptions:
+      * Database Connection Test Result: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
+       ![My Image](/image/connectDatabase.jpg.jpg)
+      * Insert Statement Test Result: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
+      ![My Image](/image/insert.jpg)
+      ![My Image](/image/insertDatabase.jpg)
 
-  2. Client Login: After clicking the authentication link, the client account should be activated. This enables login for the provided client account. To test if restricted client access is working, simply try to login without clicking the email link. If the restricted access is working, the user will not be able to access the account.
+      * Select Statement Test Result: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
+      ![My Image](/image/select.jpg)
 
-      * Tests Select statement primarily
 
-  3. Account Recovery: Available for all types of account, the user simply should click the provided account recovery links, enter their email connected to their account, and wait for the email that will take them to their password input page.
+    2.  We perform Selenium tests on the entire system of our web application. To create the test cases, we first create a test project and enter our website link into the Selenium extension. Then, we write down each test case one by one and execute them. We open our webpage and click on the record button to allow Selenium to record our steps. Afterwards, we run the test cases and take a screenshot of the pass/fail result. At the same time, we also perform visualization tests for the frontend. The results can be seen in the screenshot below.
 
-      * Tests Delete, Select, and Update statements
-      * Email functionality is also tested
+    - Here are the important features that we tested:
+    * Participation:
+      + Survey Intake Form for First-Time User
+        - Able  to Fill Out Survey
+      + Account Creation
+        - Receive the Link to Activate and Activate Account
+      + Login Page
+        - Able to Login Using Email and Password
+        - Display Error Message if Login Fails
+      + ForgotPassword
+         - Able to Request Password Reset Link through Email
+         - Able to Create a New Password
+      + Dashboard
+        - Able to Edit and Save Personal Information
+        - Able to Upload File
+        - Able to View, Eidt , and Save Contact and Demographic Information
+        - Able to View Training Information
+        - Able to View Support Services
+        - Able to Navigate and Interact with Different Tabs and Button
 
-  4.  Other tests to be added with more page functionality...
+      * Employee
+        + Login Page
+          - Able to Login Using Email and Password
+          - Display Error Messages if Login Fails
+        + Forgot Password
+        + DashBoard
+          - Able to Edit and Save Personal Information
+          - Able to Search for Client Records( ID and Named Based)
+          - Able View Client Accounts
+          - Able to Log Training Activity Forms
+          - Able to Search for Client Records with Report Display
+      * Admin
+        + Login Page
+          - Able to Login using Email and Password
+          - Display Error Messages if Login Fails
+        + Forgot Password
+          - Able to Request Password Reset Link though Email
+          - Able to Create a New Password
+        + Dashboard
+          - Able to Edit and Save Personal Information
+          - Able to Search for Specific Employee Records
+          - Able to Search for Specific Client Records
+          - Able to Assign Clients to Employees
+          - Able View , Access/Edit, Delete, and Deactivate Client Account
+          - Edit Password and Email Link of Employee or Admin Account
+          - Able to Log Training Activity Forms
+          - Able to Log Grant Forms
+          - Able to View, Search , and Filter Grant Information
+          - Able to Edit and Delete Grant Information
+     - Here are some examples of the screenshots of test results and their descriptions:
+     * Participation:
+     + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
+    ![My Image](/image/survey1.jpg)
+    ![My Image](/image/survey2.jpg)
+    ![My Image](/image/survey3.jpg)
+    ![My Image](/image/testcaseSurvey.jpg)
+    + Account Creation: This screenshot shows the result of a test case for participants who are able to create an account after completing the survey and receive an account activation code through email. They are then able to click on the link to activate their account. The screenshot confirms whether this process is successful or not
+    ![My Image](/image/accountcreation1.jpg)
+    ![My Image](/image/accountcreation2.jpg)
+    ![My Image](/image/accountcreation3.jpg)
+    + Upload File: This screenshot shows the result of a test case where we tested whether participants are able to successfully upload and download files. The test confirms whether this functionality is working properly or not.
+     ![My Image](/image/uploadfile1.jpg)
+    ![My Image](/image/uploadfile2.jpg)
+    * Employee
+     + Training Activity Form: This screenshot shows the result of a test case for an employee's ability to fill out the training report form for a client whom they coach. It confirms whether the submission of the training report form is successful or not.
+     ![My Image](/image/trainingreport1.jpg)
+     ![My Image](/image/trainingreport2.jpg)
+     ![My Image](/image/trainingreport3.jpg)
+    * Admin
+    + Search for Specific Employee Records: This screenshot shows the result of a test case for searching specific employee records. It confirms whether we are able to successfully perform a search or not.
+    ![My Image](/image/adminsearchemployee1.jpg)
+    ![My Image](/image/adminsearchemployee2.jpg)
+    + Logging Grant Forms: This screenshot shows the result of a test case that verifies whether we are able to successfully fill out and submit a grant form.
+    ![My Image](/image/grantreport1.jpg)
+    ![My Image](/image/grantreport2.jpg)
+    ![My Image](/image/grantreport3.jpg)
+    ![My Image](/image/grantreport4.jpg)
+    ![My Image](/image/grantreport5.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
 ## System Diagram
 ### Participation
 ![My Image](/image/participationSystemDagram.jpg)
