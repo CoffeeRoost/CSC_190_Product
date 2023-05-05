@@ -154,6 +154,128 @@ This program will provide a set system that stores information in a MySQl databa
    20. Click on the instance ID for detail information about instance 
 ![Step 20 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/a96630a0-2e29-4166-844a-15f361c738f1/f79056cc-770f-4057-8a75-646a0e264d99.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
 
+* Amazon Relational Database Service (RDS)
+   1. [Go to aws.amazon.com and Login ](https://aws.amazon.com)
+
+
+   2. Click on RDS
+![Step 2 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/5764635e-a280-48c5-8d0a-5b9d4fde203a/7736b63e-d07c-45ee-885c-bea55a0571ca.png?crop=focalpoint&fit=crop&fp-x=0.1555&fp-y=0.1744&fp-z=3.1245&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=553&mark-y=327&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01OSZoPTQ0JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
+
+
+   3. Click on Databases
+![Step 3 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/67c6980f-ad5f-43f1-a0ad-72bd1ddf18ee/ef327a1b-5b38-4bbb-aa96-177db278e260.png?crop=focalpoint&fit=crop&fp-x=0.0291&fp-y=0.1247&fp-z=2.9941&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=43&mark-y=239&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0xMjImaD00MiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   4. Click on Create database
+![Step 4 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/73c524ab-05c0-4642-adca-ceb974caa439/fcf50f59-4daf-4a5a-9315-a7d577ed4151.png?crop=focalpoint&fit=crop&fp-x=0.9369&fp-y=0.1949&fp-z=3.0113&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=838&mark-y=315&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0yNjcmaD02NyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   5. Choosing Standard create
+![Step 5 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/b89b69b4-018b-4eac-a8be-3235aab84f24/aff6ef6d-407d-4f15-8e4d-6ee9b93dbfc5.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.2831&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=256&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD0xMDUmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   6. On the Engine Option
+![Step 6 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/81873226-4829-4250-bc17-fdf7cabf8097/aa29ad41-4e53-425c-b926-f2bedf4f2c1d.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.6155&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=142&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD00MTImZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   7. Select "MySQL"
+![Step 7 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/4ded8711-804f-4480-b66a-2c85ca57f091/27997285-f14c-484d-8e60-0bb6da821ad8.png?crop=focalpoint&fit=crop&fp-x=0.2872&fp-y=0.4539&fp-z=3.1482&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=581&mark-y=329&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0zOSZoPTM5JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
+
+
+   8. Click on MySQL 8.0.32
+![Step 8 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/2d0e8676-9d19-45fb-a078-91949d170890/a53c1164-4441-4f33-a96f-35d77e8dfc8a.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.6969&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=349&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD0zNSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   9. On the templates
+![Step 9 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/4ad1ea37-106d-4661-9a95-75490f724a19/5970d50f-dc88-4ae0-9212-5663624e0886.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.5253&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=282&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD0xMzMmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+   10. Select "FreeTierTemplate"
+![Step 10 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/01129acd-8b28-4710-b02e-ffb838c12cb6/2f27c2fd-bd7b-4893-8296-1d30fbfb9af8.png?crop=focalpoint&fit=crop&fp-x=0.2872&fp-y=0.4916&fp-z=3.1482&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=581&mark-y=329&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0zOSZoPTM5JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
+
+
+   11. Type name of DB instance
+![Step 11 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/68ff6dec-102d-4467-b065-649c658145f9/ddf42d97-bffc-41fc-a2e3-70565648d091.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5694&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=328&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   12. Type Master username
+![Step 12 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/2574f181-5e08-4fc2-8de6-627158aa1239/170c38de-1a6f-4439-8b2b-626b09c5a6fe.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5878&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=328&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   13. Create password by typing your password or auto-generation 
+![Step 13 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/2e9c7ea0-76e5-4f17-8f16-24d4c9a67ee9/75cc90eb-ca89-4548-bafb-be6b0a625f4b.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5204&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=328&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   14. Choose the type of instance
+![Step 14 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/85e7d619-f406-4030-b47a-42d8b1336013/b584b792-71c8-426f-857f-a6bfb4515f11.png?crop=focalpoint&fit=crop&fp-x=0.1711&fp-y=0.5525&fp-z=1.8090&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=97&mark-y=320&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NDkmaD01NyZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   15. Configuration the storage
+![Step 15 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/b74e98fb-5103-4cbd-bd79-922702ae244a/32a9e804-223e-4d5d-9d48-ba1a78d32095.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.6319&fp-z=1.5208&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=65&mark-y=157&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02NTMmaD0zODImZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   16. Select "add-ec2-compute-resource"
+![Step 16 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/ec2ad27e-e810-4fd8-ac4c-966df045e8d9/83f58efe-2083-4bb7-a60c-747e1a0d2005.png?crop=focalpoint&fit=crop&fp-x=0.2300&fp-y=0.2542&fp-z=3.1482&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=581&mark-y=329&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0zOSZoPTM5JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
+
+
+   17. Click on Public accessInfo
+![Step 17 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/8b552937-dd77-496a-be05-c7904757cc7b/9257cc54-0206-4fa5-b016-01ce0717d32a.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.2630&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=226&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD0xMjImZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   18. Choosing the PVC security group
+![Step 18 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/24a5e5de-ac10-47a7-a8c9-20282e3686fe/cc618b92-a270-4e0a-93d4-88bbe3079043.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.3793&fp-z=1.5427&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=74&mark-y=285&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02NDUmaD0xMjYmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   19. Click on Password authentication…
+![Step 19 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/e320a562-a92d-4a26-8805-cf1516ca03fb/4772f3bb-1004-47bb-b4f3-0e372cca92c1.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.4667&fp-z=1.5651&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=84&mark-y=268&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02MzcmaD0xNjEmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   20. Review the information if using free tier
+![Step 20 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/c76142c4-06ec-438b-8375-9b247a5fa607/7431e1ed-55f2-445f-8ee6-9f5146a905e1.png?crop=focalpoint&fit=crop&fp-x=0.2142&fp-y=0.7265&fp-z=1.5208&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=65&mark-y=302&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz02NTMmaD0yMTEmZml0PWNyb3AmY29ybmVyLXJhZGl1cz0xMA%3D%3D)
+
+
+   21. Click on Create database
+![Step 21 screenshot](https://images.tango.us/workflows/d2f08431-bcc7-41eb-87d3-e352db14d51e/steps/22ead2f3-df17-4505-9a65-e47c36c92fcb/01fe21dd-6f9f-49c9-9852-758dbf003a3a.png?crop=focalpoint&fit=crop&fp-x=0.3559&fp-y=0.9318&fp-z=2.6736&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=481&mark-y=540&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0yMzcmaD02MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+* Amazon Simple Email Service (SES)
+   More info: https://aws.amazon.com/ses/developer-resources/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+
+* Install server on EC2
+   1. Open your terminal or SSH client.
+   2. Locate the private key (.pem) file that corresponds to the public key you specified when you launched the instance.
+   3. Change the file permissions of your private key file to 400, so that only the owner has read and write permissions
+
+      ```chmod 400 /path/to/your/private/key.pem```
+
+   4. Connect to your instance using SSH. Replace the example IP address with the IP address of your EC2 instance. Use the following command
+
+      ```ssh -i /path/to/your/private/key.pem ec2-user@<EC2-instance-public-IP>```
+
+      b. Note: The username might be different based on the operating system of your EC2 instance. For Amazon Linux 2, use "ec2-user". For 
+   5. Install the Apache web server by running the following command:
+
+      ```sudo yum install httpd -y```
+
+   6. Start the Apache service by running the following command:
+
+      ```sudo service httpd start```
+
+      b. Verify that the web server is running by opening a web browser and entering the public IP address or DNS name of your instance in the address bar. You should see the default Apache test page.
+   7. To ensure that Apache starts automatically when the instance is rebooted, run the following command
+
+      ```sudo chkconfig httpd on```
+
+* Host File into server
+   1. Copy file from local machine into server
+   2. Open your Power Shell or cmd in Windows or terminal in Linux/Mac
+   3. Navigate to the directory containing the file you want to copy.
+   4. Use the scp command to copy the file to the EC2 instance.
+     ```scp /path/to/local/file ec2-user@<IPaddress>:/var/www/html/```
+     Note server file in var/www/html
+
+   5. When prompted, enter the password for the EC2 instance.
+   6. If necessary, adjust the ownership or permissions of the copied file to allow the apache user to access it.
+
+
 * As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation.
 
 * Particularly, regarding the database, the current SQL for table creation is found in the database folder and is labeled CSC190_database_2.2. Use this file to base your database on. Several php pages require this exact format. To edit the database's name go into the includes folder and edit the dbh.inc file database settings appropriately.
