@@ -68,6 +68,8 @@ This program will provide a set system that stores information in a MySQl databa
 
 * Integrated Development Environment (IDE): The program was developed in Visual Studio, with XAMPP serving as the localhost display and database reference. Visual Studio Code provided access to PowerShell for testing purposes. Selenium IDE was employed as the automated testing tool.
 
+* Amazon Web Services (AWS) Stack: This program is hosted on AWS, utilizing both EC2 and RDS services. For the EC2 setup, the operating system employed is Amazon Linux, with the instance type being t2.micro and an allocated storage capacity of 8GB. The selected region is us-west-1 (Northern California). As for RDS, MySQL Community 8.0.28 serves as the chosen engine option, running on Amazon Linux. The database instance class is a Burstable class db.t2.micro, featuring general-purpose SSD storage (gp2). The region for RDS is also us-west-1 (Northern California). Additionally, Amazon Simple Email Service (SES) is used for handling email functionality.
+
 ##### Figure: Initial Webpage
 
 ![image](https://user-images.githubusercontent.com/79181285/204054772-0e3ea5e5-16d0-488b-a6b8-fe15314f3604.png)
