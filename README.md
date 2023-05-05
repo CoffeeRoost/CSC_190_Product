@@ -300,51 +300,54 @@ This program will provide a set system that stores information in a MySQl databa
 * All files located in the oldFiles folder may be removed and are recommended to be removed for security reasons (before deployment this folder will be removed along with all of its contents). This also applies to all old database files not pertaining to the current database version.
 
 ## Testing: Important Features to Consider
-  1. To ensure that important features are thoroughly tested, we use PHPUnit for unit tests, integration tests, and functional tests of PHP code, as well as Selenium for automated testing of web application functionality.
-  - First, we need to set up test enviroment PHPUnit
-      A. Set up a test environment for PHPUnit testing on Windows, following these steps
-       1. Istall PHP:
-        a. First you need to instal PHP if you don't have. If you  have PHP install already, ignore this step
-        b. You can download the the latest version of PHP for Windows from the offical PHP website at https://windows.php.net/download/. Choose the version that matches your system architecture.
-          (1). After downloading the PHP zip file, extract it to a directory on your computer.
-          (2).Add the path to the PHP executable to your system’s PATH environment variable. This will allows you to run the ‘php’ command from anywhere in the command prompt.
-       2. Install Composer:
-        a.Composer is a dependency manager for PHP.
-        b.You can download the latest version of Composer for Windows from the official Composer website at https://getcomposer.org/download/.
-          (1).After downloading the Composer setup file, run it and follow the prompts to install Composer.
-       3. Install PHPUnit: PHPUnit is a PHP testing framework, and you can install it using Composer
-       4. Create a test file
-         a. Create a test directory
-         b. Write you tests
-       5. Run tests by running this commnad line: ./vendor/bin/phpunit
-      B.Setting up PHPUnit testing on a Mac is similar to that on Windows. You can use Homebrew to install PHP and Composer.
-    - Second, we need to set up test environment for Selenium
-      1. Here is a link on how to set up Selenium for automated testing of web applications:
-         https://www.selenium.dev/selenium-ide/
+  ### To ensure that important features are thoroughly tested, we use PHPUnit for unit tests, integration tests, and functional tests of PHP code, as well as Selenium for automated testing of web application functionality.
+  1. The instructions for setting up a test environment for PHPUnit testing on Windows are:
+  * Install PHP:
+      a. If you don't already have PHP installed, download the latest version of PHP for Windows from the official PHP website at https://windows.php.net/download/. Choose the version that matches your system architecture.
+      b. After downloading the PHP zip file, extract it to a directory on your computer.
+      c. Add the path to the PHP executable to your system’s PATH environment variable. This will allow you to run the ‘php’ command from anywhere in the command prompt.
 
-    1. After setting up the testing environment:
-    - We have written test cases for important database functions and performed PHP Unit tests on them. These tests were run on the command line and the results were output on the terminal window. The important functions we created tests for include:
+  * Install Composer:
+      a. Composer is a dependency manager for PHP.
+      b. Download the latest version of Composer for Windows from the official Composer website at https://getcomposer.org/download/.
+      c. After downloading the Composer setup file, run it and follow the prompts to install Composer.
 
-      * Connection to the database
-      * Insert statements
-      * Select statements
-      * Update statements
-      * Delete statements.
-    - Here are some examples of the screenshots of test results and their descriptions:
-      * Database Connection Test Result: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
-       ![My Image](/image/connectDatabase.jpg.jpg)
-      * Insert Statement Test Result: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
+  * Install PHPUnit:
+      PHPUnit is a PHP testing framework, and you can install it using Composer.
+
+  * Create a test file:
+      a. Create a test directory.
+      b. Write your tests.
+
+  * Run tests by running this command line: ./vendor/bin/phpunit
+
+  2. Setting up PHPUnit testing on a Mac is similar to that on Windows. You can use Homebrew to install PHP and Composer.
+
+  3. For setting up a test environment for Selenium, you can refer to the following link for instructions on how to set up Selenium for automated testing of web applications: https://www.selenium.dev/selenium-ide/
+
+  #### After setting up the testing environment:
+    ##### We have written test cases for important database functions and performed PHP Unit tests on them. These tests were run on the command line and the results were output on the terminal window. The important functions we created tests for include:
+
+     * **Connection to the database**
+     * **Insert statements**
+     * **Select statements**
+     * **Update statements**
+     * **Delete statements**
+  ###### Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
+      * **Database Connection Test Result**: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
+       ![My Image](/image/connectDatabase.jpg)
+      * **Insert Statement Test Result**: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
       ![My Image](/image/insert.jpg)
       ![My Image](/image/insertDatabase.jpg)
 
-      * Select Statement Test Result: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
+      * **Select Statement Test Result**: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
       ![My Image](/image/select.jpg)
 
 
-    2.  We perform Selenium tests on the entire system of our web application. To create the test cases, we first create a test project and enter our website link into the Selenium extension. Then, we write down each test case one by one and execute them. We open our webpage and click on the record button to allow Selenium to record our steps. Afterwards, we run the test cases and take a screenshot of the pass/fail result. At the same time, we also perform visualization tests for the frontend. The results can be seen in the screenshot below.
+    ##### We perform Selenium tests on the entire system of our web application. To create the test cases, we first create a test project and enter our website link into the Selenium extension. Then, we write down each test case one by one and execute them. We open our webpage and click on the record button to allow Selenium to record our steps. Afterwards, we run the test cases and take a screenshot of the pass/fail result. At the same time, we also perform visualization tests for the frontend. The results can be seen in the screenshot below.
 
-    - Here are the important features that we tested:
-    * Participation:
+    ###### Here are the important features that we tested:
+    * **Participation**:
       + Survey Intake Form for First-Time User
         - Able  to Fill Out Survey
       + Account Creation
@@ -363,7 +366,7 @@ This program will provide a set system that stores information in a MySQl databa
         - Able to View Support Services
         - Able to Navigate and Interact with Different Tabs and Button
 
-      * Employee
+      * **Employee**:
         + Login Page
           - Able to Login Using Email and Password
           - Display Error Messages if Login Fails
@@ -374,7 +377,7 @@ This program will provide a set system that stores information in a MySQl databa
           - Able View Client Accounts
           - Able to Log Training Activity Forms
           - Able to Search for Client Records with Report Display
-      * Admin
+      * **Admin**:
         + Login Page
           - Able to Login using Email and Password
           - Display Error Messages if Login Fails
@@ -392,8 +395,8 @@ This program will provide a set system that stores information in a MySQl databa
           - Able to Log Grant Forms
           - Able to View, Search , and Filter Grant Information
           - Able to Edit and Delete Grant Information
-     - Here are some examples of the screenshots of test results and their descriptions:
-     * Participation:
+     ###### Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
+     * **Participation**:
      + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
     ![My Image](/image/survey1.jpg)
     ![My Image](/image/survey2.jpg)
@@ -406,12 +409,12 @@ This program will provide a set system that stores information in a MySQl databa
     + Upload File: This screenshot shows the result of a test case where we tested whether participants are able to successfully upload and download files. The test confirms whether this functionality is working properly or not.
      ![My Image](/image/uploadfile1.jpg)
     ![My Image](/image/uploadfile2.jpg)
-    * Employee
+    * **Employee**:
      + Training Activity Form: This screenshot shows the result of a test case for an employee's ability to fill out the training report form for a client whom they coach. It confirms whether the submission of the training report form is successful or not.
      ![My Image](/image/trainingreport1.jpg)
      ![My Image](/image/trainingreport2.jpg)
      ![My Image](/image/trainingreport3.jpg)
-    * Admin
+    * **Admin**:
     + Search for Specific Employee Records: This screenshot shows the result of a test case for searching specific employee records. It confirms whether we are able to successfully perform a search or not.
     ![My Image](/image/adminsearchemployee1.jpg)
     ![My Image](/image/adminsearchemployee2.jpg)
