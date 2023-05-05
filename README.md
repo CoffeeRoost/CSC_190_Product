@@ -74,97 +74,85 @@ This program will provide a set system that stores information in a MySQl databa
 
 * As seen in story CN-118 File Organization, the github was reorganized to format the pages in an accessible way from the Xampp application. Header, form, href lines were rewritten accordingly. As such, if these folders are inserted into a given hosting site in any other format/organization, these line of code will break to 404 pages. It is required that the file organization remains as it is presented in the github.
 
-Deployment on AWS
+* Deployment on AWS
 (AWS Account is Required)
-  1.  Go to AWS Management Console
-
-    a.Find services: route53 (Establish Domain Service)
-      i.Register or Transfer already existing domain (Google, GoDaddy, etc)
-      ii.Assuming Registration:  type in your wanted name and choose suffix (.com, .org, yearly price)
-        1.Note: Your choice might already be taken
-      iii.Add to Cart
-      iv.Fill out necessary Information
-        1.Privacy Protection: check Enable
-        2.Go to Domains that you can register with Amazon Route 53 - Amazon Route 53 for more information
-      v.Look over post-information (orders are suggested to be taken in advanced)
-      vi.Return to AWS Management Console
-    b.Find services: Lightsail (Creating a Lightsail Instance to host your website)
-      i.Create Instance
-        1.Select Region (recommend: closest to you or majority of traffic)
-        2.Pick platform Linux/Unix
-        3.Recommended blueprint: WordPress
-        4.Instance Plan (Related to Computer hosting)
-          a.Price (USD) Monthly
-          b.Memory
-          c.Processing (vCPU)
-          d.Storage (SSD)
-          e.Transfer
-        5.Identify your Instance (varies on account uses)
-        6.Create Instance
-          a.May take a few moments to start it up
-          b.Note this will not appear in EC2 instances (What is in Lightsail stays in Lightsail)
-      ii.Click on Orange Button on Instance Tab (Logging into your instance wordpress credentials)
-        1.Will be brought to a terminal
-          a.Command: cat $HOME/bitnami_application_password
-          b.Returns password for wordpress instance
-          c.Close
-        2.Return to Instance Tab and copy paste given IP address
-          a.Paste in tab
-            i.IP_ADDRESS/wp-admin
-            ii.Username: user
-            iii.Password: previously gotten password from terminal
-          b.While in account, go to users
-            i.Change Password
-      iii.Return to Lightsail page (Creating a static IP address)
-        1.Go to Networking
-          a.Create Static IP
-          b.Choose Location
-          c.Choose Instance (should match above)
-          d.Create Static IP (this IP is always the IP associated now)
-    c.Return to AWS Management Console (copy IP address) (Connecting static IP address to domain)
-      i.Find services: route53
-        1.Click on Hosted Zone
-        2.Click on previously made domain name
-          a.On Hosted zone details: Make sure Name servers match registered domains (under tab Domains)
-          b.Create record
-            i.Simple Routing -> Next
-            ii.Define simple record:
-              1.Leave Record name blank
-              2.Choose endpoint: IP address
-                a.Paste the IP address in
-              3.Leave as A
-              4.Choose TTL
-              5.Define simple Record
-            iii.Create Record
-          c.Connection Established time varies
-          d.Create another record on same Hosted Zone
-            i.Simple Routing
-            ii.Define simple record:
-              1.Insert www into Record name
-              2.Choose endpoint: IP address
-                a.Paste the IP address in
-              3.Leave as A
-              4.Choose TTL
-              5.Define simple Record
-            iii.Create Record
-          e.Connection Established time varies
-    d.Return to Lightsail page (establishing a DNS zone)
-      i.Go to Networking
-        1.Create DNS zone
-          a.Enter your domain name into the section
-          b.Create DNS zone
-        2.Receive server names and return to route53 to enter into settings (unclear: will need to go through demo)
-    e.Go to wordpress login and login (establishing WP Mail SMTP)
-      i.Click Pluggins and go to Installed pluggins
-      ii.Click update now on WP Mail SMTP for latest version
-      iii.Launch Setup Wizard (on pluggins settings page)
-        1.Pick appropriate mailer for the website (AWS SES is an option
-        2.Depending on mailer choice configurations will vary
-        3.Closing the Wizard will automatically send a test email
-      iv.Make sure to add DNS records from mailer to route53 records
+ * Amazon Elastic Compute (EC2)
+     
+   1. [Go to aws.amazon.com and Login ](https://aws.amazon.com)
+   2. Click on EC2
+![Step 2 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/bcba5c46-2903-4564-8423-b0fffb8021d8/81340f5a-59bf-42cf-9da7-d82baa022811.png?crop=focalpoint&fit=crop&fp-x=0.1550&fp-y=0.1668&fp-z=3.1331&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=555&mark-y=342&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NiZoPTQ0JmZpdD1jcm9wJmNvcm5lci1yYWRpdXM9MTA%3D)
 
 
-## Developer Instructions
+   3. Click on EC2 Dashboard
+![Step 3 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/bf4f2215-aee0-477a-b996-e98c1eb33d91/84742efc-11c1-4a25-a6f3-0fbd973fe5f5.png?crop=focalpoint&fit=crop&fp-x=0.0372&fp-y=0.0993&fp-z=2.8701&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=45&mark-y=188&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0xNjcmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   4. Click on Instances
+![Step 4 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/b3297a3e-88ef-4173-bdd2-5a50369b0d2e/c6a29ba3-3db9-43dc-8d88-9cd05693c6fa.png?crop=focalpoint&fit=crop&fp-x=0.0286&fp-y=0.2243&fp-z=3.0194&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=47&mark-y=343&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0xMTMmaD00MiZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   5. Click on Launch instances
+![Step 5 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/77a8d6ac-00e8-4ac2-b082-69625e786bb8/a84ab4db-5e8c-4c14-b908-bc148488c0dd.png?crop=focalpoint&fit=crop&fp-x=0.8184&fp-y=0.0184&fp-z=3.0524&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=458&mark-y=10&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz0yODMmaD02MSZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   6. Type "Name of instance"
+![Step 6 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/72265c88-0fae-46aa-9047-0c40577f6535/03dd3b02-6690-47b3-8e41-dd9f6cebb9d4.png?crop=focalpoint&fit=crop&fp-x=0.1767&fp-y=0.2730&fp-z=1.7909&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n&mark-x=102&mark-y=336&m64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL2JsYW5rLnBuZz9tYXNrPWNvcm5lcnMmYm9yZGVyPTglMkNGRjc0NDImdz01NTUmaD00MCZmaXQ9Y3JvcCZjb3JuZXItcmFkaXVzPTEw)
+
+
+   7. Click on Amazon Linux
+![Step 7 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/5ebc9704-c993-4ad8-8b38-c5bdd104f9b0/7c391177-27df-430c-b47d-b2d2d75923f3.png?crop=focalpoint&fit=crop&fp-x=0.5000&fp-y=0.5000&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   8. Click on t2.micro as free tier
+![Step 8 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/2af072dd-8b64-4475-bc85-86dbc9151790/e140af09-2b7b-4006-851d-09afb3c5a195.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   9. Create key pair to using SSH from terminal
+![Step 9 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/c1af647d-1e22-4294-830e-62bfc95b9972/9cfdb85f-960e-4865-9e76-e6845fc254d6.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   10. Click on Create new key pair
+![Step 10 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/60752d01-e4e1-470f-b2c9-de652f7750e3/a5812310-5b7b-48dc-aab1-cb2a9b233035.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   11. Type "name_of_key_pair"
+![Step 11 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/b8aa362e-1fd6-475a-9e6e-299a6027f474/fb334cb3-ebf8-472c-b822-9fd4dde61cb6.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   12. Choose RSA type for key pair
+![Step 12 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/571767c9-fad9-4f77-bc8e-a7e2ac71418b/95ad0796-1375-4c14-a1dc-26f82da1afc3.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   13. Choose .pem when using OpenSSH or .ppk when using PuTTY
+![Step 13 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/1fdb589d-491f-4a35-8877-4c96c4e8ea5f/97fdeb00-02a5-4f0b-acb2-01cf5a60ed40.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   14. Click on Create key pair
+![Step 14 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/a3f5faf3-7576-4d58-a507-b2f138069460/133f4948-324e-488c-aeec-054970f0b416.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   15. Configuration Network
+![Step 15 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/4869fa2d-9334-4d51-a43a-66ace39fd701/731c5aa8-19ad-4591-ae83-45d0498acc7f.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   16. Configuration storage Information
+![Step 16 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/558471e5-22d1-49aa-9743-c84f34c4787d/5b880736-eb44-4375-96bf-eaeb90c9a473.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   17. Click on Advanced details Info and configure depend on client setting
+![Step 17 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/d8f1d94a-956c-42c5-be94-7e5f079bfdb4/22edf227-281e-43fc-a463-c3854510a759.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   18. Click on Launch instance
+![Step 18 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/c934729e-0b0c-4d6c-aae4-7872c164f629/02a56fd3-5a88-4717-9d46-2ff7f3452793.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   19. Click on Instances
+![Step 19 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/21fb1553-3e9f-4e7e-a696-4462ac832be7/a73e39e8-411b-4d7d-a1ac-8226bcd1b85f.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
+
+
+   20. Click on the instance ID for detail information about instance 
+![Step 20 screenshot](https://images.tango.us/workflows/815afb00-fb9d-4ffe-ab74-43d3ad1d06c4/steps/a96630a0-2e29-4166-844a-15f361c738f1/f79056cc-770f-4057-8a75-646a0e264d99.png?crop=focalpoint&fit=crop&w=1200&border=2%2CF4F2F7&border-radius=8%2C8%2C8%2C8&border-radius-inner=8%2C8%2C8%2C8&blend-align=bottom&blend-mode=normal&blend-x=0&blend-w=1200&blend64=aHR0cHM6Ly9pbWFnZXMudGFuZ28udXMvc3RhdGljL21hZGUtd2l0aC10YW5nby13YXRlcm1hcmstdjIucG5n)
 
 * As a LAMP stack website, this project is set up in such a way where these aspects are intergral to the project and require availability and installation.
 
