@@ -328,21 +328,21 @@ This program will provide a set system that stores information in a MySQl databa
 ### After setting up the testing environment:
  - We have written test cases for important database functions and performed PHP Unit tests on them. These tests were run on the command line and the results were output on the terminal window. The important functions we created tests for include:
 
-     **Connection to the database**
-     **Insert statements**
-     **Select statements**
-     **Update statements**
-     **Delete statements**
+     * **Connection to the database**
+     * **Insert statements**
+     * **Select statements**
+     * **Update statements**
+     * **Delete statements**
 - Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
-      **Database Connection Test Result**: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
+      + Database Connection Test Result: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
 
        ![My Image](/image/connectDatabase.jpg)
 
-      **Insert Statement Test Result**: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
+      + Insert Statement Test Result: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
       ![My Image](/image/insert.jpg)
       ![My Image](/image/insertDatabase.jpg)
 
-      **Select Statement Test Result**: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
+      + Select Statement Test Result: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
       ![My Image](/image/select.jpg)
 
 
@@ -368,7 +368,7 @@ This program will provide a set system that stores information in a MySQl databa
         - Able to View Support Services
         - Able to Navigate and Interact with Different Tabs and Button
 
-      * **Employee**:
+    * **Employee**:
         + Login Page
           - Able to Login Using Email and Password
           - Display Error Messages if Login Fails
@@ -379,7 +379,7 @@ This program will provide a set system that stores information in a MySQl databa
           - Able View Client Accounts
           - Able to Log Training Activity Forms
           - Able to Search for Client Records with Report Display
-      * **Admin**:
+    * **Admin**:
         + Login Page
           - Able to Login using Email and Password
           - Display Error Messages if Login Fails
