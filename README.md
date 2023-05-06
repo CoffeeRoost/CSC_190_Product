@@ -398,36 +398,37 @@ This program will provide a set system that stores information in a MySQl databa
           - Able to Log Grant Forms
           - Able to View, Search , and Filter Grant Information
           - Able to Edit and Delete Grant Information
+
   -  Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
 
-     * **Participation**:
-     + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
-    ![My Image](/image/survey1.jpg)
-    ![My Image](/image/survey2.jpg)
-    ![My Image](/image/survey3.jpg)
-    ![My Image](/image/testcaseSurvey.jpg)
-    + Account Creation: This screenshot shows the result of a test case for participants who are able to create an account after completing the survey and receive an account activation code through email. They are then able to click on the link to activate their account. The screenshot confirms whether this process is successful or not
-    ![My Image](/image/accountcreation1.jpg)
-    ![My Image](/image/accountcreation2.jpg)
-    ![My Image](/image/accountcreation3.jpg)
-    + Upload File: This screenshot shows the result of a test case where we tested whether participants are able to successfully upload and download files. The test confirms whether this functionality is working properly or not.
-     ![My Image](/image/uploadfile1.jpg)
-    ![My Image](/image/uploadfile2.jpg)
+    * **Participation**:
+      + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
+        ![My Image](/image/survey1.jpg)
+        ![My Image](/image/survey2.jpg)
+        ![My Image](/image/survey3.jpg)
+        ![My Image](/image/testcaseSurvey.jpg)
+      + Account Creation: This screenshot shows the result of a test case for participants who are able to create an account after completing the survey and receive an account activation code through email. They are then able to click on the link to activate their account. The screenshot confirms whether this process is successful or not
+        ![My Image](/image/accountcreation1.jpg)
+        ![My Image](/image/accountcreation2.jpg)
+        ![My Image](/image/accountcreation3.jpg)
+      + Upload File: This screenshot shows the result of a test case where we tested whether participants are able to successfully upload and download files. The test confirms whether this functionality is working properly or not.
+        ![My Image](/image/uploadfile1.jpg)
+        ![My Image](/image/uploadfile2.jpg)
     * **Employee**:
-     + Training Activity Form: This screenshot shows the result of a test case for an employee's ability to fill out the training report form for a client whom they coach. It confirms whether the submission of the training report form is successful or not.
-     ![My Image](/image/trainingreport1.jpg)
-     ![My Image](/image/trainingreport2.jpg)
-     ![My Image](/image/trainingreport3.jpg)
+      + Training Activity Form: This screenshot shows the result of a test case for an employee's ability to fill out the training report form for a client whom they coach. It confirms whether the submission of the training report form is successful or not.
+        ![My Image](/image/trainingreport1.jpg)
+        ![My Image](/image/trainingreport2.jpg)
+        ![My Image](/image/trainingreport3.jpg)
     * **Admin**:
-    + Search for Specific Employee Records: This screenshot shows the result of a test case for searching specific employee records. It confirms whether we are able to successfully perform a search or not.
-    ![My Image](/image/adminsearchemployee1.jpg)
-    ![My Image](/image/adminsearchemployee2.jpg)
-    + Logging Grant Forms: This screenshot shows the result of a test case that verifies whether we are able to successfully fill out and submit a grant form.
-    ![My Image](/image/grantreport1.jpg)
-    ![My Image](/image/grantreport2.jpg)
-    ![My Image](/image/grantreport3.jpg)
-    ![My Image](/image/grantreport4.jpg)
-    ![My Image](/image/grantreport5.jpg)
+      + Search for Specific Employee Records: This screenshot shows the result of a test case for searching specific employee records. It confirms whether we are able to successfully perform a search or not.
+        ![My Image](/image/adminsearchemployee1.jpg)
+        ![My Image](/image/adminsearchemployee2.jpg)
+      + Logging Grant Forms: This screenshot shows the result of a test case that verifies whether we are able to successfully fill out and submit a grant form.
+        ![My Image](/image/grantreport1.jpg)
+        ![My Image](/image/grantreport2.jpg)
+        ![My Image](/image/grantreport3.jpg)
+        ![My Image](/image/grantreport4.jpg)
+        ![My Image](/image/grantreport5.jpg)
 
 
 
