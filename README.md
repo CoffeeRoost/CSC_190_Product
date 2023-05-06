@@ -399,10 +399,9 @@ This program will provide a set system that stores information in a MySQl databa
           - Able to View, Search , and Filter Grant Information
           - Able to Edit and Delete Grant Information
 
-  -  Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
+  - Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
 
-    * Participation:
-
+    - **Participation**:
       + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
         ![My Image](/image/survey1.jpg)
         ![My Image](/image/survey2.jpg)
@@ -415,16 +414,12 @@ This program will provide a set system that stores information in a MySQl databa
       + Upload File: This screenshot shows the result of a test case where we tested whether participants are able to successfully upload and download files. The test confirms whether this functionality is working properly or not.
         ![My Image](/image/uploadfile1.jpg)
         ![My Image](/image/uploadfile2.jpg)
-
-    * Employee:
-
+    - **Employee**:
       + Training Activity Form: This screenshot shows the result of a test case for an employee's ability to fill out the training report form for a client whom they coach. It confirms whether the submission of the training report form is successful or not.
         ![My Image](/image/trainingreport1.jpg)
         ![My Image](/image/trainingreport2.jpg)
         ![My Image](/image/trainingreport3.jpg)
-
-    * Admin:
-
+    - **Admin**:
       + Search for Specific Employee Records: This screenshot shows the result of a test case for searching specific employee records. It confirms whether we are able to successfully perform a search or not.
         ![My Image](/image/adminsearchemployee1.jpg)
         ![My Image](/image/adminsearchemployee2.jpg)
