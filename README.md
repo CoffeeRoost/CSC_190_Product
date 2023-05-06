@@ -333,22 +333,23 @@ This program will provide a set system that stores information in a MySQl databa
      * **Select statements**
      * **Update statements**
      * **Delete statements**
-- Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
-      + Database Connection Test Result: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
+  - Here are some examples of important database function test cases, along with the screenshots of their test results and descriptions. Other important features will be tested similarly.
 
-       ![My Image](/image/connectDatabase.jpg)
+    + Database Connection Test Result: This screenshot shows the result of a test case for the database connection function. It confirms whether the database connection is successful or not.
 
-      + Insert Statement Test Result: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
+      ![My Image](/image/connectDatabase.jpg)
+
+    + Insert Statement Test Result: This screenshot shows the result of a test case for the insert statement function. It confirms whether the data is successfully inserted into the database or not.
       ![My Image](/image/insert.jpg)
       ![My Image](/image/insertDatabase.jpg)
 
-      + Select Statement Test Result: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
+    + Select Statement Test Result: This screenshot shows the result of a test case for the select statement function. It confirms whether the correct data is retrieved from the database or not.
       ![My Image](/image/select.jpg)
 
 
-- We perform Selenium tests on the entire system of our web application. To create the test cases, we first create a test project and enter our website link into the Selenium extension. Then, we write down each test case one by one and execute them. We open our webpage and click on the record button to allow Selenium to record our steps. Afterwards, we run the test cases and take a screenshot of the pass/fail result. At the same time, we also perform visualization tests for the frontend. The results can be seen in the screenshot below.
+  - We perform Selenium tests on the entire system of our web application. To create the test cases, we first create a test project and enter our website link into the Selenium extension. Then, we write down each test case one by one and execute them. We open our webpage and click on the record button to allow Selenium to record our steps. Afterwards, we run the test cases and take a screenshot of the pass/fail result. At the same time, we also perform visualization tests for the frontend. The results can be seen in the screenshot below.
 
-- Here are the important features that we tested:
+  - Here are the important features that we tested:
     * **Participation**:
       + Survey Intake Form for First-Time User
         - Able  to Fill Out Survey
@@ -397,7 +398,7 @@ This program will provide a set system that stores information in a MySQl databa
           - Able to Log Grant Forms
           - Able to View, Search , and Filter Grant Information
           - Able to Edit and Delete Grant Information
--  Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
+  -  Here are some examples of the screenshots of test results and their descriptions of some important features that we listed above. Other important features will be tested similarly.
 
      * **Participation**:
      + Survey Intake Form for First-Time User: This screenshot shows the result of a test case for a new user able to fill out the survey intake form. It confirms whether the form submission is successful or not.
