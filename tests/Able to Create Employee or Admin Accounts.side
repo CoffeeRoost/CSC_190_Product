@@ -1,0 +1,310 @@
+{
+  "id": "7b477b3d-ba14-4949-a935-01479490427a",
+  "version": "2.0",
+  "name": "Able to Create Employee or Admin Accounts",
+  "url": "",
+  "tests": [{
+    "id": "2c1db363-12c1-4b89-8795-404484331135",
+    "name": "Add Employee or Admin Account into System",
+    "commands": [{
+      "id": "df7add3c-cf73-47a0-a179-e69249b7a038",
+      "comment": "Click Login Admin Button",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "39766998-5cf8-46b7-b6ee-5f4305d36c46",
+      "comment": "Type in Admin Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "6a557409-e60c-49f2-a3fa-2d319aa3e6c0",
+      "comment": "Type in Admin Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "8d889d0a-9c62-46ff-94ca-41db53f26f4d",
+      "comment": "Click Login Admin Button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ecca924b-d5f6-4940-b45c-2485e4aa0884",
+      "comment": "Click Add Employee Button",
+      "command": "click",
+      "target": "linkText=Add Employee",
+      "targets": [
+        ["linkText=Add Employee", "linkText"],
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Add Employee')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'addingEmployee.php')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Add Employee')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e22e2742-0eb6-4b32-a1b7-4de78ab7362d",
+      "comment": "Type new Employee's First Name",
+      "command": "type",
+      "target": "id=empfname",
+      "targets": [
+        ["id=empfname", "id"],
+        ["name=empfname", "name"],
+        ["css=#empfname", "css:finder"],
+        ["xpath=//input[@id='empfname']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Steven"
+    }, {
+      "id": "0a24fe33-181f-4fb9-a22c-b8535e30885a",
+      "comment": "Type new Employee's Last Name",
+      "command": "type",
+      "target": "id=emplname",
+      "targets": [
+        ["id=emplname", "id"],
+        ["name=emplname", "name"],
+        ["css=#emplname", "css:finder"],
+        ["xpath=//input[@id='emplname']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "Steven"
+    }, {
+      "id": "77ac3c72-6931-43ce-ad36-7fa58fc6af40",
+      "comment": "Type new Employee's Date of Birth",
+      "command": "type",
+      "target": "id=empDOB",
+      "targets": [
+        ["id=empDOB", "id"],
+        ["name=empDOB", "name"],
+        ["css=#empDOB", "css:finder"],
+        ["xpath=//input[@id='empDOB']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "1998-06-10"
+    }, {
+      "id": "cb696dac-df59-4069-afbe-b2c333e0cfb7",
+      "comment": "Type new Employee's Street Address",
+      "command": "type",
+      "target": "id=empstreet",
+      "targets": [
+        ["id=empstreet", "id"],
+        ["name=empstreet", "name"],
+        ["css=#empstreet", "css:finder"],
+        ["xpath=//input[@id='empstreet']", "xpath:attributes"],
+        ["xpath=//input[5]", "xpath:position"]
+      ],
+      "value": "4838 Super st"
+    }, {
+      "id": "1d0a0571-9a59-461d-b501-63d450f91afb",
+      "comment": "Type new Employee's residing City",
+      "command": "type",
+      "target": "id=empCity",
+      "targets": [
+        ["id=empCity", "id"],
+        ["name=empCity", "name"],
+        ["css=#empCity", "css:finder"],
+        ["xpath=//input[@id='empCity']", "xpath:attributes"],
+        ["xpath=//input[6]", "xpath:position"]
+      ],
+      "value": "Sacramento"
+    }, {
+      "id": "75114d5c-0494-46b5-9bf2-0b1bd59f3a66",
+      "comment": "Type new Employee's residing County",
+      "command": "type",
+      "target": "id=empCounty",
+      "targets": [
+        ["id=empCounty", "id"],
+        ["name=empCounty", "name"],
+        ["css=#empCounty", "css:finder"],
+        ["xpath=//input[@id='empCounty']", "xpath:attributes"],
+        ["xpath=//input[7]", "xpath:position"]
+      ],
+      "value": "Sacramento"
+    }, {
+      "id": "b8fbd84f-f5ed-45a1-b0b5-6b92cc61a546",
+      "comment": "Select new Employee's residing State",
+      "command": "select",
+      "target": "id=empState",
+      "targets": [
+        ["id=empState", "id"],
+        ["name=empState", "name"],
+        ["css=#empState", "css:finder"],
+        ["xpath=//select[@id='empState']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "California"
+    }, {
+      "id": "2714b823-f014-4754-82b3-bd6e1e08c086",
+      "comment": "Type new Employee's Zip Code",
+      "command": "type",
+      "target": "id=empZipCode",
+      "targets": [
+        ["id=empZipCode", "id"],
+        ["name=empZipCode", "name"],
+        ["css=#empZipCode", "css:finder"],
+        ["xpath=//input[@id='empZipCode']", "xpath:attributes"],
+        ["xpath=//input[8]", "xpath:position"]
+      ],
+      "value": "95826"
+    }, {
+      "id": "db8673b2-e21a-4b6f-a464-1d476f6801f3",
+      "comment": "Type new Employee's Phone Number",
+      "command": "type",
+      "target": "id=empPhone",
+      "targets": [
+        ["id=empPhone", "id"],
+        ["name=empPhone", "name"],
+        ["css=#empPhone", "css:finder"],
+        ["xpath=//input[@id='empPhone']", "xpath:attributes"],
+        ["xpath=//input[9]", "xpath:position"]
+      ],
+      "value": "9169234430"
+    }, {
+      "id": "6104eb8f-2626-4745-9fa9-5921ff262411",
+      "comment": "Type new Employee's Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input[10]", "xpath:position"]
+      ],
+      "value": "stevensymansiv@csus.edu"
+    }, {
+      "id": "d964f1b1-108b-4126-b081-2d039b1dcfd9",
+      "comment": "Select new Employee's Gender",
+      "command": "select",
+      "target": "id=empGender",
+      "targets": [
+        ["id=empGender", "id"],
+        ["name=empGender", "name"],
+        ["css=#empGender", "css:finder"],
+        ["xpath=//select[@id='empGender']", "xpath:attributes"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": "Male"
+    }, {
+      "id": "0dae89cf-562d-4124-ab6e-261003952949",
+      "comment": "Select new Employee's Ethnicity",
+      "command": "select",
+      "target": "id=empEthnicity",
+      "targets": [
+        ["id=empEthnicity", "id"],
+        ["name=empEthnicity", "name"],
+        ["css=#empEthnicity", "css:finder"],
+        ["xpath=//select[@id='empEthnicity']", "xpath:attributes"],
+        ["xpath=//select[3]", "xpath:position"]
+      ],
+      "value": "White"
+    }, {
+      "id": "db28e970-d684-4ede-b366-98f6726527fc",
+      "comment": "Select new Employee's Role",
+      "command": "select",
+      "target": "id=empRole",
+      "targets": [
+        ["id=empRole", "id"],
+        ["name=empRole", "name"],
+        ["css=#empRole", "css:finder"],
+        ["xpath=//select[@id='empRole']", "xpath:attributes"],
+        ["xpath=//select[4]", "xpath:position"]
+      ],
+      "value": "Developer"
+    }, {
+      "id": "5a3be46e-853a-4c42-9803-c89c68c8fb6b",
+      "comment": "Select new Employee's Program Association",
+      "command": "select",
+      "target": "id=programMember",
+      "targets": [
+        ["id=programMember", "id"],
+        ["name=programMember", "name"],
+        ["css=#programMember", "css:finder"],
+        ["xpath=//select[@id='programMember']", "xpath:attributes"],
+        ["xpath=//select[5]", "xpath:position"]
+      ],
+      "value": "Sac Job Corp"
+    }, {
+      "id": "6ba332db-4db3-436f-bc58-a592ff063041",
+      "comment": "Type new Employee's Password",
+      "command": "type",
+      "target": "id=userPassword",
+      "targets": [
+        ["id=userPassword", "id"],
+        ["name=userPassword", "name"],
+        ["css=#userPassword", "css:finder"],
+        ["xpath=//input[@id='userPassword']", "xpath:attributes"],
+        ["xpath=//input[11]", "xpath:position"]
+      ],
+      "value": "chicken191"
+    }, {
+      "id": "cae27021-d55b-4c62-a421-4db21d972440",
+      "comment": "Confirm new Employee's password",
+      "command": "type",
+      "target": "id=confirmPassword",
+      "targets": [
+        ["id=confirmPassword", "id"],
+        ["name=confirmPassword", "name"],
+        ["css=#confirmPassword", "css:finder"],
+        ["xpath=//input[@id='confirmPassword']", "xpath:attributes"],
+        ["xpath=//input[12]", "xpath:position"]
+      ],
+      "value": "chicken191"
+    }, {
+      "id": "0a3b7f14-175f-4a7d-80d1-56af4a64e969",
+      "comment": "Click on Submit Button",
+      "command": "click",
+      "target": "name=add-employee",
+      "targets": [
+        ["name=add-employee", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='add-employee']", "xpath:attributes"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f82d0b87-adf8-4a54-a130-6e8525c7ef70",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2c1db363-12c1-4b89-8795-404484331135"]
+  }],
+  "urls": [],
+  "plugins": []
+}

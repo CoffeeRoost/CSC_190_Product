@@ -10,7 +10,7 @@ class UpdateTest extends TestCase {
                 'IntegerTest' => '0',
                 'VarCharTestPK' => 'TestV',
                 'DateTest' => '2023-03-02',
-                'CharTest' => 'UpdatedC',
+                'CharTest' => '^date',
             ),
             // add more expected data rows here
         );
@@ -24,7 +24,7 @@ class UpdateTest extends TestCase {
         }
 
         $VarCharTestPK = "TestV";
-        $CharTest = "UpdatedC";
+        $CharTest = "^dated";
 
         $testSTMT = $conn->prepare("UPDATE TESTING SET CharTest=? WHERE VarCharTestPK=?;");
 		$testSTMT->bind_param("ss", $CharTest, $VarCharTestPK);

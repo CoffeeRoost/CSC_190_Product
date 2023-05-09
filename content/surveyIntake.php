@@ -34,7 +34,7 @@
                             <option value="La Familia">La Familia</option>
                             <option value="GS Urban League">GS Urban League</option>
                             <option value="Asian Resources">Asian Resources</option>
-                            <option value="Folsom Cordova">Folsom Cordova CP</option>
+                            <option value="Folsom Cordova CP">Folsom Cordova CP</option>
                             <option value="Lemon Hill">Lemon Hill</option>
                             <option value="Sac Job Corp">Sac Job Corp</option>
                             <option value="Public/Aura Planning">Public/Aura Planning</option>
@@ -331,7 +331,7 @@
                             <option value="" disabled selected hidden>Choose</option>
                             <option value="Citizen">Citizen of US or US Territory</option>
                             <option value="US Pernament Resident">US Permanent Resident</option>
-                            <option value="Alient/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
+                            <option value="Alien/Refugee Lawfully Admitted to the US">Alien/Refugee Lawfully Admitted to the US</option>
                             <option value="None Citizen">None of the above</option>
                         </select>
                     </div>
@@ -452,6 +452,8 @@
                         <label for="proficiency" class="form-label fs-5 m-2">
                             Do you have limited proficiency in speaking, writing, reading, or understanding English?
                             or Do you have difficulty in speaking, writing, reading, or understanding English?
+			    <span class="text-danger">*</span>
+			</label>
                         <br>
                         <div class="form-check m-2">
                             <input class="form-check-input" type="radio" name="proficiency" id="yproficiency" value="Yes">

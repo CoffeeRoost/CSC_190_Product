@@ -196,7 +196,7 @@
 
 
     <h6 class="mt-5">If Training Code was selected, specify the training program below</h6>
-    <select class="form-select-SM border rounded-2" name="trainingProgram" id="" required>
+    <select class="form-select-SM border rounded-2" name="trainingProgram" id="" >
                         <option value="" disabled selected hidden>Choose</option>
                         <option value="essential skills">CMC - Essential Skills (5 hours)</option>
                         <option value="Intro Assembler">CMC - Intro to Assembler (5 hours)</option>

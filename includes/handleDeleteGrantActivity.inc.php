@@ -22,6 +22,8 @@ if (isset($_SESSION['adminLogin'])) {
     $_SESSION['adminID'] = $row['adminID'];
   } else {
     // adminID not found in database
+    session_unset();
+    session_destroy();
     header ("Location: ../LoginAd.php");
     exit();
   }
@@ -29,6 +31,8 @@ if (isset($_SESSION['adminLogin'])) {
 
 if (!isset($_SESSION['adminID'])) {
   // adminID not set
+  session_unset();
+  session_destroy();
   header ("Location: ../LoginAd.php");
   exit();
 }

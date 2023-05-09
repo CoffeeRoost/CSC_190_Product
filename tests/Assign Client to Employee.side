@@ -1,0 +1,239 @@
+{
+  "id": "72321af5-fcdc-4278-8d95-3ea1c707bb24",
+  "version": "2.0",
+  "name": "Assign Client to Employee",
+  "url": "",
+  "tests": [{
+    "id": "8acb08d9-5975-4bed-a022-140a5687cee0",
+    "name": "Assign Client via EmployeeID",
+    "commands": [{
+      "id": "58e92fad-3a43-4c35-81ad-2ecf7955a6c3",
+      "comment": "From Homepage Click Login Admin",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a2e01ec-972b-40a7-9ebe-79090a0bc410",
+      "comment": "Type in Admin's Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "3b5188da-9f20-4b36-9846-8f4d697f64eb",
+      "comment": "Type in Admin's Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "7427aa1e-e899-444d-b4db-f82510e5d4a1",
+      "comment": "Click on Login Admin Button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8337b214-d9cc-4dc0-9340-35f101076e07",
+      "comment": "Click on Assign Client Button in Admin Dashboard",
+      "command": "click",
+      "target": "linkText=Assign Client",
+      "targets": [
+        ["linkText=Assign Client", "linkText"],
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Assign Client')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './ClientEmployee.php')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Assign Client')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2473a9e-e81a-4cd0-8939-8c6663cfe1df",
+      "comment": "Insert an Unassigned Client's userID",
+      "command": "type",
+      "target": "id=userID",
+      "targets": [
+        ["id=userID", "id"],
+        ["name=userID", "name"],
+        ["css=#userID", "css:finder"],
+        ["xpath=//input[@id='userID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "7d5412d5-a9f7-4c3b-8f32-f78c66ce4359",
+      "comment": "Insert an Employee's employeeID",
+      "command": "type",
+      "target": "id=employeeID",
+      "targets": [
+        ["id=employeeID", "id"],
+        ["name=employeeID", "name"],
+        ["css=#employeeID", "css:finder"],
+        ["xpath=//input[@id='employeeID']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "7b1dd240-52fd-4a23-9d88-38f15ce44d18",
+      "comment": "Click Next to Assign Client to given Employee",
+      "command": "click",
+      "target": "name=assign-employee-client",
+      "targets": [
+        ["name=assign-employee-client", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='assign-employee-client']", "xpath:attributes"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "341a7508-c0af-427d-8667-c29f48a1efd1",
+    "name": "Assign Client via Employee Email",
+    "commands": [{
+      "id": "2855b82b-3300-471c-b242-f9d0f5a5e5c8",
+      "comment": "From Homepage Click Login Admin",
+      "command": "click",
+      "target": "linkText=Login (Admin)",
+      "targets": [
+        ["linkText=Login (Admin)", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login (Admin)')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './LoginAd.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login (Admin)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b555bf8-cabd-465f-936e-62b0534fad80",
+      "comment": "Type in Admin's Email",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "00d77f50-9ae2-4c17-a80d-ecc614c32917",
+      "comment": "Type in Admin's Password",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "root"
+    }, {
+      "id": "57875095-5024-441d-9123-0519b51688ed",
+      "comment": "Click on Login Admin Button",
+      "command": "click",
+      "target": "name=login-submit",
+      "targets": [
+        ["name=login-submit", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='login-submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "348f63fb-c29a-4f5d-810d-e81a799b825f",
+      "comment": "Click on Assign Client Button in Admin Dashboard",
+      "command": "click",
+      "target": "linkText=Assign Client",
+      "targets": [
+        ["linkText=Assign Client", "linkText"],
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Assign Client')]", "xpath:link"],
+        ["xpath=//a[contains(@href, './ClientEmployee.php')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Assign Client')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "313b2809-1793-4337-818a-bbc6c444a152",
+      "comment": "Insert an Unassigned Client's userID",
+      "command": "type",
+      "target": "id=userID",
+      "targets": [
+        ["id=userID", "id"],
+        ["name=userID", "name"],
+        ["css=#userID", "css:finder"],
+        ["xpath=//input[@id='userID']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "ad4ce22a-da29-4d19-a275-63f623a36bad",
+      "comment": "Insert an Employee's Email",
+      "command": "type",
+      "target": "id=employeeEmail",
+      "targets": [
+        ["id=employeeID", "id"],
+        ["name=employeeID", "name"],
+        ["css=#employeeID", "css:finder"],
+        ["xpath=//input[@id='employeeID']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "rootuser@cmc.com"
+    }, {
+      "id": "6430eb42-59f6-4dcf-81ed-6195d7c7cb81",
+      "comment": "Click Next to Assign Client to given Employee",
+      "command": "click",
+      "target": "name=assign-employee-client",
+      "targets": [
+        ["name=assign-employee-client", "name"],
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@name='assign-employee-client']", "xpath:attributes"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "17dcf60f-eab6-46b3-87a5-810378e81c0c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8acb08d9-5975-4bed-a022-140a5687cee0"]
+  }],
+  "urls": [],
+  "plugins": []
+}
