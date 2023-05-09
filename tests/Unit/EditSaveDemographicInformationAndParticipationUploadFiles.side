@@ -1,0 +1,353 @@
+{
+  "id": "ef178531-1021-4951-b9ad-3fb66666968f",
+  "version": "2.0",
+  "name": "CMCProjectTestSuites",
+  "url": "http://54.67.115.77/",
+  "tests": [{
+    "id": "af185cae-3950-4676-a06f-914f1804a767",
+    "name": "EditSaveDemographicInformation",
+    "commands": [{
+      "id": "a1ce104a-a83c-49d6-a038-0aa6de8a4b38",
+      "comment": "Open the website",
+      "command": "open",
+      "target": "http://54.67.115.77/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "91f0118d-eefd-4c0f-83cc-f292f9aa824d",
+      "comment": "Set the windown",
+      "command": "setWindowSize",
+      "target": "1536x798",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4a324215-421d-4c8e-bd56-099857268d0c",
+      "comment": "Participation Login",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.nav-item:nth-child(3) > .nav-link", "css:finder"],
+        ["xpath=(//a[contains(text(),'Login')])[2]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './Login.php')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea6df082-fdf3-4ddd-8ced-364473868ce9",
+      "comment": "Email",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fcbf385-648e-49c7-a672-971703204e9d",
+      "comment": "Input Email",
+      "command": "type",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a73b4109-3e0a-40d9-a2f5-fcb5f0da2df3",
+      "comment": "Password",
+      "command": "click",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3ecc37a-237c-4754-b56a-61f6c2983362",
+      "comment": "Input Password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "521f84f4-d561-46be-98df-fd2586775645",
+      "comment": "Send keys",
+      "command": "sendKeys",
+      "target": "name=password",
+      "targets": [
+        ["name=password", "name"],
+        ["css=.form-control:nth-child(7)", "css:finder"],
+        ["xpath=//input[@name='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "15152428-4659-494c-9956-b11737a5ff95",
+      "comment": "Personal Information",
+      "command": "click",
+      "target": "linkText=Personal Information",
+      "targets": [
+        ["linkText=Personal Information", "linkText"],
+        ["css=.bg-Blue:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Personal Information')]", "xpath:link"],
+        ["xpath=//div[@id='sideBar']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './includes/clientPersonalViewBE.php?id=14')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Personal Information')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2f822f4-a4af-44d9-b67f-6b2d28e94a91",
+      "comment": "mouse move to personal Information",
+      "command": "mouseOver",
+      "target": "linkText=Personal Information",
+      "targets": [
+        ["linkText=Personal Information", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Personal Information')]", "xpath:link"],
+        ["xpath=//div[@id='sideBar']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './includes/clientPersonalViewBE.php?id=14')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Personal Information')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "086539e4-d965-453c-8260-59483def78fe",
+      "comment": "Click on the Edit button",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=#clientNameShow .text-decoration-none", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit')]", "xpath:link"],
+        ["xpath=//div[@id='clientNameShow']/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[11]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b3dcc4a7-2776-4b36-976a-100ec32c55a5",
+      "comment": "Middle Name",
+      "command": "click",
+      "target": "name=MI",
+      "targets": [
+        ["name=MI", "name"],
+        ["css=#clientNameEdit .row:nth-child(3) .col", "css:finder"],
+        ["xpath=//input[@name='MI']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac78b384-7532-4a13-bdf9-0f3c7dfab81e",
+      "comment": "Input the middle name",
+      "command": "type",
+      "target": "name=MI",
+      "targets": [
+        ["name=MI", "name"],
+        ["css=#clientNameEdit .row:nth-child(3) .col", "css:finder"],
+        ["xpath=//input[@name='MI']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[3]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Thi"
+    }, {
+      "id": "e511f636-4047-4810-b6aa-7dbcb04769b7",
+      "comment": "Click on the first name",
+      "command": "click",
+      "target": "name=fname",
+      "targets": [
+        ["name=fname", "name"],
+        ["css=#clientNameEdit .row:nth-child(2) .col", "css:finder"],
+        ["xpath=//input[@name='fname']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3b61053-3b7c-45e1-a059-a3f788f4a49d",
+      "comment": "Edit the first name",
+      "command": "type",
+      "target": "name=fname",
+      "targets": [
+        ["name=fname", "name"],
+        ["css=#clientNameEdit .row:nth-child(2) .col", "css:finder"],
+        ["xpath=//input[@name='fname']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Thuy Thuy"
+    }, {
+      "id": "56b421ca-6e93-42c0-bd52-2134302c2213",
+      "comment": "Click on the program member",
+      "command": "click",
+      "target": "id=programMember",
+      "targets": [
+        ["id=programMember", "id"],
+        ["name=programMember", "name"],
+        ["css=#programMember", "css:finder"],
+        ["xpath=//select[@id='programMember']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[9]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91d188fc-a445-46f3-9e0f-52d7f7208e59",
+      "comment": "Select the program member",
+      "command": "select",
+      "target": "id=programMember",
+      "targets": [],
+      "value": "label=Friend and Family"
+    }, {
+      "id": "095976b4-8603-44d5-9989-7dfa536851cf",
+      "comment": "Click on the language",
+      "command": "click",
+      "target": "id=language",
+      "targets": [
+        ["id=language", "id"],
+        ["name=language", "name"],
+        ["css=#language", "css:finder"],
+        ["xpath=//select[@id='language']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[10]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b277980-c46b-481c-b5f8-377cfe25fd26",
+      "comment": "Select the Langauge",
+      "command": "select",
+      "target": "id=language",
+      "targets": [],
+      "value": "label=English"
+    }, {
+      "id": "7e4750f6-2c9c-4586-8b1f-a1499eb806fe",
+      "comment": "click on the language proficiency ",
+      "command": "click",
+      "target": "id=proficiency",
+      "targets": [
+        ["id=proficiency", "id"],
+        ["name=proficiency", "name"],
+        ["css=#proficiency", "css:finder"],
+        ["xpath=//select[@id='proficiency']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div[11]/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "581dfc4d-06ca-4844-8512-18b3f07398a7",
+      "comment": "Select the language proficiency ",
+      "command": "select",
+      "target": "id=proficiency",
+      "targets": [],
+      "value": "label=Yes"
+    }, {
+      "id": "61366d21-de2a-4fb2-9220-3cfb036d6511",
+      "comment": "save  client demographic Edit",
+      "command": "click",
+      "target": "name=clientDemographicEdit",
+      "targets": [
+        ["name=clientDemographicEdit", "name"],
+        ["css=form .collapsed", "css:finder"],
+        ["xpath=//button[@name='clientDemographicEdit']", "xpath:attributes"],
+        ["xpath=//div[@id='clientNameEdit']/form/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8fcb0709-4653-4574-b282-3b9b3af1cfe3",
+    "name": "ParticiaptionUploadFiles",
+    "commands": [{
+      "id": "d2e03603-3d5c-44b4-860c-e3166e1b91b9",
+      "comment": "website url ",
+      "command": "open",
+      "target": "http://54.67.115.77/participantDash1-2.php?login=success",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d743ecf7-42e3-47f4-a620-a3e90943d491",
+      "comment": "Set window size",
+      "command": "setWindowSize",
+      "target": "1536x798",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "625ab4b8-9529-4943-98a9-cfdac51781e8",
+      "comment": "Upload the files",
+      "command": "click",
+      "target": "id=fileToUpload",
+      "targets": [
+        ["id=fileToUpload", "id"],
+        ["name=fileToUpload", "name"],
+        ["css=#fileToUpload", "css:finder"],
+        ["xpath=//input[@id='fileToUpload']", "xpath:attributes"],
+        ["xpath=//div[@id='personalInfoTab']/div/div/div[3]/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/form/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "73be60a2-a73a-4365-8abd-18570f8a5072",
+      "comment": "The value of the file upload to ",
+      "command": "type",
+      "target": "id=fileToUpload",
+      "targets": [
+        ["id=fileToUpload", "id"],
+        ["name=fileToUpload", "name"],
+        ["css=#fileToUpload", "css:finder"],
+        ["xpath=//input[@id='fileToUpload']", "xpath:attributes"],
+        ["xpath=//div[@id='personalInfoTab']/div/div/div[3]/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/form/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6f16e24-b1b5-4be2-b3ae-3a720fe78278",
+      "comment": "submit the File ",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.btn-sm", "css:finder"],
+        ["xpath=//button[@name='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='personalInfoTab']/div/div/div[3]/form/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Upload')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "60bb5992-0c42-4d27-bfa2-1d75432f8563",
+      "comment": "View uploead file",
+      "command": "click",
+      "target": "css=.d-flex:nth-child(2)",
+      "targets": [
+        ["css=.d-flex:nth-child(2)", "css:finder"],
+        ["xpath=//body/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "92c2dd8c-f0f7-4793-abbe-182c47046406",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["af185cae-3950-4676-a06f-914f1804a767"]
+  }],
+  "urls": ["http://54.67.115.77/"],
+  "plugins": []
+}
