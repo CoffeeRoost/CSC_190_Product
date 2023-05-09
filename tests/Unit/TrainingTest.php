@@ -7,20 +7,22 @@ class TrainingTest extends TestCase {
         // Arrange
         $expectedData = array(
             array(
-                'fname' => 'John',
-                'lname' => 'Doe',
-                'email' => 'johndoe@example.com',
-                'coach' => 'Jane',
-                'activityCode' => '123',
-                'trainingProgram' => 'Training',
-                'startDate' => '2022-01-01',
-                'endDate' => '2022-01-31',
+                'clientLName' => 'Duong',
+                'clientFName' => 'Thuy',
+                'coach' => 'Cindy Duong',
+                'employeeID' => '2',
+                'userID' => '2',
+                'activityCode' => '102 Initial Assessment',
+                'trainingProgram' => 'essential skills',
+                'startDate' => '2023-04-07',
+                'endDate' => '2023-04-30',
+                'minutes' =>'1234',
                 'notes' => 'Some notes'
             ),
             // add more expected data rows here
         );
 
-        $conn = mysqli_connect("localhost", "root", "", "csc190");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "csc190");
 
         // Check connection
         if (mysqli_connect_errno()) {
@@ -30,7 +32,7 @@ class TrainingTest extends TestCase {
 
         // Act
         $actualData = array();
-        $query = "SELECT part.fname,part.lname,part.email,t.coach,t.activityCode,t.trainingProgram, t.startDate,t.endDate,t.notes
+        $query = "SELECT t.coach,t.activityCode,t.trainingProgram, t.startDate,t.endDate,t.notes, t.minutes, t.employeeID, t.userID, t.clientLName,t.clientFName
                   FROM participation part
                   JOIN participationReportActivity t
                   ON part.userID=t.userID";
